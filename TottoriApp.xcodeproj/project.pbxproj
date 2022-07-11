@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
-		E4E37706287CB532003ED269 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* ViewController.swift */; };
+		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
 		E4E37709287CB532003ED269 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4E37707287CB532003ED269 /* Main.storyboard */; };
 		E4E3770B287CB533003ED269 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4E3770A287CB533003ED269 /* Assets.xcassets */; };
 		E4E3770E287CB533003ED269 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4E3770C287CB533003ED269 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E4E37705287CB532003ED269 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E4E37705287CB532003ED269 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		E4E37708287CB532003ED269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4E3770A287CB533003ED269 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4E3770D287CB533003ED269 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,23 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
-				E4E37701287CB532003ED269 /* AppDelegate.swift */,
-				E4E37703287CB532003ED269 /* SceneDelegate.swift */,
-				E4E37705287CB532003ED269 /* ViewController.swift */,
+				E4E37715287CB59E003ED269 /* Delegates */,
+				E4E37705287CB532003ED269 /* CatalogViewController.swift */,
 				E4E37707287CB532003ED269 /* Main.storyboard */,
 				E4E3770A287CB533003ED269 /* Assets.xcassets */,
 				E4E3770C287CB533003ED269 /* LaunchScreen.storyboard */,
 				E4E3770F287CB533003ED269 /* Info.plist */,
 			);
 			path = TottoriApp;
+			sourceTree = "<group>";
+		};
+		E4E37715287CB59E003ED269 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				E4E37701287CB532003ED269 /* AppDelegate.swift */,
+				E4E37703287CB532003ED269 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4E37706287CB532003ED269 /* ViewController.swift in Sources */,
+				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
 			);
@@ -294,7 +302,6 @@
 				INFOPLIST_FILE = TottoriApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +329,6 @@
 				INFOPLIST_FILE = TottoriApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
