@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */; };
+		E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6735287DB233001FD5B2 /* CatalogView.swift */; };
+		E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewDelegate.swift; sourceTree = "<group>"; };
+		E41C6735287DB233001FD5B2 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E41C6732287DB1A8001FD5B2 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				E4E37705287CB532003ED269 /* CatalogViewController.swift */,
+				E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */,
+				E41C6735287DB233001FD5B2 /* CatalogView.swift */,
+				E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
 		E4E376F5287CB532003ED269 = {
 			isa = PBXGroup;
 			children = (
@@ -70,9 +87,10 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E41C6732287DB1A8001FD5B2 /* Catalog */,
 				E4E37728287D6B4B003ED269 /* DataService */,
 				E4E3771B287CB7B9003ED269 /* Extensions */,
-				E4E37718287CB776003ED269 /* Views */,
+				E4E37718287CB776003ED269 /* ViewsDeprecated */,
 				E4E37717287CB754003ED269 /* Controllers */,
 				E4E37715287CB59E003ED269 /* Delegates */,
 				E4E3770A287CB533003ED269 /* Assets.xcassets */,
@@ -94,7 +112,6 @@
 		E4E37717287CB754003ED269 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4E37705287CB532003ED269 /* CatalogViewController.swift */,
 				E4E37720287CBB8A003ED269 /* TabBarViewController.swift */,
 				E4E37722287CC003003ED269 /* AboutUsViewController.swift */,
 				E4E37724287CC023003ED269 /* BasketViewController.swift */,
@@ -102,14 +119,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		E4E37718287CB776003ED269 /* Views */ = {
+		E4E37718287CB776003ED269 /* ViewsDeprecated */ = {
 			isa = PBXGroup;
 			children = (
-				E4E37726287D5430003ED269 /* TypeView.swift */,
 				E4E3772B287D6CBB003ED269 /* TypeCollectionView.swift */,
+				E4E37726287D5430003ED269 /* TypeView.swift */,
 				E4E3772D287D8113003ED269 /* TypeViewCellCollectionViewCell.swift */,
 			);
-			path = Views;
+			path = ViewsDeprecated;
 			sourceTree = "<group>";
 		};
 		E4E3771B287CB7B9003ED269 /* Extensions */ = {
@@ -199,6 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E3772C287D6CBB003ED269 /* TypeCollectionView.swift in Sources */,
+				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,
+				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
 				E4E3772E287D8113003ED269 /* TypeViewCellCollectionViewCell.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
@@ -207,6 +226,7 @@
 				E4E3772A287D6B66003ED269 /* MockDataService.swift in Sources */,
 				E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */,
 				E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */,
+				E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */,
 				E4E37727287D5430003ED269 /* TypeView.swift in Sources */,
 				E4E3771D287CB7CF003ED269 /* ColorExtension.swift in Sources */,
 			);
