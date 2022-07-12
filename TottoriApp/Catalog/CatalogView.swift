@@ -26,7 +26,7 @@ final class CatalogView: UIView {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .backGroundColor
+        collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         
@@ -39,8 +39,30 @@ final class CatalogView: UIView {
         
         
     }()
+    lazy var secondCollectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: 170, height: 411)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        
+        collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: DishCollectionViewCell.identifier)
+     
+        
+        
+        
+        return collectionView
+        
+        
+    }()
     private func addSubview(){
         addSubview(collectionView)
+        addSubview(secondCollectionView)
     }
     private func setLayout(){
         
@@ -51,6 +73,16 @@ final class CatalogView: UIView {
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
             
         collectionView.heightAnchor.constraint(equalToConstant: 112).isActive = true
+        
+        secondCollectionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 30).isActive = true
+       
+        secondCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+       
+        secondCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        
+        secondCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -20).isActive = true
+       
+        
         
         
     }

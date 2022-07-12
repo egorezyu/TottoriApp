@@ -48,6 +48,8 @@ class CatalogViewController: UIViewController {
     private func setUpCollectionView(){
         catalogView.collectionView.dataSource = self
         catalogView.collectionView.delegate = self
+        catalogView.secondCollectionView.dataSource = self
+        catalogView.secondCollectionView.delegate = self
     }
     private func getMockData(){
         NetworkManager.netWork.getDataFromApi { result in
@@ -74,28 +76,41 @@ extension CatalogViewController : CatalogViewDelegate{
 }
 extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        menyTypes.count
+        if collectionView == catalogView.collectionView{
+           return menyTypes.count
+        }
+        return 10
+        
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as! MenuCollectionViewCell
-        cell.setLabel(menuType: menyTypes[indexPath.row])
-        if selectedIndex != indexPath.row{
-            cell.contentView.backgroundColor = .clear
+        if collectionView == catalogView.collectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as! MenuCollectionViewCell
+            cell.setLabel(menuType: menyTypes[indexPath.row])
+            if selectedIndex != indexPath.row{
+                cell.contentView.backgroundColor = .clear
+            }
+            else{
+                cell.contentView.backgroundColor = .white
+            }
+            return cell
         }
-        else{
-            cell.contentView.backgroundColor = .white
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
         return cell
+        
+        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == catalogView.collectionView{
+            selectedIndex = indexPath.row
+            collectionView.reloadData()
+        }
         
         
         
        
-        selectedIndex = indexPath.row
-        collectionView.reloadData()
+      
         
         
         
