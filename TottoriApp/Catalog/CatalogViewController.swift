@@ -23,12 +23,10 @@ class CatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if let image = UIImage(named: "back"){
-            view.backgroundColor = UIColor(patternImage: image)
-        }
         
         
         
+        setBackGround()
         setUpCollectionView()
         getMockData()
         
@@ -43,6 +41,12 @@ class CatalogViewController: UIViewController {
         
         
 
+        
+    }
+    private func setBackGround(){
+        if let image = UIImage(named: "back"){
+            view.backgroundColor = UIColor(patternImage: image)
+        }
         
     }
     private func setUpCollectionView(){
