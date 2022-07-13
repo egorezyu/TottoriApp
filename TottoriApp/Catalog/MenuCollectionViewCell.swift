@@ -12,7 +12,7 @@ class MenuCollectionViewCell: UICollectionViewCell {
     lazy var typeLabel : UILabel = {
         let typeLabel = UILabel()
         typeLabel.textColor = .labelColor
-        typeLabel.font = UIFont.systemFont(ofSize: 12)
+        typeLabel.font = UIFont(name: "Gilroy", size: 13)
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         return typeLabel
 

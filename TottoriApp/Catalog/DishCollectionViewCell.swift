@@ -19,7 +19,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     private lazy var foodType : UILabel = {
         var label = UILabel()
         
-        label.font = UIFont(name: "FoglihtenNo06-Regular", size: 17)
+        label.font = UIFont(name: "FoglihtenNo06", size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -41,7 +41,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         var label = UILabel()
         label.textColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "FoglihtenNo06-Regular", size: 22)
+        label.font = UIFont(name: "FoglihtenNo06", size: 22)
         return label
         
     }()
@@ -87,7 +87,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     }
     
     private func setConstraints(){
-        imageView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10).isActive = true
+        imageView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 21).isActive = true
         imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         imageView.heightAnchor.constraint(equalToConstant:  133).isActive = true
@@ -99,14 +99,14 @@ class DishCollectionViewCell: UICollectionViewCell {
         descriptionAboutFood.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
         descriptionAboutFood.heightAnchor.constraint(equalToConstant: 162).isActive = true
         
-        price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
+        price.bottomAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 26).isActive = true
         
         ruble.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
         ruble.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -3).isActive  = true
         
-        purchaseImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-        purchaseImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        purchaseImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
+        purchaseImage.bottomAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 26).isActive = true
         purchaseImage.widthAnchor.constraint(equalToConstant: 26).isActive = true
         purchaseImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
