@@ -12,6 +12,7 @@ class CatalogViewController: UIViewController {
     private var selectedIndex = 1
     private lazy var catalogView = CatalogView(subscriber: self)
     private var menyTypes : [String] = []
+    private var dishes : [Dish] = []
     override func loadView() {
         super.loadView()
         view = catalogView
@@ -29,6 +30,7 @@ class CatalogViewController: UIViewController {
         setBackGround()
         setUpCollectionView()
         getMockData()
+       
         
 
         
@@ -60,15 +62,30 @@ class CatalogViewController: UIViewController {
             switch result{
                 
             case .success(let typeArray):
-                DispatchQueue.main.async {[weak self] in
-                    self?.menyTypes = typeArray
-                    self?.catalogView.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.menyTypes = typeArray
+                    self.getDishesByMenu(menuType: self.menyTypes[1])
+                    self.catalogView.collectionView.reloadData()
                 }
             case .failure(_):
                 print("")
             }
         }
         
+    }
+    private func getDishesByMenu(menuType : String){
+        NetworkManager.netWork.getDataFromMenuType(menuType: menuType) { result in
+            switch result{
+                
+            case .success(let dishes):
+                DispatchQueue.main.async {[weak self] in
+                    self?.dishes = dishes
+                    self?.catalogView.secondCollectionView.reloadData()
+                }
+            case .failure(_):
+                print("")
+            }
+        }
     }
     
 
@@ -83,7 +100,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         if collectionView == catalogView.collectionView{
            return menyTypes.count
         }
-        return 10
+        return dishes.count
         
         
     }
@@ -101,6 +118,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
+        cell.setCellFields(dish: dishes[indexPath.row])
         return cell
         
         
@@ -108,7 +126,10 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == catalogView.collectionView{
             selectedIndex = indexPath.row
+            dishes = []
+            getDishesByMenu(menuType: menyTypes[selectedIndex])
             collectionView.reloadData()
+            catalogView.secondCollectionView.reloadData()
         }
         
         

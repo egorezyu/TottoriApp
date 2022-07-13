@@ -10,7 +10,7 @@ import UIKit
 class DishCollectionViewCell: UICollectionViewCell {
     static let identifier = "DishCollectionViewCell"
     private lazy var imageView : UIImageView = {
-        var image = UIImageView(image: UIImage(named: "dish"))
+        var image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -18,7 +18,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var foodType : UILabel = {
         var label = UILabel()
-        label.text = "Кайсен Рамен"
+        
         label.font = UIFont(name: "FoglihtenNo06-Regular", size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -26,7 +26,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     private lazy var descriptionAboutFood : UITextView = {
         var textView = UITextView()
         textView.textAlignment = .left
-        textView.text = "Рамен из водорослей комбу и грибов Шиитаке, со светлой соевой основой, тигровыми креветками, мясом краба, королевскими креветками, яйцом нитамаго."
+        
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
         textView.isEditable = false
@@ -39,7 +39,6 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var price : UILabel = {
         var label = UILabel()
-        label.text = "1440"
         label.textColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "FoglihtenNo06-Regular", size: 22)
@@ -111,7 +110,12 @@ class DishCollectionViewCell: UICollectionViewCell {
         purchaseImage.widthAnchor.constraint(equalToConstant: 26).isActive = true
         purchaseImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
-    func setCellFields(){
+    func setCellFields(dish : Dish){
+        self.imageView.image = dish.image
+        self.foodType.text = dish.foodType
+        self.descriptionAboutFood.text = dish.description
+        self.price.text = String(dish.price)
+        
         
     }
     

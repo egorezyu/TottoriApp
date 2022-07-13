@@ -23,4 +23,11 @@ class NetworkManager{
         
         
     }
+    func getDataFromMenuType(menuType : String , comletion : @escaping ((Result<[Dish],Error>) -> Void)){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            comletion(.success([Dish(image: UIImage(named: "dish")!, foodType: "Кайсен Рамен", description: "Рамен из водорослей комбу и грибов Шиитаке, со светлой соевой основой, тигровыми креветками, мясом краба, королевскими креветками, яйцом нитамаго.", price: 1440.0),Dish(image: UIImage(named: "dish")!, foodType: "Кайсен Рамен", description: "Рамен из водорослей комбу и грибов Шиитаке, со светлой соевой основой, тигровыми креветками, мясом краба, королевскими креветками, яйцом нитамаго.", price: 1440.0),Dish(image: UIImage(named: "dish")!, foodType: "Кайсен Рамен", description: "Рамен из водорослей комбу и грибов Шиитаке, со светлой соевой основой, тигровыми креветками, мясом краба, королевскими креветками, яйцом нитамаго.", price: 1440.0)]))
+        }
+        
+        
+    }
 }
