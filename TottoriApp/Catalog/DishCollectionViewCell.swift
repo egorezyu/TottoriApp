@@ -19,7 +19,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     private lazy var foodType : UILabel = {
         var label = UILabel()
         label.text = "Кайсен Рамен"
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont(name: "FoglihtenNo06-Regular", size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -29,8 +29,11 @@ class DishCollectionViewCell: UICollectionViewCell {
         textView.text = "Рамен из водорослей комбу и грибов Шиитаке, со светлой соевой основой, тигровыми креветками, мясом краба, королевскими креветками, яйцом нитамаго."
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.font = UIFont(name: "Gilroy-Regular", size: 14)
         
-        textView.font = UIFont.systemFont(ofSize: 14)
+        
         return textView
         
     }()
@@ -39,8 +42,23 @@ class DishCollectionViewCell: UICollectionViewCell {
         label.text = "1440"
         label.textColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 22)
+        label.font = UIFont(name: "FoglihtenNo06-Regular", size: 22)
         return label
+        
+    }()
+    private lazy var ruble : UILabel = {
+        var label = UILabel()
+        label.text = "₽"
+        label.font = UIFont(name: "Cormorant-Regular", size: 20)
+        label.textColor = .red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    private lazy var purchaseImage : UIImageView = {
+        var image = UIImageView(image: UIImage(named: "purchase"))
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
         
     }()
     override init(frame : CGRect){
@@ -55,12 +73,15 @@ class DishCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(foodType)
         contentView.addSubview(descriptionAboutFood)
         contentView.addSubview(price)
+        contentView.addSubview(ruble)
+        contentView.addSubview(purchaseImage)
         
     }
     private func setBackGround(){
-        if let image = UIImage(named: "backForCell"){
-            contentView.backgroundColor = UIColor(patternImage: image)
-        }
+        let image = UIImageView(image: UIImage(named: "backForCell"))
+        image.frame = contentView.bounds
+        image.contentMode = .scaleAspectFill
+        contentView.addSubview(image)
         
         
         
@@ -80,7 +101,18 @@ class DishCollectionViewCell: UICollectionViewCell {
         descriptionAboutFood.heightAnchor.constraint(equalToConstant: 162).isActive = true
         
         price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        price.topAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 20).isActive = true
+        price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        
+        ruble.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
+        ruble.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -3).isActive  = true
+        
+        purchaseImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        purchaseImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        purchaseImage.widthAnchor.constraint(equalToConstant: 26).isActive = true
+        purchaseImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    func setCellFields(){
+        
     }
     
     required init?(coder: NSCoder) {

@@ -9,7 +9,7 @@ import UIKit
 
 class CatalogViewController: UIViewController {
     
-    private var selectedIndex = 0
+    private var selectedIndex = 1
     private lazy var catalogView = CatalogView(subscriber: self)
     private var menyTypes : [String] = []
     override func loadView() {
@@ -92,7 +92,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 cell.contentView.backgroundColor = .clear
             }
             else{
-                cell.contentView.backgroundColor = .white
+                cell.contentView.backgroundColor = UIColor(red: 0.275, green: 0.29, blue: 0.31, alpha: 1)
             }
             return cell
         }
