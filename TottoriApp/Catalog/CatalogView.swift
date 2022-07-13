@@ -43,7 +43,7 @@ final class CatalogView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 170, height: 411)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
