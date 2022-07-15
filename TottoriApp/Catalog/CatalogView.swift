@@ -43,7 +43,7 @@ final class CatalogView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 170, height: 411)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -66,13 +66,13 @@ final class CatalogView: UIView {
     }
     private func setLayout(){
         
-        collectionView.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
+        collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
             
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
             
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
             
-        collectionView.heightAnchor.constraint(equalToConstant: 112).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 105).isActive = true
         
         secondCollectionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 30).isActive = true
        

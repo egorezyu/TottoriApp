@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
 
         
     
-        let catalogVC = CatalogViewController()
+        let catalogVC = UINavigationController(rootViewController: CatalogViewController())
         let catalogVCTabBar = UITabBarItem(title: "",image: UIImage(systemName: "rectangle.grid.2x2"), tag: 1)
         catalogVC.tabBarItem = catalogVCTabBar
         
