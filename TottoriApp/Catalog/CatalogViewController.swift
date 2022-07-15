@@ -87,6 +87,14 @@ class CatalogViewController: UIViewController {
             }
         }
     }
+    @objc func doSequeToNextScreen(button : UIButton){
+        let dish = dishes[button.tag]
+        let dVC = DishViewController()
+        dVC.dish = dish
+        
+        navigationController?.pushViewController(dVC, animated: true)
+        
+    }
     
 
 
@@ -119,6 +127,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
         cell.setCellFields(dish: dishes[indexPath.row])
+        cell.purchaseButton.tag = indexPath.row
+        cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
         return cell
         
         

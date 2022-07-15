@@ -53,11 +53,13 @@ class DishCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var purchaseImage : UIImageView = {
-        var image = UIImageView(image: UIImage(named: "purchase"))
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+    lazy var purchaseButton : UIButton = {
+        var button = UIButton()
+        button.setImage(UIImage(named: "purchase"), for: .normal)
+        
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
         
     }()
     override init(frame : CGRect){
@@ -73,7 +75,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(descriptionAboutFood)
         contentView.addSubview(price)
         contentView.addSubview(ruble)
-        contentView.addSubview(purchaseImage)
+        contentView.addSubview(purchaseButton)
         
     }
     private func setBackGround(){
@@ -105,10 +107,10 @@ class DishCollectionViewCell: UICollectionViewCell {
         ruble.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
         ruble.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -3).isActive  = true
         
-        purchaseImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
-        purchaseImage.bottomAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 26).isActive = true
-        purchaseImage.widthAnchor.constraint(equalToConstant: 26).isActive = true
-        purchaseImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        purchaseButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
+        purchaseButton.bottomAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 26).isActive = true
+        purchaseButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
+        purchaseButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     func setCellFields(dish : Dish){
         self.imageView.image = dish.image

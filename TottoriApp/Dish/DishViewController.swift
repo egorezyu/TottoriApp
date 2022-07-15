@@ -9,6 +9,7 @@ import UIKit
 
 class DishViewController: UIViewController {
     private lazy var dishView = DishView(subscriber: self)
+    var dish : Dish!
     
     override func loadView() {
         super.loadView()
@@ -17,9 +18,19 @@ class DishViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(dish.price)
+        setBackGround()
+        
 
         // Do any additional setup after loading the view.
     }
+    private func setBackGround(){
+        if let image = UIImage(named: "back"){
+            view.backgroundColor = UIColor(patternImage: image)
+        }
+        
+    }
+    
    
     
 
