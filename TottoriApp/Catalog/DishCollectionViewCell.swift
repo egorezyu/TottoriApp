@@ -110,7 +110,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         purchaseButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
         purchaseButton.bottomAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 26).isActive = true
         purchaseButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
-        purchaseButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        purchaseButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }
     func setCellFields(dish : Dish){
         self.imageView.image = dish.image

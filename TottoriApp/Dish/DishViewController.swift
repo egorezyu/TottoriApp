@@ -13,13 +13,14 @@ class DishViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        setValuesForView()
         view = dishView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dish.price)
         setBackGround()
+        
         
 
         // Do any additional setup after loading the view.
@@ -29,6 +30,9 @@ class DishViewController: UIViewController {
             view.backgroundColor = UIColor(patternImage: image)
         }
         
+    }
+    private func setValuesForView(){
+        dishView.setValues(dish: dish)
     }
     
    

@@ -15,17 +15,175 @@ class DishView: UIView {
         self.delegate = subscriber
         addSubview()
         setLayout()
+        setFirstChose()
     }
+    private var currentChose = 0
+    private var arrayOfNumbers : [UILabel] = []
+    private lazy var label : UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+ 
+        return label
+        
+    }()
+    private lazy var foodImage : UIImageView = {
+        var image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleToFill
+      
+        return image
+    }()
+    private lazy var hStack : UIStackView = {
+        var stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 38
+        stack.distribution = .equalCentering
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        for i in 0...2{
+            var label = UILabel()
+            label.font = UIFont(name: "FoglihtenNo06", size: 27.95)
+  
+            label.text = String(0) + String(i + 1)
+            label.layer.borderWidth = 1
+            label.layer.borderColor = UIColor.clear.cgColor
+            
+            arrayOfNumbers.append(label)
+            
+            
+            stack.addArrangedSubview(label)
+        }
+        return stack
+    }()
+    private lazy var backButton : UIButton = {
+        var button = UIButton()
+        button.setImage(UIImage(named: "redBack"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(backButtonWasTapped(sender:)), for: .touchUpInside)
+        return button
+        
+    }()
+    private lazy var forwardButton : UIButton = {
+        var button = UIButton()
+        button.setImage(UIImage(named: "redForward"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(forwardButtonWasTapped(sender:)), for: .touchUpInside)
+        return button
+        
+    }()
+    private lazy var descriptionLabel : UILabel = {
+        var label = UILabel()
+        label.text = "Описание"
+        label.font = UIFont(name: "Gilroy", size: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+        
+    }()
+    private lazy var descriptionText : UITextView = {
+        var textView = UITextView()
+        textView.font = UIFont(name: "Gilroy", size: 14)
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.textAlignment = .right
+        textView.backgroundColor = .clear
+       
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        return textView
+    }()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     private func addSubview(){
+        addSubview(label)
+        addSubview(foodImage)
+        addSubview(hStack)
+        addSubview(backButton)
+        addSubview(forwardButton)
+        addSubview(descriptionLabel)
+        addSubview(descriptionText)
+        
         
     }
     private func setLayout(){
+        label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 26).isActive = true
+        label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
+        
+        
+        foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 26).isActive = true
+        foodImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 20).isActive = true
+        foodImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -20).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        
+        hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 34).isActive = true
+        hStack.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
+        
+        forwardButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 50).isActive = true
+        forwardButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30).isActive = true
+        forwardButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        forwardButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        backButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 50).isActive = true
+        backButton.trailingAnchor.constraint(equalTo: forwardButton.leadingAnchor).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 30).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
+        
+        descriptionText.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 30).isActive = true
+        descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
+        descriptionText.heightAnchor.constraint(equalToConstant: 138).isActive = true
+        descriptionText.widthAnchor.constraint(equalToConstant: 246).isActive = true
+        
+        
+        
+        
+        
+        
+        
         
     }
+    
+    func setValues(dish : Dish){
+        self.label.text = dish.foodType
+        self.foodImage.image = dish.image
+        self.descriptionText.text = dish.description
+    }
+    func setFirstChose(){
+        
+        arrayOfNumbers[0].layer.borderColor = UIColor.red.cgColor
+    }
+    @objc func forwardButtonWasTapped(sender : UIButton){
+        currentChose = currentChose + 1
+        if (currentChose == arrayOfNumbers.count){
+            arrayOfNumbers[arrayOfNumbers.count - 1].layer.borderColor = UIColor.clear.cgColor
+            arrayOfNumbers[0].layer.borderColor = UIColor.red.cgColor
+            currentChose = 0
+        }
+        else{
+            arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
+            arrayOfNumbers[currentChose - 1].layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+    @objc func backButtonWasTapped(sender : UIButton){
+        currentChose = currentChose - 1
+        if (currentChose == -1){
+            arrayOfNumbers[0].layer.borderColor = UIColor.clear.cgColor
+            arrayOfNumbers[arrayOfNumbers.count - 1].layer.borderColor = UIColor.red.cgColor
+            currentChose = arrayOfNumbers.count - 1
+        }
+        else{
+            arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
+            arrayOfNumbers[currentChose + 1].layer.borderColor = UIColor.clear.cgColor
+        }
+        
+    }
+    
+    
 
     /*
     // Only override draw() if you perform custom drawing.

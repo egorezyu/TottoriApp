@@ -29,6 +29,7 @@ class CatalogViewController: UIViewController {
         
         setBackGround()
         setUpCollectionView()
+        setNavigationBar()
         getMockData()
        
         
@@ -50,6 +51,12 @@ class CatalogViewController: UIViewController {
             view.backgroundColor = UIColor(patternImage: image)
         }
         
+    }
+    private func setNavigationBar(){
+//        let backImage = UIImage(named: "purchase")
+        self.navigationController?.navigationBar.backIndicatorImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
+//        self.navigationController?.navigationBar.backItem?.title = "Назад"
     }
     private func setUpCollectionView(){
         catalogView.collectionView.dataSource = self
