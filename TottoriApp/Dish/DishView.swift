@@ -123,12 +123,12 @@ class DishView: UIView {
         
         forwardButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 50).isActive = true
         forwardButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30).isActive = true
-        forwardButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        forwardButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         forwardButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         backButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 50).isActive = true
-        backButton.trailingAnchor.constraint(equalTo: forwardButton.leadingAnchor).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        backButton.trailingAnchor.constraint(equalTo: forwardButton.leadingAnchor,constant: -17).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 30).isActive = true
