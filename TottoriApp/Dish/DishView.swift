@@ -38,7 +38,7 @@ class DishView: UIView {
     private lazy var hStack : UIStackView = {
         var stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 38
+        stack.spacing = 22
         stack.distribution = .equalCentering
         stack.translatesAutoresizingMaskIntoConstraints = false
         for i in 0...2{
@@ -46,8 +46,11 @@ class DishView: UIView {
             label.font = UIFont(name: "FoglihtenNo06", size: 27.95)
   
             label.text = String(0) + String(i + 1)
+            label.textAlignment = .center
             label.layer.borderWidth = 1
+            label.layer.cornerRadius = 29
             label.layer.borderColor = UIColor.clear.cgColor
+            label.translatesAutoresizingMaskIntoConstraints = false
             
             arrayOfNumbers.append(label)
             
@@ -138,6 +141,11 @@ class DishView: UIView {
         descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
         descriptionText.heightAnchor.constraint(equalToConstant: 138).isActive = true
         descriptionText.widthAnchor.constraint(equalToConstant: 246).isActive = true
+        
+        for view in arrayOfNumbers{
+            view.widthAnchor.constraint(equalToConstant: 58).isActive = true
+            view.heightAnchor.constraint(equalToConstant: 58).isActive = true
+        }
         
         
         
