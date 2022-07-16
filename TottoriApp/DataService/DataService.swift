@@ -79,9 +79,18 @@ class DataService{
             options: [
                 .processor(processor),
                 .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
+                .transition(.fade(0.7)),
                 .cacheOriginalImage
-            ])
+                
+            ]) { result in
+                switch result {
+                    
+                case .success(let retrievedImage):
+                    imageView.image = retrievedImage.image
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         
         
         

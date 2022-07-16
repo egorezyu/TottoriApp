@@ -166,6 +166,7 @@ class DishView: UIView {
         switch currentChose {
         case 0 :
             DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
+            
         case 1 :
             if let image = sectionList.foodImage2{
                 DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
