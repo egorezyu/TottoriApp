@@ -22,6 +22,8 @@ class DishView: UIView {
     private lazy var label : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         
         label.font = UIFont(name: "FoglihtenNo06", size: 30)
  
@@ -114,6 +116,7 @@ class DishView: UIView {
     private func setLayout(){
         label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 26).isActive = true
         label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
+        label.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
         
         
         foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 26).isActive = true
@@ -160,6 +163,25 @@ class DishView: UIView {
         self.label.text = sectionList.foodName
 //        self.foodImage.image = dish.image
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
+        switch currentChose {
+        case 0 :
+            DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
+        case 1 :
+            if let image = sectionList.foodImage2{
+                DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
+            }
+            
+        case 2 :
+            if let image = sectionList.foodImage3{
+                DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
+            }
+        default:
+            return
+            
+        }
+        
+       
+        
     }
     func setFirstChose(){
         

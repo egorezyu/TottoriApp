@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DishCollectionViewCell: UICollectionViewCell {
     static let identifier = "DishCollectionViewCell"
@@ -123,8 +124,11 @@ class DishCollectionViewCell: UICollectionViewCell {
             self.foodType.text = sectionList.foodName
             self.descriptionAboutFood.text = sectionList.foodContent.removingHTMLOccurances
             self.price.text = sectionList.foodPrice
+            DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.imageView)
+
         }
-//        self.imageView.image = dish.image
+
+        
        
         
         

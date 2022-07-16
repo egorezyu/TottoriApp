@@ -7,6 +7,7 @@
 
 import Foundation
 import Foundation
+import Kingfisher
 enum GetDataException : String ,Error{
     case invalidUrl = "something went wrong with url"
     case badResponse = "bad response or failed cod"
@@ -61,6 +62,27 @@ class DataService{
 
         }
         task.resume()
+        
+        
+    }
+    func setImageFromUrl(url : String,imageView : UIImageView){
+        
+        guard let url = URL(string: "http://tottori.fixmaski.ru" + url) else{
+            return
+        }
+        let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
+                     
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(
+            with: url,
+            
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+        
         
         
     }
