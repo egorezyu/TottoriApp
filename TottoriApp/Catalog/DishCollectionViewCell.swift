@@ -18,6 +18,8 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var foodType : UILabel = {
         var label = UILabel()
+        label.numberOfLines = 2;
+        label.lineBreakMode = .byWordWrapping
         
         label.font = UIFont(name: "FoglihtenNo06", size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -94,7 +96,11 @@ class DishCollectionViewCell: UICollectionViewCell {
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         imageView.heightAnchor.constraint(equalToConstant:  133).isActive = true
         foodType.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
-        foodType.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        foodType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+        foodType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+
+//        foodType.widthAnchor.constraint(equalToConstant: 147).isActive = true
+//        foodType.heightAnchor.constraint(equalToConstant: 22).isActive = true
         descriptionAboutFood.topAnchor.constraint(equalTo: foodType.bottomAnchor,constant: 5).isActive = true
         
         descriptionAboutFood.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5).isActive = true
@@ -112,11 +118,14 @@ class DishCollectionViewCell: UICollectionViewCell {
         purchaseButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
         purchaseButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }
-    func setCellFields(dish : Dish){
-        self.imageView.image = dish.image
-        self.foodType.text = dish.foodType
-        self.descriptionAboutFood.text = dish.description
-        self.price.text = String(dish.price)
+    func setCellFields(sectionList : SectionList?){
+        if let sectionList = sectionList {
+            self.foodType.text = sectionList.foodName
+            self.descriptionAboutFood.text = sectionList.foodContent.removingHTMLOccurances
+            self.price.text = sectionList.foodPrice
+        }
+//        self.imageView.image = dish.image
+       
         
         
     }

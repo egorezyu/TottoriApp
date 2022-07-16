@@ -20,6 +20,8 @@
 		E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD328816175001F6D8C /* DishDelegate.swift */; };
 		E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD52882D49B001F6D8C /* Dishes.swift */; };
 		E43C7FD82882D5DC001F6D8C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD72882D5DC001F6D8C /* DataService.swift */; };
+		E43C7FDB2882E20A001F6D8C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E43C7FDA2882E20A001F6D8C /* Kingfisher */; };
+		E43C7FDD2883112A001F6D8C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FDC2883112A001F6D8C /* String.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -49,6 +51,7 @@
 		E43C7FD328816175001F6D8C /* DishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDelegate.swift; sourceTree = "<group>"; };
 		E43C7FD52882D49B001F6D8C /* Dishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dishes.swift; sourceTree = "<group>"; };
 		E43C7FD72882D5DC001F6D8C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		E43C7FDC2883112A001F6D8C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43C7FDB2882E20A001F6D8C /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				E4E3771C287CB7CF003ED269 /* ColorExtension.swift */,
+				E43C7FDC2883112A001F6D8C /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +220,9 @@
 			dependencies = (
 			);
 			name = TottoriApp;
+			packageProductDependencies = (
+				E43C7FDA2882E20A001F6D8C /* Kingfisher */,
+			);
 			productName = TottoriApp;
 			productReference = E4E376FE287CB532003ED269 /* TottoriApp.app */;
 			productType = "com.apple.product-type.application";
@@ -243,6 +251,9 @@
 				Base,
 			);
 			mainGroup = E4E376F5287CB532003ED269;
+			packageReferences = (
+				E43C7FD92882E20A001F6D8C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = E4E376FF287CB532003ED269 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -284,6 +295,7 @@
 				E41C673A287DF5CD001FD5B2 /* DishCollectionViewCell.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
 				E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */,
+				E43C7FDD2883112A001F6D8C /* String.swift in Sources */,
 				E43C7FD028816148001F6D8C /* DishViewController.swift in Sources */,
 				E4E3772A287D6B66003ED269 /* MockDataService.swift in Sources */,
 				E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */,
@@ -502,6 +514,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E43C7FD92882E20A001F6D8C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E43C7FDA2882E20A001F6D8C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E43C7FD92882E20A001F6D8C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E4E376F6287CB532003ED269 /* Project object */;
 }

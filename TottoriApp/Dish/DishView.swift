@@ -156,10 +156,10 @@ class DishView: UIView {
         
     }
     
-    func setValues(dish : Dish){
-        self.label.text = dish.foodType
-        self.foodImage.image = dish.image
-        self.descriptionText.text = dish.description
+    func setValues(sectionList : SectionList){
+        self.label.text = sectionList.foodName
+//        self.foodImage.image = dish.image
+        self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
     }
     func setFirstChose(){
         

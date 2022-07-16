@@ -9,7 +9,7 @@ import UIKit
 
 class DishViewController: UIViewController {
     private lazy var dishView = DishView(subscriber: self)
-    var dish : Dish!
+    var sectionList : SectionList?
     
     override func loadView() {
         super.loadView()
@@ -32,7 +32,10 @@ class DishViewController: UIViewController {
         
     }
     private func setValuesForView(){
-        dishView.setValues(dish: dish)
+        if let sectionList = sectionList {
+            dishView.setValues(sectionList : sectionList)
+        }
+        
     }
     
    

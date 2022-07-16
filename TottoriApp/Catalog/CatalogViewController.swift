@@ -9,10 +9,10 @@ import UIKit
 
 class CatalogViewController: UIViewController {
     
-    private var selectedIndex = 1
+    private var selectedIndex = 0
     private lazy var catalogView = CatalogView(subscriber: self)
-    private var menyTypes : [String] = []
-    private var dishes : [Dish] = []
+
+    private var catalog : Catalog?
     override func loadView() {
         super.loadView()
         view = catalogView
@@ -30,7 +30,7 @@ class CatalogViewController: UIViewController {
         setBackGround()
         setUpCollectionView()
         setNavigationBar()
-        getMockData()
+        getData()
        
         
 
@@ -64,43 +64,38 @@ class CatalogViewController: UIViewController {
         catalogView.secondCollectionView.dataSource = self
         catalogView.secondCollectionView.delegate = self
     }
-    private func getMockData(){
-        NetworkManager.netWork.getDataFromApi { result in
+    private func getData(){
+        DataService.netWork.getData(url: "http://tottori.fixmaski.ru/api/getSubMenuDelivery.php", method: "GET", comletion: { result in
             switch result{
                 
-            case .success(let typeArray):
+            case .success(let catalog):
                 DispatchQueue.main.async {
-                    self.menyTypes = typeArray
-                    self.getDishesByMenu(menuType: self.menyTypes[1])
-                    self.catalogView.collectionView.reloadData()
+                    do{
+                        let decodedCatalog = try JSONDecoder().decode(Catalog.self, from: catalog)
+                        self.catalog = decodedCatalog
+                        self.catalogView.collectionView.reloadData()
+                        self.catalogView.secondCollectionView.reloadData()
+                    }
+                    catch{
+                        print(error)
+                    }
+                   
+                    
                 }
-            case .failure(_):
-                print("")
+            case .failure(let error):
+                print(error)
             }
         }
         
-    }
-    private func getDishesByMenu(menuType : String){
-        NetworkManager.netWork.getDataFromMenuType(menuType: menuType) { result in
-            switch result{
-                
-            case .success(let dishes):
-                DispatchQueue.main.async {[weak self] in
-                    self?.dishes = dishes
-                    self?.catalogView.secondCollectionView.reloadData()
-                }
-            case .failure(_):
-                print("")
-            }
-        }
-    }
+    )}
+
     @objc func doSequeToNextScreen(button : UIButton){
-        let dish = dishes[button.tag]
+        let sectionList = catalog?.menuList[selectedIndex].sectionList?[button.tag]
         let dVC = DishViewController()
-        dVC.dish = dish
-        
+        dVC.sectionList = sectionList
+
         navigationController?.pushViewController(dVC, animated: true)
-        
+
     }
     
 
@@ -113,9 +108,10 @@ extension CatalogViewController : CatalogViewDelegate{
 extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == catalogView.collectionView{
-           return menyTypes.count
+            return catalog?.menuList.count ?? 0
         }
-        return dishes.count
+        return catalog?.menuList[selectedIndex].sectionList?.count ?? 0
+        
         
         
     }
@@ -123,7 +119,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == catalogView.collectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as! MenuCollectionViewCell
-            cell.setLabel(menuType: menyTypes[indexPath.row])
+            cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
             if selectedIndex != indexPath.row{
                 cell.contentView.backgroundColor = .clear
             }
@@ -133,19 +129,19 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
-        cell.setCellFields(dish: dishes[indexPath.row])
+        cell.setCellFields(sectionList: catalog?.menuList[selectedIndex].sectionList?[indexPath.row])
         cell.purchaseButton.tag = indexPath.row
         cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
         return cell
+     
         
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == catalogView.collectionView{
             selectedIndex = indexPath.row
-            dishes = []
-            getDishesByMenu(menuType: menyTypes[selectedIndex])
-            collectionView.reloadData()
+            
+            catalogView.collectionView.reloadData()
             catalogView.secondCollectionView.reloadData()
         }
         
