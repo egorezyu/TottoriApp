@@ -10,6 +10,7 @@ import UIKit
 
 class DishView: UIView {
     weak var delegate : DishDelegate?
+    var sectionList : SectionList?
     init(subscriber : DishDelegate? = nil){
         super.init(frame: .zero)
         self.delegate = subscriber
@@ -98,6 +99,33 @@ class DishView: UIView {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return textView
     }()
+    public lazy var price : UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "Gilroy", size: 36)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.layer.borderWidth = 1.22
+        label.layer.borderColor = UIColor.red.cgColor
+        return label
+    }()
+    private lazy var purchaseButton : UIButton = {
+        var button = UIButton()
+        button.backgroundColor = .red
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "purchase")?.withTintColor(.white,renderingMode: .alwaysOriginal), for: .normal)
+        
+        return button
+        
+    }()
+    public lazy var controlAmountView : FoodCountView = {
+        let foodCountView = FoodCountView()
+        foodCountView.translatesAutoresizingMaskIntoConstraints = false
+        foodCountView.increaseAmountButton.addTarget(self, action: #selector(increase(sender:)), for: .touchUpInside)
+        foodCountView.decreaseAmountButton.addTarget(self, action: #selector(decrease(sender:)), for: .touchUpInside)
+        return foodCountView
+        
+    }()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -110,7 +138,9 @@ class DishView: UIView {
         addSubview(forwardButton)
         addSubview(descriptionLabel)
         addSubview(descriptionText)
-        
+        addSubview(price)
+        addSubview(purchaseButton)
+        addSubview(controlAmountView)
         
     }
     private func setLayout(){
@@ -122,7 +152,7 @@ class DishView: UIView {
         foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 26).isActive = true
         foodImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 20).isActive = true
         foodImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -20).isActive = true
-        foodImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: 125).isActive = true
         
         hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 34).isActive = true
         hStack.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
@@ -150,6 +180,24 @@ class DishView: UIView {
             view.heightAnchor.constraint(equalToConstant: 58).isActive = true
         }
         
+        price.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
+        price.leadingAnchor.constraint(equalTo : leadingAnchor,constant: 20).isActive = true
+        price.widthAnchor.constraint(equalToConstant: 260).isActive = true
+        price.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        
+       purchaseButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
+       purchaseButton.leadingAnchor.constraint(equalTo : price.trailingAnchor).isActive = true
+       purchaseButton.widthAnchor.constraint(equalToConstant: 88).isActive = true
+       purchaseButton.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        
+        controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -20).isActive = true
+       controlAmountView.trailingAnchor.constraint(equalTo : trailingAnchor,constant: -20).isActive = true
+       controlAmountView.widthAnchor.constraint(equalToConstant: 203).isActive = true
+       controlAmountView.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        
+        
+        
+        
         
         
         
@@ -161,8 +209,9 @@ class DishView: UIView {
     
     func setValues(sectionList : SectionList){
         self.label.text = sectionList.foodName
-//        self.foodImage.image = dish.image
+
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
+        self.price.text = sectionList.foodPrice
         switch currentChose {
         case 0 :
             DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
@@ -180,6 +229,7 @@ class DishView: UIView {
             return
             
         }
+        self.sectionList = sectionList
         
        
         
@@ -211,6 +261,14 @@ class DishView: UIView {
             arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
             arrayOfNumbers[currentChose + 1].layer.borderColor = UIColor.clear.cgColor
         }
+        
+    }
+    @objc func increase(sender : UIButton){
+        delegate?.increaseAmount()
+        
+    }
+    @objc func decrease(sender : UIButton){
+        delegate?.decreaseAmount()
         
     }
     

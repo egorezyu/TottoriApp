@@ -22,6 +22,7 @@
 		E43C7FD82882D5DC001F6D8C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD72882D5DC001F6D8C /* DataService.swift */; };
 		E43C7FDB2882E20A001F6D8C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E43C7FDA2882E20A001F6D8C /* Kingfisher */; };
 		E43C7FDD2883112A001F6D8C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FDC2883112A001F6D8C /* String.swift */; };
+		E43C7FDF288419BB001F6D8C /* FoodCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FDE288419BB001F6D8C /* FoodCountView.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -52,6 +53,7 @@
 		E43C7FD52882D49B001F6D8C /* Dishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dishes.swift; sourceTree = "<group>"; };
 		E43C7FD72882D5DC001F6D8C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		E43C7FDC2883112A001F6D8C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E43C7FDE288419BB001F6D8C /* FoodCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCountView.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				E43C7FCF28816148001F6D8C /* DishViewController.swift */,
 				E43C7FD12881615B001F6D8C /* DishView.swift */,
 				E43C7FD328816175001F6D8C /* DishDelegate.swift */,
+				E43C7FDE288419BB001F6D8C /* FoodCountView.swift */,
 			);
 			path = Dish;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				E4E3772E287D8113003ED269 /* TypeViewCellCollectionViewCell.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
+				E43C7FDF288419BB001F6D8C /* FoodCountView.swift in Sources */,
 				E41C673A287DF5CD001FD5B2 /* DishCollectionViewCell.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
 				E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */,

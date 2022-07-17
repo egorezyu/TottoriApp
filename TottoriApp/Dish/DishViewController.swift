@@ -20,6 +20,7 @@ class DishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackGround()
+       
         
         
 
@@ -53,5 +54,40 @@ class DishViewController: UIViewController {
 
 }
 extension DishViewController : DishDelegate{
+    func increaseAmount() {
+        var currentCount : Int
+        if let count = Int(dishView.controlAmountView.countLabel.text ?? "") {
+            currentCount = count + 1
+            dishView.controlAmountView.countLabel.text = String(currentCount)
+            let price = Int(dishView.sectionList?.foodPrice ?? "") ?? 0
+            let currentPrice = String(price * currentCount)
+            
+            dishView.price.text = currentPrice
+            
+            
+            
+        }
+        
+        
+        
+        
+    }
+    
+    func decreaseAmount() {
+        var currentCount : Int
+        if let count = Int(dishView.controlAmountView.countLabel.text ?? "") {
+            if count != 1{
+                currentCount = count - 1
+                dishView.controlAmountView.countLabel.text = String(currentCount)
+                let price = Int(dishView.sectionList?.foodPrice ?? "") ?? 0
+                let currentPrice = String(price * currentCount)
+                
+                dishView.price.text = currentPrice
+            }
+            
+            
+        }
+    }
+    
     
 }

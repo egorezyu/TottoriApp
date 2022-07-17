@@ -12,7 +12,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     static let identifier = "DishCollectionViewCell"
     private lazy var imageView : UIImageView = {
         var image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
         
@@ -109,13 +109,13 @@ class DishCollectionViewCell: UICollectionViewCell {
         descriptionAboutFood.heightAnchor.constraint(equalToConstant: 162).isActive = true
         
         price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
-        price.bottomAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 26).isActive = true
+        price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
         
         ruble.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
         ruble.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -3).isActive  = true
         
         purchaseButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
-        purchaseButton.bottomAnchor.constraint(equalTo: descriptionAboutFood.bottomAnchor,constant: 26).isActive = true
+        purchaseButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
         purchaseButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
         purchaseButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }

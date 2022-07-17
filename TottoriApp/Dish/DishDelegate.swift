@@ -8,5 +8,7 @@
 import Foundation
 import Foundation
 protocol DishDelegate : AnyObject{
+    func increaseAmount()
+    func decreaseAmount()
     
 }
