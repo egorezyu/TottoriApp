@@ -126,6 +126,16 @@ class DishView: UIView {
         return foodCountView
         
     }()
+    public lazy var weightLabel : UILabel = {
+        var label = UILabel()
+        label.font = UIFont(name: "Gilroy", size: 36)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.layer.borderWidth = 2
+        label.layer.borderColor = UIColor.red.cgColor
+        return label
+        
+    }()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -141,6 +151,7 @@ class DishView: UIView {
         addSubview(price)
         addSubview(purchaseButton)
         addSubview(controlAmountView)
+        addSubview(weightLabel)
         
     }
     private func setLayout(){
@@ -190,10 +201,17 @@ class DishView: UIView {
        purchaseButton.widthAnchor.constraint(equalToConstant: 88).isActive = true
        purchaseButton.heightAnchor.constraint(equalToConstant: 88).isActive = true
         
-        controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -20).isActive = true
+       controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -20).isActive = true
        controlAmountView.trailingAnchor.constraint(equalTo : trailingAnchor,constant: -20).isActive = true
        controlAmountView.widthAnchor.constraint(equalToConstant: 203).isActive = true
        controlAmountView.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        
+        weightLabel.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -20).isActive = true
+        weightLabel.trailingAnchor.constraint(equalTo : controlAmountView.leadingAnchor).isActive = true
+        weightLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        weightLabel.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        
+        
         
         
         
@@ -212,6 +230,7 @@ class DishView: UIView {
 
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
         self.price.text = sectionList.foodPrice
+        self.weightLabel.text = sectionList.foodWeight
         switch currentChose {
         case 0 :
             DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)

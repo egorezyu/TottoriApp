@@ -63,6 +63,9 @@ extension DishViewController : DishDelegate{
             let currentPrice = String(price * currentCount)
             
             dishView.price.text = currentPrice
+            if let weight = Int(dishView.sectionList?.foodWeight ?? ""){
+                dishView.weightLabel.text = String(weight * currentCount)
+            }
             
             
             
@@ -83,7 +86,11 @@ extension DishViewController : DishDelegate{
                 let currentPrice = String(price * currentCount)
                 
                 dishView.price.text = currentPrice
+                if let weight = Int(dishView.sectionList?.foodWeight ?? ""){
+                    dishView.weightLabel.text = String(weight * currentCount)
+                }
             }
+           
             
             
         }
