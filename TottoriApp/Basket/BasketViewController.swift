@@ -11,12 +11,19 @@ class BasketViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backGroundColor
+        setBackGround()
+        
    
         
         
 
         // Do any additional setup after loading the view.
+    }
+    private func setBackGround(){
+        if let image = UIImage(named: "back"){
+            view.backgroundColor = UIColor(patternImage: image)
+        }
+        
     }
     
     

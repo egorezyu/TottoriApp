@@ -70,30 +70,23 @@ class DataService{
         guard let url = URL(string: "http://tottori.fixmaski.ru" + url) else{
             return
         }
-        let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
+        
                      
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(
             with: url,
             
             options: [
-                .processor(processor),
+               
                 .scaleFactor(UIScreen.main.scale),
                 .transition(.fade(0.7)),
                 .cacheOriginalImage
                 
-            ]) { result in
-                switch result {
-                    
-                case .success(let retrievedImage):
-                    imageView.image = retrievedImage.image
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
+            ])
         
         
         
     }
    
 }
+

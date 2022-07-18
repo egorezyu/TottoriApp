@@ -33,6 +33,7 @@ class DishView: UIView {
     }()
     private lazy var foodImage : UIImageView = {
         var image = UIImageView()
+        image.image = UIImage(systemName: "gear")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
       
@@ -114,6 +115,7 @@ class DishView: UIView {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "purchase")?.withTintColor(.white,renderingMode: .alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(addToBasket(sender:)), for: .touchUpInside)
         
         return button
         
@@ -289,6 +291,9 @@ class DishView: UIView {
     @objc func decrease(sender : UIButton){
         delegate?.decreaseAmount()
         
+    }
+    @objc func addToBasket(sender : UIButton){
+        delegate?.addToBasket()
     }
     
     

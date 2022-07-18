@@ -22,9 +22,13 @@ final class CatalogView: UIView {
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 114, height: 48)
+        layout.itemSize = CGSize(width: ((UIScreen.main.bounds.width - 40) - 5) / 3, height: 48)
+        layout.minimumLineSpacing = 5
+        
+        
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
@@ -42,7 +46,8 @@ final class CatalogView: UIView {
     lazy var secondCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 170, height: 411)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: 411)
+        layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

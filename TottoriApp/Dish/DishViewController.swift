@@ -54,6 +54,10 @@ class DishViewController: UIViewController {
 
 }
 extension DishViewController : DishDelegate{
+    func addToBasket() {
+        print("hellow word")
+    }
+    
     func increaseAmount() {
         var currentCount : Int
         if let count = Int(dishView.controlAmountView.countLabel.text ?? "") {
