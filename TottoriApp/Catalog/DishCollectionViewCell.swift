@@ -34,6 +34,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         textView.backgroundColor = .clear
         textView.isEditable = false
         textView.isScrollEnabled = false
+        textView.textContainer.maximumNumberOfLines = 4
         textView.font = UIFont(name: "Gilroy-Regular", size: 14)
         
         
