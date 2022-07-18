@@ -46,9 +46,9 @@ final class CatalogView: UIView {
     lazy var secondCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: 411)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: 350)
         layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
+        layout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -77,9 +77,9 @@ final class CatalogView: UIView {
             
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
             
-        collectionView.heightAnchor.constraint(equalToConstant: 105).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
-        secondCollectionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 30).isActive = true
+        secondCollectionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor,constant: 10).isActive = true
        
         secondCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
        

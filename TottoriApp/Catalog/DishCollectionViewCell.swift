@@ -84,7 +84,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     private func setBackGround(){
         let image = UIImageView(image: UIImage(named: "backForCell"))
         image.frame = contentView.bounds
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleToFill
         contentView.addSubview(image)
         
         
