@@ -26,6 +26,8 @@
 		E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE128847EAF001F6D8C /* BasketDelegate.swift */; };
 		E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE328847F3F001F6D8C /* BasketView.swift */; };
 		E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE52884801B001F6D8C /* OrderCollectionViewCell.swift */; };
+		E43C7FE82885C61C001F6D8C /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE72885C61C001F6D8C /* UIImageView.swift */; };
+		E43C7FEA2886BF85001F6D8C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE92886BF85001F6D8C /* Request.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -60,6 +62,8 @@
 		E43C7FE128847EAF001F6D8C /* BasketDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketDelegate.swift; sourceTree = "<group>"; };
 		E43C7FE328847F3F001F6D8C /* BasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketView.swift; sourceTree = "<group>"; };
 		E43C7FE52884801B001F6D8C /* OrderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCollectionViewCell.swift; sourceTree = "<group>"; };
+		E43C7FE72885C61C001F6D8C /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		E43C7FE92886BF85001F6D8C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 			children = (
 				E4E3771C287CB7CF003ED269 /* ColorExtension.swift */,
 				E43C7FDC2883112A001F6D8C /* String.swift */,
+				E43C7FE72885C61C001F6D8C /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			children = (
 				E4E37729287D6B66003ED269 /* MockDataService.swift */,
 				E43C7FD72882D5DC001F6D8C /* DataService.swift */,
+				E43C7FE92886BF85001F6D8C /* Request.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E3772C287D6CBB003ED269 /* TypeCollectionView.swift in Sources */,
+				E43C7FE82885C61C001F6D8C /* UIImageView.swift in Sources */,
 				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,
 				E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */,
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
@@ -327,6 +334,7 @@
 				E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */,
 				E43C7FD22881615B001F6D8C /* DishView.swift in Sources */,
 				E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */,
+				E43C7FEA2886BF85001F6D8C /* Request.swift in Sources */,
 				E4E37727287D5430003ED269 /* TypeView.swift in Sources */,
 				E4E3771D287CB7CF003ED269 /* ColorExtension.swift in Sources */,
 			);

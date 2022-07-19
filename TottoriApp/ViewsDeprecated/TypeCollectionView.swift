@@ -7,83 +7,83 @@
 
 import UIKit
 
-class TypeCollectionView: UIView {
-    private lazy var collectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: frame.width / 2.5, height: frame.width / 4)
-        layout.minimumInteritemSpacing = 15
-        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
-        collectionView.backgroundColor = .backGroundColor
-        collectionView.register(TypeViewCellCollectionViewCell.self, forCellWithReuseIdentifier: TypeViewCellCollectionViewCell.identifier)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        
-        
-        return collectionView
-        
-        
-    }()
-    private var typeArray : [String] = []
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = .backGroundColor
-        collectionView.frame = bounds
-        
-        addSubview(collectionView)
-        getMockData()
-        
-    }
-    private func getMockData(){
-        NetworkManager.netWork.getDataFromApi { result in
-            switch result{
-                
-            case .success(let typeArray):
-                DispatchQueue.main.async {[weak self] in
-                    self?.typeArray = typeArray
-                    self?.collectionView.reloadData()
-                }
-            case .failure(_):
-                print("")
-            }
-        }
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
-
-   
-
-}
-extension TypeCollectionView : UICollectionViewDataSource, UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return typeArray.count
-    
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeViewCellCollectionViewCell.identifier, for: indexPath) as! TypeViewCellCollectionViewCell
-        cell.setType(type: typeArray[indexPath.row])
-        
-        
-        
-        
-        
-        return cell
-    }
-    
-    
-    
-}
-
+//class TypeCollectionView: UIView {
+//    private lazy var collectionView : UICollectionView = {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .horizontal
+//        layout.itemSize = CGSize(width: frame.width / 2.5, height: frame.width / 4)
+//        layout.minimumInteritemSpacing = 15
+//        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+//        collectionView.backgroundColor = .backGroundColor
+//        collectionView.register(TypeViewCellCollectionViewCell.self, forCellWithReuseIdentifier: TypeViewCellCollectionViewCell.identifier)
+//        collectionView.dataSource = self
+//        collectionView.delegate = self
+//
+//
+//
+//        return collectionView
+//
+//
+//    }()
+//    private var typeArray : [String] = []
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//
+//        backgroundColor = .backGroundColor
+//        collectionView.frame = bounds
+//
+//        addSubview(collectionView)
+////        getMockData()
+//
+//    }
+////    private func getMockData(){
+////        NetworkManager.netWork.getDataFromApi { result in
+////            switch result{
+////
+////            case .success(let typeArray):
+////                DispatchQueue.main.async {[weak self] in
+////                    self?.typeArray = typeArray
+////                    self?.collectionView.reloadData()
+////                }
+////            case .failure(_):
+////                print("")
+////            }
+////        }
+////
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//
+//
+//
+//
+//
+//}
+//extension TypeCollectionView : UICollectionViewDataSource, UICollectionViewDelegate{
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return typeArray.count
+//
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TypeViewCellCollectionViewCell.identifier, for: indexPath) as! TypeViewCellCollectionViewCell
+//        cell.setType(type: typeArray[indexPath.row])
+//
+//
+//
+//
+//
+//        return cell
+//    }
+//
+//
+//
+//}
+//
 
 
 //import UIKit
