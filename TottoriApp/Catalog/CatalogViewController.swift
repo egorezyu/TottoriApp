@@ -11,6 +11,9 @@ class CatalogViewController: UIViewController {
     
     private var selectedIndex = 0
     private lazy var catalogView = CatalogView(subscriber: self)
+    private lazy var viewModel = MenuListViewModel()
+
+
 
     private var catalog : Catalog?
     override func loadView() {
@@ -65,29 +68,37 @@ class CatalogViewController: UIViewController {
         catalogView.secondCollectionView.delegate = self
     }
     private func getData(){
-        DataService.netWork.getData(url: "http://tottori.fixmaski.ru/api/getSubMenuDelivery.php", method: "GET", comletion: { result in
-            switch result{
+//        DataService.netWork.getData(url: "http://tottori.fixmaski.ru/api/getSubMenuDelivery.php", method: "GET", comletion: { result in
+//            switch result{
+//
+//            case .success(let catalog):
+//                DispatchQueue.main.async {
+//                    do{
+//                        let decodedCatalog = try JSONDecoder().decode(Catalog.self, from: catalog)
+//                        self.catalog = decodedCatalog
+//                        self.catalogView.collectionView.reloadData()
+//                        self.catalogView.secondCollectionView.reloadData()
+//                    }
+//                    catch{
+//                        print(error)
+//                    }
+//
+//
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        viewModel.getMenuList { items in
+            DispatchQueue.main.async {
+                self.catalog = Catalog(status: true, menuList: items)
+                self.catalogView.collectionView.reloadData()
+                self.catalogView.secondCollectionView.reloadData()
                 
-            case .success(let catalog):
-                DispatchQueue.main.async {
-                    do{
-                        let decodedCatalog = try JSONDecoder().decode(Catalog.self, from: catalog)
-                        self.catalog = decodedCatalog
-                        self.catalogView.collectionView.reloadData()
-                        self.catalogView.secondCollectionView.reloadData()
-                    }
-                    catch{
-                        print(error)
-                    }
-                   
-                    
-                }
-            case .failure(let error):
-                print(error)
             }
         }
         
-    )}
+    }
 
     @objc func doSequeToNextScreen(button : UIButton){
         let sectionList = catalog?.menuList[selectedIndex].sectionList?[button.tag]

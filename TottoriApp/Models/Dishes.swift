@@ -9,13 +9,13 @@ import Foundation
 // MARK: - Welcome3
 struct Catalog : Codable {
     let status: Bool
-    let menuList: [MenuList]
+    var menuList: [MenuList]
 }
 
 // MARK: - MenuList
 struct MenuList : Codable {
     let sectionID, sectionName: String
-    let sectionList: [SectionList]?
+    var sectionList: [SectionList]?
 }
 
 // MARK: - SectionList

@@ -202,6 +202,16 @@ final class NetworkManager {
     
         
     }
+    func makeMenuListRequest(completion: @escaping (Result<MenuListRequest.Response, Error>) -> Void) {
+
+        
+
+        let request = MenuListRequest()
+
+        self.request(request: request) { result in
+            completion(result) }
+
+    }
     
 
     
