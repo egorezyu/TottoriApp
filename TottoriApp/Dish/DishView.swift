@@ -157,36 +157,38 @@ class DishView: UIView {
         
     }
     private func setLayout(){
-        label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 26).isActive = true
+        label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
         label.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
         
         
-        foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 26).isActive = true
+        foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 5).isActive = true
         foodImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 20).isActive = true
         foodImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -20).isActive = true
-        foodImage.heightAnchor.constraint(equalToConstant: 125).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
         
-        hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 34).isActive = true
+        hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
         hStack.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
         
-        forwardButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 50).isActive = true
+//        forwardButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
+        forwardButton.centerYAnchor.constraint(equalTo: hStack.centerYAnchor).isActive = true
         forwardButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30).isActive = true
         forwardButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         forwardButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        backButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 50).isActive = true
+//        backButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
+        backButton.centerYAnchor.constraint(equalTo: hStack.centerYAnchor).isActive = true
         backButton.trailingAnchor.constraint(equalTo: forwardButton.leadingAnchor,constant: -17).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 30).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
         
-        descriptionText.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 30).isActive = true
+        descriptionText.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
-        descriptionText.heightAnchor.constraint(equalToConstant: 138).isActive = true
-        descriptionText.widthAnchor.constraint(equalToConstant: 246).isActive = true
+        descriptionText.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.3).isActive = true
+        descriptionText.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
         
         for view in arrayOfNumbers{
             view.widthAnchor.constraint(equalToConstant: 58).isActive = true
@@ -195,23 +197,26 @@ class DishView: UIView {
         
         price.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
         price.leadingAnchor.constraint(equalTo : leadingAnchor,constant: 20).isActive = true
-        price.widthAnchor.constraint(equalToConstant: 260).isActive = true
-        price.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        price.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
+        price.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         
        purchaseButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
        purchaseButton.leadingAnchor.constraint(equalTo : price.trailingAnchor).isActive = true
-       purchaseButton.widthAnchor.constraint(equalToConstant: 88).isActive = true
-       purchaseButton.heightAnchor.constraint(equalToConstant: 88).isActive = true
+       purchaseButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
+        purchaseButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+    
+      
         
-       controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -20).isActive = true
+       controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -10).isActive = true
        controlAmountView.trailingAnchor.constraint(equalTo : trailingAnchor,constant: -20).isActive = true
-       controlAmountView.widthAnchor.constraint(equalToConstant: 203).isActive = true
-       controlAmountView.heightAnchor.constraint(equalToConstant: 88).isActive = true
+       controlAmountView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
+       controlAmountView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         
-        weightLabel.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -20).isActive = true
+        weightLabel.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -10).isActive = true
         weightLabel.trailingAnchor.constraint(equalTo : controlAmountView.leadingAnchor).isActive = true
-        weightLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        weightLabel.heightAnchor.constraint(equalToConstant: 88).isActive = true
+        
+        weightLabel.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+        weightLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
         
         
         
