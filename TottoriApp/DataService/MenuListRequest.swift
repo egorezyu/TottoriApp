@@ -21,21 +21,23 @@ struct MenuListRequest: Request {
 
     struct Catalog : Codable {
         let status: Bool
-        let menuList: [MenuList]
+        let menuList: [MenuList]?
     }
 
     // MARK: - MenuList
     struct MenuList : Codable {
-        let sectionID, sectionName: String
+        let sectionID, sectionName: String?
         let sectionList: [SectionList]?
     }
 
     // MARK: - SectionList
     struct SectionList : Codable {
-        let foodID, foodName, foodPrice, foodImage0: String
+        let foodID, foodName, foodPrice: String?
+        let foodImage0: String?
+        
         let foodContent: String
         let foodWeight: String?
-        let foodImage1: String
+        let foodImage1: String?
         let foodImage2, foodImage3: String?
     }
 
@@ -58,17 +60,17 @@ struct MenuListDisplayFactory {
         menuList.forEach {
 
 
-            let sectionID = $0.sectionID
-            let sectionName = $0.sectionName
+            let sectionID : String = $0.sectionID ?? ""
+            let sectionName : String = $0.sectionName ?? ""
             var sectionList : [SectionList]? = []
             $0.sectionList?.forEach{
-                let foodID = $0.foodID
-                let foodName = $0.foodName
-                let foodPrice = $0.foodPrice
-                let foodImage0 = $0.foodImage0
+                let foodID : String = $0.foodID ?? ""
+                let foodName : String = $0.foodName ?? ""
+                let foodPrice : String = $0.foodPrice ?? ""
+                let foodImage0 = $0.foodImage0 ?? ""
                 let foodContent = $0.foodContent
                 let foodWeight = $0.foodWeight
-                let foodImage1 = $0.foodImage1
+                let foodImage1 = $0.foodImage1 ?? ""
                 let foodImame2 = $0.foodImage2
                 let foodImage3 = $0.foodImage3
                 let el = SectionList(foodID: foodID, foodName: foodName, foodPrice: foodPrice, foodImage0: foodImage0, foodContent: foodContent, foodWeight: foodWeight, foodImage1: foodImage1, foodImage2: foodImame2, foodImage3: foodImage3)
@@ -115,7 +117,7 @@ final class MenuListViewModel {
                 print(error)
 
             case .success(let information):
-                completion(MenuListDisplayFactory.makeMenuList(information: information.menuList))
+                completion(MenuListDisplayFactory.makeMenuList(information: information.menuList ?? []))
                 
 
                 
