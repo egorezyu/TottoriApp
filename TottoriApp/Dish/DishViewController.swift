@@ -55,25 +55,17 @@ class DishViewController: UIViewController {
 }
 extension DishViewController : DishDelegate{
     func addToBasket() {
-        print("hellow word")
+        if let sectionList = dishView.sectionList{
+            (tabBarController?.viewControllers?[2] as? BasketViewController)?.addToArray(sectionList: sectionList)
+        }
+        
     }
     
     func increaseAmount() {
-        var currentCount : Int
-        if let count = Int(dishView.controlAmountView.countLabel.text ?? "") {
-            currentCount = count + 1
-            dishView.controlAmountView.countLabel.text = String(currentCount)
-            let price = Int(dishView.sectionList?.foodPrice ?? "") ?? 0
-            let currentPrice = String(price * currentCount)
-            
-            dishView.price.text = currentPrice
-            if let weight = Int(dishView.sectionList?.foodWeight ?? ""){
-                dishView.weightLabel.text = String(weight * currentCount)
-            }
-            
-            
-            
-        }
+        dishView.sectionList?.plusCount()
+        setAllFieldsForControlCountView()
+        
+        
         
         
         
@@ -81,24 +73,17 @@ extension DishViewController : DishDelegate{
     }
     
     func decreaseAmount() {
-        var currentCount : Int
-        if let count = Int(dishView.controlAmountView.countLabel.text ?? "") {
-            if count != 1{
-                currentCount = count - 1
-                dishView.controlAmountView.countLabel.text = String(currentCount)
-                let price = Int(dishView.sectionList?.foodPrice ?? "") ?? 0
-                let currentPrice = String(price * currentCount)
-                
-                dishView.price.text = currentPrice
-                if let weight = Int(dishView.sectionList?.foodWeight ?? ""){
-                    dishView.weightLabel.text = String(weight * currentCount)
-                }
-            }
-           
-            
-            
-        }
+        dishView.sectionList?.minusFunc()
+        setAllFieldsForControlCountView()
+       
+        
+        
     }
-    
+    private func setAllFieldsForControlCountView(){
+        dishView.controlAmountView.countLabel.text = String(dishView.sectionList?.count ?? -1)
+        dishView.price.text = dishView.sectionList?.currentPrice
+        dishView.weightLabel.text = dishView.sectionList?.currentWeight
+        
+    }
     
 }

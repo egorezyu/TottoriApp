@@ -25,4 +25,24 @@ struct SectionList : Codable {
     let foodWeight: String?
     let foodImage1: String
     let foodImage2, foodImage3: String?
+    var count = 1
+    var currentPrice : String {
+        return String(count * (Int(foodPrice) ?? 0))
+    }
+    var currentWeight : String {
+        return String(count * (Int(foodWeight ?? "") ?? 0))
+        
+    }
+    mutating func plusCount(){
+        self.count = self.count + 1
+    }
+    mutating func minusFunc(){
+        if self.count != 1{
+            self.count = self.count - 1
+        }
+        
+    }
+    mutating func addAmountToCount(count : Int){
+        self.count = self.count + count
+    }
 }
