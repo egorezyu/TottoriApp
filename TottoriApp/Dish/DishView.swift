@@ -31,6 +31,7 @@ class DishView: UIView {
         return label
         
     }()
+    
     private lazy var foodImage : UIImageView = {
         var image = UIImageView()
         image.image = UIImage(systemName: "gear")

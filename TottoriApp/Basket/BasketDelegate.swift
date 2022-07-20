@@ -6,6 +6,6 @@
 //
 
 import Foundation
-protocol BusketDelegate : AnyObject{
+protocol BasketDelegate : AnyObject{
     
 }

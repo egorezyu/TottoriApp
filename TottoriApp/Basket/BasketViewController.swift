@@ -7,11 +7,18 @@
 
 import UIKit
 
-class BasketViewController: UIViewController {
+class BasketViewController: UIViewController{
+    private lazy var backetView = BasketView(delegate: self)
+    override func loadView() {
+        super.loadView()
+        view = backetView
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackGround()
+        setDataSourceAndDelegate()
         
    
         
@@ -25,9 +32,28 @@ class BasketViewController: UIViewController {
         }
         
     }
+    private func setDataSourceAndDelegate(){
+        backetView.basketCollectionView.dataSource = self
+        backetView.basketCollectionView.delegate = self
+    }
     
     
 
 
 }
-
+extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OrderCollectionViewCell.identifier, for: indexPath)
+     
+        return cell
+    }
+    
+    
+}
+extension BasketViewController : BasketDelegate{
+    
+}
