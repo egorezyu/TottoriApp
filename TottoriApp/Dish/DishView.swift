@@ -133,7 +133,7 @@ class DishView: UIView {
         label.font = UIFont(name: "Gilroy", size: 36)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.layer.borderWidth = 2
+        label.layer.borderWidth = 1.22
         label.layer.borderColor = UIColor.red.cgColor
         return label
         
@@ -238,23 +238,7 @@ class DishView: UIView {
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
         self.price.text = sectionList.foodPrice
         self.weightLabel.text = sectionList.foodWeight
-        switch currentChose {
-        case 0 :
-            DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
-            
-        case 1 :
-            if let image = sectionList.foodImage2{
-                DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
-            }
-            
-        case 2 :
-            if let image = sectionList.foodImage3{
-                DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
-            }
-        default:
-            return
-            
-        }
+        DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         self.sectionList = sectionList
         
        
@@ -275,9 +259,11 @@ class DishView: UIView {
             arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
             arrayOfNumbers[currentChose - 1].layer.borderColor = UIColor.clear.cgColor
         }
+        setImageForBack()
     }
     @objc func backButtonWasTapped(sender : UIButton){
         currentChose = currentChose - 1
+        
         if (currentChose == -1){
             arrayOfNumbers[0].layer.borderColor = UIColor.clear.cgColor
             arrayOfNumbers[arrayOfNumbers.count - 1].layer.borderColor = UIColor.red.cgColor
@@ -286,6 +272,36 @@ class DishView: UIView {
         else{
             arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
             arrayOfNumbers[currentChose + 1].layer.borderColor = UIColor.clear.cgColor
+        }
+        setImageForBack()
+        
+    }
+    private func setImageForBack(){
+        if let sectionList = sectionList {
+            switch currentChose {
+            case 0 :
+                DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
+                
+            case 1 :
+                if let image = sectionList.foodImage2{
+                    DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
+                }
+                else{
+                    foodImage.image = UIImage(systemName: "gear")
+                }
+                
+            case 2 :
+                if let image = sectionList.foodImage3{
+                    DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
+                }
+                else{
+                    foodImage.image = UIImage(systemName: "gear")
+                }
+                
+            default:
+                return
+                
+            }
         }
         
     }

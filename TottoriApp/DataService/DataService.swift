@@ -84,7 +84,15 @@ class DataService{
                 .transition(.fade(0.7)),
                 .cacheOriginalImage
 
-            ])
+            ]) { result in
+                switch result{
+                    
+                case .success(_):
+                    print("")
+                case .failure(_):
+                    imageView.image = UIImage(systemName: "gear")
+                }
+            }
 
 
 

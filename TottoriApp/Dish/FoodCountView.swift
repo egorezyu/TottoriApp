@@ -60,17 +60,17 @@ class FoodCountView: UIView {
         
     }
     private func setConstraints(){
-        hStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        hStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        hStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
+        hStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
+        hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -10).isActive = true
+        hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 10).isActive = true
         
         
         
     }
     private func setBorder(){
         layer.borderColor = UIColor.red.cgColor
-        layer.borderWidth = 2
+        layer.borderWidth = 1.22
     }
     
 
