@@ -32,6 +32,7 @@
 		E43C7FEE28896AEB001F6D8C /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FED28896AEB001F6D8C /* PriceView.swift */; };
 		E43C7FF028896C7E001F6D8C /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FEF28896C7E001F6D8C /* WeightView.swift */; };
 		E43C7FF42889C114001F6D8C /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FF32889C113001F6D8C /* BadgeView.swift */; };
+		E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D7AA12889DAC100FDDD0F /* Formatter.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -72,6 +73,7 @@
 		E43C7FED28896AEB001F6D8C /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		E43C7FEF28896C7E001F6D8C /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		E43C7FF32889C113001F6D8C /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		E48D7AA12889DAC100FDDD0F /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				E4E3771C287CB7CF003ED269 /* ColorExtension.swift */,
 				E43C7FDC2883112A001F6D8C /* String.swift */,
 				E43C7FE72885C61C001F6D8C /* UIImageView.swift */,
+				E48D7AA12889DAC100FDDD0F /* Formatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */,
 				E4E3772C287D6CBB003ED269 /* TypeCollectionView.swift in Sources */,
 				E43C7FE82885C61C001F6D8C /* UIImageView.swift in Sources */,
 				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,

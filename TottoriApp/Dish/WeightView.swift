@@ -33,7 +33,7 @@ class WeightView: UIView {
     lazy var gramLabel : UILabel = {
         var label = UILabel()
         label.font = UIFont(name: "Cormorant", size: 20)
-        label.text = "г."
+        label.text = "г"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -51,7 +51,7 @@ class WeightView: UIView {
         weightLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         weightLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        gramLabel.leadingAnchor.constraint(equalTo: weightLabel.trailingAnchor).isActive = true
+        gramLabel.leadingAnchor.constraint(equalTo: weightLabel.trailingAnchor,constant: 5).isActive = true
         gramLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 3).isActive = true
 
         

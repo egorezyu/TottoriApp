@@ -264,6 +264,7 @@ class DishView: UIView {
     
     func setValues(sectionList : SectionList){
         self.label.text = sectionList.foodName
+        
 
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
         self.priceView.price.text = sectionList.currentPrice

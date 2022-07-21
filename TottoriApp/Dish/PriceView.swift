@@ -46,7 +46,7 @@ class PriceView: UIView {
         price.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         price.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        rubleLabel.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
+        rubleLabel.leadingAnchor.constraint(equalTo: price.trailingAnchor,constant: 5).isActive = true
         rubleLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -9).isActive = true
 
         

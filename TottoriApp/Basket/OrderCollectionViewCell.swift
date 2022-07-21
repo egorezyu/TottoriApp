@@ -31,7 +31,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var price : PriceView = {
         let view = PriceView()
         view.price.font = UIFont(name: "FoglihtenNo06", size: 26)
-        view.rubleLabel.font = UIFont(name: "Cormorant", size: 20)
+        view.rubleLabel.font = UIFont.systemFont(ofSize: 13)
        
         view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -41,7 +41,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var weight : WeightView = {
         let view = WeightView()
-        view.weightLabel.font = UIFont(name: "Gilroy", size: 18)
+        view.weightLabel.font = UIFont(name: "Gilroy", size: 22)
         view.gramLabel.font = UIFont(name: "Gilroy", size: 12)
         
         view.translatesAutoresizingMaskIntoConstraints = false

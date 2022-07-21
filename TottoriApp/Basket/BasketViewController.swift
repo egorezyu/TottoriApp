@@ -33,7 +33,7 @@ class BasketViewController: UIViewController{
             arrayOfPurchases.append(sectionList)
             
             currentBusketCount = currentBusketCount + 1
-            myTabBarController.countView.countLabel.text = String(currentBusketCount)
+            myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
             
             
             
@@ -72,7 +72,7 @@ class BasketViewController: UIViewController{
             arrayOfPurchases.remove(at: index)
             backetView.basketCollectionView.reloadData()
             currentBusketCount = currentBusketCount - 1
-            myTabBarController.countView.countLabel.text = String(currentBusketCount)
+            myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
             
             
             
