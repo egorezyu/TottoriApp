@@ -35,7 +35,7 @@ class BasketView: UIView {
     lazy var basketCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 26), height: UIScreen.main.bounds.height * 0.25)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 26), height: UIScreen.main.bounds.height * 0.2)
         
         
         

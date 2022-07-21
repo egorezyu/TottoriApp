@@ -101,25 +101,24 @@ class DishView: UIView {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return textView
     }()
-    public lazy var price : UILabel = {
-        var label = UILabel()
-        label.font = UIFont(name: "Gilroy", size: 36)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.layer.borderWidth = 1.22
-        label.layer.borderColor = UIColor.red.cgColor
-        return label
-    }()
+    
     private lazy var purchaseButton : UIButton = {
         var button = UIButton()
-        button.backgroundColor = .red
         
+        button.setBackgroundImage(UIImage(named: "purchase")?.withTintColor(.white,renderingMode: .alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "purchase")?.withTintColor(.white,renderingMode: .alwaysOriginal), for: .normal)
+        
         button.addTarget(self, action: #selector(addToBasket(sender:)), for: .touchUpInside)
         
         return button
         
+    }()
+    private lazy var holdButtonView : UIView = {
+        var view = UIView()
+        view.addSubview(purchaseButton)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        return view
     }()
     public lazy var controlAmountView : FoodCountView = {
         let foodCountView = FoodCountView()
@@ -129,15 +128,24 @@ class DishView: UIView {
         return foodCountView
         
     }()
-    public lazy var weightLabel : UILabel = {
-        var label = UILabel()
-        label.font = UIFont(name: "Gilroy", size: 36)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.layer.borderWidth = 1.22
-        label.layer.borderColor = UIColor.red.cgColor
-        return label
+   
+    lazy var weightView : WeightView = {
+        var view = WeightView()
+        view.layer.borderWidth = 1.22
+        view.layer.borderColor = UIColor.red.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
         
+    }()
+    
+    lazy var priceView : PriceView = {
+        var view = PriceView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 1.22
+        view.layer.borderColor = UIColor.red.cgColor
+      
+        
+        return view
     }()
     
     required init?(coder: NSCoder) {
@@ -151,10 +159,11 @@ class DishView: UIView {
         addSubview(forwardButton)
         addSubview(descriptionLabel)
         addSubview(descriptionText)
-        addSubview(price)
-        addSubview(purchaseButton)
+        addSubview(holdButtonView)
         addSubview(controlAmountView)
-        addSubview(weightLabel)
+        addSubview(weightView)
+        addSubview(priceView)
+        
         
     }
     private func setLayout(){
@@ -196,29 +205,49 @@ class DishView: UIView {
             view.heightAnchor.constraint(equalToConstant: 58).isActive = true
         }
         
-        price.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
-        price.leadingAnchor.constraint(equalTo : leadingAnchor,constant: 20).isActive = true
-        price.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
-        price.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+        priceView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
+        priceView.leadingAnchor.constraint(equalTo : leadingAnchor,constant: 20).isActive = true
+        priceView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
+        priceView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         
-       purchaseButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
-       purchaseButton.leadingAnchor.constraint(equalTo : price.trailingAnchor).isActive = true
-       purchaseButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
-        purchaseButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+//        price.centerXAnchor.constraint(equalTo: priceView.centerXAnchor).isActive = true
+//        price.centerYAnchor.constraint(equalTo: priceView.centerYAnchor).isActive = true
+//        
+//        rubleLabel.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
+//        rubleLabel.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -9).isActive = true
+        
+       holdButtonView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
+       holdButtonView.leadingAnchor.constraint(equalTo : priceView.trailingAnchor).isActive = true
+       holdButtonView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
+       holdButtonView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+        
+        purchaseButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        purchaseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        purchaseButton.centerYAnchor.constraint(equalTo: holdButtonView.centerYAnchor).isActive = true
+        purchaseButton.centerXAnchor.constraint(equalTo: holdButtonView.centerXAnchor).isActive = true
     
       
         
-       controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -10).isActive = true
+       controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -UIScreen.main.bounds.height * 0.03).isActive = true
        controlAmountView.trailingAnchor.constraint(equalTo : trailingAnchor,constant: -20).isActive = true
        controlAmountView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
        controlAmountView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         
-        weightLabel.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -10).isActive = true
-        weightLabel.trailingAnchor.constraint(equalTo : controlAmountView.leadingAnchor).isActive = true
+        weightView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -UIScreen.main.bounds.height * 0.03).isActive = true
+        weightView.trailingAnchor.constraint(equalTo : controlAmountView.leadingAnchor).isActive = true
         
-        weightLabel.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
-        weightLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
+        weightView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+        weightView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
         
+//        weightLabel.centerXAnchor.constraint(equalTo: weightView.centerXAnchor).isActive = true
+//        weightLabel.centerYAnchor.constraint(equalTo: weightView.centerYAnchor).isActive = true
+//        
+//        gramLabel.leadingAnchor.constraint(equalTo: weightLabel.trailingAnchor).isActive = true
+//        gramLabel.centerYAnchor.constraint(equalTo: weightView.centerYAnchor,constant: 3).isActive = true
+        
+//        gramLabel.trailingAnchor.constraint(equalTo: weightLabel.leadingAnchor).isActive = true
+//        gramLabel.centerYAnchor.constraint(equalTo: weightLabel.centerYAnchor,constant: 10).isActive = true
+//
         
         
         
@@ -237,8 +266,8 @@ class DishView: UIView {
         self.label.text = sectionList.foodName
 
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
-        self.price.text = sectionList.currentPrice
-        self.weightLabel.text = sectionList.currentWeight
+        self.priceView.price.text = sectionList.currentPrice
+        self.weightView.weightLabel.text = sectionList.currentWeight
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         self.sectionList = sectionList
         
@@ -288,7 +317,7 @@ class DishView: UIView {
                     DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
                 }
                 else{
-                    foodImage.image = UIImage(systemName: "gear")
+                    foodImage.image = UIImage(named: "tottori")
                 }
                 
             case 2 :
@@ -296,7 +325,7 @@ class DishView: UIView {
                     DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
                 }
                 else{
-                    foodImage.image = UIImage(systemName: "gear")
+                    foodImage.image = UIImage(named: "tottori")
                 }
                 
             default:

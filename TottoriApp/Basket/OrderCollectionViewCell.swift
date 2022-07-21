@@ -22,29 +22,37 @@ class OrderCollectionViewCell: UICollectionViewCell {
         label.font = UIFont(name: "FoglihtenNo06", size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
+       
         label.numberOfLines = 2
         return label
         
         
     }()
-    private lazy var price : UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "FoglihtenNo06", size: 22)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .red
-        return label
+    private lazy var price : PriceView = {
+        let view = PriceView()
+        view.price.font = UIFont(name: "FoglihtenNo06", size: 26)
+        view.rubleLabel.font = UIFont(name: "Cormorant", size: 20)
+       
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+       
+        
+        return view
     }()
-    private lazy var weight : UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Gilroy", size: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var weight : WeightView = {
+        let view = WeightView()
+        view.weightLabel.font = UIFont(name: "Gilroy", size: 18)
+        view.gramLabel.font = UIFont(name: "Gilroy", size: 12)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     private lazy var vStack : UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 3
         stack.distribution = .equalSpacing
+        
         
         
         stack.addArrangedSubview(dishTitle)
@@ -61,6 +69,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
     }()
     public lazy var controlAmountView : FoodCountView = {
         let controlView = FoodCountView()
+        controlView.countLabel.font = UIFont(name: "Gilroy", size: 17)
+        
         controlView.translatesAutoresizingMaskIntoConstraints = false
         controlView.layer.borderColor = UIColor.clear.cgColor
         return controlView
@@ -83,8 +93,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
     func setValues(sectionList : SectionList){
         self.sectionList = sectionList
         self.dishTitle.text = sectionList.foodName
-        self.price.text = sectionList.currentPrice
-        self.weight.text = sectionList.currentWeight
+        self.price.price.text = sectionList.currentPrice
+        self.weight.weightLabel.text = sectionList.currentWeight
         self.controlAmountView.countLabel.text = String(sectionList.count)
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         controlAmountView.increaseAmountButton.tag = Int(sectionList.foodID) ?? -1
@@ -105,28 +115,44 @@ class OrderCollectionViewCell: UICollectionViewCell {
     func  addSubViewS(){
         
         contentView.addSubview(foodImage)
-        contentView.addSubview(vStack)
+        
         contentView.addSubview(controlAmountView)
-        addSubview(deleteFoodButton)
+        contentView.addSubview(deleteFoodButton)
+        contentView.addSubview(dishTitle)
+        contentView.addSubview(price)
+        contentView.addSubview(weight)
         
     }
     func setConstraints(){
         
         foodImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodImage.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10).isActive = true
-        foodImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -10).isActive = true
-        foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.3).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: contentView.frame.height - 20).isActive = true
+        foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.4).isActive = true
         
-       vStack.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
-       vStack.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 30).isActive = true
-       vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -30).isActive = true
-       vStack.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.3).isActive = true
+        dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
+        dishTitle.topAnchor.constraint(equalTo: foodImage.topAnchor).isActive = true
+        dishTitle.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.4).isActive = true
+        
+        price.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
+        price.centerYAnchor.constraint(equalTo: foodImage.centerYAnchor).isActive = true
+        price.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
+        
+        weight.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
+        weight.centerYAnchor.constraint(equalTo: deleteFoodButton.centerYAnchor).isActive = true
+        weight.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
+       
+        
+       
         
         controlAmountView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         controlAmountView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        controlAmountView.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.4).isActive = true
+        controlAmountView.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.3).isActive = true
+        controlAmountView.heightAnchor.constraint(equalToConstant: contentView.frame.width * 0.1).isActive = true
+        
+        
         deleteFoodButton.topAnchor.constraint(equalTo: controlAmountView.bottomAnchor,constant: 10).isActive = true
-        deleteFoodButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        deleteFoodButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
         
         
         

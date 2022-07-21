@@ -8,6 +8,8 @@
 import UIKit
 
 class BasketViewController: UIViewController{
+    private var currentBusketCount = 0
+    private lazy var myTabBarController = (tabBarController as! TabBarViewController)
     private lazy var backetView = BasketView(delegate: self)
     public var arrayOfPurchases : [SectionList] = []
     override func loadView() {
@@ -29,6 +31,11 @@ class BasketViewController: UIViewController{
         }
         else{
             arrayOfPurchases.append(sectionList)
+            
+            currentBusketCount = currentBusketCount + 1
+            myTabBarController.countView.countLabel.text = String(currentBusketCount)
+            
+            
             
         }
         backetView.basketCollectionView.reloadData()
@@ -64,7 +71,13 @@ class BasketViewController: UIViewController{
         if let index = index {
             arrayOfPurchases.remove(at: index)
             backetView.basketCollectionView.reloadData()
+            currentBusketCount = currentBusketCount - 1
+            myTabBarController.countView.countLabel.text = String(currentBusketCount)
+            
+            
+            
         }
+        
         
         
         

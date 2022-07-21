@@ -90,7 +90,7 @@ class DataService{
                 case .success(_):
                     print("")
                 case .failure(_):
-                    imageView.image = UIImage(systemName: "gear")
+                    imageView.image = UIImage(named: "tottori")
                 }
             }
 
