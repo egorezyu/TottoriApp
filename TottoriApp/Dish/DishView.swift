@@ -24,7 +24,7 @@ final class DishView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        
+        label.text = "Egor"
         label.font = UIFont(name: "FoglihtenNo06", size: 30)
  
         return label
