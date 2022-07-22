@@ -53,7 +53,7 @@ class DishView: UIView {
             label.text = String(0) + String(i + 1)
             label.textAlignment = .center
             label.layer.borderWidth = 1
-            label.layer.cornerRadius = 29
+            label.layer.cornerRadius = 24
             label.layer.borderColor = UIColor.clear.cgColor
             label.translatesAutoresizingMaskIntoConstraints = false
             
@@ -150,6 +150,7 @@ class DishView: UIView {
     private lazy var scrollView : UIScrollView = {
         var scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
+      
         
         return scroll
         
@@ -159,24 +160,31 @@ class DishView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func addSubview(){
-        addSubview(label)
-        addSubview(foodImage)
-        addSubview(hStack)
-        addSubview(backButton)
-        addSubview(forwardButton)
-        addSubview(descriptionLabel)
-        addSubview(descriptionText)
-        addSubview(holdButtonView)
-        addSubview(controlAmountView)
-        addSubview(weightView)
-        addSubview(priceView)
+       addSubview(label)
+       addSubview(foodImage)
+       addSubview(hStack)
+       addSubview(backButton)
+       addSubview(forwardButton)
+       addSubview(descriptionLabel)
+       addSubview(descriptionText)
+       addSubview(holdButtonView)
+       addSubview(controlAmountView)
+       addSubview(weightView)
+       addSubview(priceView)
+        
         
         
     }
     private func setLayout(){
+//        scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+//        scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+//        scrollView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+//        scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        
         label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20).isActive = true
-        label.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
+        label.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 20).isActive = true
+        label.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -20).isActive = true
         
         
         foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 5).isActive = true
@@ -189,14 +197,14 @@ class DishView: UIView {
         
 //        forwardButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
         forwardButton.centerYAnchor.constraint(equalTo: hStack.centerYAnchor).isActive = true
-        forwardButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30).isActive = true
-        forwardButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        forwardButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
+        forwardButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1).isActive = true
         forwardButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
 //        backButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
         backButton.centerYAnchor.constraint(equalTo: hStack.centerYAnchor).isActive = true
         backButton.trailingAnchor.constraint(equalTo: forwardButton.leadingAnchor,constant: -17).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10).isActive = true
@@ -208,8 +216,8 @@ class DishView: UIView {
         descriptionText.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
         
         for view in arrayOfNumbers{
-            view.widthAnchor.constraint(equalToConstant: 58).isActive = true
-            view.heightAnchor.constraint(equalToConstant: 58).isActive = true
+            view.widthAnchor.constraint(equalToConstant: 48).isActive = true
+            view.heightAnchor.constraint(equalToConstant: 48).isActive = true
         }
         
         priceView.topAnchor.constraint(equalTo: controlAmountView.bottomAnchor,constant: 10).isActive = true
