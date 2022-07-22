@@ -162,7 +162,7 @@ class DishView: UIView {
     private lazy var mainView : UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(label)
+        
 //        contentView.addSubview(foodImage)
 //        contentView.addSubview(hStack)
 //        contentView.addSubview(backButton)
@@ -183,6 +183,7 @@ class DishView: UIView {
     private func addSubview(){
         scrollView.addSubview(mainView)
         addSubview(scrollView)
+        mainView.addSubview(label)
         
        
         
@@ -200,7 +201,7 @@ class DishView: UIView {
         mainView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         mainView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        mainView.heightAnchor.constraint(equalToConstant: 1400).isActive = true
+//        mainView.heightAnchor.constraint(equalToConstant: 1400).isActive = true
         
         
         
