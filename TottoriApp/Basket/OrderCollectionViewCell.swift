@@ -93,8 +93,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
     func setValues(sectionList : SectionList){
         self.sectionList = sectionList
         self.dishTitle.text = sectionList.foodName
-        self.price.price.text = sectionList.currentPrice
-        self.weight.weightLabel.text = sectionList.currentWeight
+        self.price.price.text = sectionList.formattedPrice
+        self.weight.weightLabel.text = sectionList.formattedWeight
         self.controlAmountView.countLabel.text = String(sectionList.count)
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         controlAmountView.increaseAmountButton.tag = Int(sectionList.foodID) ?? -1

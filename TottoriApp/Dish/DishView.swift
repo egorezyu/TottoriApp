@@ -147,6 +147,13 @@ class DishView: UIView {
         
         return view
     }()
+    private lazy var scrollView : UIScrollView = {
+        var scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scroll
+        
+    }()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -267,8 +274,8 @@ class DishView: UIView {
         
 
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
-        self.priceView.price.text = sectionList.currentPrice
-        self.weightView.weightLabel.text = sectionList.currentWeight
+        self.priceView.price.text = sectionList.formattedPrice
+        self.weightView.weightLabel.text = sectionList.formattedWeight
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         self.sectionList = sectionList
         

@@ -45,4 +45,11 @@ struct SectionList : Codable {
     mutating func addAmountToCount(count : Int){
         self.count = self.count + count
     }
+    var formattedPrice : String?{
+        Formatter.separator.string(from: NSNumber(value: Int(currentPrice) ?? 0))
+    }
+    var formattedWeight : String?{
+        Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0))
+        
+    }
 }
