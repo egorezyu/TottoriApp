@@ -150,10 +150,16 @@ class DishView: UIView {
     private lazy var scrollView : UIScrollView = {
         var scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 400)
       
         
         return scroll
         
+    }()
+    private lazy var mainView : UIView = {
+        let contentView = UIView()
+        contentView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 400)
+        return contentView
     }()
     
     required init?(coder: NSCoder) {
