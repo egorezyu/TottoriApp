@@ -242,13 +242,17 @@ class DishView: UIView {
             view.heightAnchor.constraint(equalToConstant: 48).isActive = true
         }
         
+        
+        //Последний элемент n1
         priceView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor,constant: -20).isActive = true
         priceView.leadingAnchor.constraint(equalTo : mainView.leadingAnchor,constant: 20).isActive = true
         priceView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
         priceView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         
-
         
+        
+
+        //Последний элемент n2
         holdButtonView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor,constant: -20).isActive = true
        holdButtonView.leadingAnchor.constraint(equalTo : priceView.trailingAnchor).isActive = true
         holdButtonView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
