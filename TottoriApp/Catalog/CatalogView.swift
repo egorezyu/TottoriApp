@@ -22,7 +22,7 @@ final class CatalogView: UIView {
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ((UIScreen.main.bounds.width - 40) - 5) / 3, height: 48)
+        layout.itemSize = CGSize(width: ((UIScreen.main.bounds.width)) / 3, height: 48)
         layout.minimumLineSpacing = 5
         
         

@@ -71,7 +71,8 @@ class DataService{
         guard let url = URL(string: "http://tottori.fixmaski.ru" + url) else{
             return
         }
-        let proc = DownsamplingImageProcessor(size: CGSize(width: 300, height: 300))
+        
+        let proc = DownsamplingImageProcessor(size: CGSize(width: 500, height: 500))
 
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(

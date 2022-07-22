@@ -26,7 +26,7 @@
 		E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE128847EAF001F6D8C /* BasketDelegate.swift */; };
 		E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE328847F3F001F6D8C /* BasketView.swift */; };
 		E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE52884801B001F6D8C /* OrderCollectionViewCell.swift */; };
-		E43C7FE82885C61C001F6D8C /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE72885C61C001F6D8C /* UIImageView.swift */; };
+		E43C7FE82885C61C001F6D8C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE72885C61C001F6D8C /* UIImage.swift */; };
 		E43C7FEA2886BF85001F6D8C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FE92886BF85001F6D8C /* Request.swift */; };
 		E43C7FEC2886D03F001F6D8C /* MenuListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */; };
 		E43C7FEE28896AEB001F6D8C /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FED28896AEB001F6D8C /* PriceView.swift */; };
@@ -67,7 +67,7 @@
 		E43C7FE128847EAF001F6D8C /* BasketDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketDelegate.swift; sourceTree = "<group>"; };
 		E43C7FE328847F3F001F6D8C /* BasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketView.swift; sourceTree = "<group>"; };
 		E43C7FE52884801B001F6D8C /* OrderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCollectionViewCell.swift; sourceTree = "<group>"; };
-		E43C7FE72885C61C001F6D8C /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		E43C7FE72885C61C001F6D8C /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		E43C7FE92886BF85001F6D8C /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListRequest.swift; sourceTree = "<group>"; };
 		E43C7FED28896AEB001F6D8C /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 			children = (
 				E4E3771C287CB7CF003ED269 /* ColorExtension.swift */,
 				E43C7FDC2883112A001F6D8C /* String.swift */,
-				E43C7FE72885C61C001F6D8C /* UIImageView.swift */,
+				E43C7FE72885C61C001F6D8C /* UIImage.swift */,
 				E48D7AA12889DAC100FDDD0F /* Formatter.swift */,
 			);
 			path = Extensions;
@@ -326,7 +326,7 @@
 			files = (
 				E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */,
 				E4E3772C287D6CBB003ED269 /* TypeCollectionView.swift in Sources */,
-				E43C7FE82885C61C001F6D8C /* UIImageView.swift in Sources */,
+				E43C7FE82885C61C001F6D8C /* UIImage.swift in Sources */,
 				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,
 				E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */,
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
