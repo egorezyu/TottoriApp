@@ -181,9 +181,11 @@ class DishView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func addSubview(){
-        scrollView.addSubview(mainView)
         addSubview(scrollView)
+        scrollView.addSubview(mainView)
         mainView.addSubview(label)
+        
+        
         
        
         
