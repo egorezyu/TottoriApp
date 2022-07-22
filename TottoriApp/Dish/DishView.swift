@@ -212,7 +212,7 @@ class DishView: UIView {
             view.heightAnchor.constraint(equalToConstant: 58).isActive = true
         }
         
-        priceView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
+        priceView.topAnchor.constraint(equalTo: controlAmountView.bottomAnchor,constant: 10).isActive = true
         priceView.leadingAnchor.constraint(equalTo : leadingAnchor,constant: 20).isActive = true
         priceView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
         priceView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
@@ -223,7 +223,7 @@ class DishView: UIView {
 //        rubleLabel.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
 //        rubleLabel.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -9).isActive = true
         
-       holdButtonView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
+        holdButtonView.topAnchor.constraint(equalTo: controlAmountView.bottomAnchor,constant: 10).isActive = true
        holdButtonView.leadingAnchor.constraint(equalTo : priceView.trailingAnchor).isActive = true
        holdButtonView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20).isActive = true
        holdButtonView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
@@ -235,12 +235,12 @@ class DishView: UIView {
     
       
         
-       controlAmountView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -UIScreen.main.bounds.height * 0.03).isActive = true
+       controlAmountView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 10).isActive = true
        controlAmountView.trailingAnchor.constraint(equalTo : trailingAnchor,constant: -20).isActive = true
        controlAmountView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
        controlAmountView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         
-        weightView.bottomAnchor.constraint(equalTo: purchaseButton.topAnchor,constant: -UIScreen.main.bounds.height * 0.03).isActive = true
+        weightView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 10).isActive = true
         weightView.trailingAnchor.constraint(equalTo : controlAmountView.leadingAnchor).isActive = true
         
         weightView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
