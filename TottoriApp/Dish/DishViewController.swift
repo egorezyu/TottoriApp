@@ -33,9 +33,9 @@ class DishViewController: UIViewController {
         
     }
     private func setValuesForView(){
-//        if let sectionList = sectionList {
-//            dishView.setValues(sectionList : sectionList)
-//        }
+        if let sectionList = sectionList {
+            dishView.setValues(sectionList : sectionList)
+        }
         
     }
     
@@ -80,9 +80,9 @@ extension DishViewController : DishDelegate{
         
     }
     private func setAllFieldsForControlCountView(){
-//        dishView.controlAmountView.countLabel.text = String(dishView.sectionList?.count ?? -1)
-//        dishView.priceView.price.text = dishView.sectionList?.formattedPrice
-//        dishView.weightView.weightLabel.text = dishView.sectionList?.formattedWeight
+        dishView.controlAmountView.countLabel.text = String(dishView.sectionList?.count ?? -1)
+        dishView.priceView.price.text = dishView.sectionList?.formattedPrice
+        dishView.weightView.weightLabel.text = dishView.sectionList?.formattedWeight
         
     }
     
