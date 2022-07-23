@@ -24,8 +24,8 @@ final class DishView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        label.text = "Egor"
-        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        label.text = "Egorinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implementedinit(coder:) has not been implemented"
+        label.font = UIFont(name: "FoglihtenNo06", size: 40)
  
         return label
         
@@ -71,8 +71,13 @@ final class DishView: UIView {
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
 
-        label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
-        label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
+//        label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
+//        label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
+//        label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+//        label.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+//        label.heightAnchor.constraint(equalToConstant: 1000).isActive = true
+        label.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        label.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
 
