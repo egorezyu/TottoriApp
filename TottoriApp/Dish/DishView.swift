@@ -160,6 +160,7 @@ class DishView: UIView {
         scroll.showsVerticalScrollIndicator = false
         scroll.showsHorizontalScrollIndicator = false
         scroll.setContentHuggingPriority(.defaultLow, for: .vertical)
+        scroll.delaysContentTouches = false
         scroll.bounces = true
       
         
