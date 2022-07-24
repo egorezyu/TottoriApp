@@ -38,6 +38,7 @@ class BasketViewController: UIViewController{
             
             
         }
+        backetView.toDeliveryScreenButton.isEnabled = true
         backetView.basketCollectionView.reloadData()
       
     }
@@ -47,6 +48,7 @@ class BasketViewController: UIViewController{
         super.viewDidLoad()
         setBackGround()
         setDataSourceAndDelegate()
+       
         
    
         
@@ -73,6 +75,9 @@ class BasketViewController: UIViewController{
             backetView.basketCollectionView.reloadData()
             currentBusketCount = currentBusketCount - 1
             myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
+            if (currentBusketCount == 0){
+                backetView.toDeliveryScreenButton.isEnabled = false
+            }
             
             
             
@@ -160,6 +165,10 @@ extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSo
     
 }
 extension BasketViewController : BasketDelegate{
+    func toDeliveryScreen() {
+        navigationController?.pushViewController(DeliveryViewController(), animated: true)
+    }
+    
     func deleteFood() {
         print("food has been deleted")
     }

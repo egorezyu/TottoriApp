@@ -8,5 +8,6 @@
 import Foundation
 protocol BasketDelegate : AnyObject{
     func deleteFood()
+    func toDeliveryScreen()
     
 }

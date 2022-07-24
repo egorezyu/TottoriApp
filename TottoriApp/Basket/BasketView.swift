@@ -56,6 +56,21 @@ class BasketView: UIView {
         
         
     }()
+    public lazy var toDeliveryScreenButton : UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.borderColor = UIColor.red.cgColor
+        button.layer.borderWidth = 1.22
+        button.setTitle("ОФОРМИТЬ ЗАКАЗ", for: .normal)
+        button.setTitle("ДОБАВЬТЕ ТОВАРЫ В КОРЗИНУ", for: .disabled)
+        button.setTitleColor(.gray, for: .disabled)
+        button.titleLabel?.textAlignment = .center
+        button.setTitleColor(.black, for: .normal)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(goToDeliveryScreen(sender:)), for: .touchUpInside)
+        return button
+        
+    }()
     
     
 
@@ -68,6 +83,7 @@ class BasketView: UIView {
         addSubview(basketLabel)
         addSubview(aboutDeliveryTimeLabel)
         addSubview(basketCollectionView)
+        addSubview(toDeliveryScreenButton)
         
         
     }
@@ -79,7 +95,16 @@ class BasketView: UIView {
         basketCollectionView.topAnchor.constraint(equalTo: basketLabel.bottomAnchor,constant: 10).isActive = true
         basketCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         basketCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
-        basketCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.7).isActive = true
+        basketCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.55).isActive = true
+        toDeliveryScreenButton.topAnchor.constraint(equalTo: basketCollectionView.bottomAnchor,constant: 10).isActive = true
+        toDeliveryScreenButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
+        toDeliveryScreenButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
+        toDeliveryScreenButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.05).isActive = true
+        
+    }
+    @objc func goToDeliveryScreen(sender : UIButton){
+        
+        delegate?.toDeliveryScreen()
         
     }
 

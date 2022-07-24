@@ -56,7 +56,8 @@ class DishViewController: UIViewController {
 extension DishViewController : DishDelegate{
     func addToBasket() {
         if let sectionList = dishView.sectionList{
-            (tabBarController?.viewControllers?[2] as? BasketViewController)?.addToArray(sectionList: sectionList)
+            let basketViewController = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]
+            (basketViewController as? BasketViewController)?.addToArray(sectionList: sectionList)
         }
         
     }

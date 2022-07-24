@@ -44,7 +44,7 @@ class TabBarViewController: UITabBarController {
         aboutUsVC.tabBarItem = aboutUsTabBar
         
         
-        let basketVC = BasketViewController()
+        let basketVC = UINavigationController(rootViewController: BasketViewController())
         let basketVCTabBar = UITabBarItem(title: "", image: UIImage(systemName: "bag"), tag: 3)
         basketVC.tabBarItem = basketVCTabBar
         

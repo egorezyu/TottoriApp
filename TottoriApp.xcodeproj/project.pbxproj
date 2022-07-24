@@ -15,6 +15,7 @@
 		E41C6762287F1C6D001FD5B2 /* FoglihtenNo06_076.otf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6761287F1C6D001FD5B2 /* FoglihtenNo06_076.otf */; };
 		E41C6764287F3720001FD5B2 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */; };
 		E41C6766287F3806001FD5B2 /* Gilroy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */; };
+		E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C89F288C82030036479C /* DeliveryViewController.swift */; };
 		E43C7FD028816148001F6D8C /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FCF28816148001F6D8C /* DishViewController.swift */; };
 		E43C7FD22881615B001F6D8C /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD12881615B001F6D8C /* DishView.swift */; };
 		E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD328816175001F6D8C /* DishDelegate.swift */; };
@@ -57,6 +58,7 @@
 		E41C6761287F1C6D001FD5B2 /* FoglihtenNo06_076.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoglihtenNo06_076.otf; sourceTree = "<group>"; };
 		E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.ttf"; sourceTree = "<group>"; };
+		E433C89F288C82030036479C /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		E43C7FCF28816148001F6D8C /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		E43C7FD12881615B001F6D8C /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		E43C7FD328816175001F6D8C /* DishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		E433C89E288C81EA0036479C /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				E433C89F288C82030036479C /* DeliveryViewController.swift */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
 		E43C7FCE288160F4001F6D8C /* Dish */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +187,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E433C89E288C81EA0036479C /* Delivery */,
 				E43C7FE028847E9B001F6D8C /* Basket */,
 				E43C7FCE288160F4001F6D8C /* Dish */,
 				E41C6760287F1C4D001FD5B2 /* Fonts */,
@@ -350,6 +361,7 @@
 				E4E3772A287D6B66003ED269 /* MockDataService.swift in Sources */,
 				E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */,
 				E43C7FF42889C114001F6D8C /* BadgeView.swift in Sources */,
+				E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */,
 				E43C7FD82882D5DC001F6D8C /* DataService.swift in Sources */,
 				E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */,
 				E43C7FD22881615B001F6D8C /* DishView.swift in Sources */,
