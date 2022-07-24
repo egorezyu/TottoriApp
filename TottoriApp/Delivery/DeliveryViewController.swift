@@ -8,14 +8,41 @@
 import UIKit
 
 class DeliveryViewController: UIViewController {
+    private lazy var devView : DeliveryView = DeliveryView(delegate: self,navigationBar: self.navigationController?.navigationBar)
+    override func loadView() {
+        self.view = devView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray
+        setBackGround()
+        
+        
 
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabBar()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        devView.aboutDeliveryTimeLabel.isHidden = true
+        showTabBarView()
+    }
+    private func setBackGround(){
+        if let image = UIImage(named: "back"){
+            view.backgroundColor = UIColor(patternImage: image)
+        }
+        
+    }
+    private func hideTabBar(){
+        tabBarController?.tabBar.isHidden = true
+    }
+    private func showTabBarView(){
+        tabBarController?.tabBar.isHidden = false
+    }
 
     /*
     // MARK: - Navigation
@@ -27,4 +54,7 @@ class DeliveryViewController: UIViewController {
     }
     */
 
+}
+extension DeliveryViewController : DeliveryDelegate{
+    
 }

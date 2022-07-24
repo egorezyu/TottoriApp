@@ -16,6 +16,8 @@
 		E41C6764287F3720001FD5B2 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */; };
 		E41C6766287F3806001FD5B2 /* Gilroy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */; };
 		E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C89F288C82030036479C /* DeliveryViewController.swift */; };
+		E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A1288D7DB70036479C /* DeliveryView.swift */; };
+		E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */; };
 		E43C7FD028816148001F6D8C /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FCF28816148001F6D8C /* DishViewController.swift */; };
 		E43C7FD22881615B001F6D8C /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD12881615B001F6D8C /* DishView.swift */; };
 		E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD328816175001F6D8C /* DishDelegate.swift */; };
@@ -59,6 +61,8 @@
 		E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.ttf"; sourceTree = "<group>"; };
 		E433C89F288C82030036479C /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
+		E433C8A1288D7DB70036479C /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
+		E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDelegate.swift; sourceTree = "<group>"; };
 		E43C7FCF28816148001F6D8C /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		E43C7FD12881615B001F6D8C /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		E43C7FD328816175001F6D8C /* DishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				E433C89F288C82030036479C /* DeliveryViewController.swift */,
+				E433C8A1288D7DB70036479C /* DeliveryView.swift */,
+				E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
 				E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */,
 				E41C675F287EDB52001FD5B2 /* DishModel.swift in Sources */,
+				E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
 				E4E3772E287D8113003ED269 /* TypeViewCellCollectionViewCell.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
@@ -366,6 +373,7 @@
 				E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */,
 				E43C7FD22881615B001F6D8C /* DishView.swift in Sources */,
 				E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */,
+				E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */,
 				E43C7FEA2886BF85001F6D8C /* Request.swift in Sources */,
 				E4E37727287D5430003ED269 /* TypeView.swift in Sources */,
 				E4E3771D287CB7CF003ED269 /* ColorExtension.swift in Sources */,
