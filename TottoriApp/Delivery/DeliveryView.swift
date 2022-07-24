@@ -10,6 +10,7 @@ import UIKit
 class DeliveryView: UIView {
     private weak var delegate : DeliveryDelegate?
     private var selectedTextField : UITextField?
+    private var selectedPayView : PayView!
     private var navigationBar : UINavigationBar?
 
     init(delegate : DeliveryDelegate? = nil,navigationBar : UINavigationBar?) {
@@ -18,6 +19,7 @@ class DeliveryView: UIView {
         self.delegate = delegate
         addView()
         setConstraints()
+        addListenersToTypeOfPaymentButton()
         
     }
     private lazy var scrollView : UIScrollView = {
@@ -79,7 +81,7 @@ class DeliveryView: UIView {
         vStack.translatesAutoresizingMaskIntoConstraints = false
         vStack.addArrangedSubview(PayByCardView)
         vStack.addArrangedSubview(payByCashView)
-//        addListenersToTypeOfPaymentButton()
+        
         
         
         return vStack
@@ -87,8 +89,10 @@ class DeliveryView: UIView {
     }()
     private func addListenersToTypeOfPaymentButton(){
         let arrayOfPayments = vStackTypeOfPay.subviews as? [PayView]
-        if let arrayOFPayments = arrayOfPayments{
-            for payment in arrayOFPayments {
+        if let array = arrayOfPayments{
+            array[0].drawCircle()
+            selectedPayView = array[0]
+            for payment in array {
                 payment.rectangleButtonView.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
             }
         }
@@ -237,7 +241,20 @@ class DeliveryView: UIView {
         
     }
     @objc func buttonAction(sender : UIButton){
-        print("меня нажали")
+        let arrayOfPayments = vStackTypeOfPay.subviews as? [PayView]
+        if let arrayOfPayments = arrayOfPayments{
+            var chosenPayView = arrayOfPayments.first { payView in
+                payView.rectangleButtonView === sender
+            }
+            if let chosenPayView = chosenPayView {
+                if chosenPayView != selectedPayView{
+                    chosenPayView.drawCircle()
+                    selectedPayView.clearCircle()
+                }
+                selectedPayView = chosenPayView
+            }
+        }
+        
         
     }
                                                       
