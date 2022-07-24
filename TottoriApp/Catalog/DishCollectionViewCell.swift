@@ -107,7 +107,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         
         descriptionAboutFood.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5).isActive = true
         descriptionAboutFood.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
-        descriptionAboutFood.heightAnchor.constraint(equalToConstant: 162).isActive = true
+//        descriptionAboutFood.heightAnchor.constraint(equalToConstant: 162).isActive = true
         
         price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
         price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true

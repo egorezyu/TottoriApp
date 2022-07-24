@@ -54,7 +54,7 @@ class DeliveryView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private lazy var vStack : UIStackView = {
+    private lazy var vStackFields : UIStackView = {
         let vStack = UIStackView()
         vStack.axis = .vertical
         vStack.spacing = 50
@@ -70,6 +70,46 @@ class DeliveryView: UIView {
         
         return vStack
         
+    }()
+    private lazy var vStackTypeOfPay : UIStackView = {
+        let vStack = UIStackView()
+        vStack.axis = .vertical
+        vStack.spacing = 25
+        vStack.distribution = .fillEqually
+        vStack.translatesAutoresizingMaskIntoConstraints = false
+        vStack.addArrangedSubview(PayByCardView)
+        vStack.addArrangedSubview(payByCashView)
+//        addListenersToTypeOfPaymentButton()
+        
+        
+        return vStack
+        
+    }()
+    private func addListenersToTypeOfPaymentButton(){
+        let arrayOfPayments = vStackTypeOfPay.subviews as? [PayView]
+        if let arrayOFPayments = arrayOfPayments{
+            for payment in arrayOFPayments {
+                payment.rectangleButtonView.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
+            }
+        }
+    
+    }
+    
+    private lazy var PayByCardView : PayView = {
+        let payView = PayView()
+        payView.translatesAutoresizingMaskIntoConstraints = false
+        payView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        payView.setTypeOfPayment(typeOfPaymentString: "КАРТОЙ КУРЬЕРУ")
+        return payView
+        
+    }()
+    private lazy var payByCashView : PayView = {
+        let payView = PayView()
+        payView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        payView.translatesAutoresizingMaskIntoConstraints = false
+        payView.setTypeOfPayment(typeOfPaymentString: "НАЛИЧНЫЕ")
+        return payView
     }()
     private lazy var vStackName : UIStackView = {
         return generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
@@ -107,7 +147,8 @@ class DeliveryView: UIView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(makeAnOrderLabel)
-        contentView.addSubview(vStack)
+        contentView.addSubview(vStackFields)
+        contentView.addSubview(vStackTypeOfPay)
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
     }
@@ -166,11 +207,18 @@ class DeliveryView: UIView {
         makeAnOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         makeAnOrderLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor,constant: 30).isActive = true
         
-        vStack.topAnchor.constraint(equalTo: makeAnOrderLabel.bottomAnchor,constant: 20).isActive = true
-        vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
-        vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
-        vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        vStackFields.topAnchor.constraint(equalTo: makeAnOrderLabel.bottomAnchor,constant: 20).isActive = true
+        vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
+        vStackFields.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
+//        vStackFields.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -100).isActive = true
         
+        vStackTypeOfPay.topAnchor.constraint(equalTo: vStackFields.bottomAnchor,constant: 50).isActive = true
+        vStackTypeOfPay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
+        vStackTypeOfPay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
+        
+//    
+        vStackTypeOfPay.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+//
         
         
         
@@ -188,6 +236,12 @@ class DeliveryView: UIView {
         selectedTextField = sender
         
     }
+    @objc func buttonAction(sender : UIButton){
+        print("меня нажали")
+        
+    }
+                                                      
+                                                      
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
