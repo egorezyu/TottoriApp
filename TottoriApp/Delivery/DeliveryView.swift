@@ -243,7 +243,7 @@ class DeliveryView: UIView {
     @objc func buttonAction(sender : UIButton){
         let arrayOfPayments = vStackTypeOfPay.subviews as? [PayView]
         if let arrayOfPayments = arrayOfPayments{
-            var chosenPayView = arrayOfPayments.first { payView in
+            let chosenPayView = arrayOfPayments.first { payView in
                 payView.rectangleButtonView === sender
             }
             if let chosenPayView = chosenPayView {
