@@ -18,6 +18,7 @@
 		E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C89F288C82030036479C /* DeliveryViewController.swift */; };
 		E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A1288D7DB70036479C /* DeliveryView.swift */; };
 		E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */; };
+		E433C8A6288D98B20036479C /* CustomTextFieldWithInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */; };
 		E43C7FD028816148001F6D8C /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FCF28816148001F6D8C /* DishViewController.swift */; };
 		E43C7FD22881615B001F6D8C /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD12881615B001F6D8C /* DishView.swift */; };
 		E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FD328816175001F6D8C /* DishDelegate.swift */; };
@@ -63,6 +64,7 @@
 		E433C89F288C82030036479C /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		E433C8A1288D7DB70036479C /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDelegate.swift; sourceTree = "<group>"; };
+		E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldWithInsets.swift; sourceTree = "<group>"; };
 		E43C7FCF28816148001F6D8C /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		E43C7FD12881615B001F6D8C /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		E43C7FD328816175001F6D8C /* DishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				E433C89F288C82030036479C /* DeliveryViewController.swift */,
 				E433C8A1288D7DB70036479C /* DeliveryView.swift */,
 				E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */,
+				E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
 				E4E3772E287D8113003ED269 /* TypeViewCellCollectionViewCell.swift in Sources */,
+				E433C8A6288D98B20036479C /* CustomTextFieldWithInsets.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
 				E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */,

@@ -9,6 +9,7 @@ import UIKit
 
 class DeliveryView: UIView {
     private weak var delegate : DeliveryDelegate?
+    private var selectedTextField : UITextField?
     private var navigationBar : UINavigationBar?
 
     init(delegate : DeliveryDelegate? = nil,navigationBar : UINavigationBar?) {
@@ -53,11 +54,60 @@ class DeliveryView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    private lazy var vStack : UIStackView = {
+        let vStack = UIStackView()
+        vStack.axis = .vertical
+        vStack.spacing = 50
+        vStack.distribution = .fillEqually
+        vStack.translatesAutoresizingMaskIntoConstraints = false
+        vStack.addArrangedSubview(vStackName)
+        vStack.addArrangedSubview(vStackPhone)
+        vStack.addArrangedSubview(vStackEmail)
+        vStack.addArrangedSubview(vStackStreet)
+        vStack.addArrangedSubview(vStackHouse)
+        vStack.addArrangedSubview(vStackFlatAndFloor)
+
+        
+        return vStack
+        
+    }()
+    private lazy var vStackName : UIStackView = {
+        return generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
+        
+    }()
+    private lazy var vStackPhone : UIStackView = {
+    
+        var stack = generateStackWithLabelAndField(name: "ТЕЛЕФОН")
+        var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        phoneField?.keyboardType = .numberPad
+        return stack
+    }()
+    private lazy var vStackEmail : UIStackView = {
+        return generateStackWithLabelAndField(name: "ПОЧТА")
+
+        
+    }()
+    private lazy var vStackStreet : UIStackView = {
+        return generateStackWithLabelAndField(name: "УЛИЦА")
+
+        
+    }()
+    private lazy var vStackHouse : UIStackView = {
+        return generateStackWithLabelAndField(name: "ДОМ")
+
+        
+    }()
+    private lazy var vStackFlatAndFloor : UIStackView = {
+        return generateStackWithLabelAndField(name: "КВАРТИРА И ЭТАЖ")
+
+        
+    }()
     
     private func addView(){
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(makeAnOrderLabel)
+        contentView.addSubview(vStack)
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
     }
@@ -68,6 +118,35 @@ class DeliveryView: UIView {
         return label
         
     }
+    private func generateTextField(hint : String) -> UITextField{
+        let textField = CustomTextFieldWithInsets()
+        textField.placeholder = hint
+        let rectangleView = UIView()
+        rectangleView.backgroundColor = .gray
+        //add
+        textField.addSubview(rectangleView)
+        textField.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
+        //constraints for bottom line
+        rectangleView.translatesAutoresizingMaskIntoConstraints = false
+        rectangleView.widthAnchor.constraint(equalTo: textField.widthAnchor).isActive = true
+        rectangleView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        rectangleView.bottomAnchor.constraint(equalTo: textField.bottomAnchor).isActive = true
+        rectangleView.centerXAnchor.constraint(equalTo: textField.centerXAnchor).isActive = true
+        
+        return textField
+        
+    }
+    private func generateStackWithLabelAndField(name : String) -> UIStackView{
+        let vStack = UIStackView()
+        vStack.axis = .vertical
+        vStack.spacing = 27
+        vStack.distribution = .fillEqually
+        vStack.addArrangedSubview(generateLabel(name: name))
+        vStack.addArrangedSubview(generateTextField(hint: name))
+        return vStack
+        
+    }
+    
     private func setConstraints(){
         if let navigationBar = navigationBar{
             aboutDeliveryTimeLabel.topAnchor.constraint(equalTo: navigationBar.topAnchor,constant: 10).isActive = true
@@ -85,10 +164,28 @@ class DeliveryView: UIView {
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
         makeAnOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        
         makeAnOrderLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor,constant: 30).isActive = true
         
+        vStack.topAnchor.constraint(equalTo: makeAnOrderLabel.bottomAnchor,constant: 20).isActive = true
+        vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
+        vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
+        vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
+        
+        
+        
+        
+    }
+    @objc func switchSelectedTextField(sender : UITextField){
+        if let selectedTextField = selectedTextField {
+            sender.subviews[0].backgroundColor = .red
+            selectedTextField.subviews[0].backgroundColor = .gray
+        }
+        else{
+            sender.subviews[0].backgroundColor = .red
+           
+        }
+        selectedTextField = sender
         
     }
     
