@@ -56,5 +56,9 @@ class DeliveryViewController: UIViewController {
 
 }
 extension DeliveryViewController : DeliveryDelegate{
+    func postRequest() {
+        print("ya knopka")
+    }
+    
     
 }

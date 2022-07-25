@@ -7,5 +7,6 @@
 
 import Foundation
 protocol DeliveryDelegate : AnyObject{
+    func postRequest()
     
 }

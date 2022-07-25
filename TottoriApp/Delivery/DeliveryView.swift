@@ -146,6 +146,33 @@ class DeliveryView: UIView {
 
         
     }()
+    private lazy var commentLabel : UILabel = {
+        return generateLabel(name: "КОММЕНТАРИИ")
+    }()
+    private lazy var commentTextArea : UITextView = {
+        let textArea = UITextView()
+        textArea.translatesAutoresizingMaskIntoConstraints = false
+        textArea.layer.borderWidth = 1
+        textArea.layer.borderColor = UIColor.gray.cgColor
+        textArea.backgroundColor = .clear
+        return textArea
+        
+    }()
+    public lazy var makeAnOrderButton : UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.borderColor = UIColor.red.cgColor
+        button.layer.borderWidth = 1.22
+        button.setTitle("ОФОРМИТЬ ЗАКАЗ", for: .normal)
+        button.setTitle("Введите имя и телефон", for: .disabled)
+        button.setTitleColor(.gray, for: .disabled)
+        button.titleLabel?.textAlignment = .center
+        button.setTitleColor(.black, for: .normal)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(postRequest(sender:)), for: .touchUpInside)
+        return button
+        
+    }()
     
     private func addView(){
         addSubview(scrollView)
@@ -153,12 +180,16 @@ class DeliveryView: UIView {
         contentView.addSubview(makeAnOrderLabel)
         contentView.addSubview(vStackFields)
         contentView.addSubview(vStackTypeOfPay)
+        contentView.addSubview(commentLabel)
+        contentView.addSubview(commentTextArea)
+        contentView.addSubview(makeAnOrderButton)
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
     }
     private func generateLabel(name : String) -> UILabel{
         let label = UILabel()
         label.text = name
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Gilroy", size: 14)
         return label
         
@@ -220,9 +251,26 @@ class DeliveryView: UIView {
         vStackTypeOfPay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
         vStackTypeOfPay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
         
-//    
-        vStackTypeOfPay.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
-//
+  
+//        vStackTypeOfPay.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        
+        commentLabel.topAnchor.constraint(equalTo: vStackTypeOfPay.bottomAnchor,constant: 40).isActive = true
+        commentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+        
+        commentTextArea.topAnchor.constraint(equalTo: commentLabel.bottomAnchor,constant: 18).isActive = true
+        commentTextArea.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+        commentTextArea.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        commentTextArea.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.2).isActive = true
+//        commentTextArea.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        makeAnOrderButton.topAnchor.constraint(equalTo: commentTextArea.bottomAnchor,constant: 20).isActive = true
+        makeAnOrderButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+        makeAnOrderButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        makeAnOrderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        makeAnOrderButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        
+        
+
+
         
         
         
@@ -255,6 +303,10 @@ class DeliveryView: UIView {
             }
         }
         
+        
+    }
+    @objc func postRequest(sender : UIButton){
+        delegate?.postRequest()
         
     }
                                                       
