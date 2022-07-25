@@ -76,6 +76,7 @@ class BasketViewController: UIViewController{
             currentBusketCount = currentBusketCount - 1
             myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
             if (currentBusketCount == 0){
+                myTabBarController.tabBar.items?[2].badgeValue = nil
                 backetView.toDeliveryScreenButton.isEnabled = false
             }
             

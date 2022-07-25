@@ -8,6 +8,7 @@
 import UIKit
 
 class DeliveryViewController: UIViewController {
+    
     private lazy var devView : DeliveryView = DeliveryView(delegate: self,navigationBar: self.navigationController?.navigationBar)
     override func loadView() {
         self.view = devView
@@ -57,7 +58,49 @@ class DeliveryViewController: UIViewController {
 }
 extension DeliveryViewController : DeliveryDelegate{
     func postRequest() {
-        print("ya knopka")
+        guard let model = devView.userInfo,
+              let encodedData = try? JSONEncoder().encode(model) else {
+            return
+        }
+        if let data = UserDefaults.standard.data(forKey: devView.userDefaultUserInfoId){
+            if data != encodedData{
+                showChangeAlert(dataToChange: encodedData)
+                
+          
+                
+            }
+            else{
+                showOkAlert()
+            }
+            
+        }
+        else{
+            UserDefaults.standard.set(encodedData, forKey: devView.userDefaultUserInfoId)
+            
+        }
+        
+        
+        
+       
+    }
+    private func showChangeAlert(dataToChange : Data){
+        let alert = UIAlertController(title: nil, message: "Ваши данные о доставке были изменены", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Сохранить текущие данных", style: .default, handler: { action in
+            UserDefaults.standard.set(dataToChange, forKey: self.devView.userDefaultUserInfoId)
+            self.showOkAlert()
+        }))
+        alert.addAction(UIAlertAction(title: "Не сохранять", style: .default, handler: { action in
+            self.showOkAlert()
+        }))
+        present(alert,animated: true)
+        
+    }
+    private func showOkAlert(){
+        
+        let alertAboutEndOfPostRequest = UIAlertController(title: nil, message: "Заказ уже обрабатывается", preferredStyle: .alert)
+        alertAboutEndOfPostRequest.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+        present(alertAboutEndOfPostRequest,animated: true)
+        
     }
     
     

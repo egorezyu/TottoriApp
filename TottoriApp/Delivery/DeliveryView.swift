@@ -8,18 +8,25 @@
 import UIKit
 
 class DeliveryView: UIView {
+    public var userDefaultUserInfoId = "userInfo"
+    public var userInfo : UserInfo?
     private weak var delegate : DeliveryDelegate?
     private var selectedTextField : UITextField?
-    private var selectedPayView : PayView!
+    private var selectedPayView : PayView?
     private var navigationBar : UINavigationBar?
 
     init(delegate : DeliveryDelegate? = nil,navigationBar : UINavigationBar?) {
         super.init(frame: .zero)
+        if let data = UserDefaults.standard.data(forKey: userDefaultUserInfoId),
+           let decodedData = try? JSONDecoder().decode(UserInfo.self, from: data){
+            self.userInfo = decodedData
+        }
         self.navigationBar = navigationBar
         self.delegate = delegate
         addView()
         setConstraints()
         addListenersToTypeOfPaymentButton()
+        controlButtonStateAlgo()
         
     }
     private lazy var scrollView : UIScrollView = {
@@ -90,8 +97,8 @@ class DeliveryView: UIView {
     private func addListenersToTypeOfPaymentButton(){
         let arrayOfPayments = vStackTypeOfPay.subviews as? [PayView]
         if let array = arrayOfPayments{
-            array[0].drawCircle()
-            selectedPayView = array[0]
+//            array[0].drawCircle()
+//            selectedPayView = array[0]
             for payment in array {
                 payment.rectangleButtonView.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
             }
@@ -116,33 +123,56 @@ class DeliveryView: UIView {
         return payView
     }()
     private lazy var vStackName : UIStackView = {
-        return generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
+        var stack = generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
+        var nameField = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        nameField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
+        nameField?.tag = 1
+        nameField?.text = userInfo?.name ?? ""
+        
+        return stack
         
     }()
     private lazy var vStackPhone : UIStackView = {
     
         var stack = generateStackWithLabelAndField(name: "ТЕЛЕФОН")
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
+        phoneField?.tag = 2
         phoneField?.keyboardType = .numberPad
+        phoneField?.text = userInfo?.phone ?? ""
         return stack
     }()
     private lazy var vStackEmail : UIStackView = {
-        return generateStackWithLabelAndField(name: "ПОЧТА")
+        var stack = generateStackWithLabelAndField(name: "ПОЧТА")
+        var emailField = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        emailField?.text = userInfo?.mail ?? ""
+        return stack
+        
 
         
     }()
     private lazy var vStackStreet : UIStackView = {
-        return generateStackWithLabelAndField(name: "УЛИЦА")
+        var stack = generateStackWithLabelAndField(name: "УЛИЦА")
+        var street = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        street?.text = userInfo?.street ?? ""
+        return stack
 
         
     }()
     private lazy var vStackHouse : UIStackView = {
-        return generateStackWithLabelAndField(name: "ДОМ")
+        var stack = generateStackWithLabelAndField(name: "ДОМ")
+        var house = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        house?.text = userInfo?.home ?? ""
+        return stack
 
         
     }()
     private lazy var vStackFlatAndFloor : UIStackView = {
-        return generateStackWithLabelAndField(name: "КВАРТИРА И ЭТАЖ")
+        
+        var stack = generateStackWithLabelAndField(name: "КВАРТИРА И ЭТАЖ")
+        var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        flatAndFloor?.text = userInfo?.floorAndFlat ?? ""
+        return stack
 
         
     }()
@@ -164,7 +194,6 @@ class DeliveryView: UIView {
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.borderWidth = 1.22
         button.setTitle("ОФОРМИТЬ ЗАКАЗ", for: .normal)
-        button.setTitle("Введите имя и телефон", for: .disabled)
         button.setTitleColor(.gray, for: .disabled)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(.black, for: .normal)
@@ -297,17 +326,56 @@ class DeliveryView: UIView {
             if let chosenPayView = chosenPayView {
                 if chosenPayView != selectedPayView{
                     chosenPayView.drawCircle()
-                    selectedPayView.clearCircle()
+                    selectedPayView?.clearCircle()
                 }
                 selectedPayView = chosenPayView
             }
         }
+        controlButtonStateAlgo()
         
         
     }
     @objc func postRequest(sender : UIButton){
         delegate?.postRequest()
         
+    }
+    @objc func textEditing(sender : UITextField){
+        controlButtonStateAlgo()
+        
+    }
+    func controlButtonStateAlgo(){
+        let nameField = (vStackName.subviews[1] as? CustomTextFieldWithInsets)
+        let phoneField = (vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
+        let email = (vStackEmail.subviews[1] as? CustomTextFieldWithInsets)
+        let street = (vStackStreet.subviews[1] as? CustomTextFieldWithInsets)
+        let home = (vStackHouse.subviews[1] as? CustomTextFieldWithInsets)
+        let flatAndFlor = (vStackFlatAndFloor.subviews[1] as? CustomTextFieldWithInsets)
+        
+        if let name = nameField?.text,let phone = phoneField?.text{
+            if (!name.isEmpty && !phone.isEmpty){
+                if (phone == "123"){
+                    if selectedPayView != nil {
+                        makeAnOrderButton.isEnabled = true
+                        userInfo = UserInfo(name: name, phone: phone, mail: email?.text ?? "", street: street?.text ?? "", home: home?.text ?? "", floorAndFlat: flatAndFlor?.text ?? "")
+                    }
+                    else{
+                        makeAnOrderButton.isEnabled = false
+                        makeAnOrderButton.setTitle("Выберите способ оплаты", for: .disabled)
+                    }
+                    
+                }
+                else{
+                    makeAnOrderButton.isEnabled = false
+                    makeAnOrderButton.setTitle("Введите корректный телефон", for: .disabled)
+                }
+            }
+            else{
+                makeAnOrderButton.setTitle("Введите имя и телефон", for: .disabled)
+                makeAnOrderButton.isEnabled = false
+            }
+            
+            
+        }
     }
                                                       
                                                       
