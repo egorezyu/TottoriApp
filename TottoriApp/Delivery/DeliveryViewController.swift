@@ -10,6 +10,7 @@ import UIKit
 class DeliveryViewController: UIViewController {
     
     private lazy var devView : DeliveryView = DeliveryView(delegate: self,navigationBar: self.navigationController?.navigationBar)
+    var backetViewBackDataDelegate : BasketViewBackDataDelegate?
     override func loadView() {
         self.view = devView
     }
@@ -98,7 +99,11 @@ extension DeliveryViewController : DeliveryDelegate{
     private func showOkAlert(){
         
         let alertAboutEndOfPostRequest = UIAlertController(title: nil, message: "Заказ уже обрабатывается", preferredStyle: .alert)
-        alertAboutEndOfPostRequest.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+        alertAboutEndOfPostRequest.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { action in
+            self.backetViewBackDataDelegate?.clearAllBasket()
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
         present(alertAboutEndOfPostRequest,animated: true)
         
     }

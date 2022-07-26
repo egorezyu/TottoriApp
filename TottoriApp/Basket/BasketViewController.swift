@@ -167,11 +167,25 @@ extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSo
 }
 extension BasketViewController : BasketDelegate{
     func toDeliveryScreen() {
-        navigationController?.pushViewController(DeliveryViewController(), animated: true)
+        let controller = DeliveryViewController()
+        controller.backetViewBackDataDelegate = self
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func deleteFood() {
         print("food has been deleted")
+    }
+    
+    
+}
+extension BasketViewController : BasketViewBackDataDelegate{
+    func clearAllBasket() {
+        arrayOfPurchases = []
+        backetView.basketCollectionView.reloadData()
+        backetView.toDeliveryScreenButton.isEnabled = false
+        currentBusketCount = 0
+        myTabBarController.tabBar.items?[2].badgeValue = nil
+        
     }
     
     
