@@ -25,7 +25,7 @@ class DishView: UIView {
         setLayout()
         setFirstChose()
     }
-    public var arrayOfNumbers : [UILabel] = []
+    public var arrayOfNumbers : [UIButton] = []
     private lazy var label : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -53,20 +53,23 @@ class DishView: UIView {
         stack.distribution = .equalCentering
         stack.translatesAutoresizingMaskIntoConstraints = false
         for i in 0...2{
-            var label = UILabel()
-            label.font = UIFont(name: "FoglihtenNo06", size: 27.95)
+            var button = UIButton()
+            button.addTarget(self, action: #selector(buttonImageAction(sender:)), for: .touchUpInside)
+            button.setTitleColor(UIColor.black, for: .normal)
+            button.tag = i
+            
   
-            label.text = String(0) + String(i + 1)
-            label.textAlignment = .center
-            label.layer.borderWidth = 1
-            label.layer.cornerRadius = 24
-            label.layer.borderColor = UIColor.clear.cgColor
-            label.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle(String(0) + String(i + 1), for: .normal)
             
-            arrayOfNumbers.append(label)
+            button.layer.borderWidth = 1
+            button.layer.cornerRadius = 24
+            button.layer.borderColor = UIColor.clear.cgColor
+            button.translatesAutoresizingMaskIntoConstraints = false
+            
+            arrayOfNumbers.append(button)
             
             
-            stack.addArrangedSubview(label)
+            stack.addArrangedSubview(button)
         }
         return stack
     }()
@@ -219,9 +222,9 @@ class DishView: UIView {
         
 //
         foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 5).isActive = true
-        foodImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 40).isActive = true
-        foodImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -40).isActive = true
-        foodImage.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 80).isActive = true
+        foodImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
+        foodImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 40) / 1.5).isActive = true
         
 //
         hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
@@ -342,6 +345,10 @@ class DishView: UIView {
     }
     @objc func addToBasket(sender : UIButton){
         delegate?.addToBasket()
+    }
+    @objc func buttonImageAction(sender : UIButton){
+        delegate?.imageButtonTapped(sender: sender)
+        
     }
     
     

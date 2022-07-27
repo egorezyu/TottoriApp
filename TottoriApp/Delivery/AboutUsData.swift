@@ -70,7 +70,7 @@ class AboutUsData: UIView {
         title.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         firstVStack.topAnchor.constraint(equalTo: title.bottomAnchor,constant: 50).isActive = true
         firstVStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        secondVStack.leadingAnchor.constraint(equalTo: firstVStack.trailingAnchor,constant: 15).isActive = true
+        secondVStack.leadingAnchor.constraint(equalTo: firstVStack.trailingAnchor,constant: 10).isActive = true
         secondVStack.centerYAnchor.constraint(equalTo: firstVStack.centerYAnchor).isActive = true
         
         

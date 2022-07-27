@@ -7,12 +7,14 @@
 
 import Foundation
 import Foundation
+import UIKit
 protocol DishDelegate : AnyObject{
     func increaseAmount()
     func decreaseAmount()
     func addToBasket()
     func backButtonAction()
     func forwardButtonAction()
+    func imageButtonTapped(sender : UIButton)
     
     
 }

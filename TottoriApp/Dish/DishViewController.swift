@@ -10,6 +10,7 @@ import UIKit
 class DishViewController: UIViewController {
     private lazy var dishView = DishView(subscriber: self)
     private lazy var currentChose = 0
+//    private var prevChose : Int?
     var sectionList : SectionList?
     
     override func loadView() {
@@ -55,6 +56,20 @@ class DishViewController: UIViewController {
 
 }
 extension DishViewController : DishDelegate{
+    func imageButtonTapped(sender: UIButton) {
+        if sender.tag != currentChose{
+            sender.layer.borderColor = UIColor.red.cgColor
+            dishView.arrayOfNumbers[currentChose].layer.borderColor = UIColor.clear.cgColor
+        }
+        else{
+            sender.layer.borderColor = UIColor.red.cgColor
+        }
+        currentChose = sender.tag
+        setImageFunction()
+        
+        
+    }
+    
     func backButtonAction() {
         currentChose = currentChose - 1
 
@@ -112,6 +127,7 @@ extension DishViewController : DishDelegate{
             }
         }
     }
+    
     
     func addToBasket() {
         if let sectionList = sectionList{

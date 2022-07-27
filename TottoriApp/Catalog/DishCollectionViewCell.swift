@@ -94,9 +94,9 @@ class DishCollectionViewCell: UICollectionViewCell {
     
     private func setConstraints(){
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 21).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: contentView.frame.width * 0.1).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -contentView.frame.width * 0.1).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: contentView.frame.height * 0.4).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: contentView.frame.width * 0.18).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -contentView.frame.width * 0.18).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: contentView.frame.width * 0.410).isActive = true
         foodType.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 10).isActive = true
         foodType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true

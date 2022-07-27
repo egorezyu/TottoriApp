@@ -126,16 +126,16 @@ class OrderCollectionViewCell: UICollectionViewCell {
     func setConstraints(){
         
         foodImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        foodImage.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 10).isActive = true
-        foodImage.heightAnchor.constraint(equalToConstant: contentView.frame.height - 20).isActive = true
+        foodImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: contentView.frame.width * 0.3 / 1.5).isActive = true
         foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.3).isActive = true
         
         dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
-        dishTitle.topAnchor.constraint(equalTo: foodImage.topAnchor).isActive = true
+        dishTitle.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 4).isActive = true
         dishTitle.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.4).isActive = true
         
         price.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
-        price.centerYAnchor.constraint(equalTo: foodImage.centerYAnchor).isActive = true
+        price.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         price.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
         
         weight.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
