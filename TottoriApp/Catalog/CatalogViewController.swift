@@ -57,9 +57,21 @@ class CatalogViewController: UIViewController {
     }
     private func setNavigationBar(){
 //        let backImage = UIImage(named: "purchase")
-        self.navigationController?.navigationBar.backIndicatorImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
+//        self.navigationController?.navigationBar.backIndicatorImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
+//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
+        
 //        self.navigationController?.navigationBar.backItem?.title = "Назад"
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "Заказ добавлен в корзину"
+//        label.isHidden = true
+//        label.textColor = .red
+//        if let navigationBar = navigationController?.navigationBar{
+//            navigationBar.addSubview(label)
+//            label.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
+//            label.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
+//        }
+        
     }
     private func setUpCollectionView(){
         catalogView.collectionView.dataSource = self

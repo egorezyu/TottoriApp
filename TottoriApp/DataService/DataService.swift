@@ -201,7 +201,7 @@ final class NetworkManager {
 
             }
         catch {
-            print(error)
+            
                 completion(.failure(GetDataException.badData))
             }
 

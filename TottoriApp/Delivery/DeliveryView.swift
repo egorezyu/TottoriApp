@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class DeliveryView: UIView {
     public var userDefaultUserInfoId = "userInfo"
@@ -202,6 +203,18 @@ class DeliveryView: UIView {
         return button
         
     }()
+    public lazy var map : MKMapView = {
+        let mapkit = MKMapView()
+//        setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D(latitude: 55.757131, longitude: 37.628379), title: "Новая площадь,14", subTitle: "")
+        mapkit.translatesAutoresizingMaskIntoConstraints = false
+        return mapkit
+        
+    }()
+    private lazy var infoAboutUs : AboutUsData = {
+        let dataView = AboutUsData()
+        dataView.translatesAutoresizingMaskIntoConstraints = false
+        return dataView
+    }()
     
     private func addView(){
         addSubview(scrollView)
@@ -212,6 +225,8 @@ class DeliveryView: UIView {
         contentView.addSubview(commentLabel)
         contentView.addSubview(commentTextArea)
         contentView.addSubview(makeAnOrderButton)
+        contentView.addSubview(map)
+        contentView.addSubview(infoAboutUs)
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
     }
@@ -295,8 +310,19 @@ class DeliveryView: UIView {
         makeAnOrderButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         makeAnOrderButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         makeAnOrderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        makeAnOrderButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+//        makeAnOrderButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
+        map.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 50).isActive = true
+        map.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+        map.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        map.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3).isActive = true
+       
+        
+        infoAboutUs.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 100).isActive = true
+        infoAboutUs.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
+        infoAboutUs.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
+        infoAboutUs.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        infoAboutUs.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
 
 
@@ -343,6 +369,7 @@ class DeliveryView: UIView {
         controlButtonStateAlgo()
         
     }
+    
     func controlButtonStateAlgo(){
         let nameField = (vStackName.subviews[1] as? CustomTextFieldWithInsets)
         let phoneField = (vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
@@ -370,12 +397,14 @@ class DeliveryView: UIView {
                 }
             }
             else{
-                makeAnOrderButton.setTitle("Введите имя и телефон", for: .disabled)
+                makeAnOrderButton.setTitle("Заполните имя и телефон", for: .disabled)
                 makeAnOrderButton.isEnabled = false
             }
             
             
+            
         }
+    
     }
                                                       
                                                       

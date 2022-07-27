@@ -34,7 +34,10 @@ struct SectionList : Codable {
         
     }
     mutating func plusCount(){
-        self.count = self.count + 1
+        if self.count < 10{
+            self.count = self.count + 1
+        }
+        
     }
     mutating func minusFunc(){
         if self.count != 1{
@@ -44,6 +47,9 @@ struct SectionList : Codable {
     }
     mutating func addAmountToCount(count : Int){
         self.count = self.count + count
+    }
+    mutating func setCountZero(){
+        self.count = 0
     }
     var formattedPrice : String?{
         Formatter.separator.string(from: NSNumber(value: Int(currentPrice) ?? 0))

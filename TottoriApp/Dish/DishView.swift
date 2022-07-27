@@ -17,7 +17,7 @@ import UIKit
 
 class DishView: UIView {
     weak var delegate : DishDelegate?
-    var sectionList : SectionList?
+//    var sectionList : SectionList?
     init(subscriber : DishDelegate? = nil){
         super.init(frame: .zero)
         self.delegate = subscriber
@@ -25,8 +25,7 @@ class DishView: UIView {
         setLayout()
         setFirstChose()
     }
-    private var currentChose = 0
-    private var arrayOfNumbers : [UILabel] = []
+    public var arrayOfNumbers : [UILabel] = []
     private lazy var label : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +38,7 @@ class DishView: UIView {
         
     }()
     
-    private lazy var foodImage : UIImageView = {
+    public lazy var foodImage : UIImageView = {
         var image = UIImageView()
         image.image = UIImage(systemName: "gear")
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -315,7 +314,7 @@ class DishView: UIView {
         self.priceView.price.text = sectionList.formattedPrice
         self.weightView.weightLabel.text = sectionList.formattedWeight
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
-        self.sectionList = sectionList
+       
         
        
         
@@ -325,60 +324,12 @@ class DishView: UIView {
         arrayOfNumbers[0].layer.borderColor = UIColor.red.cgColor
     }
     @objc func forwardButtonWasTapped(sender : UIButton){
-        currentChose = currentChose + 1
-        if (currentChose == arrayOfNumbers.count){
-            arrayOfNumbers[arrayOfNumbers.count - 1].layer.borderColor = UIColor.clear.cgColor
-            arrayOfNumbers[0].layer.borderColor = UIColor.red.cgColor
-            currentChose = 0
-        }
-        else{
-            arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
-            arrayOfNumbers[currentChose - 1].layer.borderColor = UIColor.clear.cgColor
-        }
-        setImageForBack()
+        delegate?.forwardButtonAction()
+        
     }
     @objc func backButtonWasTapped(sender : UIButton){
-        currentChose = currentChose - 1
-        
-        if (currentChose == -1){
-            arrayOfNumbers[0].layer.borderColor = UIColor.clear.cgColor
-            arrayOfNumbers[arrayOfNumbers.count - 1].layer.borderColor = UIColor.red.cgColor
-            currentChose = arrayOfNumbers.count - 1
-        }
-        else{
-            arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
-            arrayOfNumbers[currentChose + 1].layer.borderColor = UIColor.clear.cgColor
-        }
-        setImageForBack()
-        
-    }
-    private func setImageForBack(){
-        if let sectionList = sectionList {
-            switch currentChose {
-            case 0 :
-                DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
-                
-            case 1 :
-                if let image = sectionList.foodImage2{
-                    DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
-                }
-                else{
-                    foodImage.image = UIImage(named: "tottori")
-                }
-                
-            case 2 :
-                if let image = sectionList.foodImage3{
-                    DataService.netWork.setImageFromUrl(url: image, imageView: self.foodImage)
-                }
-                else{
-                    foodImage.image = UIImage(named: "tottori")
-                }
-                
-            default:
-                return
-                
-            }
-        }
+
+        delegate?.backButtonAction()
         
     }
     @objc func increase(sender : UIButton){

@@ -40,6 +40,7 @@
 		E43C7FF028896C7E001F6D8C /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FEF28896C7E001F6D8C /* WeightView.swift */; };
 		E43C7FF42889C114001F6D8C /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FF32889C113001F6D8C /* BadgeView.swift */; };
 		E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D7AA12889DAC100FDDD0F /* Formatter.swift */; };
+		E49262BC2891436000970B24 /* AboutUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49262BB2891436000970B24 /* AboutUsData.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -88,6 +89,7 @@
 		E43C7FEF28896C7E001F6D8C /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
 		E43C7FF32889C113001F6D8C /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E48D7AA12889DAC100FDDD0F /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		E49262BB2891436000970B24 /* AboutUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsData.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */,
 				E433C8A7288DA26E0036479C /* PayView.swift */,
 				E433C8A9288EF58B0036479C /* UserInfo.swift */,
+				E49262BB2891436000970B24 /* AboutUsData.swift */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
 				E43C7FF028896C7E001F6D8C /* WeightView.swift in Sources */,
+				E49262BC2891436000970B24 /* AboutUsData.swift in Sources */,
 				E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */,
 				E433C8A8288DA26E0036479C /* PayView.swift in Sources */,
 				E43C7FDD2883112A001F6D8C /* String.swift in Sources */,
