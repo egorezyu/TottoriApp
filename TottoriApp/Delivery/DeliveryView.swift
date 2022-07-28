@@ -137,7 +137,8 @@ class DeliveryView: UIView {
     
         var stack = generateStackWithLabelAndField(name: "ТЕЛЕФОН")
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
-        phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
+        phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
         phoneField?.tag = 2
         phoneField?.keyboardType = .numberPad
         phoneField?.text = userInfo?.phone ?? ""
@@ -215,6 +216,7 @@ class DeliveryView: UIView {
         dataView.translatesAutoresizingMaskIntoConstraints = false
         return dataView
     }()
+    
     
     private func addView(){
         addSubview(scrollView)
@@ -334,6 +336,7 @@ class DeliveryView: UIView {
         
     }
     @objc func switchSelectedTextField(sender : UITextField){
+        
         if let selectedTextField = selectedTextField {
             sender.subviews[0].backgroundColor = .red
             selectedTextField.subviews[0].backgroundColor = .gray
@@ -368,6 +371,22 @@ class DeliveryView: UIView {
         
     }
     @objc func textEditing(sender : UITextField){
+        //check is it phonefield
+        if sender === (vStackPhone.subviews[1] as? CustomTextFieldWithInsets){
+            if let textInput = sender.text{
+                if textInput.count == 1{
+                    sender.text?.append("7")
+                }
+                else if textInput.count > 18{
+                    sender.text?.removeLast()
+                }
+                else{
+                    sender.text = format(with: "+X (XXX) XXX-XX-XX", phone: textInput)
+                }
+                
+            }
+            
+        }
         controlButtonStateAlgo()
         
     }
@@ -382,7 +401,10 @@ class DeliveryView: UIView {
         
         if let name = nameField?.text,let phone = phoneField?.text{
             if (!name.isEmpty && !phone.isEmpty){
-                if (phone == "123"){
+                let removeOccPhone = phone.replacingOccurrences(of:"[^0-9]", with: "",options: .regularExpression)
+                
+                if (phoneIsValid(phone: removeOccPhone)){
+    
                     if selectedPayView != nil {
                         makeAnOrderButton.isEnabled = true
                         userInfo = UserInfo(name: name, phone: phone, mail: email?.text ?? "", street: street?.text ?? "", home: home?.text ?? "", floorAndFlat: flatAndFlor?.text ?? "")
@@ -407,6 +429,50 @@ class DeliveryView: UIView {
             
         }
     
+    }
+    @objc func phoneTapped(sender : UITextField){
+        if sender.text == ""{
+            sender.text = "+7"
+        }
+        
+    }
+    private func phoneIsValid(phone : String) -> Bool{
+        
+        guard phone.count != 1 else {
+            return false
+            
+        }
+        let char = phone[phone.index(phone.startIndex, offsetBy: 1)]
+        if char == "9"{
+            if phone.count == 11{
+                return true
+            }
+            return false
+        }
+        
+        return false
+        
+        
+    }
+    private func format(with mask: String, phone: String) -> String {
+        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex // numbers iterator
+
+        // iterate over the mask characters until the iterator of numbers ends
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                // mask requires a number in this place, so take the next one
+                result.append(numbers[index])
+
+                // move numbers iterator to the next index
+                index = numbers.index(after: index)
+
+            } else {
+                result.append(ch) // just append a mask character
+            }
+        }
+        return result
     }
                                                       
                                                       
