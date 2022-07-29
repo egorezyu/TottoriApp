@@ -316,7 +316,7 @@ class DishView: UIView {
 
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
         self.priceView.price.text = sectionList.formattedPrice
-        self.weightView.weightLabel.text = sectionList.formattedWeight
+        self.weightView.setWeight(weight: sectionList.formattedWeight)
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
        
         

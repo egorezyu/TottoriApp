@@ -55,7 +55,13 @@ struct SectionList : Codable {
         Formatter.separator.string(from: NSNumber(value: Int(currentPrice) ?? 0))
     }
     var formattedWeight : String?{
-        Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0))
+        if currentWeight == "0"{
+            return ""
+        }
+        else{
+            return Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0))
+        }
+        
         
     }
 }

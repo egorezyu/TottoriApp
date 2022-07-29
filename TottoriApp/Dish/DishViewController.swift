@@ -168,7 +168,7 @@ extension DishViewController : DishDelegate{
     private func setAllFieldsForControlCountView(){
         dishView.controlAmountView.countLabel.text = String(sectionList?.count ?? -1)
         dishView.priceView.price.text = sectionList?.formattedPrice
-        dishView.weightView.weightLabel.text = sectionList?.formattedWeight
+        dishView.weightView.setWeight(weight: sectionList?.formattedWeight)
         
     }
     

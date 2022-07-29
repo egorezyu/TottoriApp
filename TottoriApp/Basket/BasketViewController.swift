@@ -24,7 +24,19 @@ class BasketViewController: UIViewController{
         if let index = index{
             var finalSectionList = SectionList(foodID: arrayOfPurchases[index].foodID, foodName: arrayOfPurchases[index].foodName, foodPrice: arrayOfPurchases[index].foodPrice, foodImage0: arrayOfPurchases[index].foodImage0, foodContent: arrayOfPurchases[index].foodContent, foodWeight: arrayOfPurchases[index].foodWeight, foodImage1: arrayOfPurchases[index].foodImage1, foodImage2: arrayOfPurchases[index].foodImage2, foodImage3: arrayOfPurchases[index].foodImage3)
             finalSectionList.count = 0
-            finalSectionList.addAmountToCount(count: arrayOfPurchases[index].count + sectionList.count)
+            if arrayOfPurchases[index].count <= 10{
+                if arrayOfPurchases[index].count + sectionList.count <= 10{
+                    finalSectionList.addAmountToCount(count: arrayOfPurchases[index].count + sectionList.count)
+                }
+                else{
+                    finalSectionList.addAmountToCount(count: 10)
+                }
+                
+                
+            }
+           
+            
+           
             arrayOfPurchases.append(finalSectionList)
             arrayOfPurchases.remove(at: index)
             

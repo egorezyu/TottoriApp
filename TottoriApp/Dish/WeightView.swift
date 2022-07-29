@@ -60,5 +60,16 @@ class WeightView: UIView {
         
         
     }
+    func setWeight(weight : String?){
+        if let weight = weight {
+            if weight != ""{
+                weightLabel.text = weight
+            }
+            else{
+                gramLabel.text = ""
+            }
+        }
+        
+    }
 
 }
