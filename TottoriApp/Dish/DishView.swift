@@ -57,6 +57,7 @@ class DishView: UIView {
             button.addTarget(self, action: #selector(buttonImageAction(sender:)), for: .touchUpInside)
             button.setTitleColor(UIColor.black, for: .normal)
             button.tag = i
+            button.titleLabel?.font = UIFont(name: "FoglihtenNo06", size: 27.95)
             
   
             button.setTitle(String(0) + String(i + 1), for: .normal)

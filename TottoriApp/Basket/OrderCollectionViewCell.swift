@@ -22,6 +22,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         label.font = UIFont(name: "FoglihtenNo06", size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
        
         label.numberOfLines = 2
         return label
@@ -64,7 +65,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var foodImage : UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFit
         return image
     }()
     public lazy var controlAmountView : FoodCountView = {
@@ -127,8 +128,9 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         foodImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        foodImage.heightAnchor.constraint(equalToConstant: contentView.frame.width * 0.3 / 1.5).isActive = true
-        foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.3).isActive = true
+        foodImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive  = true
+        foodImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.4).isActive = true
         
         dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
         dishTitle.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 4).isActive = true
@@ -157,4 +159,5 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         
     }
+    
 }

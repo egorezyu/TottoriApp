@@ -34,7 +34,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         textView.backgroundColor = .clear
         textView.isEditable = false
         textView.isScrollEnabled = false
-        textView.textContainer.maximumNumberOfLines = 4
+        textView.textContainer.maximumNumberOfLines = 5
         textView.font = UIFont(name: "Gilroy-Regular", size: 14)
         
         
@@ -94,9 +94,9 @@ class DishCollectionViewCell: UICollectionViewCell {
     
     private func setConstraints(){
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 21).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: contentView.frame.width * 0.18).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -contentView.frame.width * 0.18).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: contentView.frame.width * 0.410).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: (contentView.frame.width - 20) / 1.5 ).isActive = true
         foodType.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 10).isActive = true
         foodType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true

@@ -46,7 +46,7 @@ final class CatalogView: UIView {
     lazy var secondCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: 350)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: UIScreen.main.bounds.height * 0.53)
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
