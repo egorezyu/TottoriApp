@@ -9,25 +9,21 @@ import UIKit
 import MapKit
 
 class DeliveryView: UIView {
-    public var userDefaultUserInfoId = "userInfo"
-    public var userInfo : UserInfo?
+    
+    
     private weak var delegate : DeliveryDelegate?
-    private var selectedTextField : UITextField?
-    private var selectedPayView : PayView?
+    
+    
     private var navigationBar : UINavigationBar?
 
     init(delegate : DeliveryDelegate? = nil,navigationBar : UINavigationBar?) {
         super.init(frame: .zero)
-        if let data = UserDefaults.standard.data(forKey: userDefaultUserInfoId),
-           let decodedData = try? JSONDecoder().decode(UserInfo.self, from: data){
-            self.userInfo = decodedData
-        }
         self.navigationBar = navigationBar
         self.delegate = delegate
         addView()
         setConstraints()
         addListenersToTypeOfPaymentButton()
-        controlButtonStateAlgo()
+        
         
     }
     private lazy var scrollView : UIScrollView = {
@@ -81,7 +77,7 @@ class DeliveryView: UIView {
         return vStack
         
     }()
-    private lazy var vStackTypeOfPay : UIStackView = {
+    lazy var vStackTypeOfPay : UIStackView = {
         let vStack = UIStackView()
         vStack.axis = .vertical
         vStack.spacing = 25
@@ -116,24 +112,24 @@ class DeliveryView: UIView {
         return payView
         
     }()
-    private lazy var payByCashView : PayView = {
+    public lazy var payByCashView : PayView = {
         let payView = PayView()
         payView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         payView.translatesAutoresizingMaskIntoConstraints = false
         payView.setTypeOfPayment(typeOfPaymentString: "НАЛИЧНЫЕ")
         return payView
     }()
-    private lazy var vStackName : UIStackView = {
+    public lazy var vStackName : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
         var nameField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         nameField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
         nameField?.tag = 1
-        nameField?.text = userInfo?.name ?? ""
+        
         
         return stack
         
     }()
-    private lazy var vStackPhone : UIStackView = {
+    public lazy var vStackPhone : UIStackView = {
     
         var stack = generateStackWithLabelAndField(name: "ТЕЛЕФОН")
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
@@ -141,39 +137,39 @@ class DeliveryView: UIView {
         phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
         phoneField?.tag = 2
         phoneField?.keyboardType = .numberPad
-        phoneField?.text = userInfo?.phone ?? ""
+        
         return stack
     }()
-    private lazy var vStackEmail : UIStackView = {
+    public lazy var vStackEmail : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "ПОЧТА")
         var emailField = (stack.subviews[1] as? CustomTextFieldWithInsets)
-        emailField?.text = userInfo?.mail ?? ""
+        
         return stack
         
 
         
     }()
-    private lazy var vStackStreet : UIStackView = {
+    public lazy var vStackStreet : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "УЛИЦА")
         var street = (stack.subviews[1] as? CustomTextFieldWithInsets)
-        street?.text = userInfo?.street ?? ""
+       
         return stack
 
         
     }()
-    private lazy var vStackHouse : UIStackView = {
+    public lazy var vStackHouse : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "ДОМ")
         var house = (stack.subviews[1] as? CustomTextFieldWithInsets)
-        house?.text = userInfo?.home ?? ""
+      
         return stack
 
         
     }()
-    private lazy var vStackFlatAndFloor : UIStackView = {
+    public lazy var vStackFlatAndFloor : UIStackView = {
         
         var stack = generateStackWithLabelAndField(name: "КВАРТИРА И ЭТАЖ")
         var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
-        flatAndFloor?.text = userInfo?.floorAndFlat ?? ""
+       
         return stack
 
         
@@ -337,32 +333,10 @@ class DeliveryView: UIView {
     }
     @objc func switchSelectedTextField(sender : UITextField){
         
-        if let selectedTextField = selectedTextField {
-            sender.subviews[0].backgroundColor = .red
-            selectedTextField.subviews[0].backgroundColor = .gray
-        }
-        else{
-            sender.subviews[0].backgroundColor = .red
-           
-        }
-        selectedTextField = sender
-        
+        delegate?.switchTextField(sender: sender)
     }
     @objc func buttonAction(sender : UIButton){
-        let arrayOfPayments = vStackTypeOfPay.subviews as? [PayView]
-        if let arrayOfPayments = arrayOfPayments{
-            let chosenPayView = arrayOfPayments.first { payView in
-                payView.rectangleButtonView === sender
-            }
-            if let chosenPayView = chosenPayView {
-                if chosenPayView != selectedPayView{
-                    chosenPayView.drawCircle()
-                    selectedPayView?.clearCircle()
-                }
-                selectedPayView = chosenPayView
-            }
-        }
-        controlButtonStateAlgo()
+        delegate?.switchPayment(sender: sender)
         
         
     }
@@ -372,108 +346,17 @@ class DeliveryView: UIView {
     }
     @objc func textEditing(sender : UITextField){
         //check is it phonefield
-        if sender === (vStackPhone.subviews[1] as? CustomTextFieldWithInsets){
-            if let textInput = sender.text{
-                if textInput.count == 1{
-                    sender.text?.append("7")
-                }
-                else if textInput.count > 18{
-                    sender.text?.removeLast()
-                }
-                else{
-                    sender.text = format(with: "+X (XXX) XXX-XX-XX", phone: textInput)
-                }
-                
-            }
-            
-        }
-        controlButtonStateAlgo()
+        delegate?.textEditing(sender: sender)
         
     }
     
-    func controlButtonStateAlgo(){
-        let nameField = (vStackName.subviews[1] as? CustomTextFieldWithInsets)
-        let phoneField = (vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
-        let email = (vStackEmail.subviews[1] as? CustomTextFieldWithInsets)
-        let street = (vStackStreet.subviews[1] as? CustomTextFieldWithInsets)
-        let home = (vStackHouse.subviews[1] as? CustomTextFieldWithInsets)
-        let flatAndFlor = (vStackFlatAndFloor.subviews[1] as? CustomTextFieldWithInsets)
-        
-        if let name = nameField?.text,let phone = phoneField?.text{
-            if (!name.isEmpty && !phone.isEmpty){
-                let removeOccPhone = phone.replacingOccurrences(of:"[^0-9]", with: "",options: .regularExpression)
-                
-                if (phoneIsValid(phone: removeOccPhone)){
-    
-                    if selectedPayView != nil {
-                        makeAnOrderButton.isEnabled = true
-                        userInfo = UserInfo(name: name, phone: phone, mail: email?.text ?? "", street: street?.text ?? "", home: home?.text ?? "", floorAndFlat: flatAndFlor?.text ?? "")
-                    }
-                    else{
-                        makeAnOrderButton.isEnabled = false
-                        makeAnOrderButton.setTitle("Выберите способ оплаты", for: .disabled)
-                    }
-                    
-                }
-                else{
-                    makeAnOrderButton.isEnabled = false
-                    makeAnOrderButton.setTitle("Введите корректный телефон", for: .disabled)
-                }
-            }
-            else{
-                makeAnOrderButton.setTitle("Заполните имя и телефон", for: .disabled)
-                makeAnOrderButton.isEnabled = false
-            }
-            
-            
-            
-        }
-    
-    }
+
     @objc func phoneTapped(sender : UITextField){
-        if sender.text == ""{
-            sender.text = "+7"
-        }
+        delegate?.phoneTextFieldTapped(sender: sender)
         
     }
-    private func phoneIsValid(phone : String) -> Bool{
-        
-        guard phone.count != 1 else {
-            return false
-            
-        }
-        let char = phone[phone.index(phone.startIndex, offsetBy: 1)]
-        if char == "9"{
-            if phone.count == 11{
-                return true
-            }
-            return false
-        }
-        
-        return false
-        
-        
-    }
-    private func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        var result = ""
-        var index = numbers.startIndex // numbers iterator
 
-        // iterate over the mask characters until the iterator of numbers ends
-        for ch in mask where index < numbers.endIndex {
-            if ch == "X" {
-                // mask requires a number in this place, so take the next one
-                result.append(numbers[index])
-
-                // move numbers iterator to the next index
-                index = numbers.index(after: index)
-
-            } else {
-                result.append(ch) // just append a mask character
-            }
-        }
-        return result
-    }
+    
                                                       
                                                       
     
