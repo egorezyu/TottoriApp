@@ -51,11 +51,25 @@ class CatalogViewController: UIViewController {
         
     }
     private func setBackButtonForNavBar(){
-        let yourBackImage = UIImage(named: "redBack")?.withTintColor(.red,renderingMode: .alwaysOriginal)
-        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
-        self.navigationController?.navigationBar.backItem?.title = "Custom"
+        let image = UIImage(named: "redBack")?.withTintColor(.red,renderingMode: .alwaysOriginal)
+        if let image = image{
+            let resizedImage = UIImage.resizeImage(image: image, targetSize: CGSize(width: 44, height: 20))?.withTintColor(.red,renderingMode: .alwaysOriginal)
+            self.navigationController?.navigationBar.backIndicatorImage = resizedImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = resizedImage
+            
+//            if let font = UIFont(name: "Avenir-Book", size: 30) {
+//                UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: font]
+//            }
+        }
+        
+        
+        
+        
+        
+        
+        
     }
+   
     private func setBackGround(){
         if let image = UIImage(named: "back"){
             view.backgroundColor = UIColor(patternImage: image)
