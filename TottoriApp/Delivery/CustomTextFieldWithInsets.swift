@@ -11,7 +11,7 @@ class CustomTextFieldWithInsets: UITextField {
 
     var textPadding = UIEdgeInsets(
             top: 10,
-            left: 10,
+            left: 5,
             bottom: 20,
             right: 20
         )
