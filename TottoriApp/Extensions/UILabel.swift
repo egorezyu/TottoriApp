@@ -10,6 +10,9 @@ import UIKit
 extension UILabel{
     public func genetrateLabel(text : String ,color : UIColor,font : UIFont?,secondFont : UIFont? = nil){
         let baseString = text
+        guard !baseString.isEmpty else {
+            return
+        }
 
         let attributedString = NSMutableAttributedString(string: baseString, attributes: nil)
         

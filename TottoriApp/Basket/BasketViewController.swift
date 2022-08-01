@@ -31,9 +31,10 @@ class BasketViewController: UIViewController{
                 else{
                     finalSectionList.addAmountToCount(count: 10)
                 }
-                
-                
+
+
             }
+//            arrayOfPurchases[index].addAmountToCount(count: arrayOfPurchases[index].count + sectionList.count)
            
             
            
@@ -170,6 +171,7 @@ extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSo
         cell.deleteFoodButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
         cell.controlAmountView.decreaseAmountButton.addTarget(self, action: #selector(decrease(sender:)), for: .touchUpInside)
         cell.controlAmountView.increaseAmountButton.addTarget(self, action: #selector(increase(sender:)), for: .touchUpInside)
+//        print(indexPath.row)
         cell.setValues(sectionList: arrayOfPurchases[indexPath.row])
      
         return cell

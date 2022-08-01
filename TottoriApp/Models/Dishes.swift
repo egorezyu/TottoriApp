@@ -29,8 +29,14 @@ struct SectionList : Codable {
     var currentPrice : String {
         return String(count * (Int(foodPrice) ?? 0))
     }
-    var currentWeight : String {
-        return String(count * (Int(foodWeight ?? "") ?? 0))
+    var currentWeight : String? {
+        if let foodWeight = foodWeight {
+            return String(count * (Int(foodWeight) ?? 0))
+        }
+        else{
+            return nil
+        }
+        
         
     }
     mutating func plusCount(){
@@ -55,12 +61,13 @@ struct SectionList : Codable {
         (Formatter.separator.string(from: NSNumber(value: Int(currentPrice) ?? 0)) ?? "") + " ₽"
     }
     var formattedWeight : String{
-        if currentWeight == ""{
-            return ""
-        }
-        else{
+        if let currentWeight = currentWeight {
             return (Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0)) ?? "") + " г"
         }
+        else{
+            return "-"
+        }
+
         
         
     }

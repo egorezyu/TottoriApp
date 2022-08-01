@@ -21,6 +21,7 @@ class CatalogViewController: UIViewController {
         view = catalogView
     }
     
+    
 
 
 
@@ -32,7 +33,7 @@ class CatalogViewController: UIViewController {
         
         setBackGround()
         setUpCollectionView()
-        setNavigationBar()
+        setBackButtonForNavBar()
         getData()
        
         
@@ -48,6 +49,12 @@ class CatalogViewController: UIViewController {
         
 
         
+    }
+    private func setBackButtonForNavBar(){
+        let yourBackImage = UIImage(named: "redBack")?.withTintColor(.red,renderingMode: .alwaysOriginal)
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.backItem?.title = "Custom"
     }
     private func setBackGround(){
         if let image = UIImage(named: "back"){
