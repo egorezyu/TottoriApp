@@ -64,7 +64,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var foodImage : UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         return image
     }()
     public lazy var controlAmountView : FoodCountView = {
@@ -132,7 +133,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         foodImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         
         
-        foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.2).isActive = true
+        foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.35).isActive = true
         
         vStack.topAnchor.constraint(equalTo: dishTitle.bottomAnchor,constant: (contentView.frame.height - 20 - 20 * 3) / 4).isActive = true
         vStack.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
@@ -166,5 +167,6 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         
     }
+    
     
 }

@@ -15,9 +15,25 @@ class FoodCountView: UIView {
         setConstraints()
         setBorder()
     }
+    private lazy var plusImage : UIImageView = {
+        var image = UIImageView(image: UIImage(named: "plus"))
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        return image
+        
+    }()
+    private lazy var minusImage : UIImageView = {
+        var image = UIImageView(image: UIImage(named: "minus"))
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+        
+    }()
+
     public lazy var increaseAmountButton : UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "plus"), for: .normal)
+        
+        
         button.translatesAutoresizingMaskIntoConstraints = false
        
         return button
@@ -25,7 +41,7 @@ class FoodCountView: UIView {
     }()
     public lazy var decreaseAmountButton : UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "minus"), for: .normal)
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -61,6 +77,8 @@ class FoodCountView: UIView {
         addSubview(increaseAmountButton)
         addSubview(decreaseAmountButton)
         addSubview(countLabel)
+        decreaseAmountButton.addSubview(minusImage)
+        increaseAmountButton.addSubview(plusImage)
 //        addSubview(hStack)
         
         
@@ -74,14 +92,30 @@ class FoodCountView: UIView {
         countLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
         decreaseAmountButton.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor,constant: -20).isActive = true
-        decreaseAmountButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        decreaseAmountButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        decreaseAmountButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        decreaseAmountButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        decreaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        decreaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        plusImage.centerYAnchor.constraint(equalTo: increaseAmountButton.centerYAnchor).isActive = true
+        plusImage.centerXAnchor.constraint(equalTo: increaseAmountButton.centerXAnchor).isActive = true
+        plusImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        plusImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        
+        minusImage.centerXAnchor.constraint(equalTo: decreaseAmountButton.centerXAnchor).isActive = true
+        minusImage.centerYAnchor.constraint(equalTo: decreaseAmountButton.centerYAnchor).isActive = true
+        minusImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        minusImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        
 
         increaseAmountButton.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor,constant: 20).isActive = true
-        increaseAmountButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        increaseAmountButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        increaseAmountButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        increaseAmountButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        increaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        increaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        
+      
         
         
         

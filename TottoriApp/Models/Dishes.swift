@@ -65,7 +65,7 @@ struct SectionList : Codable {
             return (Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0)) ?? "") + " г"
         }
         else{
-            return "-"
+            return "—"
         }
 
         

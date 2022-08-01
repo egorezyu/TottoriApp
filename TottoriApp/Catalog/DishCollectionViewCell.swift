@@ -21,6 +21,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         var label = UILabel()
         label.numberOfLines = 2;
         label.lineBreakMode = .byWordWrapping
+        label.textColor = UIColor(red: 0.276, green: 0.288, blue: 0.308, alpha: 1)
         
         label.font = UIFont(name: "FoglihtenNo06", size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +30,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     private lazy var descriptionAboutFood : UITextView = {
         var textView = UITextView()
         textView.textAlignment = .left
+        textView.textColor = UIColor(red: 0.276, green: 0.288, blue: 0.308, alpha: 1)
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
@@ -94,9 +96,9 @@ class DishCollectionViewCell: UICollectionViewCell {
     
     private func setConstraints(){
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 21).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: (contentView.frame.width - 20) / 1.5 ).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: (contentView.frame.width - 40) / 1.5 ).isActive = true
         foodType.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 10).isActive = true
         foodType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true

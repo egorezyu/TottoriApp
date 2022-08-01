@@ -247,7 +247,7 @@ class DeliveryView: UIView {
         //constraints for bottom line
         rectangleView.translatesAutoresizingMaskIntoConstraints = false
         rectangleView.widthAnchor.constraint(equalTo: textField.widthAnchor).isActive = true
-        rectangleView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        rectangleView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         rectangleView.bottomAnchor.constraint(equalTo: textField.bottomAnchor).isActive = true
         rectangleView.centerXAnchor.constraint(equalTo: textField.centerXAnchor).isActive = true
         
