@@ -43,20 +43,20 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var price : UILabel = {
         var label = UILabel()
-        label.textColor = .red
+      
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "FoglihtenNo06", size: 22)
+        
         return label
         
     }()
-    private lazy var ruble : UILabel = {
-        var label = UILabel()
-        label.text = "₽"
-        label.font = UIFont(name: "Cormorant-Regular", size: 20)
-        label.textColor = .red
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+//    private lazy var ruble : UILabel = {
+//        var label = UILabel()
+//        label.text = "₽"
+//        label.font = UIFont(name: "Cormorant-Regular", size: 20)
+//        label.textColor = .red
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
     lazy var purchaseButton : UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "purchase"), for: .normal)
@@ -78,7 +78,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(foodType)
         contentView.addSubview(descriptionAboutFood)
         contentView.addSubview(price)
-        contentView.addSubview(ruble)
+//        contentView.addSubview(ruble)
         contentView.addSubview(purchaseButton)
         
     }
@@ -112,8 +112,8 @@ class DishCollectionViewCell: UICollectionViewCell {
         price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
         price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
         
-        ruble.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
-        ruble.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -3).isActive  = true
+//        ruble.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
+//        ruble.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -3).isActive  = true
         
         purchaseButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
         purchaseButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
@@ -124,7 +124,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         if let sectionList = sectionList {
             self.foodType.text = sectionList.foodName
             self.descriptionAboutFood.text = sectionList.foodContent.removingHTMLOccurances
-            self.price.text = sectionList.formattedPrice
+            self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: 22))
             
             DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.imageView)
 

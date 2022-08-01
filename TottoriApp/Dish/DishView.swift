@@ -139,20 +139,22 @@ class DishView: UIView {
         
     }()
    
-    lazy var weightView : WeightView = {
-        var view = WeightView()
+    lazy var weightView : UILabel = {
+        var view = UILabel()
         view.layer.borderWidth = 0.8
         view.layer.borderColor = UIColor.red.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.textAlignment = .center
         return view
         
     }()
     
-    lazy var priceView : PriceView = {
-        var view = PriceView()
+    lazy var priceView : UILabel = {
+        var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.8
         view.layer.borderColor = UIColor.red.cgColor
+        view.textAlignment = .center
       
         
         return view
@@ -315,8 +317,8 @@ class DishView: UIView {
         
 
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
-        self.priceView.setPrice(text: sectionList.formattedPrice)
-        self.weightView.setWeight(weight: sectionList.formattedWeight)
+        self.priceView.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: 36))
+        self.weightView.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "FoglihtenNo06", size: 36))
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
        
         

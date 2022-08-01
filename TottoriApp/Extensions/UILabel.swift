@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 extension UILabel{
-    public func genetrateLabel(text : String ,color : UIColor,font : UIFont?){
+    public func genetrateLabel(text : String ,color : UIColor,font : UIFont?,secondFont : UIFont? = nil){
         let baseString = text
 
         let attributedString = NSMutableAttributedString(string: baseString, attributes: nil)
@@ -16,12 +16,17 @@ extension UILabel{
 
         
         attributedString.setAttributes([NSAttributedString.Key.font: font], range: NSRange(location: 0, length: attributedString.length - 1))
+        
+        if let secondFont = secondFont{
+            attributedString.setAttributes([NSAttributedString.Key.font: secondFont], range: NSRange(location: attributedString.length - 1, length: 1))
+            
+        }
     
 
         
        
         self.attributedText = attributedString
-        self.textColor = .red
+        self.textColor = color
         
         
     }
