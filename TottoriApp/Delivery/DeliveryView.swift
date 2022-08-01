@@ -204,6 +204,8 @@ class DeliveryView: UIView {
         let mapkit = MKMapView()
 //        setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D(latitude: 55.757131, longitude: 37.628379), title: "Новая площадь,14", subTitle: "")
         mapkit.translatesAutoresizingMaskIntoConstraints = false
+        mapkit.layer.borderColor = UIColor.gray.cgColor
+        mapkit.layer.borderWidth = 1.22
         return mapkit
         
     }()
@@ -302,7 +304,7 @@ class DeliveryView: UIView {
         commentTextArea.topAnchor.constraint(equalTo: commentLabel.bottomAnchor,constant: 18).isActive = true
         commentTextArea.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         commentTextArea.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-        commentTextArea.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.2).isActive = true
+        commentTextArea.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3).isActive = true
 //        commentTextArea.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         makeAnOrderButton.topAnchor.constraint(equalTo: commentTextArea.bottomAnchor,constant: 20).isActive = true
         makeAnOrderButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true

@@ -16,15 +16,17 @@ class FoodCountView: UIView {
         setBorder()
     }
     private lazy var plusImage : UIImageView = {
-        var image = UIImageView(image: UIImage(named: "plus"))
+        var image = UIImageView(image: UIImage(named: "plus")?.withTintColor(UIColor.myLightGrey,renderingMode: .alwaysOriginal))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
+        
         return image
         
     }()
     private lazy var minusImage : UIImageView = {
-        var image = UIImageView(image: UIImage(named: "minus"))
+        var image = UIImageView(image: UIImage(named: "minus")?.withTintColor(UIColor.myLightGrey,renderingMode: .alwaysOriginal))
         image.contentMode = .scaleAspectFit
+        
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
         
@@ -51,6 +53,7 @@ class FoodCountView: UIView {
         let label = UILabel()
         label.text = "1"
         label.textAlignment = .center
+        label.textColor = UIColor.myLightGrey
         label.font = UIFont(name: "Gilroy", size: 36)
         label.translatesAutoresizingMaskIntoConstraints = false
         

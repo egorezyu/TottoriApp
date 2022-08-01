@@ -31,6 +31,7 @@ class DishView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
+        label.textColor = UIColor.myLightGrey
         
         label.font = UIFont(name: "FoglihtenNo06", size: 30)
  
@@ -42,7 +43,8 @@ class DishView: UIView {
         var image = UIImageView()
         image.image = UIImage(systemName: "gear")
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
       
         return image
     }()
@@ -55,9 +57,10 @@ class DishView: UIView {
         for i in 0...2{
             var button = UIButton()
             button.addTarget(self, action: #selector(buttonImageAction(sender:)), for: .touchUpInside)
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.setTitleColor(UIColor.myLightGrey, for: .normal)
             button.tag = i
             button.titleLabel?.font = UIFont(name: "FoglihtenNo06", size: 27.95)
+            
             
   
             button.setTitle(String(0) + String(i + 1), for: .normal)
@@ -95,6 +98,7 @@ class DishView: UIView {
         label.text = "Описание"
         label.font = UIFont(name: "Gilroy", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.myLightGrey
 
         return label
         
@@ -107,6 +111,7 @@ class DishView: UIView {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .right
         textView.backgroundColor = .clear
+        textView.textColor = UIColor.myLightGrey
        
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return textView
@@ -144,6 +149,7 @@ class DishView: UIView {
         view.layer.borderWidth = 0.8
         view.layer.borderColor = UIColor.red.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.textColor = UIColor.myLightGrey
         view.textAlignment = .center
         return view
         
@@ -227,7 +233,7 @@ class DishView: UIView {
         foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 5).isActive = true
         foodImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
         foodImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
-        foodImage.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 40) / 1.5).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)).isActive = true
         
 //
         hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
@@ -245,14 +251,14 @@ class DishView: UIView {
         backButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
 //
-        descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 40).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
 //        descriptionLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor).isActive = true
 //
-        descriptionText.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10).isActive = true
+        descriptionText.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 40).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
 //        descriptionText.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.3).isActive = true
-        descriptionText.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
+        descriptionText.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.6).isActive = true
 //        descriptionText.bottomAnchor.constraint(equalTo: mainView.bottomAnchor).isActive = true
 //
         for view in arrayOfNumbers{
@@ -286,13 +292,13 @@ class DishView: UIView {
 
 //
 //
-       controlAmountView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 10).isActive = true
+       controlAmountView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 50).isActive = true
         controlAmountView.trailingAnchor.constraint(equalTo : mainView.trailingAnchor,constant: -20).isActive = true
        controlAmountView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
        controlAmountView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
 //        controlAmountView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor,constant: -40).isActive = true
 //
-        weightView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 10).isActive = true
+        weightView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 50).isActive = true
         weightView.trailingAnchor.constraint(equalTo : controlAmountView.leadingAnchor).isActive = true
 
         weightView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
