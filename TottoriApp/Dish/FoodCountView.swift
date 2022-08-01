@@ -91,7 +91,7 @@ class FoodCountView: UIView {
         countLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         countLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
-        decreaseAmountButton.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor,constant: -20).isActive = true
+        decreaseAmountButton.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor,constant: -15).isActive = true
         decreaseAmountButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         decreaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         decreaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -109,7 +109,7 @@ class FoodCountView: UIView {
         
         
 
-        increaseAmountButton.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor,constant: 20).isActive = true
+        increaseAmountButton.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor,constant: 15).isActive = true
         increaseAmountButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         increaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         increaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
