@@ -89,7 +89,7 @@ class FoodCountView: UIView {
     }
     private func setBorder(){
         layer.borderColor = UIColor.red.cgColor
-        layer.borderWidth = 1.22
+        layer.borderWidth = 0.8
     }
     
 

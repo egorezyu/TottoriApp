@@ -141,7 +141,7 @@ class DishView: UIView {
    
     lazy var weightView : WeightView = {
         var view = WeightView()
-        view.layer.borderWidth = 1.22
+        view.layer.borderWidth = 0.8
         view.layer.borderColor = UIColor.red.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -151,7 +151,7 @@ class DishView: UIView {
     lazy var priceView : PriceView = {
         var view = PriceView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 1.22
+        view.layer.borderWidth = 0.8
         view.layer.borderColor = UIColor.red.cgColor
       
         
