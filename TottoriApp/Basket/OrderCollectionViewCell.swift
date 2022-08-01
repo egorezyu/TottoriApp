@@ -32,7 +32,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var price : PriceView = {
         let view = PriceView()
         view.price.font = UIFont(name: "FoglihtenNo06", size: 26)
-        view.rubleLabel.font = UIFont.systemFont(ofSize: 13)
+//        view.rubleLabel.font = UIFont.systemFont(ofSize: 13)
        
         view.translatesAutoresizingMaskIntoConstraints = false
 

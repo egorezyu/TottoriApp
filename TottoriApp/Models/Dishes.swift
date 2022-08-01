@@ -51,15 +51,15 @@ struct SectionList : Codable {
     mutating func setCountZero(){
         self.count = 0
     }
-    var formattedPrice : String?{
-        Formatter.separator.string(from: NSNumber(value: Int(currentPrice) ?? 0))
+    var formattedPrice : String{
+        (Formatter.separator.string(from: NSNumber(value: Int(currentPrice) ?? 0)) ?? "") + "₽"
     }
-    var formattedWeight : String?{
-        if currentWeight == "0"{
+    var formattedWeight : String{
+        if currentWeight == ""{
             return ""
         }
         else{
-            return Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0))
+            return (Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0)) ?? "") + "г"
         }
         
         

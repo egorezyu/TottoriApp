@@ -20,24 +20,19 @@ class PriceView: UIView {
     }
     public lazy var price : UILabel = {
         var label = UILabel()
-        label.font = UIFont(name: "Gilroy", size: 36)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.textColor = .red
-        return label
-    }()
-    lazy var rubleLabel : UILabel = {
-        var label = UILabel()
-        label.font = UIFont(name: "Cormorant", size: 20)
-        label.text = "₽"
-        label.textColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+        
+        
+
+        
+        
     }()
+
     
     private func addView(){
         addSubview(price)
-        addSubview(rubleLabel)
+//        addSubview(rubleLabel)
         
         
         
@@ -45,15 +40,20 @@ class PriceView: UIView {
     private func setConstraints(){
         price.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         price.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        price.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        price.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         
-        rubleLabel.leadingAnchor.constraint(equalTo: price.trailingAnchor,constant: 5).isActive = true
-        rubleLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -9).isActive = true
+//        rubleLabel.leadingAnchor.constraint(equalTo: price.trailingAnchor,constant: 5).isActive = true
+//        rubleLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -9).isActive = true
 
         
         
         
         
         
+    }
+    public func setPrice(text : String){
+        price.genetrateLabel(text: text, color: .red, font: UIFont(name: "FoglihtenNo06", size: 36))
     }
 
    
