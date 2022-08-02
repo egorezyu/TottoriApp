@@ -58,7 +58,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         
         
-//        stack.addArrangedSubview(dishTitle)
+        stack.addArrangedSubview(dishTitle)
         stack.addArrangedSubview(price)
         stack.addArrangedSubview(weight)
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -123,7 +123,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(controlAmountView)
         contentView.addSubview(deleteFoodButton)
-        contentView.addSubview(dishTitle)
+//        contentView.addSubview(dishTitle)
 //        contentView.addSubview(price)
 //        contentView.addSubview(weight)
         contentView.addSubview(vStack)
@@ -139,15 +139,15 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.35).isActive = true
         
-        vStack.topAnchor.constraint(equalTo: dishTitle.bottomAnchor,constant: contentView.frame.height * 0.18).isActive = true
+        vStack.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
         vStack.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
         
         vStack.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
         vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
-        dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
-        dishTitle.topAnchor.constraint(equalTo: contentView.topAnchor,constant: (contentView.frame.height - 20 - 3 * 20) / 4).isActive = true
-        dishTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+//        dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
+//        dishTitle.topAnchor.constraint(equalTo: contentView.topAnchor,constant: (contentView.frame.height - 20 - 3 * 20) / 4).isActive = true
+//        dishTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
        
 //
 //        price.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
