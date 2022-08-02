@@ -9,6 +9,7 @@ import UIKit
 
 class BasketViewController: UIViewController{
     private var currentBusketCount = 0
+    private var maxCount = 10
     private lazy var myTabBarController = (tabBarController as! TabBarViewController)
     private lazy var backetView = BasketView(delegate: self)
     public var arrayOfPurchases : [SectionList] = []
@@ -24,12 +25,12 @@ class BasketViewController: UIViewController{
         if let index = index{
             var finalSectionList = SectionList(foodID: arrayOfPurchases[index].foodID, foodName: arrayOfPurchases[index].foodName, foodPrice: arrayOfPurchases[index].foodPrice, foodImage0: arrayOfPurchases[index].foodImage0, foodContent: arrayOfPurchases[index].foodContent, foodWeight: arrayOfPurchases[index].foodWeight, foodImage1: arrayOfPurchases[index].foodImage1, foodImage2: arrayOfPurchases[index].foodImage2, foodImage3: arrayOfPurchases[index].foodImage3)
             finalSectionList.count = 0
-            if arrayOfPurchases[index].count <= 10{
-                if arrayOfPurchases[index].count + sectionList.count <= 10{
+            if arrayOfPurchases[index].count <= maxCount{
+                if arrayOfPurchases[index].count + sectionList.count <= maxCount{
                     finalSectionList.addAmountToCount(count: arrayOfPurchases[index].count + sectionList.count)
                 }
                 else{
-                    finalSectionList.addAmountToCount(count: 10)
+                    finalSectionList.addAmountToCount(count: maxCount)
                 }
 
 
@@ -61,6 +62,7 @@ class BasketViewController: UIViewController{
         super.viewDidLoad()
         setBackGround()
         setDataSourceAndDelegate()
+        setBackButtonForNavBar()
        
         
    
@@ -68,6 +70,23 @@ class BasketViewController: UIViewController{
         
 
         // Do any additional setup after loading the view.
+    }
+    private func setBackButtonForNavBar(){
+        let image = UIImage(named: "redBack")?.withTintColor(.red,renderingMode: .alwaysOriginal)
+        if let image = image{
+            let resizedImage = UIImage.resizeImage(image: image, targetSize: CGSize(width: 44, height: 20))?.withTintColor(.red,renderingMode: .alwaysOriginal)
+            self.navigationController?.navigationBar.backIndicatorImage = resizedImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = resizedImage
+            
+//            if let font = UIFont(name: "Avenir-Book", size: 30) {
+//                UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: font]
+//            }
+            let backButton = UIBarButtonItem()
+            backButton.title = "Назад"
+            backButton.tintColor = .myLightGrey
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        }
+        
     }
     private func setBackGround(){
         if let image = UIImage(named: "back"){

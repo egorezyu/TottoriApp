@@ -60,6 +60,11 @@ class CatalogViewController: UIViewController {
 //            if let font = UIFont(name: "Avenir-Book", size: 30) {
 //                UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: font]
 //            }
+            let backButton = UIBarButtonItem()
+            backButton.title = "Назад"
+            
+            backButton.tintColor = .myLightGrey
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         }
         
         
