@@ -33,7 +33,7 @@ class DishView: UIView {
         label.numberOfLines = 0
         label.textColor = UIColor.myLightGrey
         
-        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
  
         return label
         
@@ -96,7 +96,7 @@ class DishView: UIView {
     private lazy var descriptionLabel : UILabel = {
         var label = UILabel()
         label.text = "Описание"
-        label.font = UIFont(name: "Gilroy", size: 14)
+        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myLightGrey
 
@@ -105,7 +105,7 @@ class DishView: UIView {
     }()
     private lazy var descriptionText : UITextView = {
         var textView = UITextView()
-        textView.font = UIFont(name: "Gilroy", size: 14)
+        textView.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8)
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -323,8 +323,8 @@ class DishView: UIView {
         
 
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
-        self.priceView.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: 36))
-        self.weightView.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "FoglihtenNo06", size: 36))
+        self.priceView.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 10.833)))
+        self.weightView.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 10.833)))
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
        
         

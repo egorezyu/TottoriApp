@@ -19,9 +19,10 @@ class OrderCollectionViewCell: UICollectionViewCell {
     }
     private lazy var dishTitle : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "FoglihtenNo06", size: 17)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 22.9411764706)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
+        label.textColor = UIColor.myLightGrey
         
        
         label.numberOfLines = 2
@@ -42,6 +43,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var weight : UILabel = {
         let view = UILabel()
+        view.textColor = UIColor.myLightGrey
         
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +52,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var vStack : UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = (contentView.frame.height - 20 - 20 * 3) / 4
+//        stack.spacing = (contentView.frame.height) / 4
+        
         stack.distribution = .equalSpacing
         
         
@@ -70,7 +73,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     }()
     public lazy var controlAmountView : FoodCountView = {
         let controlView = FoodCountView()
-        controlView.countLabel.font = UIFont(name: "Gilroy", size: 17)
+        controlView.countLabel.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 22.8)
         
         controlView.translatesAutoresizingMaskIntoConstraints = false
         controlView.layer.borderColor = UIColor.clear.cgColor
@@ -80,9 +83,10 @@ class OrderCollectionViewCell: UICollectionViewCell {
     public lazy var deleteFoodButton : UIButton = {
         let button = UIButton()
         button.setTitle("Удалить", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(UIColor.myLightGrey, for: .normal)
         
         return button
     }()
@@ -94,8 +98,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
     func setValues(sectionList : SectionList){
         self.sectionList = sectionList
         self.dishTitle.text = sectionList.foodName
-        self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: 22),secondFont: UIFont(name: "Cormorant", size: 20))
-        self.weight.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "Gilroy", size: 14),secondFont: UIFont(name: "Gilroy", size: 14))
+        self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273),secondFont: UIFont(name: "Cormorant", size: UIScreen.main.bounds.width / 19.5))
+        self.weight.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.7272727273),secondFont: UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.7272727273))
         self.controlAmountView.countLabel.text = String(sectionList.count)
         DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         controlAmountView.increaseAmountButton.tag = Int(sectionList.foodID) ?? -1
@@ -135,10 +139,11 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         foodImage.widthAnchor.constraint(equalToConstant: contentView.frame.width * 0.35).isActive = true
         
-        vStack.topAnchor.constraint(equalTo: dishTitle.bottomAnchor,constant: (contentView.frame.height - 20 - 20 * 3) / 4).isActive = true
+        vStack.topAnchor.constraint(equalTo: dishTitle.bottomAnchor,constant: contentView.frame.height * 0.18).isActive = true
         vStack.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
         
         vStack.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
+        vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
         dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
         dishTitle.topAnchor.constraint(equalTo: contentView.topAnchor,constant: (contentView.frame.height - 20 - 3 * 20) / 4).isActive = true

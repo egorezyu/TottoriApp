@@ -23,7 +23,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textColor = UIColor(red: 0.276, green: 0.288, blue: 0.308, alpha: 1)
         
-        label.font = UIFont(name: "FoglihtenNo06", size: 17)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 22.9)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,7 +37,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.textContainer.maximumNumberOfLines = 5
-        textView.font = UIFont(name: "Gilroy-Regular", size: 14)
+        textView.font = UIFont(name: "Gilroy-Regular", size: UIScreen.main.bounds.width / 27.8)
         
         
         return textView

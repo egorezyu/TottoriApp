@@ -54,7 +54,7 @@ class FoodCountView: UIView {
         label.text = "1"
         label.textAlignment = .center
         label.textColor = UIColor.myLightGrey
-        label.font = UIFont(name: "Gilroy", size: 36)
+        label.font = UIFont(name: "Gilroy", size: CGFloat(UIScreen.main.bounds.width / 10.833))
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -94,15 +94,16 @@ class FoodCountView: UIView {
         countLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         countLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
-        decreaseAmountButton.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor,constant: -15).isActive = true
+        decreaseAmountButton.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor,constant: -5).isActive = true
         decreaseAmountButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         decreaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         decreaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
+        
         plusImage.centerYAnchor.constraint(equalTo: increaseAmountButton.centerYAnchor).isActive = true
         plusImage.centerXAnchor.constraint(equalTo: increaseAmountButton.centerXAnchor).isActive = true
         plusImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        plusImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        
         
         
         minusImage.centerXAnchor.constraint(equalTo: decreaseAmountButton.centerXAnchor).isActive = true
@@ -112,10 +113,11 @@ class FoodCountView: UIView {
         
         
 
-        increaseAmountButton.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor,constant: 15).isActive = true
+        increaseAmountButton.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor,constant: 5).isActive = true
         increaseAmountButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         increaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
         increaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
         
         
       

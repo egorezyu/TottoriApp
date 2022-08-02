@@ -167,8 +167,8 @@ extension DishViewController : DishDelegate{
     }
     private func setAllFieldsForControlCountView(){
         dishView.controlAmountView.countLabel.text = String(sectionList?.count ?? -1)
-        dishView.priceView.genetrateLabel(text: sectionList?.formattedPrice ?? "", color: .red, font: UIFont(name: "FoglihtenNo06", size: 36))
-        dishView.weightView.genetrateLabel(text: sectionList?.formattedWeight ?? "", color: .black, font: UIFont(name: "FoglihtenNo06", size: 36))
+        dishView.priceView.genetrateLabel(text: sectionList?.formattedPrice ?? "", color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 10.833)))
+        dishView.weightView.genetrateLabel(text: sectionList?.formattedWeight ?? "", color: .black, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 10.833)))
         
     }
     
