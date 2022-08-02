@@ -147,6 +147,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
         dishTitle.topAnchor.constraint(equalTo: contentView.topAnchor,constant: (contentView.frame.height - 20 - 3 * 20) / 4).isActive = true
+        dishTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
        
 //
 //        price.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
