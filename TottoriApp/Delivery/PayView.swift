@@ -36,7 +36,7 @@ class PayView: UIView {
     }()
     private lazy var typeOfPayment : UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Gilroy", size: 14)
+        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -53,8 +53,8 @@ class PayView: UIView {
         rectangleButtonView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         rectangleButtonView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
       
-        rectangleButtonView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        rectangleButtonView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        rectangleButtonView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
+        rectangleButtonView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         
         typeOfPayment.leadingAnchor.constraint(equalTo: rectangleButtonView.trailingAnchor,constant: 10).isActive = true
         typeOfPayment.centerYAnchor.constraint(equalTo: rectangleButtonView.centerYAnchor).isActive = true

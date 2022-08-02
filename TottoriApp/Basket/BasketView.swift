@@ -18,7 +18,7 @@ class BasketView: UIView {
     private lazy var basketLabel : UILabel = {
         let label = UILabel()
         label.text = "Корзина"
-        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
         
@@ -26,7 +26,7 @@ class BasketView: UIView {
     private lazy var aboutDeliveryTimeLabel : UILabel = {
         let label = UILabel()
         label.text = "Доставим за час"
-        label.font = UIFont(name: "Gilroy-Medium", size: 14)
+        label.font = UIFont(name: "Gilroy-Medium", size: UIScreen.main.bounds.width / 27.8571428571)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .red
         return label

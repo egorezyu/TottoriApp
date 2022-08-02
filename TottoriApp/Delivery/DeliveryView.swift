@@ -47,7 +47,7 @@ class DeliveryView: UIView {
     lazy var aboutDeliveryTimeLabel : UILabel = {
         let label = UILabel()
         label.text = "Доставим за час"
-        label.font = UIFont(name: "Gilroy-Medium", size: 14)
+        label.font = UIFont(name: "Gilroy-Medium", size: UIScreen.main.bounds.width / 27.8571428571)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .red
         return label
@@ -56,7 +56,7 @@ class DeliveryView: UIView {
     private lazy var makeAnOrderLabel : UILabel = {
         var label = UILabel()
         label.text = "ОФОРМИТЬ ЗАКАЗ"
-        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -106,7 +106,7 @@ class DeliveryView: UIView {
     private lazy var PayByCardView : PayView = {
         let payView = PayView()
         payView.translatesAutoresizingMaskIntoConstraints = false
-        payView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        payView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         
         payView.setTypeOfPayment(typeOfPaymentString: "КАРТОЙ КУРЬЕРУ")
         return payView
@@ -114,7 +114,7 @@ class DeliveryView: UIView {
     }()
     public lazy var payByCashView : PayView = {
         let payView = PayView()
-        payView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        payView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         payView.translatesAutoresizingMaskIntoConstraints = false
         payView.setTypeOfPayment(typeOfPaymentString: "НАЛИЧНЫЕ")
         return payView
@@ -234,7 +234,8 @@ class DeliveryView: UIView {
         let label = UILabel()
         label.text = name
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Gilroy", size: 14)
+        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
+        label.textColor = UIColor.myLightGrey
         return label
         
     }
@@ -270,7 +271,7 @@ class DeliveryView: UIView {
     private func setConstraints(){
         if let navigationBar = navigationBar{
             aboutDeliveryTimeLabel.topAnchor.constraint(equalTo: navigationBar.topAnchor,constant: 10).isActive = true
-            aboutDeliveryTimeLabel.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor,constant: -10).isActive = true
+            aboutDeliveryTimeLabel.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor,constant: -20).isActive = true
         }
         scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
