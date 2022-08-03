@@ -182,23 +182,15 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         if collectionView == catalogView.collectionView{
             return catalog?.menuList.count ?? 0
         }
-        return catalog?.menuList[section + 1].sectionList?.count ?? 0
+        else if collectionView == catalogView.secondCollectionView{
+            return catalog?.menuList[section + 1].sectionList?.count ?? 0
+        }
+        return 5
+        
         
         
         
     }
-//    func collectionView(collectionView: UITableView, titleForHeaderInSection section: Int) -> String?
-//    {
-//        switch section
-//        {
-//            case 0:
-//                return "Apple Devices"
-//            case 1:
-//                return "Samsung Devices"
-//            default:
-//                return "Other Devices"
-//        }
-//    }
     
     
 
@@ -206,8 +198,14 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         if collectionView == catalogView.collectionView{
             return 1
         }
+        else if collectionView == catalogView.secondCollectionView{
+            return (catalog?.menuList.count ?? 1) - 1
+        }
+        else{
+            return 1
+        }
         
-        return (catalog?.menuList.count ?? 1) - 1
+        
     }
    
     
@@ -223,12 +221,24 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             }
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
-        cell.setCellFields(sectionList: catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row])
-        cell.purchaseButton.tag = indexPath.row
-//        print(indexPath.row)
-        cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
-        return cell
+        else if collectionView == catalogView.secondCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
+            cell.setCellFields(sectionList: catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row])
+            cell.purchaseButton.tag = indexPath.row
+    //        print(indexPath.row)
+            cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
+            return cell
+        }
+        else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomFavouriteCell.id, for: indexPath) as! CustomFavouriteCell
+            cell.configureCell(sectionList: catalog?.menuList[1].sectionList?[indexPath.row])
+            print(indexPath.row)
+            
+            
+            
+            
+            return cell
+        }
      
         
         
@@ -280,6 +290,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 if indexPath.section == 0{
                    
                     let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier, for: indexPath) as! MySecondHeaderClass
+                    headerCell.favCollectionView.dataSource = self
+                    headerCell.favCollectionView.delegate = self
+                   
                     headerCell.textLabel.text = catalog?.menuList[1].sectionName
                     
                     
@@ -322,7 +335,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         if collectionView == catalogView.secondCollectionView{
             if section == 0{
-                return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.5)
             }
             
             return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
