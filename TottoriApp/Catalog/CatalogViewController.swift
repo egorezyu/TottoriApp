@@ -272,50 +272,64 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
+        if collectionView == catalogView.secondCollectionView{
+            switch kind {
 
-        switch kind {
-
-        case UICollectionView.elementKindSectionHeader:
-            if indexPath.section == 0{
+            case UICollectionView.elementKindSectionHeader:
+                
+                if indexPath.section == 0{
+                   
+                    let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier, for: indexPath) as! MySecondHeaderClass
+                    headerCell.textLabel.text = catalog?.menuList[1].sectionName
+                    
+                    
+                   
+                    
+                    return headerCell
+                }
+                let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyHeaderClass.headerReuseIdentifier, for: indexPath) as! MyHeaderClass
+                
                
-                let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier, for: indexPath) as! MySecondHeaderClass
-                
-                
-               
-                
+                headerCell.textLabel.text = catalog?.menuList[indexPath.section + 1].sectionName
                 return headerCell
-            }
-            let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyHeaderClass.headerReuseIdentifier, for: indexPath) as! MyHeaderClass
-            
-           
-            headerCell.textLabel.text = catalog?.menuList[indexPath.section + 1].sectionName
-            return headerCell
-            
-            
-            
+                
+                
+                
+
+                
+                
+                
+               
+                            
+               
 
             
-            
-            
-           
-                        
-           
+            default:
+                assert(false, "Unexpected element kind")
+            }
+        }
+        else{
+            return UICollectionReusableView()
+        }
+        
 
         
-        default:
-            assert(false, "Unexpected element kind")
-        }
     }
     
     // Width doesn't matter because scroll is vertical. Only height used.
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0{
-            return CGSize(width: 0, height: UIScreen.main.bounds.height / 1.5)
+        if collectionView == catalogView.secondCollectionView{
+            if section == 0{
+                return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            }
+            
+            return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
         }
-        
-        return CGSize(width: 0, height: UIScreen.main.bounds.height / 7)
+        else{
+            return CGSize(width: 0, height: 0)
+        }
         
     }
   

@@ -22,7 +22,7 @@ class MyHeaderClass: UICollectionReusableView {
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: topAnchor,constant: UIScreen.main.bounds.height / 10),
            
-            label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 5),
             
         ])
         textLabel = label
@@ -49,16 +49,34 @@ class MySecondHeaderClass: UICollectionReusableView {
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor,constant: UIScreen.main.bounds.height / 10),
-           
-            label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-            
+            label.topAnchor.constraint(equalTo: topAnchor,constant: UIScreen.main.bounds.height - 50),
+
+            label.leadingAnchor.constraint(equalTo: leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor),
+            label.bottomAnchor.constraint(equalTo: bottomAnchor),
+
         ])
         textLabel = label
-        backgroundColor = .red
+        
+//        backgroundColor = .red
+
         textLabel.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
+        setBackGround()
+        setBackGroundForLabel()
         
         
+        
+    }
+    private func setBackGround(){
+        if let image = UIImage(named: "forest"){
+            backgroundColor = UIColor(patternImage: image)
+        }
+        
+    }
+    private func setBackGroundForLabel(){
+        if let image = UIImage(named: "back"){
+            textLabel.backgroundColor = UIColor(patternImage: image)
+        }
         
     }
     

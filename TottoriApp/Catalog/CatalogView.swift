@@ -14,6 +14,7 @@ final class CatalogView: UIView {
         self.delegate = subscriber
         addSubview()
         setLayout()
+        setBackGroundForSecondCollectionView()
     }
     
     required init?(coder: NSCoder) {
@@ -69,6 +70,11 @@ final class CatalogView: UIView {
         addSubview(collectionView)
         addSubview(secondCollectionView)
     }
+    private func setBackGroundForSecondCollectionView(){
+        if let image = UIImage(named: "back"){
+            secondCollectionView.backgroundColor = UIColor(patternImage: image)
+        }
+    }
     private func setLayout(){
         
         collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
@@ -81,9 +87,9 @@ final class CatalogView: UIView {
         
         secondCollectionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor,constant: 10).isActive = true
        
-        secondCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        secondCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
        
-        secondCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        secondCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         secondCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -20).isActive = true
        
