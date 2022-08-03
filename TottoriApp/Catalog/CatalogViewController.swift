@@ -6,12 +6,44 @@
 //
 
 import UIKit
+class MyHeaderClass: UICollectionReusableView {
+    
+    
+    weak var textLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(label)
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: topAnchor,constant: UIScreen.main.bounds.height / 12),
+           
+            label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            
+        ])
+        textLabel = label
+        textLabel.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
+        
+        
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
 
 class CatalogViewController: UIViewController {
     
     private var selectedIndex = 0
     private lazy var catalogView = CatalogView(subscriber: self)
     private lazy var viewModel = MenuListViewModel()
+    let headerReuseIdentifier = "headerReuseIdentifier"
+    
 
 
 
@@ -104,6 +136,9 @@ class CatalogViewController: UIViewController {
         catalogView.collectionView.delegate = self
         catalogView.secondCollectionView.dataSource = self
         catalogView.secondCollectionView.delegate = self
+        catalogView.secondCollectionView.register(MyHeaderClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
+
+        
     }
     private func getData(){
 //        DataService.netWork.getData(url: "http://tottori.fixmaski.ru/api/getSubMenuDelivery.php", method: "GET", comletion: { result in
@@ -139,7 +174,20 @@ class CatalogViewController: UIViewController {
     }
 
     @objc func doSequeToNextScreen(button : UIButton){
-        let sectionList = catalog?.menuList[selectedIndex].sectionList?[button.tag]
+//        print(selectedIndex - 1)
+//        print(button.tag)
+        var sectionList : SectionList?
+        if selectedIndex == 0{
+            sectionList = catalog?.menuList[selectedIndex + 1].sectionList?[button.tag]
+        }
+//        else if selectedIndex == 1{
+//            sectionList = catalog?.menuList[selectedIndex].sectionList?[button.tag]
+//        }
+        else{
+            print(button.tag)
+            sectionList = catalog?.menuList[selectedIndex].sectionList?[button.tag]
+        }
+        
         let dVC = DishViewController()
         dVC.sectionList = sectionList
 
@@ -154,16 +202,39 @@ class CatalogViewController: UIViewController {
 extension CatalogViewController : CatalogViewDelegate{
     
 }
-extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDelegate{
+extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == catalogView.collectionView{
             return catalog?.menuList.count ?? 0
         }
-        return catalog?.menuList[selectedIndex].sectionList?.count ?? 0
+        return catalog?.menuList[section + 1].sectionList?.count ?? 0
         
         
         
     }
+//    func collectionView(collectionView: UITableView, titleForHeaderInSection section: Int) -> String?
+//    {
+//        switch section
+//        {
+//            case 0:
+//                return "Apple Devices"
+//            case 1:
+//                return "Samsung Devices"
+//            default:
+//                return "Other Devices"
+//        }
+//    }
+    
+    
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if collectionView == catalogView.collectionView{
+            return 1
+        }
+        
+        return (catalog?.menuList.count ?? 1) - 1
+    }
+   
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == catalogView.collectionView{
@@ -178,21 +249,35 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
-        cell.setCellFields(sectionList: catalog?.menuList[selectedIndex].sectionList?[indexPath.row])
+        cell.setCellFields(sectionList: catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row])
         cell.purchaseButton.tag = indexPath.row
+//        print(indexPath.row)
         cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
         return cell
      
         
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == catalogView.collectionView{
             selectedIndex = indexPath.row
             
             catalogView.collectionView.reloadData()
-            catalogView.secondCollectionView.reloadData()
+            var indexP : IndexPath
+            if selectedIndex == 0{
+                indexP = IndexPath(row: 0, section: 0)
+            }
+            else{
+                indexP = IndexPath(row: 0, section: selectedIndex - 1)
+            }
+            
+            
+            catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
+//            catalogView.secondCollectionView.scrollRectToVisible(CGRect(x: 5, y: 5, width: 100, height: 100), animated: true)
+//            catalogView.secondCollectionView.reloadData()
         }
+        
         
         
         
@@ -207,6 +292,33 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
        
         
     }
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+
+        switch kind {
+
+        case UICollectionView.elementKindSectionHeader:
+
+            let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! MyHeaderClass
+            headerCell.textLabel.text = catalog?.menuList[indexPath.section + 1].sectionName
+                        
+            return headerCell
+
+        
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
+    
+    // Width doesn't matter because scroll is vertical. Only height used.
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 0, height: UIScreen.main.bounds.height / 7)
+    }
+  
+    
     
     
     

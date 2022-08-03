@@ -56,6 +56,7 @@ struct MenuListDisplayFactory {
         
 
         var array = [MenuList]()
+        array.append(MenuList(sectionID: "", sectionName: "Все"))
 
         menuList.forEach {
 
