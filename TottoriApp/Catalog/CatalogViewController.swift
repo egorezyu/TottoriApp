@@ -6,34 +6,7 @@
 //
 
 import UIKit
-class MyHeaderClass: UICollectionReusableView {
-    
-    
-    weak var textLabel: UILabel!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(label)
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor,constant: UIScreen.main.bounds.height / 12),
-           
-            label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-            
-        ])
-        textLabel = label
-        textLabel.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
-        
-        
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+
 
 
 
@@ -42,7 +15,7 @@ class CatalogViewController: UIViewController {
     private var selectedIndex = 0
     private lazy var catalogView = CatalogView(subscriber: self)
     private lazy var viewModel = MenuListViewModel()
-    let headerReuseIdentifier = "headerReuseIdentifier"
+    
     
 
 
@@ -136,7 +109,9 @@ class CatalogViewController: UIViewController {
         catalogView.collectionView.delegate = self
         catalogView.secondCollectionView.dataSource = self
         catalogView.secondCollectionView.delegate = self
-        catalogView.secondCollectionView.register(MyHeaderClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
+        catalogView.secondCollectionView.register(MyHeaderClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MyHeaderClass.headerReuseIdentifier)
+        catalogView.secondCollectionView.register(MySecondHeaderClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier)
+        
 
         
     }
@@ -267,13 +242,15 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             var indexP : IndexPath
             if selectedIndex == 0{
                 indexP = IndexPath(row: 0, section: 0)
+                catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
             }
             else{
                 indexP = IndexPath(row: 0, section: selectedIndex - 1)
+                catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
             }
             
             
-            catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
+            
 //            catalogView.secondCollectionView.scrollRectToVisible(CGRect(x: 5, y: 5, width: 100, height: 100), animated: true)
 //            catalogView.secondCollectionView.reloadData()
         }
@@ -299,11 +276,30 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         switch kind {
 
         case UICollectionView.elementKindSectionHeader:
-
-            let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! MyHeaderClass
+            if indexPath.section == 0{
+               
+                let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier, for: indexPath) as! MySecondHeaderClass
+                
+                
+               
+                
+                return headerCell
+            }
+            let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyHeaderClass.headerReuseIdentifier, for: indexPath) as! MyHeaderClass
+            
+           
             headerCell.textLabel.text = catalog?.menuList[indexPath.section + 1].sectionName
-                        
             return headerCell
+            
+            
+            
+
+            
+            
+            
+           
+                        
+           
 
         
         default:
@@ -315,7 +311,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0{
+            return CGSize(width: 0, height: UIScreen.main.bounds.height / 1.5)
+        }
+        
         return CGSize(width: 0, height: UIScreen.main.bounds.height / 7)
+        
     }
   
     
