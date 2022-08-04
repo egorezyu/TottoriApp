@@ -15,6 +15,9 @@ class CatalogViewController: UIViewController {
     private var selectedIndex = 0
     private lazy var catalogView = CatalogView(subscriber: self)
     private lazy var viewModel = MenuListViewModel()
+    private var header : MySecondHeaderClass!
+    private var currentDish = 0
+    private var currentVstackCellCount = 0
     
     
 
@@ -232,7 +235,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomFavouriteCell.id, for: indexPath) as! CustomFavouriteCell
             cell.configureCell(sectionList: catalog?.menuList[1].sectionList?[indexPath.row])
-            print(indexPath.row)
+            
             
             
             
@@ -295,6 +298,10 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                    
                     headerCell.textLabel.text = catalog?.menuList[1].sectionName
                     
+                    self.header = headerCell
+                    
+                    
+                    
                     
                    
                     
@@ -343,6 +350,82 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else{
             return CGSize(width: 0, height: 0)
         }
+        
+    }
+    //controll swipe algo
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let collView = scrollView as? UICollectionView{
+            if collView == header.favCollectionView{
+                for cell in header.favCollectionView.visibleCells {
+                    let indexPath = header.favCollectionView.indexPath(for: cell)
+                    if let counter = indexPath?.row{
+                        if currentVstackCellCount == 2{
+                            if counter < currentDish{
+                                header.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
+                                header.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+                                currentVstackCellCount = 1
+                                
+                            }
+                            else{
+                                header.confirmStack(stack: header.hStack, j: counter)
+                                
+                            }
+                            
+                        }
+                        else if currentVstackCellCount == 0{
+                            if counter > currentDish{
+                                header.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
+                                header.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
+                                currentVstackCellCount = 1
+
+                            }
+                            else{
+                                header.confirmStack(stack: header.hStack, j: counter + 2)
+                                
+                                
+
+                            }
+
+                        }
+                        else{
+                            if counter > currentDish{
+                                
+                                header.hStack.subviews[2].layer.borderColor = UIColor.red.cgColor
+                                header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                                currentVstackCellCount = currentVstackCellCount + 1
+                                
+                                
+                                
+                                
+                                
+                            }
+                            else{
+                                
+                                
+                                header.hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
+                                header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                                currentVstackCellCount = currentVstackCellCount - 1
+                                
+                            }
+                            
+                            
+                        }
+                        currentDish = counter
+                       
+                        
+                        
+                        
+                   
+                    }
+                  
+                    
+                }
+            }
+            
+        }
+        
+    }
+    private func paintButtons(){
         
     }
   

@@ -159,7 +159,7 @@ final class NetworkManager {
 
     
 
-    private func request<T: Request>(request: T, data: Data? = nil, completion: @escaping (Result<T.Response, Error>) -> Void){
+    private func request<T: Request>(request: T, data: Data? = nil, completion: @escaping (Result<T.Response, UIAlertController>) -> Void){
         if self.session.configuration.timeoutIntervalForRequest > 30 || self.session.configuration.timeoutIntervalForResource > 60 {
             completion(.failure(GetDataException.serverError))
             return
