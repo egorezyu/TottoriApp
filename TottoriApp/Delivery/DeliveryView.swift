@@ -143,6 +143,7 @@ class DeliveryView: UIView {
     public lazy var vStackEmail : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "ПОЧТА")
         var emailField = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        emailField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         
         return stack
         
@@ -152,6 +153,7 @@ class DeliveryView: UIView {
     public lazy var vStackStreet : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "УЛИЦА")
         var street = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        street?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
        
         return stack
 
@@ -160,6 +162,8 @@ class DeliveryView: UIView {
     public lazy var vStackHouse : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "ДОМ")
         var house = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        house?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        
       
         return stack
 
@@ -169,6 +173,7 @@ class DeliveryView: UIView {
         
         var stack = generateStackWithLabelAndField(name: "КВАРТИРА И ЭТАЖ")
         var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        flatAndFloor?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
        
         return stack
 

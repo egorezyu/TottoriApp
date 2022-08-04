@@ -161,6 +161,7 @@ extension DeliveryViewController : DeliveryDelegate{
         let home = (devView.vStackHouse.subviews[1] as? CustomTextFieldWithInsets)
         let flatAndFlor = (devView.vStackFlatAndFloor.subviews[1] as? CustomTextFieldWithInsets)
         
+        
         if let name = nameField?.text,let phone = phoneField?.text{
             if (!name.isEmpty && !phone.isEmpty){
                 let removeOccPhone = phone.replacingOccurrences(of:"[^0-9]", with: "",options: .regularExpression)
@@ -170,6 +171,7 @@ extension DeliveryViewController : DeliveryDelegate{
                     if selectedPayView != nil {
                         devView.makeAnOrderButton.isEnabled = true
                         userInfo = UserInfo(name: name, phone: phone, mail: email?.text ?? "", street: street?.text ?? "", home: home?.text ?? "", floorAndFlat: flatAndFlor?.text ?? "")
+                        
                     }
                     else{
                         devView.makeAnOrderButton.isEnabled = false

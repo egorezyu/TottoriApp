@@ -242,6 +242,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomFavouriteCell.id, for: indexPath) as! CustomFavouriteCell
             cell.configureCell(sectionList: catalog?.menuList[1].sectionList?[indexPath.row])
+            cell.purchaseButton.tag = indexPath.row
+    //        print(indexPath.row)
+            cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
             
             
             
