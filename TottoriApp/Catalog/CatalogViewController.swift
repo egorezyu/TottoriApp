@@ -140,11 +140,18 @@ class CatalogViewController: UIViewController {
 //                print(error)
 //            }
 //        }
-        viewModel.getMenuList { items in
+        viewModel.getMenuList { result in
             DispatchQueue.main.async {
-                self.catalog = Catalog(status: true, menuList: items)
-                self.catalogView.collectionView.reloadData()
-                self.catalogView.secondCollectionView.reloadData()
+                switch result{
+                    
+                case .success(let items):
+                    self.catalog = Catalog(status: true, menuList: items)
+                    self.catalogView.collectionView.reloadData()
+                    self.catalogView.secondCollectionView.reloadData()
+                case .failure(let error):
+                    self.present(UIAlertController.createAllert(text: error.localizedDescription), animated: true)
+                }
+                
                 
             }
         }

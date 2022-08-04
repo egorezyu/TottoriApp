@@ -9,11 +9,25 @@ import Foundation
 import Foundation
 import Kingfisher
 enum GetDataException : String ,Error{
-    case invalidUrl = "something went wrong with url"
-    case badResponse = "bad response or failed cod"
-    case badData = "couldnt return data"
-    case serverError = "bad server response"
+    case invalidUrl = "Неверный url,обратитесь в поддержку"
+    case badResponse = "Что - то пошло не так"
+    case badData = "Не удалось получить данные"
+    case serverError = "Время запроса вышло,попробуйте позже"
 
+}
+extension GetDataException: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .invalidUrl:
+            return NSLocalizedString("Неверный url,обратитесь в поддержку", comment: "My error")
+        case .badResponse:
+            return NSLocalizedString("Что - то пошло не так", comment: "My error")
+        case .badData:
+            return NSLocalizedString("Не удалось получить данные", comment: "My error")
+        case .serverError:
+            return NSLocalizedString("Время запроса вышло,попробуйте позже", comment: "My error")
+        }
+    }
 }
 import Foundation
 import UIKit
@@ -159,7 +173,7 @@ final class NetworkManager {
 
     
 
-    private func request<T: Request>(request: T, data: Data? = nil, completion: @escaping (Result<T.Response, UIAlertController>) -> Void){
+    private func request<T: Request>(request: T, data: Data? = nil, completion: @escaping (Result<T.Response, Error>) -> Void){
         if self.session.configuration.timeoutIntervalForRequest > 30 || self.session.configuration.timeoutIntervalForResource > 60 {
             completion(.failure(GetDataException.serverError))
             return

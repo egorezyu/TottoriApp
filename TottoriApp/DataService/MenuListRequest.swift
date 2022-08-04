@@ -105,7 +105,7 @@ final class MenuListViewModel {
 
     
 
-    func getMenuList(_ completion: @escaping(_ items: [MenuList]) -> Void) {
+    func getMenuList(_ completion: @escaping(Result<[MenuList], Error>) -> Void) {
 
         
 
@@ -115,10 +115,10 @@ final class MenuListViewModel {
 
             case .failure(let error):
 
-                print(error)
+                completion(.failure(error))
 
             case .success(let information):
-                completion(MenuListDisplayFactory.makeMenuList(information: information.menuList ?? []))
+                completion(.success(MenuListDisplayFactory.makeMenuList(information: information.menuList ?? [])))
                 
 
                 
