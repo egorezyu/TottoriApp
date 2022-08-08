@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import SwiftEntryKit
 
 class DeliveryViewController: UIViewController {
     
@@ -277,14 +278,39 @@ extension DeliveryViewController : DeliveryDelegate{
     }
     private func showOkAlert(){
         
-        let alertAboutEndOfPostRequest = UIAlertController(title: nil, message: "Заказ уже обрабатывается", preferredStyle: .alert)
-        alertAboutEndOfPostRequest.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { action in
-            self.backetViewBackDataDelegate?.clearAllBasket()
-            self.navigationController?.popViewController(animated: true)
-        }))
+//        let alertAboutEndOfPostRequest = UIAlertController(title: nil, message: "Заказ уже обрабатывается", preferredStyle: .alert)
+//        alertAboutEndOfPostRequest.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { action in
+//            self.backetViewBackDataDelegate?.clearAllBasket()
+//            self.navigationController?.popViewController(animated: true)
+//        }))
         
-        present(alertAboutEndOfPostRequest,animated: true)
+//        present(alertAboutEndOfPostRequest,animated: true)
+        let view = CustomAllertView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 338).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        SwiftEntryKit.display(entry: view, using: setUpAttributes())
         
+    }
+    private func setUpAttributes() -> EKAttributes{
+        var attributes = EKAttributes.centerFloat
+        attributes.displayDuration = .infinity
+        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0 / 255.0, alpha: 0.3), dark: UIColor(white: 50.0 / 255.0, alpha: 0.3)))
+        attributes.shadow = .active(with: .init(color : .black, opacity: 0.3, radius: 8))
+        attributes.statusBar = .dark
+        attributes.screenInteraction = .absorbTouches
+        let action : () -> () = {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.backetViewBackDataDelegate?.clearAllBasket()
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            
+        }
+        attributes.entryInteraction.customTapActions.append(action)
+
+       
+        return attributes
     }
     func setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D,title : String,subTitle : String){
        let annotation = MKPointAnnotation()

@@ -46,6 +46,8 @@
 		E4A93C07289AC9EE0017F326 /* DGCarouselFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C06289AC9EE0017F326 /* DGCarouselFlowLayout */; };
 		E4A93C09289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */; };
 		E4A93C0B289BD2C80017F326 /* Allert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C0A289BD2C80017F326 /* Allert.swift */; };
+		E4A93C0E28A155500017F326 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C0D28A155500017F326 /* SwiftEntryKit */; };
+		E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -99,6 +101,7 @@
 		E4A93C03289A7A850017F326 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavouriteCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4A93C0A289BD2C80017F326 /* Allert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allert.swift; sourceTree = "<group>"; };
+		E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAllertView.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 			files = (
 				E43C7FDB2882E20A001F6D8C /* Kingfisher in Frameworks */,
 				E4A93C07289AC9EE0017F326 /* DGCarouselFlowLayout in Frameworks */,
+				E4A93C0E28A155500017F326 /* SwiftEntryKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +176,7 @@
 				E433C8A7288DA26E0036479C /* PayView.swift */,
 				E433C8A9288EF58B0036479C /* UserInfo.swift */,
 				E49262BB2891436000970B24 /* AboutUsData.swift */,
+				E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 			packageProductDependencies = (
 				E43C7FDA2882E20A001F6D8C /* Kingfisher */,
 				E4A93C06289AC9EE0017F326 /* DGCarouselFlowLayout */,
+				E4A93C0D28A155500017F326 /* SwiftEntryKit */,
 			);
 			productName = TottoriApp;
 			productReference = E4E376FE287CB532003ED269 /* TottoriApp.app */;
@@ -342,6 +348,7 @@
 			packageReferences = (
 				E43C7FD92882E20A001F6D8C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				E4A93C05289AC9EE0017F326 /* XCRemoteSwiftPackageReference "DGCarouselFlowLayout" */,
+				E4A93C0C28A155500017F326 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 			);
 			productRefGroup = E4E376FF287CB532003ED269 /* Products */;
 			projectDirPath = "";
@@ -413,6 +420,7 @@
 				E4A93C04289A7A850017F326 /* CollectionReusableView.swift in Sources */,
 				E4A93C0B289BD2C80017F326 /* Allert.swift in Sources */,
 				E433C8AA288EF58B0036479C /* UserInfo.swift in Sources */,
+				E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */,
 				E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */,
 				E43C7FEA2886BF85001F6D8C /* Request.swift in Sources */,
 				E4E37727287D5430003ED269 /* TypeView.swift in Sources */,
@@ -644,6 +652,14 @@
 				kind = branch;
 			};
 		};
+		E4A93C0C28A155500017F326 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huri000/SwiftEntryKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -656,6 +672,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E4A93C05289AC9EE0017F326 /* XCRemoteSwiftPackageReference "DGCarouselFlowLayout" */;
 			productName = DGCarouselFlowLayout;
+		};
+		E4A93C0D28A155500017F326 /* SwiftEntryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4A93C0C28A155500017F326 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
+			productName = SwiftEntryKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
