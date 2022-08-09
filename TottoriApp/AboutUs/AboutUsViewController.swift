@@ -8,6 +8,13 @@
 import UIKit
 
 class AboutUsViewController: UIViewController {
+    private lazy var aboutUsView = AboutUsView(delegate: self)
+    
+    override func loadView() {
+        super.loadView()
+        self.view = aboutUsView
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,4 +34,7 @@ class AboutUsViewController: UIViewController {
     }
     */
 
+}
+extension AboutUsViewController : AboutUsDelegate{
+    
 }

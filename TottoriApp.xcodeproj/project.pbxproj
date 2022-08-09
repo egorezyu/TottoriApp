@@ -49,6 +49,8 @@
 		E4A93C0E28A155500017F326 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C0D28A155500017F326 /* SwiftEntryKit */; };
 		E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */; };
 		E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1028A264C8004A1BEE /* UIViewController.swift */; };
+		E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */; };
+		E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1528A280B4004A1BEE /* AboutUsView.swift */; };
 		E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37701287CB532003ED269 /* AppDelegate.swift */; };
 		E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37703287CB532003ED269 /* SceneDelegate.swift */; };
 		E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37705287CB532003ED269 /* CatalogViewController.swift */; };
@@ -104,6 +106,8 @@
 		E4A93C0A289BD2C80017F326 /* Allert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allert.swift; sourceTree = "<group>"; };
 		E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAllertView.swift; sourceTree = "<group>"; };
 		E4CEED1028A264C8004A1BEE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDelegate.swift; sourceTree = "<group>"; };
+		E4CEED1528A280B4004A1BEE /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		E4E376FE287CB532003ED269 /* TottoriApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TottoriApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E37701287CB532003ED269 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E37703287CB532003ED269 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				E4E37722287CC003003ED269 /* AboutUsViewController.swift */,
+				E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */,
+				E4CEED1528A280B4004A1BEE /* AboutUsView.swift */,
 			);
 			path = AboutUs;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				E433C8A6288D98B20036479C /* CustomTextFieldWithInsets.swift in Sources */,
 				E433C8AC288FDB510036479C /* BacketViewBackDataDelegate.swift in Sources */,
 				E4A93C09289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift in Sources */,
+				E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
 				E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */,
@@ -423,6 +430,7 @@
 				E4E3772A287D6B66003ED269 /* MockDataService.swift in Sources */,
 				E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */,
 				E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */,
+				E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */,
 				E43C7FF42889C114001F6D8C /* BadgeView.swift in Sources */,
 				E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */,
 				E43C7FD82882D5DC001F6D8C /* DataService.swift in Sources */,
