@@ -10,7 +10,7 @@ import Foundation
 struct Catalog : Codable {
     let status: Bool
     var menuList: [MenuList]
-    let menuDishes: [MenuDish]
+    var menuDishes: [MenuDish]
 }
 
 // MARK: - MenuDish

@@ -146,6 +146,17 @@ class CatalogViewController: UIViewController {
                     
                 case .success(let items):
                     self.catalog = Catalog(status: true, menuList: items.0, menuDishes: items.1)
+                    if let catalog = self.catalog {
+                        if catalog.menuDishes.count < 3{
+                            for i in 0...2{
+                                let currentDish = catalog.menuList[0].sectionList?[i]
+                                if let currentDish = currentDish{
+                                    self.catalog?.menuDishes.append(MenuDish(foodID: currentDish.foodID, foodName: currentDish.foodName, foodPrice: currentDish.foodPrice, foodImage0: currentDish.foodImage0, foodContent: currentDish.foodContent))
+                                }
+                                
+                            }
+                        }
+                    }
                     self.catalogView.collectionView.reloadData()
                     self.catalogView.secondCollectionView.reloadData()
                 case .failure(let error):

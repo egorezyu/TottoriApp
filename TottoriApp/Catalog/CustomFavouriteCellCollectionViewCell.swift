@@ -58,9 +58,9 @@ class CustomFavouriteCell: UICollectionViewCell {
     lazy var purchaseButton : UIButton = {
         var button = UIButton()
         var image = UIImage(named: "purchase")?.withTintColor(.red,renderingMode: .alwaysOriginal)
-        if let unImage = image{
-            image = UIImage.resizeImage(image: unImage, targetSize: CGSize(width: 40, height: 40))
-        }
+//        if let unImage = image{
+//            image = UIImage.resizeImage(image: unImage, targetSize: CGSize(width: 40, height: 40))
+//        }
         button.setBackgroundImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -69,20 +69,18 @@ class CustomFavouriteCell: UICollectionViewCell {
         return button
         
     }()
-    private lazy var vStack : UIStackView = {
-        let view = UIStackView()
+    private lazy var vStack : UIView = {
+        let view = UIView()
         view.layer.borderColor = UIColor.red.cgColor
         view.layer.borderWidth = 0.8
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .horizontal
+       
 //        view.distribution = .equalSpacing
-        var insets = UIEdgeInsets(top: 0, left: 10, bottom: 5, right: 10)
-        view.layoutMargins = insets
-        view.isLayoutMarginsRelativeArrangement = true
         
-        view.spacing = 40
-        view.addArrangedSubview(priceView)
-        view.addArrangedSubview(purchaseButton)
+       
+        
+       
+        
         return view
     }()
     private lazy var descriptionLabel : UILabel = {
@@ -121,6 +119,8 @@ class CustomFavouriteCell: UICollectionViewCell {
         contentView.addSubview(vStack)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(descriptionText)
+        vStack.addSubview(priceView)
+        vStack.addSubview(purchaseButton)
         
         
         
@@ -147,6 +147,15 @@ class CustomFavouriteCell: UICollectionViewCell {
         vStack.topAnchor.constraint(equalTo: image.bottomAnchor,constant: 10).isActive = true
         
         vStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        vStack.widthAnchor.constraint(equalToConstant: 168).isActive = true
+        
+        priceView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor,constant: 10).isActive = true
+        priceView.centerYAnchor.constraint(equalTo: vStack.centerYAnchor).isActive = true
+        
+        purchaseButton.trailingAnchor.constraint(equalTo: vStack.trailingAnchor,constant: -10).isActive = true
+        purchaseButton.centerYAnchor.constraint(equalTo: vStack.centerYAnchor).isActive = true
+        purchaseButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        purchaseButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         descriptionLabel.topAnchor.constraint(equalTo: vStack.bottomAnchor,constant: 20).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
