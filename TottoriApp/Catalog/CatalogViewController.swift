@@ -306,7 +306,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
                    
-                    headerCell.textLabel.text = catalog?.menuList[1].sectionName
+                    headerCell.firstDishTitle.text = catalog?.menuList[1].sectionName
                     
                     self.header = headerCell
                     
@@ -363,7 +363,11 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
     }
     //controll swipe algo
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        header.favCollectionView.isScrollEnabled = false
+    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        header.favCollectionView.isScrollEnabled = true
         if let collView = scrollView as? UICollectionView{
             if collView == header.favCollectionView{
                 for cell in header.favCollectionView.visibleCells {

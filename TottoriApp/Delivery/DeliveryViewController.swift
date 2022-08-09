@@ -287,8 +287,8 @@ extension DeliveryViewController : DeliveryDelegate{
 //        present(alertAboutEndOfPostRequest,animated: true)
         let view = CustomAllertView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 338).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 0.9).isActive = true
+        view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.18181818182).isActive = true
         SwiftEntryKit.display(entry: view, using: setUpAttributes())
         
     }

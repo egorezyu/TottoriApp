@@ -15,12 +15,18 @@ class MySecondHeaderClass: UICollectionReusableView {
     
     
     
-    public lazy var textLabel: UILabel = {
+    private lazy var holdTextView: UIView = {
+        var view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
+        return view
+        
+    }()
+    public lazy var firstDishTitle : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
         return label
-        
     }()
     public lazy var favCollectionView : UICollectionView = {
         let layout = DGCarouselFlowLayout()
@@ -103,18 +109,25 @@ class MySecondHeaderClass: UICollectionReusableView {
     }
     
     private func addView(){
-        addSubview(textLabel)
+        addSubview(holdTextView)
         addSubview(favCollectionView)
         addSubview(hStack)
+        holdTextView.addSubview(firstDishTitle)
     }
     private func setConsraints(){
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10),
+            holdTextView.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10),
             
 
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        
+
+        ])
+        NSLayoutConstraint.activate([
+            firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
+            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor,constant: -10),
         
 
         ])
@@ -153,7 +166,7 @@ class MySecondHeaderClass: UICollectionReusableView {
     }
     private func setBackGroundForLabel(){
         if let image = UIImage(named: "back"){
-            textLabel.backgroundColor = UIColor(patternImage: image)
+            holdTextView.backgroundColor = UIColor(patternImage: image)
         }
         
     }

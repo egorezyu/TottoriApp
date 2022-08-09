@@ -76,7 +76,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
 //        view.distribution = .equalSpacing
-        var insets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        var insets = UIEdgeInsets(top: 0, left: 10, bottom: 5, right: 10)
         view.layoutMargins = insets
         view.isLayoutMarginsRelativeArrangement = true
         
@@ -104,6 +104,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         textView.textAlignment = .right
         textView.backgroundColor = .clear
         textView.textColor = UIColor.myLightGrey
+        textView.textContainer.maximumNumberOfLines = 5
         
        
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)

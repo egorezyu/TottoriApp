@@ -27,7 +27,7 @@ class CustomAllertView: UIView {
     private lazy var label : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
         label.text = "СПАСИБО \n ЗА ЗАКАЗ!"
         label.numberOfLines = 2
         label.textColor = .myLightGrey
