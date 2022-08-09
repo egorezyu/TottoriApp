@@ -216,7 +216,9 @@ final class NetworkManager {
             }
         catch {
             
-                completion(.failure(GetDataException.badData))
+            
+            completion(.failure(GetDataException.badData))
+            
             }
 
         }

@@ -11,7 +11,7 @@ class AboutUsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backGroundColor
+        setBackkGround()
 
         // Do any additional setup after loading the view.
     }
