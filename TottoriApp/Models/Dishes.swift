@@ -10,7 +10,18 @@ import Foundation
 struct Catalog : Codable {
     let status: Bool
     var menuList: [MenuList]
+    let menuDishes: [MenuDish]
 }
+
+// MARK: - MenuDish
+struct MenuDish : Codable {
+    let foodID, foodName, foodPrice, foodImage0: String
+    let foodContent: String
+    var formattedPrice : String{
+        (Formatter.separator.string(from: NSNumber(value: Int(foodPrice) ?? 0)) ?? "") + " ₽"
+    }
+}
+
 
 // MARK: - MenuList
 struct MenuList : Codable {

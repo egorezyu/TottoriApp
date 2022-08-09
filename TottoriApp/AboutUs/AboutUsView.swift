@@ -18,6 +18,50 @@ class AboutUsView: UIView {
         
         
     }
+    private lazy var aboutIntLabel : UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "наш интерьер"
+        label.font = UIFont(name: "Gilroy", size: 14)
+        return label
+        
+    }()
+    private lazy var aboutBeatyLabel : UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        var paragraphStyle = NSMutableParagraphStyle()
+
+        paragraphStyle.lineHeightMultiple = 1.15
+        label.numberOfLines = 0
+
+        label.lineBreakMode = .byWordWrapping
+
+
+       
+
+
+        label.attributedText = NSMutableAttributedString(string: "             красота \nв деталях", attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        
+        return label
+        
+    }()
+    private lazy var chinaSymbol : UILabel = {
+        var view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont.systemFont(ofSize: 14)
+
+
+   
+
+
+        view.textAlignment = .center
+
+        view.attributedText = NSMutableAttributedString(string: "レストランインテリア", attributes: [NSAttributedString.Key.kern: 2.8])
+        return view
+        
+    }()
     private lazy var scrollView : UIScrollView = {
         var scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +98,10 @@ class AboutUsView: UIView {
     private func addViews(){
         addSubview(scrollView)
         scrollView.addSubview(contentView)
+        contentView.addSubview(aboutIntLabel)
         contentView.addSubview(horCollectionView)
+        contentView.addSubview(aboutBeatyLabel)
+        contentView.addSubview(chinaSymbol)
     }
     private func setConstraints(){
         scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
@@ -68,12 +115,15 @@ class AboutUsView: UIView {
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-//        horCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-//        
-//        horCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-//        horCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-////        horCollectionView.heightAnchor.constraint(equalToConstant: 1400).isActive = true
-//        horCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: 40).isActive = true
+        aboutIntLabel.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: -20).isActive = true
+        aboutIntLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
+        
+        aboutBeatyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
+        aboutBeatyLabel.topAnchor.constraint(equalTo: aboutIntLabel.topAnchor).isActive = true
+        
+        chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: 25).isActive = true
+        chinaSymbol.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
+
         
     }
     

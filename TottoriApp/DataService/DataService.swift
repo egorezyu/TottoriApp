@@ -86,7 +86,7 @@ class DataService{
             return
         }
         
-        let proc = DownsamplingImageProcessor(size: CGSize(width: 300, height: 200))
+        let proc = DownsamplingImageProcessor(size: CGSize(width: 200, height: 133))
 
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(

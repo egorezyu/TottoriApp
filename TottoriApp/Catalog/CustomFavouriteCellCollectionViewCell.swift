@@ -15,15 +15,15 @@ class CustomFavouriteCell: UICollectionViewCell {
         setConstraints()
     }
     
-    private lazy var label : UILabel = {
-        var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
-        label.text = "Рамен, которым     \n   можно гордиться"
-        label.numberOfLines = 2
-        return label
-        
-    }()
+//    private lazy var label : UILabel = {
+//        var label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
+//        label.text = "Рамен, которым     \n   можно гордиться"
+//        label.numberOfLines = 2
+//        return label
+//
+//    }()
     private lazy var image : UIImageView = {
         var image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -114,7 +114,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     
     
     private func addView(){
-        contentView.addSubview(label)
+//        contentView.addSubview(label)
         contentView.addSubview(image)
         contentView.addSubview(title)
         title.addSubview(underLine)
@@ -126,10 +126,10 @@ class CustomFavouriteCell: UICollectionViewCell {
         
     }
     private func setConstraints(){
-        label.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
-        label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        
-        image.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 20).isActive = true
+//        label.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
+//        label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+//
+        image.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
         image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 40).isActive = true
         image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -40).isActive = true
         image.heightAnchor.constraint(equalToConstant: contentView.frame.height / 3).isActive = true
@@ -159,10 +159,10 @@ class CustomFavouriteCell: UICollectionViewCell {
 //        descriptionText.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
     }
-    func configureCell(sectionList : SectionList?){
+    func configureCell(sectionList : MenuDish?){
         if let sectionList = sectionList {
             
-            DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: image)
+            DataService.netWork.setImageFromUrl(url: sectionList.foodImage0, imageView: image)
             title.text = sectionList.foodName
             self.priceView.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 17.833)))
             self.descriptionText.text = sectionList.foodContent

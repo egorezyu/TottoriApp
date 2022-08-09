@@ -145,7 +145,7 @@ class CatalogViewController: UIViewController {
                 switch result{
                     
                 case .success(let items):
-                    self.catalog = Catalog(status: true, menuList: items)
+                    self.catalog = Catalog(status: true, menuList: items.0, menuDishes: items.1)
                     self.catalogView.collectionView.reloadData()
                     self.catalogView.secondCollectionView.reloadData()
                 case .failure(let error):
@@ -161,17 +161,13 @@ class CatalogViewController: UIViewController {
     @objc func doSequeToNextScreen(button : UIButton){
 //        print(selectedIndex - 1)
 //        print(button.tag)
+        print(button.tag)
         var sectionList : SectionList?
-        if selectedIndex == 0{
-            sectionList = catalog?.menuList[selectedIndex + 1].sectionList?[button.tag]
-        }
-//        else if selectedIndex == 1{
-//            sectionList = catalog?.menuList[selectedIndex].sectionList?[button.tag]
-//        }
-        else{
-            print(button.tag)
-            sectionList = catalog?.menuList[selectedIndex].sectionList?[button.tag]
-        }
+        sectionList = catalog?.menuList[0].sectionList?.first(where: { sectionList in
+            sectionList.foodID == String(button.tag)
+        })
+        
+       
         
         let dVC = DishViewController()
         dVC.sectionList = sectionList
@@ -195,7 +191,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else if collectionView == catalogView.secondCollectionView{
             return catalog?.menuList[section + 1].sectionList?.count ?? 0
         }
-        return 5
+        return catalog?.menuDishes.count ?? 0
         
         
         
@@ -234,15 +230,17 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else if collectionView == catalogView.secondCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
             cell.setCellFields(sectionList: catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row])
-            cell.purchaseButton.tag = indexPath.row
+            cell.purchaseButton.tag = Int(catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row].foodID ?? "") ?? -1
     //        print(indexPath.row)
             cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
             return cell
         }
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomFavouriteCell.id, for: indexPath) as! CustomFavouriteCell
-            cell.configureCell(sectionList: catalog?.menuList[1].sectionList?[indexPath.row])
-            cell.purchaseButton.tag = indexPath.row
+            cell.configureCell(sectionList: catalog?.menuDishes[indexPath.row])
+            
+           
+            cell.purchaseButton.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
     //        print(indexPath.row)
             cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
             
