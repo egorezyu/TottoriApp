@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftEntryKit
 extension UIAlertController{
     static public func createAllert(text : String) -> UIAlertController{
         
@@ -16,4 +17,5 @@ extension UIAlertController{
         return alertAboutRequest
         
     }
+    
 }

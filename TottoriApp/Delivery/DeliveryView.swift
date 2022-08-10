@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class DeliveryView: UIView {
+class DeliveryView: UIView , PhoneFieldProtocol{
     
     
     private weak var delegate : DeliveryDelegate?

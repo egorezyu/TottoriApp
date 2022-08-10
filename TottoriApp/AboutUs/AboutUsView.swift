@@ -8,7 +8,7 @@
 import UIKit
 import DGCarouselFlowLayout
 
-class AboutUsView: UIView {
+class AboutUsView: UIView,PhoneFieldProtocol {
     private weak var delegate : AboutUsDelegate?
     init(delegate : AboutUsDelegate? = nil) {
         super.init(frame: .zero)
@@ -101,7 +101,7 @@ class AboutUsView: UIView {
     public lazy var vStackName : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
         var nameField = (stack.subviews[1] as? CustomTextFieldWithInsets)
-//        nameField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
+        nameField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
         nameField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         nameField?.tag = 1
         
@@ -114,9 +114,10 @@ class AboutUsView: UIView {
     
         var stack = generateStackWithLabelAndField(name: "ТЕЛЕФОН")
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
-//        phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
 //        phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
         phoneField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
+        phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
         phoneField?.tag = 2
         phoneField?.keyboardType = .numberPad
         
@@ -127,6 +128,7 @@ class AboutUsView: UIView {
         var timeField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         timeField?.tag = 3
         timeField?.keyboardType = .numberPad
+        timeField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         timeField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         
         return stack
@@ -136,6 +138,7 @@ class AboutUsView: UIView {
         var togle = TogleView()
         togle.translatesAutoresizingMaskIntoConstraints = false
         togle.setText(currentText: "VIP")
+        togle.rectangleButtonView.addTarget(self, action: #selector(togleButton(sender : )), for: .touchUpInside)
         return togle
         
     }()
@@ -245,7 +248,7 @@ class AboutUsView: UIView {
         
         makeAnOrderButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
         makeAnOrderButton.topAnchor.constraint(equalTo: vipView.bottomAnchor,constant: 20).isActive = true
-        makeAnOrderButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.6).isActive = true
+        makeAnOrderButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
         makeAnOrderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
 
@@ -271,6 +274,17 @@ class AboutUsView: UIView {
         delegate?.postRequest(sender: sender)
         
     }
+    @objc func togleButton(sender : UIButton){
+        delegate?.switchTogle(sender: sender)
+    }
+    @objc func phoneTapped(sender : UITextField){
+        delegate?.phoneTextFieldTapped(sender: sender)
+    }
+    @objc func textEditing(sender : UITextField){
+        delegate?.textEditing(sender: sender)
+    }
+    
+    
     
     
     

@@ -106,18 +106,7 @@ extension DeliveryViewController : DeliveryDelegate{
     
     func textEditing(sender: UITextField) {
         if sender === (devView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets){
-            if let textInput = sender.text{
-                if textInput.count == 1{
-                    sender.text?.append("7")
-                }
-                else if textInput.count > 18{
-                    sender.text?.removeLast()
-                }
-                else{
-                    sender.text = textInput.format(with: "+X (XXX) XXX-XX-XX")
-                }
-                
-            }
+            devView.controlPhoneFieldAlgo()
             
         }
         controlButtonStateAlgo()
@@ -219,6 +208,7 @@ extension DeliveryViewController : DeliveryDelegate{
             showOkAlert()
             
         }
+        backetViewBackDataDelegate?.clearAllBasket()
         
         
         
@@ -229,49 +219,16 @@ extension DeliveryViewController : DeliveryDelegate{
         alert.addAction(UIAlertAction(title: "Сохранить текущие данных", style: .default, handler: { action in
             UserDefaults.standard.set(dataToChange, forKey: self.userDefaultUserInfoId)
             self.showOkAlert()
+           
         }))
         alert.addAction(UIAlertAction(title: "Не сохранять", style: .default, handler: { action in
             self.showOkAlert()
+           
         }))
         present(alert,animated: true)
         
     }
-    private func showOkAlert(){
-        
-//        let alertAboutEndOfPostRequest = UIAlertController(title: nil, message: "Заказ уже обрабатывается", preferredStyle: .alert)
-//        alertAboutEndOfPostRequest.addAction(UIAlertAction(title: "ok", style: .cancel, handler: { action in
-//            self.backetViewBackDataDelegate?.clearAllBasket()
-//            self.navigationController?.popViewController(animated: true)
-//        }))
-        
-//        present(alertAboutEndOfPostRequest,animated: true)
-        let view = CustomAllertView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 0.9).isActive = true
-        view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.18181818182).isActive = true
-        SwiftEntryKit.display(entry: view, using: setUpAttributes())
-        
-    }
-    private func setUpAttributes() -> EKAttributes{
-        var attributes = EKAttributes.centerFloat
-        attributes.displayDuration = .infinity
-        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0 / 255.0, alpha: 0.3), dark: UIColor(white: 50.0 / 255.0, alpha: 0.3)))
-        attributes.shadow = .active(with: .init(color : .black, opacity: 0.3, radius: 8))
-        attributes.statusBar = .dark
-        attributes.screenInteraction = .absorbTouches
-        let action : () -> () = {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.backetViewBackDataDelegate?.clearAllBasket()
-                self.navigationController?.popViewController(animated: true)
-            }
-            
-            
-        }
-        attributes.entryInteraction.customTapActions.append(action)
 
-       
-        return attributes
-    }
     func setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D,title : String,subTitle : String){
        let annotation = MKPointAnnotation()
        annotation.coordinate = location

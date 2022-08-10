@@ -50,6 +50,7 @@
 		E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */; };
 		E4ABE0B428A3C31D00B7640B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B328A3C31D00B7640B /* UIView.swift */; };
 		E4ABE0B628A3DBE800B7640B /* TextFieldControlColorProtol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */; };
+		E4ABE0B828A3F73F00B7640B /* PhoneFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */; };
 		E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1028A264C8004A1BEE /* UIViewController.swift */; };
 		E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */; };
 		E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1528A280B4004A1BEE /* AboutUsView.swift */; };
@@ -109,6 +110,7 @@
 		E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAllertView.swift; sourceTree = "<group>"; };
 		E4ABE0B328A3C31D00B7640B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldControlColorProtol.swift; sourceTree = "<group>"; };
+		E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldProtocol.swift; sourceTree = "<group>"; };
 		E4CEED1028A264C8004A1BEE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDelegate.swift; sourceTree = "<group>"; };
 		E4CEED1528A280B4004A1BEE /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				E49262BB2891436000970B24 /* AboutUsData.swift */,
 				E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */,
 				E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */,
+				E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */,
 				E4E3772C287D6CBB003ED269 /* TypeCollectionView.swift in Sources */,
 				E4ABE0B628A3DBE800B7640B /* TextFieldControlColorProtol.swift in Sources */,
+				E4ABE0B828A3F73F00B7640B /* PhoneFieldProtocol.swift in Sources */,
 				E43C7FE82885C61C001F6D8C /* UIImage.swift in Sources */,
 				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,
 				E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */,

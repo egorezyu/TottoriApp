@@ -10,6 +10,7 @@ import UIKit
 class AboutUsViewController: UIViewController {
     private lazy var aboutUsView = AboutUsView(delegate: self)
     internal var selectedTextField: UITextField?
+    private lazy var isToggled = false
     
     override func loadView() {
         super.loadView()
@@ -27,7 +28,7 @@ class AboutUsViewController: UIViewController {
     func controlButtonStateAlgo(){
         let nameField = (aboutUsView.vStackName.subviews[1] as? CustomTextFieldWithInsets)
         let phoneField = (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
-        let timeField = (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
+        let timeField = (aboutUsView.vStackTime.subviews[1] as? CustomTextFieldWithInsets)
         
         
         if let name = nameField?.text,let phone = phoneField?.text,let time = timeField?.text{
@@ -72,12 +73,49 @@ class AboutUsViewController: UIViewController {
     */
 
 }
-extension AboutUsViewController : AboutUsDelegate , TextFieldControlColorProtocol{
+extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate{
+    
+    
     func postRequest(sender: UIButton) {
-        print("hi")
+        self.showOkAlert()
+        let nameField = (aboutUsView.vStackName.subviews[1] as? CustomTextFieldWithInsets)
+        let phoneField = (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
+        let timeField = (aboutUsView.vStackTime.subviews[1] as? CustomTextFieldWithInsets)
+        nameField?.text = ""
+        phoneField?.text = ""
+        timeField?.text = ""
+        aboutUsView.vipView.clearCircle()
+        controlButtonStateAlgo()
+        
+    }
+  
+    
+    
+    func switchTogle(sender: UIButton) {
+
+        if isToggled{
+            aboutUsView.vipView.clearCircle()
+        }
+        else{
+            aboutUsView.vipView.drawCircle()
+        }
+        isToggled.toggle()
     }
     func switchTextField(sender: UITextField) {
         controlAlgoColor(currentField: sender)
+    }
+    func phoneTextFieldTapped(sender : UITextField){
+        if sender.text == ""{
+            sender.text = "+7"
+        }
+
+    }
+    func textEditing(sender: UITextField) {
+        if sender === (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets){
+            aboutUsView.controlPhoneFieldAlgo()
+            
+        }
+        controlButtonStateAlgo()
     }
     
     
