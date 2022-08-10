@@ -9,6 +9,7 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
     private lazy var aboutUsView = AboutUsView(delegate: self)
+    internal var selectedTextField: UITextField?
     
     override func loadView() {
         super.loadView()
@@ -19,8 +20,44 @@ class AboutUsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackkGround()
+        controlButtonStateAlgo()
 
         // Do any additional setup after loading the view.
+    }
+    func controlButtonStateAlgo(){
+        let nameField = (aboutUsView.vStackName.subviews[1] as? CustomTextFieldWithInsets)
+        let phoneField = (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
+        let timeField = (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
+        
+        
+        if let name = nameField?.text,let phone = phoneField?.text,let time = timeField?.text{
+            if (!name.isEmpty && !phone.isEmpty && !time.isEmpty){
+                let removeOccPhone = phone.replacingOccurrences(of:"[^0-9]", with: "",options: .regularExpression)
+                
+                if (removeOccPhone.phoneIsValid()){
+    
+                    
+                    aboutUsView.makeAnOrderButton.isEnabled = true
+                        
+                        
+                    
+                    
+                    
+                }
+                else{
+                    aboutUsView.makeAnOrderButton.isEnabled = false
+                    aboutUsView.makeAnOrderButton.setTitle("Введите корректный телефон", for: .disabled)
+                }
+            }
+            else{
+                aboutUsView.makeAnOrderButton.setTitle("Заполните все поля", for: .disabled)
+                aboutUsView.makeAnOrderButton.isEnabled = false
+            }
+            
+            
+            
+        }
+    
     }
     
 
@@ -35,6 +72,13 @@ class AboutUsViewController: UIViewController {
     */
 
 }
-extension AboutUsViewController : AboutUsDelegate{
+extension AboutUsViewController : AboutUsDelegate , TextFieldControlColorProtocol{
+    func postRequest(sender: UIButton) {
+        print("hi")
+    }
+    func switchTextField(sender: UITextField) {
+        controlAlgoColor(currentField: sender)
+    }
+    
     
 }

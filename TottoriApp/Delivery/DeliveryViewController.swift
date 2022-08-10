@@ -9,11 +9,15 @@ import UIKit
 import MapKit
 import SwiftEntryKit
 
-class DeliveryViewController: UIViewController {
+class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
+    
+    
+    
+    
     
     private lazy var devView : DeliveryView = DeliveryView(delegate: self,navigationBar: self.navigationController?.navigationBar)
-    private var selectedTextField : UITextField?
-    private var selectedPayView : PayView?
+    internal var selectedTextField : UITextField?
+    private var selectedPayView : TogleView?
     public var userInfo : UserInfo?
     public var userDefaultUserInfoId = "userInfo"
     var backetViewBackDataDelegate : BasketViewBackDataDelegate?
@@ -110,7 +114,7 @@ extension DeliveryViewController : DeliveryDelegate{
                     sender.text?.removeLast()
                 }
                 else{
-                    sender.text = format(with: "+X (XXX) XXX-XX-XX", phone: textInput)
+                    sender.text = textInput.format(with: "+X (XXX) XXX-XX-XX")
                 }
                 
             }
@@ -118,28 +122,9 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         controlButtonStateAlgo()
     }
-    private func format(with mask: String, phone: String) -> String {
-        let numbers = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
-        var result = ""
-        var index = numbers.startIndex // numbers iterator
-
-        // iterate over the mask characters until the iterator of numbers ends
-        for ch in mask where index < numbers.endIndex {
-            if ch == "X" {
-                // mask requires a number in this place, so take the next one
-                result.append(numbers[index])
-
-                // move numbers iterator to the next index
-                index = numbers.index(after: index)
-
-            } else {
-                result.append(ch) // just append a mask character
-            }
-        }
-        return result
-    }
+    
     func switchPayment(sender: UIButton) {
-        let arrayOfPayments = devView.vStackTypeOfPay.subviews as? [PayView]
+        let arrayOfPayments = devView.vStackTypeOfPay.subviews as? [TogleView]
         if let arrayOfPayments = arrayOfPayments{
             let chosenPayView = arrayOfPayments.first { payView in
                 payView.rectangleButtonView === sender
@@ -167,7 +152,7 @@ extension DeliveryViewController : DeliveryDelegate{
             if (!name.isEmpty && !phone.isEmpty){
                 let removeOccPhone = phone.replacingOccurrences(of:"[^0-9]", with: "",options: .regularExpression)
                 
-                if (phoneIsValid(phone: removeOccPhone)){
+                if (removeOccPhone.phoneIsValid()){
     
                     if selectedPayView != nil {
                         devView.makeAnOrderButton.isEnabled = true
@@ -195,37 +180,12 @@ extension DeliveryViewController : DeliveryDelegate{
         }
     
     }
-    private func phoneIsValid(phone : String) -> Bool{
-        
-        guard phone.count != 1 else {
-            return false
-            
-        }
-        let char = phone[phone.index(phone.startIndex, offsetBy: 1)]
-        if char == "9"{
-            if phone.count == 11{
-                return true
-            }
-            return false
-        }
-        
-        return false
-        
-        
-    }
+    
     
     
     
     func switchTextField(sender: UITextField) {
-        if let selectedTextField = selectedTextField {
-            sender.subviews[0].backgroundColor = .red
-            selectedTextField.subviews[0].backgroundColor = .gray
-        }
-        else{
-            sender.subviews[0].backgroundColor = .red
-           
-        }
-        selectedTextField = sender
+        controlAlgoColor(currentField: sender)
     }
     
     

@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
 protocol AboutUsDelegate : AnyObject{
+    func switchTextField(sender : UITextField)
+    func postRequest(sender : UIButton)
     
 }

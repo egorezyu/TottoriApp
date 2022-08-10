@@ -92,7 +92,7 @@ class DeliveryView: UIView {
         
     }()
     private func addListenersToTypeOfPaymentButton(){
-        let arrayOfPayments = vStackTypeOfPay.subviews as? [PayView]
+        let arrayOfPayments = vStackTypeOfPay.subviews as? [TogleView]
         if let array = arrayOfPayments{
 //            array[0].drawCircle()
 //            selectedPayView = array[0]
@@ -103,26 +103,27 @@ class DeliveryView: UIView {
     
     }
     
-    private lazy var PayByCardView : PayView = {
-        let payView = PayView()
+    private lazy var PayByCardView : TogleView = {
+        let payView = TogleView()
         payView.translatesAutoresizingMaskIntoConstraints = false
         payView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         
-        payView.setTypeOfPayment(typeOfPaymentString: "КАРТОЙ КУРЬЕРУ")
+        payView.setText(currentText: "КАРТОЙ КУРЬЕРУ")
         return payView
         
     }()
-    public lazy var payByCashView : PayView = {
-        let payView = PayView()
+    public lazy var payByCashView : TogleView = {
+        let payView = TogleView()
         payView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         payView.translatesAutoresizingMaskIntoConstraints = false
-        payView.setTypeOfPayment(typeOfPaymentString: "НАЛИЧНЫЕ")
+        payView.setText(currentText: "НАЛИЧНЫЕ")
         return payView
     }()
     public lazy var vStackName : UIStackView = {
         var stack = generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
         var nameField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         nameField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
+        nameField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         nameField?.tag = 1
         
         
@@ -135,6 +136,7 @@ class DeliveryView: UIView {
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
+        phoneField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         phoneField?.tag = 2
         phoneField?.keyboardType = .numberPad
         
@@ -144,6 +146,7 @@ class DeliveryView: UIView {
         var stack = generateStackWithLabelAndField(name: "ПОЧТА")
         var emailField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         emailField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        emailField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         
         return stack
         
@@ -154,6 +157,7 @@ class DeliveryView: UIView {
         var stack = generateStackWithLabelAndField(name: "УЛИЦА")
         var street = (stack.subviews[1] as? CustomTextFieldWithInsets)
         street?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        street?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
        
         return stack
 
@@ -163,6 +167,7 @@ class DeliveryView: UIView {
         var stack = generateStackWithLabelAndField(name: "ДОМ")
         var house = (stack.subviews[1] as? CustomTextFieldWithInsets)
         house?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        house?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         
       
         return stack
@@ -174,6 +179,7 @@ class DeliveryView: UIView {
         var stack = generateStackWithLabelAndField(name: "КВАРТИРА И ЭТАЖ")
         var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
         flatAndFloor?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        flatAndFloor?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
        
         return stack
 
@@ -235,43 +241,7 @@ class DeliveryView: UIView {
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
     }
-    private func generateLabel(name : String) -> UILabel{
-        let label = UILabel()
-        label.text = name
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
-        label.textColor = UIColor.myLightGrey
-        return label
-        
-    }
-    private func generateTextField(hint : String) -> UITextField{
-        let textField = CustomTextFieldWithInsets()
-        textField.placeholder = hint
-        let rectangleView = UIView()
-        rectangleView.backgroundColor = .gray
-        //add
-        textField.addSubview(rectangleView)
-        textField.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
-        //constraints for bottom line
-        rectangleView.translatesAutoresizingMaskIntoConstraints = false
-        rectangleView.widthAnchor.constraint(equalTo: textField.widthAnchor).isActive = true
-        rectangleView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        rectangleView.bottomAnchor.constraint(equalTo: textField.bottomAnchor).isActive = true
-        rectangleView.centerXAnchor.constraint(equalTo: textField.centerXAnchor).isActive = true
-        
-        return textField
-        
-    }
-    private func generateStackWithLabelAndField(name : String) -> UIStackView{
-        let vStack = UIStackView()
-        vStack.axis = .vertical
-        vStack.spacing = 27
-        vStack.distribution = .fillEqually
-        vStack.addArrangedSubview(generateLabel(name: name))
-        vStack.addArrangedSubview(generateTextField(hint: name))
-        return vStack
-        
-    }
+   
     
     private func setConstraints(){
         if let navigationBar = navigationBar{

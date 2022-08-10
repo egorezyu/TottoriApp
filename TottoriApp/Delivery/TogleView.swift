@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PayView: UIView {
+class TogleView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addView()
@@ -34,16 +34,17 @@ class PayView: UIView {
         return view
         
     }()
-    private lazy var typeOfPayment : UILabel = {
+    private lazy var text : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    
     private func addView(){
         addSubview(rectangleButtonView)
-        addSubview(typeOfPayment)
+        addSubview(text)
         rectangleButtonView.addSubview(cicleView)
         
        
@@ -56,8 +57,8 @@ class PayView: UIView {
         rectangleButtonView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         rectangleButtonView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         
-        typeOfPayment.leadingAnchor.constraint(equalTo: rectangleButtonView.trailingAnchor,constant: 10).isActive = true
-        typeOfPayment.centerYAnchor.constraint(equalTo: rectangleButtonView.centerYAnchor).isActive = true
+        text.leadingAnchor.constraint(equalTo: rectangleButtonView.trailingAnchor,constant: 10).isActive = true
+        text.centerYAnchor.constraint(equalTo: rectangleButtonView.centerYAnchor).isActive = true
         
         cicleView.centerXAnchor.constraint(equalTo: rectangleButtonView.centerXAnchor).isActive = true
         cicleView.centerYAnchor.constraint(equalTo: rectangleButtonView.centerYAnchor).isActive = true
@@ -66,8 +67,8 @@ class PayView: UIView {
         
         
     }
-    public func setTypeOfPayment(typeOfPaymentString : String){
-        typeOfPayment.text = typeOfPaymentString
+    public func setText(currentText : String){
+        text.text = currentText
     }
     public func drawCircle(){
         cicleView.isHidden = false
