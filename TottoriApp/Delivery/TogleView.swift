@@ -30,6 +30,7 @@ class TogleView: UIView {
         view.layer.cornerRadius = 7.5
         view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = false
         view.isHidden = true
         return view
         

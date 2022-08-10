@@ -13,5 +13,7 @@ protocol AboutUsDelegate : AnyObject{
     func switchTogle(sender : UIButton)
     func phoneTextFieldTapped(sender : UITextField)
     func textEditing(sender : UITextField)
+    func changeDatePicker(sender : UIDatePicker)
+    func dismissToolBar(sender : UIToolbar)
     
 }

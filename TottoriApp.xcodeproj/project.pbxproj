@@ -51,6 +51,7 @@
 		E4ABE0B428A3C31D00B7640B /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B328A3C31D00B7640B /* UIView.swift */; };
 		E4ABE0B628A3DBE800B7640B /* TextFieldControlColorProtol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */; };
 		E4ABE0B828A3F73F00B7640B /* PhoneFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */; };
+		E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B928A4138800B7640B /* ToolBar.swift */; };
 		E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1028A264C8004A1BEE /* UIViewController.swift */; };
 		E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */; };
 		E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1528A280B4004A1BEE /* AboutUsView.swift */; };
@@ -111,6 +112,7 @@
 		E4ABE0B328A3C31D00B7640B /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldControlColorProtol.swift; sourceTree = "<group>"; };
 		E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldProtocol.swift; sourceTree = "<group>"; };
+		E4ABE0B928A4138800B7640B /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		E4CEED1028A264C8004A1BEE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDelegate.swift; sourceTree = "<group>"; };
 		E4CEED1528A280B4004A1BEE /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				E4A93C0A289BD2C80017F326 /* Allert.swift */,
 				E4CEED1028A264C8004A1BEE /* UIViewController.swift */,
 				E4ABE0B328A3C31D00B7640B /* UIView.swift */,
+				E4ABE0B928A4138800B7640B /* ToolBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
 				E43C7FF028896C7E001F6D8C /* WeightView.swift in Sources */,
+				E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */,
 				E49262BC2891436000970B24 /* AboutUsData.swift in Sources */,
 				E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */,
 				E433C8A8288DA26E0036479C /* TogleView.swift in Sources */,

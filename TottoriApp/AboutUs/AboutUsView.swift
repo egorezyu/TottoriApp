@@ -22,7 +22,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "наш интерьер"
-        label.font = UIFont(name: "Gilroy", size: 14)
+        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
         return label
         
     }()
@@ -42,7 +42,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
 
 
         label.attributedText = NSMutableAttributedString(string: "             красота \nв деталях", attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
         
         return label
         
@@ -50,7 +50,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
     private lazy var chinaSymbol : UILabel = {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.systemFont(ofSize: 14)
+        view.font = UIFont.systemFont(ofSize:  UIScreen.main.bounds.width / 27.8571428571)
 
 
    
@@ -65,7 +65,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
     private lazy var tableOrderLabel : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "FoglihtenNo06", size: 30)
+        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
         label.numberOfLines = 0
 
         label.lineBreakMode = .byWordWrapping
@@ -79,7 +79,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
     private lazy var waitForYouLabel : UILabel = {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "Gilroy", size: 14)
+        view.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
         view.attributedText = NSMutableAttributedString(string: "ждем вас ежедневно", attributes: [NSAttributedString.Key.kern: 1.96])
         return view
     }()
@@ -123,11 +123,26 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         
         return stack
     }()
+    public lazy var timePicker : UIDatePicker = {
+        var datePicker = UIDatePicker()
+        datePicker.datePickerMode = .time
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.addTarget(self, action: #selector(changeDatePicker(sender :)), for: .valueChanged)
+        return datePicker
+    }()
+    public lazy var toolBar : UIToolbar = {
+        var tool = UIToolbar.toolbarPiker(mySelect: #selector(dismissToolBar(sender:)))
+        return tool
+    }()
     public lazy var vStackTime : UIStackView = {
+        
         var stack = generateStackWithLabelAndField(name: "Время")
         var timeField = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        
+
         timeField?.tag = 3
-        timeField?.keyboardType = .numberPad
+        timeField?.inputView = timePicker
+        timeField?.inputAccessoryView = toolBar
         timeField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         timeField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         
@@ -221,22 +236,22 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
-        aboutIntLabel.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: -20).isActive = true
+        aboutIntLabel.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: -UIScreen.main.bounds.width / 19.8571428571).isActive = true
         aboutIntLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
         
         
-        aboutBeatyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
+        aboutBeatyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16).isActive = true
         aboutBeatyLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
       
 //
-        chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: 25).isActive = true
-        chinaSymbol.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 15.6).isActive = true
+        chinaSymbol.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
 //
         tableOrderLabel.topAnchor.constraint(equalTo: aboutBeatyLabel.bottomAnchor,constant: 20).isActive = true
         tableOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
 
         waitForYouLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
-        waitForYouLabel.centerYAnchor.constraint(equalTo: tableOrderLabel.centerYAnchor,constant: 25).isActive = true
+        waitForYouLabel.centerYAnchor.constraint(equalTo: tableOrderLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 27.8571428571).isActive = true
 //
         vStackFields.topAnchor.constraint(equalTo: tableOrderLabel.bottomAnchor,constant: 20).isActive = true
         vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
@@ -283,7 +298,12 @@ class AboutUsView: UIView,PhoneFieldProtocol {
     @objc func textEditing(sender : UITextField){
         delegate?.textEditing(sender: sender)
     }
-    
+    @objc func changeDatePicker(sender : UIDatePicker){
+        delegate?.changeDatePicker(sender: sender)
+    }
+    @objc func dismissToolBar(sender : UIToolbar){
+        delegate?.dismissToolBar(sender: sender)
+    }
     
     
     

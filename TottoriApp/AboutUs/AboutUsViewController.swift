@@ -74,6 +74,20 @@ class AboutUsViewController: UIViewController {
 
 }
 extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate{
+    func dismissToolBar(sender: UIToolbar) {
+        let timeField = (aboutUsView.vStackTime.subviews[1] as? CustomTextFieldWithInsets)
+        
+        timeField?.text = getFormatter().string(from: aboutUsView.timePicker.date)
+        aboutUsView.endEditing(true)
+        
+    }
+    
+    func changeDatePicker(sender: UIDatePicker) {
+        let timeField = (aboutUsView.vStackTime.subviews[1] as? CustomTextFieldWithInsets)
+        
+        timeField?.text = getFormatter().string(from: sender.date)
+    }
+    
     
     
     func postRequest(sender: UIButton) {
@@ -116,6 +130,11 @@ extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate
             
         }
         controlButtonStateAlgo()
+    }
+    private func getFormatter() -> DateFormatter{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
     }
     
     
