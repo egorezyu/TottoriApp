@@ -19,6 +19,7 @@ class MySecondHeaderClass: UICollectionReusableView {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
 //        view.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
+        
         return view
         
     }()
@@ -26,13 +27,14 @@ class MySecondHeaderClass: UICollectionReusableView {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
+        
         return label
     }()
     public lazy var favCollectionView : UICollectionView = {
         let layout = FlowLay()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: UIScreen.main.bounds.width - 60, height: frame.height * 0.8 - 20)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 10, right: 30)
+        layout.itemSize = .init(width: UIScreen.main.bounds.width - 60, height: frame.height * 0.8 - 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 0, right: 30)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
 //        view.isPagingEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -114,11 +116,15 @@ class MySecondHeaderClass: UICollectionReusableView {
         addSubview(holdTextView)
         addSubview(favCollectionView)
         addSubview(hStack)
+        
         holdTextView.addSubview(firstDishTitle)
+        
     }
     private func setConsraints(){
+        
         NSLayoutConstraint.activate([
-            holdTextView.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 10),
+            
+            holdTextView.topAnchor.constraint(equalTo: hStack.bottomAnchor),
             
 
             holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -129,15 +135,15 @@ class MySecondHeaderClass: UICollectionReusableView {
         ])
         NSLayoutConstraint.activate([
             firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
-            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor,constant: -10),
+            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor),
             
         
 
         ])
         NSLayoutConstraint.activate([
-            hStack.topAnchor.constraint(equalTo: favCollectionView.bottomAnchor,constant: 10),
+            hStack.topAnchor.constraint(equalTo: favCollectionView.bottomAnchor),
 
-            hStack.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            hStack.leadingAnchor.constraint(equalTo: favCollectionView.leadingAnchor,constant: 20),
            
 
         ])
@@ -151,7 +157,7 @@ class MySecondHeaderClass: UICollectionReusableView {
             
 
         ])
-//        favCollectionView.backgroundColor = .gray
+
         for view in hStack.subviews{
             view.widthAnchor.constraint(equalToConstant: 48).isActive = true
             view.heightAnchor.constraint(equalToConstant: 48).isActive = true

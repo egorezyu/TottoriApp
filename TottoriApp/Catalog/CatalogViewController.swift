@@ -20,6 +20,7 @@ class CatalogViewController: UIViewController {
     private var currentVstackCellCount = 0
     
     
+    
 
 
 
@@ -302,6 +303,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
     }
     
+    
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
@@ -315,8 +317,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier, for: indexPath) as! MySecondHeaderClass
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
-//                    headerCell.favCollectionView.decelerationRate = .fast
-                    headerCell.favCollectionView.decelerationRate = .init(rawValue: 0.9)
+                    headerCell.favCollectionView.decelerationRate = .fast
+
 
                    
                     headerCell.firstDishTitle.text = catalog?.menuList[1].sectionName
@@ -358,6 +360,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
         
     }
+   
     
     // Width doesn't matter because scroll is vertical. Only height used.
     func collectionView(_ collectionView: UICollectionView,
@@ -376,6 +379,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
     }
     
+    
 
 
     func scrollViewWillEndDragging(
@@ -384,41 +388,43 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ){
         
-        print(targetContentOffset.pointee.x)
-        print(UIScreen.main.bounds.width - 20)
+//        print(targetContentOffset.pointee.x)
+//        print(UIScreen.main.bounds.width - 20)
         
-        print(Int(targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)))
+        if scrollView == header.favCollectionView{
+            let currentIndex = (targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)).rounded(.toNearestOrAwayFromZero)
+            
+            
+            
+            if currentIndex == 0{
+                header.confirmStack(stack: header.hStack, j: 2)
+                header.hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
+                header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                header.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+            }
+            else if currentIndex == CGFloat((catalog?.menuDishes.count ?? -1) - 1){
+                header.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
+                header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                header.hStack.subviews[2].layer.borderColor = UIColor.red.cgColor
+                
+                header.confirmStack(stack: header.hStack, j: (catalog?.menuDishes.count ?? -1) - 1)
+                
+            }
+            else {
+                header.confirmStack(stack: header.hStack, j: Int(currentIndex) + 1)
+                header.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
+                header.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
+                header.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+                
+                
+            }
+        }
         
         
 
             
 
-        let currentIndex = (targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)).rounded(.toNearestOrAwayFromZero)
-        
-        
-        
-        if currentIndex == 0{
-            header.confirmStack(stack: header.hStack, j: 2)
-            header.hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
-            header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
-            header.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
-        }
-        else if currentIndex == CGFloat((catalog?.menuDishes.count ?? -1) - 1){
-            header.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
-            header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
-            header.hStack.subviews[2].layer.borderColor = UIColor.red.cgColor
-            
-            header.confirmStack(stack: header.hStack, j: (catalog?.menuDishes.count ?? -1) - 1)
-            
-        }
-        else {
-            header.confirmStack(stack: header.hStack, j: Int(currentIndex) + 1)
-            header.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
-            header.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
-            header.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
-            
-            
-        }
+       
 
 //
         
