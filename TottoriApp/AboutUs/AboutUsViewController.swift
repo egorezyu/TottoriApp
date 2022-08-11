@@ -22,9 +22,15 @@ class AboutUsViewController: UIViewController {
         super.viewDidLoad()
         setBackkGround()
         controlButtonStateAlgo()
+        setDelegateForCollectionView()
 
         // Do any additional setup after loading the view.
     }
+    private func setDelegateForCollectionView(){
+        aboutUsView.horCollectionView.delegate = self
+        aboutUsView.horCollectionView.dataSource = self
+    }
+    
     func controlButtonStateAlgo(){
         let nameField = (aboutUsView.vStackName.subviews[1] as? CustomTextFieldWithInsets)
         let phoneField = (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
@@ -135,6 +141,18 @@ extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter
+    }
+    
+    
+}
+extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: FurnitureCollectionViewCell.id, for: indexPath) as! FurnitureCollectionViewCell
+        return cell
     }
     
     

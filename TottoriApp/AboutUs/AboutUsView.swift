@@ -175,15 +175,20 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
-    private lazy var horCollectionView : UICollectionView = {
-        var layout = DGCarouselFlowLayout()
+    lazy var horCollectionView : UICollectionView = {
+        var layout = FlowLay()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.height - 10)
+        
        
         
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.decelerationRate = .fast
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .red
+//        collectionView.backgroundColor = .red
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(FurnitureCollectionViewCell.self, forCellWithReuseIdentifier: FurnitureCollectionViewCell.id)
         
         
         return collectionView
@@ -214,7 +219,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(aboutIntLabel)
-//        contentView.addSubview(horCollectionView)
+        contentView.addSubview(horCollectionView)
         contentView.addSubview(aboutBeatyLabel)
         contentView.addSubview(chinaSymbol)
         contentView.addSubview(tableOrderLabel)
@@ -242,12 +247,17 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         
         aboutBeatyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16).isActive = true
         aboutBeatyLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
+        
+        horCollectionView.topAnchor.constraint(equalTo: aboutBeatyLabel.bottomAnchor,constant: 20).isActive = true
+        horCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        horCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        horCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.7).isActive = true
       
 //
         chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 15.6).isActive = true
         chinaSymbol.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
 //
-        tableOrderLabel.topAnchor.constraint(equalTo: aboutBeatyLabel.bottomAnchor,constant: 20).isActive = true
+        tableOrderLabel.topAnchor.constraint(equalTo: horCollectionView.bottomAnchor,constant: 20).isActive = true
         tableOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
 
         waitForYouLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
