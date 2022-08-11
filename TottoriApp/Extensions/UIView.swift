@@ -47,7 +47,7 @@ extension UIView{
         
     }
     static func getHeightOfAboutUsDataView() -> CGFloat {
-        return UIScreen.main.bounds.width / 0.39
+        return UIScreen.main.bounds.width / 0.325
     }
     
 }

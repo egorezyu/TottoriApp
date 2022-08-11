@@ -85,7 +85,7 @@ class AboutUsData: UIView {
         
 
     }()
-    private var deliverZone : UIButton = {
+    private lazy var deliverZone : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
        
@@ -96,6 +96,18 @@ class AboutUsData: UIView {
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.red.cgColor
         return button
+    }()
+    private lazy var adressImage : UIImageView = {
+        var image = UIImageView(image: UIImage(named: "adress"))
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    private lazy var timeImage : UIImageView = {
+        var image = UIImageView(image: UIImage(named: "time"))
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     
@@ -109,18 +121,32 @@ class AboutUsData: UIView {
         addSubview(sushiImage)
         addSubview(deliverZone)
         addSubview(map)
+        addSubview(adressImage)
+        addSubview(timeImage)
         sushiImage.addSubview(sushiLabel)
         
     }
     private func setConstraints(){
-        map.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        
+        adressImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        adressImage.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
+        adressImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.1).isActive = true
+        adressImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.2).isActive = true
+        
+        timeImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        timeImage.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
+        timeImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.1).isActive = true
+        timeImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.2).isActive = true
+        
+        
+        map.topAnchor.constraint(equalTo: adressImage.bottomAnchor,constant: 50).isActive = true
         map.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         map.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
         map.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.4).isActive = true
         sushiImage.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 80).isActive = true
         sushiImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         sushiImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3).isActive = true
-        sushiImage.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.6).isActive = true
+        sushiImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.125).isActive = true
         
         sushiLabel.centerXAnchor.constraint(equalTo: sushiImage.centerXAnchor).isActive = true
         sushiLabel.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true

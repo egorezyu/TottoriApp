@@ -227,6 +227,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     }()
     
     
+    
     private func addView(){
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -296,8 +297,8 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         
         infoAboutUs.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 100).isActive = true
 //        infoAboutUs.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        infoAboutUs.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
-        infoAboutUs.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
+        infoAboutUs.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+        infoAboutUs.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         infoAboutUs.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView()).isActive = true
 //        infoAboutUs.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 200).isActive = true
         infoAboutUs.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
