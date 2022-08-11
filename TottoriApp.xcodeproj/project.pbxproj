@@ -41,6 +41,8 @@
 		E43C7FF42889C114001F6D8C /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FF32889C113001F6D8C /* BadgeView.swift */; };
 		E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D7AA12889DAC100FDDD0F /* Formatter.swift */; };
 		E48DBAC028A458DF00B65644 /* FlowLay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBABF28A458DF00B65644 /* FlowLay.swift */; };
+		E48DBAC328A5469C00B65644 /* AboutUsDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBAC228A5469C00B65644 /* AboutUsDataDelegate.swift */; };
+		E48DBAC528A5478C00B65644 /* AboutUsDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBAC428A5478C00B65644 /* AboutUsDataViewController.swift */; };
 		E49262BC2891436000970B24 /* AboutUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49262BB2891436000970B24 /* AboutUsData.swift */; };
 		E4A93C022897EA920017F326 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C012897EA920017F326 /* UILabel.swift */; };
 		E4A93C04289A7A850017F326 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C03289A7A850017F326 /* CollectionReusableView.swift */; };
@@ -105,6 +107,8 @@
 		E43C7FF32889C113001F6D8C /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E48D7AA12889DAC100FDDD0F /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		E48DBABF28A458DF00B65644 /* FlowLay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLay.swift; sourceTree = "<group>"; };
+		E48DBAC228A5469C00B65644 /* AboutUsDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDataDelegate.swift; sourceTree = "<group>"; };
+		E48DBAC428A5478C00B65644 /* AboutUsDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDataViewController.swift; sourceTree = "<group>"; };
 		E49262BB2891436000970B24 /* AboutUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsData.swift; sourceTree = "<group>"; };
 		E4A93C012897EA920017F326 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E4A93C03289A7A850017F326 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
@@ -192,7 +196,6 @@
 				E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */,
 				E433C8A7288DA26E0036479C /* TogleView.swift */,
 				E433C8A9288EF58B0036479C /* UserInfo.swift */,
-				E49262BB2891436000970B24 /* AboutUsData.swift */,
 				E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */,
 				E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */,
 				E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */,
@@ -225,6 +228,16 @@
 			path = Basket;
 			sourceTree = "<group>";
 		};
+		E48DBAC128A5464F00B65644 /* AboutUsData */ = {
+			isa = PBXGroup;
+			children = (
+				E49262BB2891436000970B24 /* AboutUsData.swift */,
+				E48DBAC228A5469C00B65644 /* AboutUsDataDelegate.swift */,
+				E48DBAC428A5478C00B65644 /* AboutUsDataViewController.swift */,
+			);
+			path = AboutUsData;
+			sourceTree = "<group>";
+		};
 		E4CEED1228A2651F004A1BEE /* AboutUs */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +267,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E48DBAC128A5464F00B65644 /* AboutUsData */,
 				E433C89E288C81EA0036479C /* Delivery */,
 				E43C7FE028847E9B001F6D8C /* Basket */,
 				E43C7FCE288160F4001F6D8C /* Dish */,
@@ -431,7 +445,9 @@
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
 				E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */,
+				E48DBAC328A5469C00B65644 /* AboutUsDataDelegate.swift in Sources */,
 				E4A93C022897EA920017F326 /* UILabel.swift in Sources */,
+				E48DBAC528A5478C00B65644 /* AboutUsDataViewController.swift in Sources */,
 				E43C7FDF288419BB001F6D8C /* FoodCountView.swift in Sources */,
 				E4ABE0B428A3C31D00B7640B /* UIView.swift in Sources */,
 				E43C7FEC2886D03F001F6D8C /* MenuListRequest.swift in Sources */,

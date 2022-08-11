@@ -6,13 +6,26 @@
 //
 
 import UIKit
+import MapKit
 
 class AboutUsData: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private weak var delegate : AboutUsDataDelegate?
+    
+    
+    init(delegate : AboutUsDataDelegate? = nil) {
+        self.delegate = delegate
+        super.init(frame: .zero)
         addView()
         setConstraints()
     }
+    public lazy var map : MKMapView = {
+        let mapkit = MKMapView()
+        mapkit.translatesAutoresizingMaskIntoConstraints = false
+        mapkit.layer.borderColor = UIColor.gray.cgColor
+        mapkit.layer.borderWidth = 1.22
+        return mapkit
+        
+    }()
     private lazy var title : UILabel = {
         var title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +54,7 @@ class AboutUsData: UIView {
         
     }()
     private lazy var sushiImage : UIImageView = {
-        var imageView = UIImageView(image: UIImage(named: "sushi"))
+        var imageView = UIImageView(image: UIImage(named: "sushi")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1)))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -95,11 +108,16 @@ class AboutUsData: UIView {
         addSubview(secondVStack)
         addSubview(sushiImage)
         addSubview(deliverZone)
+        addSubview(map)
         sushiImage.addSubview(sushiLabel)
         
     }
     private func setConstraints(){
-        sushiImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        map.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        map.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
+        map.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
+        map.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.4).isActive = true
+        sushiImage.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 80).isActive = true
         sushiImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         sushiImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3).isActive = true
         sushiImage.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.6).isActive = true
@@ -110,8 +128,8 @@ class AboutUsData: UIView {
         sushiLabel.widthAnchor.constraint(equalTo: sushiImage.widthAnchor).isActive = true
         sushiLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        title.centerXAnchor.constraint(equalTo: sushiImage.centerXAnchor).isActive = true
-        title.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        title.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true
+        title.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 80).isActive = true
         firstVStack.topAnchor.constraint(equalTo: sushiImage.bottomAnchor,constant: 20).isActive = true
         firstVStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         secondVStack.leadingAnchor.constraint(equalTo: firstVStack.trailingAnchor,constant: 10).isActive = true

@@ -211,19 +211,19 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         return button
         
     }()
-    public lazy var map : MKMapView = {
-        let mapkit = MKMapView()
-//        setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D(latitude: 55.757131, longitude: 37.628379), title: "Новая площадь,14", subTitle: "")
-        mapkit.translatesAutoresizingMaskIntoConstraints = false
-        mapkit.layer.borderColor = UIColor.gray.cgColor
-        mapkit.layer.borderWidth = 1.22
-        return mapkit
-        
-    }()
+//    public lazy var map : MKMapView = {
+//        let mapkit = MKMapView()
+////        setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D(latitude: 55.757131, longitude: 37.628379), title: "Новая площадь,14", subTitle: "")
+//        mapkit.translatesAutoresizingMaskIntoConstraints = false
+//        mapkit.layer.borderColor = UIColor.gray.cgColor
+//        mapkit.layer.borderWidth = 1.22
+//        return mapkit
+//        
+//    }()
     private lazy var infoAboutUs : AboutUsData = {
-        let dataView = AboutUsData()
-        dataView.translatesAutoresizingMaskIntoConstraints = false
-        return dataView
+        let dataView = AboutUsDataViewController()
+        dataView.view.translatesAutoresizingMaskIntoConstraints = false
+        return dataView.view as! AboutUsData
     }()
     
     
@@ -236,7 +236,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         contentView.addSubview(commentLabel)
         contentView.addSubview(commentTextArea)
         contentView.addSubview(makeAnOrderButton)
-        contentView.addSubview(map)
+//        contentView.addSubview(map)
         contentView.addSubview(infoAboutUs)
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
@@ -288,17 +288,17 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         makeAnOrderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
 //        makeAnOrderButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
-        map.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 50).isActive = true
-        map.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        map.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-        map.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3).isActive = true
+//        map.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 50).isActive = true
+//        map.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
+//        map.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+//        map.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3).isActive = true
        
         
-        infoAboutUs.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 100).isActive = true
+        infoAboutUs.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 100).isActive = true
 //        infoAboutUs.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         infoAboutUs.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
         infoAboutUs.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
-        infoAboutUs.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.2).isActive = true
+        infoAboutUs.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView()).isActive = true
 //        infoAboutUs.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 200).isActive = true
         infoAboutUs.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         

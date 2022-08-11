@@ -46,5 +46,8 @@ extension UIView{
         return vStack
         
     }
+    static func getHeightOfAboutUsDataView() -> CGFloat {
+        return UIScreen.main.bounds.width / 0.39
+    }
     
 }

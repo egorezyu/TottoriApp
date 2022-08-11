@@ -191,9 +191,9 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         
     }()
     private lazy var aboutUsView : AboutUsData = {
-        var data = AboutUsData()
-        data.translatesAutoresizingMaskIntoConstraints = false
-        return data
+        var vc = AboutUsDataViewController()
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        return vc.view as! AboutUsData
         
     }()
     public lazy var makeAnOrderButton : UIButton = {
@@ -271,7 +271,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         aboutUsView.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 20).isActive = true
         aboutUsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         aboutUsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-        aboutUsView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.2).isActive = true
+        aboutUsView.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView()).isActive = true
         aboutUsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
         
