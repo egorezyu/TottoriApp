@@ -35,6 +35,9 @@ class CustomFavouriteCell: UICollectionViewCell {
         let title = UILabel()
         title.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 24.375)
         title.textColor = .myLightGrey
+        title.textAlignment = .left
+        title.numberOfLines = 0
+        title.lineBreakMode = .byWordWrapping
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
         
@@ -136,7 +139,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         
         title.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         title.topAnchor.constraint(equalTo: image.bottomAnchor,constant: 10).isActive = true
-        title.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        title.trailingAnchor.constraint(equalTo: vStack.leadingAnchor,constant: -5).isActive = true
         
         underLine.bottomAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
         underLine.leadingAnchor.constraint(equalTo: title.leadingAnchor).isActive = true

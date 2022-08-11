@@ -29,10 +29,12 @@ class MySecondHeaderClass: UICollectionReusableView {
         return label
     }()
     public lazy var favCollectionView : UICollectionView = {
-        let layout = DGCarouselFlowLayout()
+        let layout = FlowLay()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: UIScreen.main.bounds.width - 4, height: frame.height * 0.8)
+        layout.itemSize = .init(width: UIScreen.main.bounds.width - 60, height: frame.height * 0.8 - 20)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 10, right: 30)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        view.isPagingEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.showsHorizontalScrollIndicator = false
         view.register(CustomFavouriteCell.self, forCellWithReuseIdentifier: CustomFavouriteCell.id)
@@ -128,6 +130,7 @@ class MySecondHeaderClass: UICollectionReusableView {
         NSLayoutConstraint.activate([
             firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
             firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor,constant: -10),
+            
         
 
         ])
