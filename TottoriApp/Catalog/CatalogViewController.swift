@@ -316,6 +316,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
 //                    headerCell.favCollectionView.decelerationRate = .fast
+                    headerCell.favCollectionView.decelerationRate = .init(rawValue: 0.9)
 
                    
                     headerCell.firstDishTitle.text = catalog?.menuList[1].sectionName
