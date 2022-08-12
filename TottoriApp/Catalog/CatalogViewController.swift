@@ -12,12 +12,13 @@ import UIKit
 
 class CatalogViewController: UIViewController {
     
-    private var selectedIndex = 0
+    
     private lazy var catalogView = CatalogView(subscriber: self)
     private lazy var viewModel = MenuListViewModel()
     private var header : HeaderForFavDishes!
-    private var currentDish = 0
+    
     private var currentVstackCellCount = 0
+    private var selectedFirstCollCellIndex = 0
     
     
     
@@ -36,7 +37,7 @@ class CatalogViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+       
         
         
         
@@ -125,7 +126,7 @@ class CatalogViewController: UIViewController {
         
     }
 
-    @objc func doSequeToNextScreen(button : UIButton){
+    @objc func doSequeToDishScreen(button : UIButton){
 
         
         var sectionList : SectionList?
@@ -185,7 +186,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         if collectionView == catalogView.collectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.identifier, for: indexPath) as! MenuCollectionViewCell
             cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
-            if selectedIndex != indexPath.row{
+            if selectedFirstCollCellIndex != indexPath.row{
                 cell.contentView.backgroundColor = .clear
             }
             else{
@@ -198,7 +199,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             cell.setCellFields(sectionList: catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row])
             cell.purchaseButton.tag = Int(catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row].foodID ?? "") ?? -1
     //        print(indexPath.row)
-            cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
+            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
             return cell
         }
         else{
@@ -208,7 +209,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
            
             cell.purchaseButton.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
 
-            cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
+            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
             
             
             
@@ -223,16 +224,16 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == catalogView.collectionView{
-            selectedIndex = indexPath.row
+            selectedFirstCollCellIndex = indexPath.row
             
             catalogView.collectionView.reloadData()
             var indexP : IndexPath
-            if selectedIndex == 0{
+            if selectedFirstCollCellIndex == 0{
                 indexP = IndexPath(row: 0, section: 0)
                 catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
             }
             else{
-                indexP = IndexPath(row: 0, section: selectedIndex - 1)
+                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex - 1)
                 catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
             }
             
@@ -315,7 +316,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     }
    
     
-    // Width doesn't matter because scroll is vertical. Only height used.
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
