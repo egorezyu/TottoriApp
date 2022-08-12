@@ -198,7 +198,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
             cell.setCellFields(sectionList: catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row])
             cell.purchaseButton.tag = Int(catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row].foodID ?? "") ?? -1
-    //        print(indexPath.row)
+
             cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
             return cell
         }

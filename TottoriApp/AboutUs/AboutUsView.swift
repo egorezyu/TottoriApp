@@ -22,7 +22,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "наш интерьер"
-        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
+        label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         return label
         
     }()
@@ -42,7 +42,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
 
 
         label.attributedText = NSMutableAttributedString(string: "             красота \nв деталях", attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
+        label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         
         return label
         
@@ -50,7 +50,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
     private lazy var chinaSymbol : UILabel = {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.systemFont(ofSize:  UIScreen.main.bounds.width / 27.8571428571)
+        view.font = UIFont.systemFont(ofSize:  FontSizes.font14)
 
 
    
@@ -65,7 +65,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
     private lazy var tableOrderLabel : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
+        label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.numberOfLines = 0
 
         label.lineBreakMode = .byWordWrapping
@@ -79,7 +79,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
     private lazy var waitForYouLabel : UILabel = {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
+        view.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         view.attributedText = NSMutableAttributedString(string: "ждем вас ежедневно", attributes: [NSAttributedString.Key.kern: 1.96])
         return view
     }()
@@ -186,7 +186,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.decelerationRate = .fast
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-//        collectionView.backgroundColor = .red
+
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(FurnitureCollectionViewCell.self, forCellWithReuseIdentifier: FurnitureCollectionViewCell.id)
         

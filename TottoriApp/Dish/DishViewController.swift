@@ -9,8 +9,7 @@ import UIKit
 
 class DishViewController: UIViewController {
     private lazy var dishView = DishView(subscriber: self)
-    private lazy var currentChose = 0
-//    private var prevChose : Int?
+    private lazy var currentPhotoChoose = 0
     var sectionList : SectionList?
     
     override func loadView() {
@@ -52,51 +51,51 @@ class DishViewController: UIViewController {
 }
 extension DishViewController : DishDelegate{
     func imageButtonTapped(sender: UIButton) {
-        if sender.tag != currentChose{
+        if sender.tag != currentPhotoChoose{
             sender.layer.borderColor = UIColor.red.cgColor
-            dishView.arrayOfNumbers[currentChose].layer.borderColor = UIColor.clear.cgColor
+            dishView.arrayOfNumbers[currentPhotoChoose].layer.borderColor = UIColor.clear.cgColor
         }
         else{
             sender.layer.borderColor = UIColor.red.cgColor
         }
-        currentChose = sender.tag
+        currentPhotoChoose = sender.tag
         setImageFunction()
         
         
     }
     
     func backButtonAction() {
-        currentChose = currentChose - 1
+        currentPhotoChoose = currentPhotoChoose - 1
 
-        if (currentChose == -1){
+        if (currentPhotoChoose == -1){
             dishView.arrayOfNumbers[0].layer.borderColor = UIColor.clear.cgColor
             dishView.arrayOfNumbers[dishView.arrayOfNumbers.count - 1].layer.borderColor = UIColor.red.cgColor
-            currentChose = dishView.arrayOfNumbers.count - 1
+            currentPhotoChoose = dishView.arrayOfNumbers.count - 1
         }
         else{
-            dishView.arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
-            dishView.arrayOfNumbers[currentChose + 1].layer.borderColor = UIColor.clear.cgColor
+            dishView.arrayOfNumbers[currentPhotoChoose].layer.borderColor = UIColor.red.cgColor
+            dishView.arrayOfNumbers[currentPhotoChoose + 1].layer.borderColor = UIColor.clear.cgColor
         }
         setImageFunction()
     }
     
     func forwardButtonAction() {
-        currentChose = currentChose + 1
-        if (currentChose == dishView.arrayOfNumbers.count){
+        currentPhotoChoose = currentPhotoChoose + 1
+        if (currentPhotoChoose == dishView.arrayOfNumbers.count){
             dishView.arrayOfNumbers[dishView.arrayOfNumbers.count - 1].layer.borderColor = UIColor.clear.cgColor
             dishView.arrayOfNumbers[0].layer.borderColor = UIColor.red.cgColor
-            currentChose = 0
+            currentPhotoChoose = 0
         }
         else{
-            dishView.arrayOfNumbers[currentChose].layer.borderColor = UIColor.red.cgColor
-            dishView.arrayOfNumbers[currentChose - 1].layer.borderColor = UIColor.clear.cgColor
+            dishView.arrayOfNumbers[currentPhotoChoose].layer.borderColor = UIColor.red.cgColor
+            dishView.arrayOfNumbers[currentPhotoChoose - 1].layer.borderColor = UIColor.clear.cgColor
         }
         setImageFunction()
     }
     
     private func setImageFunction() {
         if let sectionList = sectionList {
-            switch currentChose {
+            switch currentPhotoChoose {
             case 0 :
                 NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: dishView.foodImage)
                 
@@ -128,13 +127,8 @@ extension DishViewController : DishDelegate{
         if let sectionList = sectionList{
             let basketViewController = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]
             (basketViewController as? BasketViewController)?.addToArray(sectionList: sectionList)
-//            dishView.sectionList = SectionList(foodID: sectionList.foodID, foodName: sectionList.foodName, foodPrice: sectionList.foodPrice, foodImage0: sectionList.foodImage0, foodContent: sectionList.foodContent, foodWeight: sectionList.foodWeight, foodImage1: sectionList.foodImage1, foodImage2: sectionList.foodImage2, foodImage3: sectionList.foodImage3)
-//            setAllFieldsForControlCountView()
             navigationController?.popViewController(animated: true)
-//            (navigationController?.navigationBar.subviews[2] as? UILabel)?.isHidden = false
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                (self.navigationController?.navigationBar.subviews[2] as? UILabel)?.isHidden = true
-//            }
+
             
             
             
