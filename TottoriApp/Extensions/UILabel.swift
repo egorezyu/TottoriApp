@@ -10,7 +10,7 @@ import UIKit
 extension UILabel{
     public func genetrateLabel(text : String ,color : UIColor,font : UIFont?,secondFont : UIFont? = nil){
         let baseString = text
-        guard !baseString.isEmpty else {
+        guard !baseString.isEmpty,let font = font else {
             return
         }
 
