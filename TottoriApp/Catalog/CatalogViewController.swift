@@ -239,7 +239,14 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath) as! DuplicateCollectionViewCell
+            cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
+            if selectedFirstCollCellIndex != indexPath.row{
+                cell.cleanEverything()
+            }
+            else{
+                cell.contentView.layer.borderColor = UIColor.red.cgColor
+            }
             
             return cell
         }
@@ -253,6 +260,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             selectedFirstCollCellIndex = indexPath.row
             
             catalogView.collectionView.reloadData()
+            header.duplicateCollectionView.reloadData()
             var indexP : IndexPath
             if selectedFirstCollCellIndex == 0{
                 indexP = IndexPath(row: 0, section: 0)
@@ -266,6 +274,23 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             
 
+        }
+        else if collectionView == header.duplicateCollectionView{
+            selectedFirstCollCellIndex = indexPath.row
+            
+            catalogView.collectionView.reloadData()
+            header.duplicateCollectionView.reloadData()
+            
+            var indexP : IndexPath
+            if selectedFirstCollCellIndex == 0{
+                indexP = IndexPath(row: 0, section: 0)
+                catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
+            }
+            else{
+                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex - 1)
+                catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
+            }
+            
         }
         
         
@@ -357,7 +382,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         if collectionView == catalogView.secondCollectionView{
             if section == 0{
                 print(ReusavleViewDist.getSumWitoutCell() + CGFloat(ReusavleViewDist.collectionViewCellheigt * (catalog?.menuList.count ?? 0)))
-                return CGSize(width: UIScreen.main.bounds.width, height: ReusavleViewDist.getSumWitoutCell() + CGFloat(ReusavleViewDist.collectionViewCellheigt * (rowCount)) + CGFloat(ReusavleViewDist.rowSpacing * rowCount))
+                return CGSize(width: UIScreen.main.bounds.width, height: ReusavleViewDist.getSumWitoutCell() + CGFloat(ReusavleViewDist.collectionViewCellheigt * (rowCount)) + CGFloat(ReusavleViewDist.rowSpacing * rowCount) + 20)
             }
             
             return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)

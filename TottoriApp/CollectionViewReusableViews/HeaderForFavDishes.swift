@@ -48,8 +48,10 @@ class HeaderForFavDishes: UICollectionReusableView {
     public lazy var duplicateCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = .init(width: Int(UIScreen.main.bounds.width) / 3 - 30, height: ReusavleViewDist.collectionViewCellheigt)
-//        layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 0, right: 30)
+        layout.itemSize = .init(width: UIScreen.main.bounds.width / 3 - 10 * 3, height: CGFloat(ReusavleViewDist.collectionViewCellheigt))
+//        layout.estimatedItemSize = .init(width: 200, height: CGFloat(ReusavleViewDist.collectionViewCellheigt))
+        layout.minimumLineSpacing = 15
+
         layout.minimumInteritemSpacing = CGFloat(ReusavleViewDist.rowSpacing)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
@@ -57,7 +59,8 @@ class HeaderForFavDishes: UICollectionReusableView {
         view.showsHorizontalScrollIndicator = false
         view.register(DuplicateCollectionViewCell.self, forCellWithReuseIdentifier: DuplicateCollectionViewCell.id)
         view.isScrollEnabled = false
-        view.backgroundColor = .red
+        view.backgroundColor = .clear
+        
       
         return view
         
@@ -121,6 +124,7 @@ class HeaderForFavDishes: UICollectionReusableView {
         
         setBackGround()
         setBackGroundForLabel()
+        
         setChoseFirst()
         
         
@@ -167,7 +171,7 @@ class HeaderForFavDishes: UICollectionReusableView {
         ])
         NSLayoutConstraint.activate([
             
-            duplicateCollectionView.topAnchor.constraint(equalTo: hStack.bottomAnchor),
+            duplicateCollectionView.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 20),
             
 
             duplicateCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -178,7 +182,7 @@ class HeaderForFavDishes: UICollectionReusableView {
         ])
         NSLayoutConstraint.activate([
             firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
-            firstDishTitle.centerYAnchor.constraint(equalTo: holdTextView.centerYAnchor),
+            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor,constant: -5),
             
         
 
@@ -224,6 +228,12 @@ class HeaderForFavDishes: UICollectionReusableView {
         }
         
     }
+//    private func setBackGroundForDuplicateCollView(){
+//        if let image = UIImage(named: "back"){
+//            duplicateCollectionView.backgroundColor = UIColor(patternImage: image)
+//        }
+//
+//    }
    
     
     required init?(coder: NSCoder) {
