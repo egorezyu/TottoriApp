@@ -28,12 +28,7 @@ class DishViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    private func setBackGround(){
-        if let image = UIImage(named: "back"){
-            view.backgroundColor = UIColor(patternImage: image)
-        }
-        
-    }
+    
     private func setValuesForView(){
         if let sectionList = sectionList {
             dishView.setValues(sectionList : sectionList)

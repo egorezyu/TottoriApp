@@ -88,12 +88,7 @@ class BasketViewController: UIViewController{
         }
         
     }
-    private func setBackGround(){
-        if let image = UIImage(named: "back"){
-            view.backgroundColor = UIColor(patternImage: image)
-        }
-        
-    }
+    
     private func setDataSourceAndDelegate(){
         backetView.basketCollectionView.dataSource = self
         backetView.basketCollectionView.delegate = self

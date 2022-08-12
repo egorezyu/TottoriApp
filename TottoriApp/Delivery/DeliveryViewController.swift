@@ -70,12 +70,7 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
         devView.aboutDeliveryTimeLabel.isHidden = true
         showTabBarView()
     }
-    private func setBackGround(){
-        if let image = UIImage(named: "back"){
-            view.backgroundColor = UIColor(patternImage: image)
-        }
-        
-    }
+    
     private func hideTabBar(){
         tabBarController?.tabBar.isHidden = true
     }

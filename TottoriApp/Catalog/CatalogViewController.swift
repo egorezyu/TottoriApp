@@ -80,12 +80,7 @@ class CatalogViewController: UIViewController {
         
     }
    
-    private func setBackGround(){
-        if let image = UIImage(named: "back"){
-            view.backgroundColor = UIColor(patternImage: image)
-        }
-        
-    }
+    
 
         
     

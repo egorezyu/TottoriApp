@@ -10,7 +10,7 @@ import UIKit
 import SwiftEntryKit
 extension UIViewController{
     
-    func setBackkGround(){
+    func setBackGround(){
         if let image = UIImage(named: "back"){
             view.backgroundColor = UIColor(patternImage: image)
         }
