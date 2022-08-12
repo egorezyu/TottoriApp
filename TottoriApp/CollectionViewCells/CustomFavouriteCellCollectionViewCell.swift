@@ -77,7 +77,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     private lazy var descriptionLabel : UILabel = {
         var label = UILabel()
         label.text = "Описание"
-        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8)
+        label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myLightGrey
 
@@ -86,7 +86,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     }()
     private lazy var descriptionText : UITextView = {
         var textView = UITextView()
-        textView.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8)
+        textView.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false

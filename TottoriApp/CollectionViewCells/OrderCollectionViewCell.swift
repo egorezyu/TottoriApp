@@ -52,7 +52,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var vStack : UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-//        stack.spacing = (contentView.frame.height) / 4
+
         
         stack.distribution = .equalSpacing
         
@@ -83,7 +83,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     public lazy var deleteFoodButton : UIButton = {
         let button = UIButton()
         button.setTitle("Удалить", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8)
+        button.titleLabel?.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
         button.setTitleColor(UIColor.myLightGrey, for: .normal)
@@ -98,8 +98,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
     func setValues(sectionList : SectionList){
         self.sectionList = sectionList
         self.dishTitle.text = sectionList.foodName
-        self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273),secondFont: UIFont(name: "Cormorant", size: UIScreen.main.bounds.width / 19.5))
-        self.weight.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.7272727273),secondFont: UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.7272727273))
+        self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: FontSizes.fonFont23),secondFont: UIFont(name: "Cormorant", size: UIScreen.main.bounds.width / 19.5))
+        self.weight.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "Gilroy", size: FontSizes.font14),secondFont: UIFont(name: "Gilroy", size: FontSizes.font13))
         self.controlAmountView.countLabel.text = String(sectionList.count)
         NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         controlAmountView.increaseAmountButton.tag = Int(sectionList.foodID) ?? -1
@@ -123,9 +123,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(controlAmountView)
         contentView.addSubview(deleteFoodButton)
-//        contentView.addSubview(dishTitle)
-//        contentView.addSubview(price)
-//        contentView.addSubview(weight)
+
         contentView.addSubview(vStack)
         
         
@@ -144,19 +142,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         vStack.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
         vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
-        
-//        dishTitle.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
-//        dishTitle.topAnchor.constraint(equalTo: contentView.topAnchor,constant: (contentView.frame.height - 20 - 3 * 20) / 4).isActive = true
-//        dishTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-       
-//
-//        price.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
-//        price.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-//        price.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
-//
-//        weight.leadingAnchor.constraint(equalTo: foodImage.trailingAnchor,constant: 10).isActive = true
-//        weight.centerYAnchor.constraint(equalTo: deleteFoodButton.centerYAnchor).isActive = true
-//        weight.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
+
        
         
        

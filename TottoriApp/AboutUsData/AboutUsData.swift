@@ -32,7 +32,7 @@ class AboutUsData: UIView {
         title.text = "Наши \nконтакты"
         title.lineBreakMode = .byWordWrapping
         title.numberOfLines = 2
-        title.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
+        title.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         title.textColor = .myLightGrey
         return title
     }()
@@ -73,7 +73,7 @@ class AboutUsData: UIView {
         label.text = title
         label.textColor = .myLightGrey
         
-        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 26)
+        label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         return label
         
     }
@@ -89,7 +89,7 @@ class AboutUsData: UIView {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
        
-        button.titleLabel?.font = UIFont(name: "Gilroy", size: 14)
+        button.titleLabel?.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         
         button.setTitle("Зона доставки", for: .normal)
         button.setTitleColor(UIColor.myLightGrey, for: .normal)

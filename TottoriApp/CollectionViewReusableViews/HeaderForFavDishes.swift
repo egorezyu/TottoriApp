@@ -59,7 +59,7 @@ class HeaderForFavDishes: UICollectionReusableView {
             
             
   
-//            label.text = String(0) + String(i + 1)
+
             label.textAlignment = .center
             
             label.layer.borderWidth = 1

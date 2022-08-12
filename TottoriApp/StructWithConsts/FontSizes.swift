@@ -12,4 +12,5 @@ struct FontSizes{
     static let font14 = UIScreen.main.bounds.width / 27.8571428571
     static let font30 = UIScreen.main.bounds.width / 13
     static let font39 = UIScreen.main.bounds.width / 10.833
+    static let fonFont23 = UIScreen.main.bounds.width / 17.7272727273
 }

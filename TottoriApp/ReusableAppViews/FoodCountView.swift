@@ -82,15 +82,12 @@ class FoodCountView: UIView {
         addSubview(countLabel)
         decreaseAmountButton.addSubview(minusImage)
         increaseAmountButton.addSubview(plusImage)
-//        addSubview(hStack)
+
         
         
     }
     private func setConstraints(){
-//        hStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
-//        hStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -10).isActive = true
-//        hStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -10).isActive = true
-//        hStack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor,constant: 10).isActive = true
+
         countLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         countLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 

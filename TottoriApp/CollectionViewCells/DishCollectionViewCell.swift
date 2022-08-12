@@ -21,7 +21,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         var label = UILabel()
         label.numberOfLines = 2;
         label.lineBreakMode = .byWordWrapping
-        label.textColor = UIColor(red: 0.276, green: 0.288, blue: 0.308, alpha: 1)
+        label.textColor = .myLightGrey
         
         label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 22.9)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,14 +30,14 @@ class DishCollectionViewCell: UICollectionViewCell {
     private lazy var descriptionAboutFood : UITextView = {
         var textView = UITextView()
         textView.textAlignment = .left
-        textView.textColor = UIColor(red: 0.276, green: 0.288, blue: 0.308, alpha: 1)
+        textView.textColor = .myLightGrey
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.textContainer.maximumNumberOfLines = 5
-        textView.font = UIFont(name: "Gilroy-Regular", size: UIScreen.main.bounds.width / 27.8)
+        textView.font = UIFont(name: "Gilroy-Regular", size: FontSizes.font14)
         
         
         return textView
@@ -51,14 +51,6 @@ class DishCollectionViewCell: UICollectionViewCell {
         return label
         
     }()
-//    private lazy var ruble : UILabel = {
-//        var label = UILabel()
-//        label.text = "₽"
-//        label.font = UIFont(name: "Cormorant-Regular", size: 20)
-//        label.textColor = .red
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        return label
-//    }()
     lazy var purchaseButton : UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "purchase"), for: .normal)
@@ -80,7 +72,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(foodType)
         contentView.addSubview(descriptionAboutFood)
         contentView.addSubview(price)
-//        contentView.addSubview(ruble)
+
         contentView.addSubview(purchaseButton)
         
     }
@@ -103,19 +95,17 @@ class DishCollectionViewCell: UICollectionViewCell {
         foodType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
 
-//        foodType.widthAnchor.constraint(equalToConstant: 147).isActive = true
-//        foodType.heightAnchor.constraint(equalToConstant: 22).isActive = true
+
         descriptionAboutFood.topAnchor.constraint(equalTo: foodType.bottomAnchor,constant: 5).isActive = true
         
         descriptionAboutFood.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5).isActive = true
         descriptionAboutFood.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
-//        descriptionAboutFood.heightAnchor.constraint(equalToConstant: 162).isActive = true
+
         
         price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
         price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
         
-//        ruble.leadingAnchor.constraint(equalTo: price.trailingAnchor).isActive = true
-//        ruble.centerYAnchor.constraint(equalTo: price.centerYAnchor,constant: -3).isActive  = true
+
         
         purchaseButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
         purchaseButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
