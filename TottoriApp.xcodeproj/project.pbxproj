@@ -281,9 +281,16 @@
 			isa = PBXGroup;
 			children = (
 				E4C088FD28A6852F00CD58C7 /* DataServiceExceptions.swift */,
-				E4C088FF28A6853C00CD58C7 /* FontSizes.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		E4C0890128A6868600CD58C7 /* StructWithConsts */ = {
+			isa = PBXGroup;
+			children = (
+				E4C088FF28A6853C00CD58C7 /* FontSizes.swift */,
+			);
+			path = StructWithConsts;
 			sourceTree = "<group>";
 		};
 		E4CEED1228A2651F004A1BEE /* AboutUs */ = {
@@ -315,6 +322,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4C0890128A6868600CD58C7 /* StructWithConsts */,
 				E4C088FC28A6850700CD58C7 /* Enums */,
 				E4C088FB28A6835C00CD58C7 /* Protocols */,
 				E4C088FA28A681F600CD58C7 /* ReusableAppViews */,

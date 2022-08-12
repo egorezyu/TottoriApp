@@ -6,3 +6,7 @@
 //
 
 import Foundation
+import UIKit
+struct FontSizes{
+    static let font13 = UIScreen.main.bounds.width / 30
+}

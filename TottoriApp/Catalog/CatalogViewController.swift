@@ -65,10 +65,6 @@ class CatalogViewController: UIViewController {
             let resizedImage = UIImage.resizeImage(image: image, targetSize: CGSize(width: 44, height: 20))?.withTintColor(.red,renderingMode: .alwaysOriginal)
             self.navigationController?.navigationBar.backIndicatorImage = resizedImage
             self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = resizedImage
-            
-//            if let font = UIFont(name: "Avenir-Book", size: 30) {
-//                UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: font]
-//            }
             let backButton = UIBarButtonItem()
             backButton.title = "Назад"
             
@@ -90,24 +86,9 @@ class CatalogViewController: UIViewController {
         }
         
     }
-    private func setNavigationBar(){
-//        let backImage = UIImage(named: "purchase")
-//        self.navigationController?.navigationBar.backIndicatorImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
-//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage?.withTintColor(.red,renderingMode: .alwaysOriginal)
+
         
-//        self.navigationController?.navigationBar.backItem?.title = "Назад"
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "Заказ добавлен в корзину"
-//        label.isHidden = true
-//        label.textColor = .red
-//        if let navigationBar = navigationController?.navigationBar{
-//            navigationBar.addSubview(label)
-//            label.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
-//            label.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
-//        }
-        
-    }
+    
     private func setUpCollectionView(){
         catalogView.collectionView.dataSource = self
         catalogView.collectionView.delegate = self
@@ -120,27 +101,6 @@ class CatalogViewController: UIViewController {
         
     }
     private func getData(){
-//        DataService.netWork.getData(url: "http://tottori.fixmaski.ru/api/getSubMenuDelivery.php", method: "GET", comletion: { result in
-//            switch result{
-//
-//            case .success(let catalog):
-//                DispatchQueue.main.async {
-//                    do{
-//                        let decodedCatalog = try JSONDecoder().decode(Catalog.self, from: catalog)
-//                        self.catalog = decodedCatalog
-//                        self.catalogView.collectionView.reloadData()
-//                        self.catalogView.secondCollectionView.reloadData()
-//                    }
-//                    catch{
-//                        print(error)
-//                    }
-//
-//
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
         viewModel.getMenuList { result in
             DispatchQueue.main.async {
                 switch result{
@@ -171,9 +131,8 @@ class CatalogViewController: UIViewController {
     }
 
     @objc func doSequeToNextScreen(button : UIButton){
-//        print(selectedIndex - 1)
-//        print(button.tag)
-        print(button.tag)
+
+        
         var sectionList : SectionList?
         sectionList = catalog?.menuList[0].sectionList?.first(where: { sectionList in
             sectionList.foodID == String(button.tag)
@@ -253,7 +212,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
            
             cell.purchaseButton.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
-    //        print(indexPath.row)
+
             cell.purchaseButton.addTarget(self, action: #selector(doSequeToNextScreen(button:)), for: .touchUpInside)
             
             
@@ -284,8 +243,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             
             
-//            catalogView.secondCollectionView.scrollRectToVisible(CGRect(x: 5, y: 5, width: 100, height: 100), animated: true)
-//            catalogView.secondCollectionView.reloadData()
+
         }
         
         
@@ -388,8 +346,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ){
         
-//        print(targetContentOffset.pointee.x)
-//        print(UIScreen.main.bounds.width - 20)
+
         
         if scrollView == header.favCollectionView{
             let currentIndex = (targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)).rounded(.toNearestOrAwayFromZero)
@@ -426,9 +383,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
        
 
-//
-        
-//        
+      
     }
 
 
