@@ -12,7 +12,7 @@ extension UIView{
         let label = UILabel()
         label.text = name
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.8571428571)
+        label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         label.textColor = UIColor.myLightGrey
         return label
         

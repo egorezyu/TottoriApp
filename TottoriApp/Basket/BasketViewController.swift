@@ -35,7 +35,7 @@ class BasketViewController: UIViewController{
 
 
             }
-//            arrayOfPurchases[index].addAmountToCount(count: arrayOfPurchases[index].count + sectionList.count)
+
            
             
            
@@ -78,9 +78,7 @@ class BasketViewController: UIViewController{
             self.navigationController?.navigationBar.backIndicatorImage = resizedImage
             self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = resizedImage
             
-//            if let font = UIFont(name: "Avenir-Book", size: 30) {
-//                UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: font]
-//            }
+
             let backButton = UIBarButtonItem()
             backButton.title = "Назад"
             backButton.tintColor = .myLightGrey
@@ -146,30 +144,7 @@ class BasketViewController: UIViewController{
         }
 
     }
-//    func increaseAmount() {
-//        dishView.sectionList?.plusCount()
-//        setAllFieldsForControlCountView()
-//
-//
-//
-//
-//
-//
-//    }
-//
-//    func decreaseAmount() {
-//        dishView.sectionList?.minusFunc()
-//        setAllFieldsForControlCountView()
-//
-//
-//
-//    }
-//    private func setAllFieldsForControlCountView(){
-//        dishView.controlAmountView.countLabel.text = String(dishView.sectionList?.count ?? -1)
-//        dishView.price.text = dishView.sectionList?.currentPrice
-//        dishView.weightLabel.text = dishView.sectionList?.currentWeight
-//
-//    }
+
     
     
 
@@ -185,7 +160,7 @@ extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSo
         cell.deleteFoodButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
         cell.controlAmountView.decreaseAmountButton.addTarget(self, action: #selector(decrease(sender:)), for: .touchUpInside)
         cell.controlAmountView.increaseAmountButton.addTarget(self, action: #selector(increase(sender:)), for: .touchUpInside)
-//        print(indexPath.row)
+
         cell.setValues(sectionList: arrayOfPurchases[indexPath.row])
      
         return cell

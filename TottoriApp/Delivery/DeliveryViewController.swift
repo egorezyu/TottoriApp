@@ -27,10 +27,7 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
         setBackGround()
-       
-//        setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D(latitude: 55.757131, longitude: 37.628379), title: "Новая площадь,14", subTitle: "")
         checkUserDefaultsData()
         setUserDefaultsData()
         controlButtonStateAlgo()
@@ -77,9 +74,7 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
     private func showTabBarView(){
         tabBarController?.tabBar.isHidden = false
     }
-//    private func setDelegateForMap(){
-//        devView.map.delegate = self
-//    }
+
 
     /*
     // MARK: - Navigation
@@ -224,16 +219,8 @@ extension DeliveryViewController : DeliveryDelegate{
         
     }
 
-//    func setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D,title : String,subTitle : String){
-//       let annotation = MKPointAnnotation()
-//       annotation.coordinate = location
-//       annotation.title = title
-//       annotation.subtitle = subTitle
-//       let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
-//        devView.map.setRegion(coordinateRegion, animated: true)
-//        devView.map.addAnnotation(annotation)
-//    }
-//    
+
+
     
 }
 extension DeliveryViewController : MKMapViewDelegate{

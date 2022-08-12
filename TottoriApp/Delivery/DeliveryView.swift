@@ -47,7 +47,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     lazy var aboutDeliveryTimeLabel : UILabel = {
         let label = UILabel()
         label.text = "Доставим за час"
-        label.font = UIFont(name: "Gilroy-Medium", size: UIScreen.main.bounds.width / 27.8571428571)
+        label.font = UIFont(name: "Gilroy-Medium", size: FontSizes.font14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .red
         return label
@@ -56,7 +56,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     private lazy var makeAnOrderLabel : UILabel = {
         var label = UILabel()
         label.text = "ОФОРМИТЬ ЗАКАЗ"
-        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
+        label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -94,8 +94,6 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     private func addListenersToTypeOfPaymentButton(){
         let arrayOfPayments = vStackTypeOfPay.subviews as? [TogleView]
         if let array = arrayOfPayments{
-//            array[0].drawCircle()
-//            selectedPayView = array[0]
             for payment in array {
                 payment.rectangleButtonView.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
             }
@@ -211,15 +209,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         return button
         
     }()
-//    public lazy var map : MKMapView = {
-//        let mapkit = MKMapView()
-////        setPinUsingMKPointAnnotation(location: CLLocationCoordinate2D(latitude: 55.757131, longitude: 37.628379), title: "Новая площадь,14", subTitle: "")
-//        mapkit.translatesAutoresizingMaskIntoConstraints = false
-//        mapkit.layer.borderColor = UIColor.gray.cgColor
-//        mapkit.layer.borderWidth = 1.22
-//        return mapkit
-//        
-//    }()
+
     private lazy var infoAboutUs : AboutUsData = {
         let dataView = AboutUsDataViewController()
         dataView.view.translatesAutoresizingMaskIntoConstraints = false
@@ -237,7 +227,6 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         contentView.addSubview(commentLabel)
         contentView.addSubview(commentTextArea)
         contentView.addSubview(makeAnOrderButton)
-//        contentView.addSubview(map)
         contentView.addSubview(infoAboutUs)
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
@@ -266,14 +255,14 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         vStackFields.topAnchor.constraint(equalTo: makeAnOrderLabel.bottomAnchor,constant: 20).isActive = true
         vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
         vStackFields.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
-//        vStackFields.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -100).isActive = true
+
         
         vStackTypeOfPay.topAnchor.constraint(equalTo: vStackFields.bottomAnchor,constant: 50).isActive = true
         vStackTypeOfPay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
         vStackTypeOfPay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
         
   
-//        vStackTypeOfPay.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+
         
         commentLabel.topAnchor.constraint(equalTo: vStackTypeOfPay.bottomAnchor,constant: 40).isActive = true
         commentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
@@ -282,25 +271,20 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         commentTextArea.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         commentTextArea.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         commentTextArea.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3).isActive = true
-//        commentTextArea.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+
         makeAnOrderButton.topAnchor.constraint(equalTo: commentTextArea.bottomAnchor,constant: 20).isActive = true
         makeAnOrderButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         makeAnOrderButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         makeAnOrderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        makeAnOrderButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
-        
-//        map.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 50).isActive = true
-//        map.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-//        map.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-//        map.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3).isActive = true
+
        
         
         infoAboutUs.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 100).isActive = true
-//        infoAboutUs.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+
         infoAboutUs.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         infoAboutUs.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         infoAboutUs.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView()).isActive = true
-//        infoAboutUs.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 200).isActive = true
+
         infoAboutUs.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
 
