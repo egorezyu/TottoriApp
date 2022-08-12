@@ -48,9 +48,11 @@ class HeaderForFavDishes: UICollectionReusableView {
     public lazy var duplicateCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = .init(width: UIScreen.main.bounds.width / 3 - 10 * 3, height: CGFloat(ReusavleViewDist.collectionViewCellheigt))
+        layout.itemSize = CGSize(width: (Int(UIScreen.main.bounds.width) - 20 - 30) / 3, height: ReusavleViewDist.collectionViewCellheigt)
+//        layout.itemSize =
 //        layout.estimatedItemSize = .init(width: 200, height: CGFloat(ReusavleViewDist.collectionViewCellheigt))
-        layout.minimumLineSpacing = 15
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
         layout.minimumInteritemSpacing = CGFloat(ReusavleViewDist.rowSpacing)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
