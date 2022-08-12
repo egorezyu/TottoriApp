@@ -164,6 +164,7 @@
 		E41C675D287EDB3C001FD5B2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E433C8A9288EF58B0036479C /* UserInfo.swift */,
 				E43C7FD52882D49B001F6D8C /* Dishes.swift */,
 			);
 			path = Models;
@@ -185,12 +186,6 @@
 				E433C89F288C82030036479C /* DeliveryViewController.swift */,
 				E433C8A1288D7DB70036479C /* DeliveryView.swift */,
 				E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */,
-				E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */,
-				E433C8A7288DA26E0036479C /* TogleView.swift */,
-				E433C8A9288EF58B0036479C /* UserInfo.swift */,
-				E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */,
-				E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */,
-				E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */,
 			);
 			path = Delivery;
 			sourceTree = "<group>";
@@ -211,7 +206,6 @@
 				E4E37724287CC023003ED269 /* BasketViewController.swift */,
 				E43C7FE128847EAF001F6D8C /* BasketDelegate.swift */,
 				E43C7FE328847F3F001F6D8C /* BasketView.swift */,
-				E43C7FE52884801B001F6D8C /* OrderCollectionViewCell.swift */,
 				E433C8AB288FDB510036479C /* BacketViewBackDataDelegate.swift */,
 			);
 			path = Basket;
@@ -238,6 +232,7 @@
 		E4C088F628A6806600CD58C7 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				E43C7FE52884801B001F6D8C /* OrderCollectionViewCell.swift */,
 				E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */,
 				E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */,
 				E41C6739287DF5CD001FD5B2 /* DishCollectionViewCell.swift */,
@@ -258,11 +253,24 @@
 		E4C088FA28A681F600CD58C7 /* ReusableAppViews */ = {
 			isa = PBXGroup;
 			children = (
+				E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */,
+				E433C8A7288DA26E0036479C /* TogleView.swift */,
+				E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */,
 				E43C7FDE288419BB001F6D8C /* FoodCountView.swift */,
 				E43C7FEF28896C7E001F6D8C /* WeightView.swift */,
 				E43C7FED28896AEB001F6D8C /* PriceView.swift */,
 			);
 			path = ReusableAppViews;
+			sourceTree = "<group>";
+		};
+		E4C088FB28A6835C00CD58C7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */,
+				E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */,
+				E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		E4CEED1228A2651F004A1BEE /* AboutUs */ = {
@@ -294,6 +302,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4C088FB28A6835C00CD58C7 /* Protocols */,
 				E4C088FA28A681F600CD58C7 /* ReusableAppViews */,
 				E4C088F728A680D400CD58C7 /* CollectionViewReusableViews */,
 				E4C088F628A6806600CD58C7 /* CollectionViewCells */,
@@ -356,7 +365,6 @@
 			children = (
 				E43C7FD72882D5DC001F6D8C /* DataService.swift */,
 				E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */,
-				E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */,
 				E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */,
 				E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */,
 			);
