@@ -38,7 +38,6 @@
 		E43C7FEC2886D03F001F6D8C /* MenuListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */; };
 		E43C7FEE28896AEB001F6D8C /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FED28896AEB001F6D8C /* PriceView.swift */; };
 		E43C7FF028896C7E001F6D8C /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FEF28896C7E001F6D8C /* WeightView.swift */; };
-		E43C7FF42889C114001F6D8C /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C7FF32889C113001F6D8C /* BadgeView.swift */; };
 		E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48D7AA12889DAC100FDDD0F /* Formatter.swift */; };
 		E48DBAC028A458DF00B65644 /* FlowLay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBABF28A458DF00B65644 /* FlowLay.swift */; };
 		E48DBAC328A5469C00B65644 /* AboutUsDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBAC228A5469C00B65644 /* AboutUsDataDelegate.swift */; };
@@ -102,7 +101,6 @@
 		E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListRequest.swift; sourceTree = "<group>"; };
 		E43C7FED28896AEB001F6D8C /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		E43C7FEF28896C7E001F6D8C /* WeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
-		E43C7FF32889C113001F6D8C /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E48D7AA12889DAC100FDDD0F /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		E48DBABF28A458DF00B65644 /* FlowLay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLay.swift; sourceTree = "<group>"; };
 		E48DBAC228A5469C00B65644 /* AboutUsDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDataDelegate.swift; sourceTree = "<group>"; };
@@ -274,7 +272,7 @@
 				E41C6732287DB1A8001FD5B2 /* Catalog */,
 				E4E37728287D6B4B003ED269 /* DataService */,
 				E4E3771B287CB7B9003ED269 /* Extensions */,
-				E4E37717287CB754003ED269 /* Controllers */,
+				E4E37717287CB754003ED269 /* TabBar */,
 				E4E37715287CB59E003ED269 /* Delegates */,
 				E4E3770A287CB533003ED269 /* Assets.xcassets */,
 				E4E3770C287CB533003ED269 /* LaunchScreen.storyboard */,
@@ -292,13 +290,12 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		E4E37717287CB754003ED269 /* Controllers */ = {
+		E4E37717287CB754003ED269 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				E4E37720287CBB8A003ED269 /* TabBarViewController.swift */,
-				E43C7FF32889C113001F6D8C /* BadgeView.swift */,
 			);
-			path = Controllers;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		E4E3771B287CB7B9003ED269 /* Extensions */ = {
@@ -452,7 +449,6 @@
 				E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */,
 				E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */,
 				E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */,
-				E43C7FF42889C114001F6D8C /* BadgeView.swift in Sources */,
 				E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */,
 				E43C7FD82882D5DC001F6D8C /* DataService.swift in Sources */,
 				E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */,
