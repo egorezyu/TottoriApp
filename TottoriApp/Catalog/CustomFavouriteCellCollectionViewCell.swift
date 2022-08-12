@@ -174,7 +174,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     func configureCell(sectionList : MenuDish?){
         if let sectionList = sectionList {
             
-            DataService.netWork.setImageFromUrl(url: sectionList.foodImage0, imageView: image)
+            NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage0, imageView: image)
             title.text = sectionList.foodName
             self.priceView.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 17.833)))
             self.descriptionText.text = sectionList.foodContent

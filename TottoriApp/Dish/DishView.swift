@@ -325,7 +325,7 @@ class DishView: UIView {
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
         self.priceView.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 10.833)))
         self.weightView.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "FoglihtenNo06", size: CGFloat(UIScreen.main.bounds.width / 10.833)))
-        DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
+        NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
        
         
        

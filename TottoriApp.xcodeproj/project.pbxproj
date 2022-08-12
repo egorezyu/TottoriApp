@@ -56,6 +56,8 @@
 		E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B928A4138800B7640B /* ToolBar.swift */; };
 		E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */; };
 		E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */; };
+		E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */; };
+		E4C088F428A67E4900CD58C7 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */; };
 		E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1028A264C8004A1BEE /* UIViewController.swift */; };
 		E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */; };
 		E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1528A280B4004A1BEE /* AboutUsView.swift */; };
@@ -68,7 +70,6 @@
 		E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37720287CBB8A003ED269 /* TabBarViewController.swift */; };
 		E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37722287CC003003ED269 /* AboutUsViewController.swift */; };
 		E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37724287CC023003ED269 /* BasketViewController.swift */; };
-		E4E3772A287D6B66003ED269 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37729287D6B66003ED269 /* MockDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,8 @@
 		E4ABE0B928A4138800B7640B /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRequestExtension.swift; sourceTree = "<group>"; };
+		E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListDisplayFactory.swift; sourceTree = "<group>"; };
+		E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
 		E4CEED1028A264C8004A1BEE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDelegate.swift; sourceTree = "<group>"; };
 		E4CEED1528A280B4004A1BEE /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
@@ -132,7 +135,6 @@
 		E4E37720287CBB8A003ED269 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E4E37722287CC003003ED269 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		E4E37724287CC023003ED269 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
-		E4E37729287D6B66003ED269 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,10 +322,11 @@
 		E4E37728287D6B4B003ED269 /* DataService */ = {
 			isa = PBXGroup;
 			children = (
-				E4E37729287D6B66003ED269 /* MockDataService.swift */,
 				E43C7FD72882D5DC001F6D8C /* DataService.swift */,
 				E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */,
 				E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */,
+				E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */,
+				E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				E48DBAC328A5469C00B65644 /* AboutUsDataDelegate.swift in Sources */,
 				E4A93C022897EA920017F326 /* UILabel.swift in Sources */,
 				E48DBAC528A5478C00B65644 /* AboutUsDataViewController.swift in Sources */,
+				E4C088F428A67E4900CD58C7 /* MenuListViewModel.swift in Sources */,
 				E43C7FDF288419BB001F6D8C /* FoodCountView.swift in Sources */,
 				E4ABE0B428A3C31D00B7640B /* UIView.swift in Sources */,
 				E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */,
@@ -442,6 +446,7 @@
 				E41C673A287DF5CD001FD5B2 /* DishCollectionViewCell.swift in Sources */,
 				E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
+				E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */,
 				E43C7FF028896C7E001F6D8C /* WeightView.swift in Sources */,
 				E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */,
 				E48DBAC028A458DF00B65644 /* FlowLay.swift in Sources */,
@@ -450,7 +455,6 @@
 				E433C8A8288DA26E0036479C /* TogleView.swift in Sources */,
 				E43C7FDD2883112A001F6D8C /* String.swift in Sources */,
 				E43C7FD028816148001F6D8C /* DishViewController.swift in Sources */,
-				E4E3772A287D6B66003ED269 /* MockDataService.swift in Sources */,
 				E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */,
 				E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */,
 				E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */,

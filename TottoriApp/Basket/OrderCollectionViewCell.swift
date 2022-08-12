@@ -101,7 +101,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273),secondFont: UIFont(name: "Cormorant", size: UIScreen.main.bounds.width / 19.5))
         self.weight.genetrateLabel(text: sectionList.formattedWeight, color: .black, font: UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.7272727273),secondFont: UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 27.7272727273))
         self.controlAmountView.countLabel.text = String(sectionList.count)
-        DataService.netWork.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
+        NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
         controlAmountView.increaseAmountButton.tag = Int(sectionList.foodID) ?? -1
         controlAmountView.decreaseAmountButton.tag = Int(sectionList.foodID) ?? -1
         if let id =  Int(sectionList.foodID){

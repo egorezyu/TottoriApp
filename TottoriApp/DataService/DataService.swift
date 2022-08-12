@@ -80,38 +80,7 @@ class DataService{
 
 
     }
-    func setImageFromUrl(url : String,imageView : UIImageView){
-
-        guard let url = URL(string: "http://tottori.fixmaski.ru" + url) else{
-            return
-        }
-        
-        let proc = DownsamplingImageProcessor(size: CGSize(width: 200, height: 133))
-
-        imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(
-            with: url,
-
-            options: [
-                .processor(proc),
-
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(0.7)),
-                .cacheOriginalImage
-
-            ]) { result in
-                switch result{
-                    
-                case .success(_):
-                    print("")
-                case .failure(_):
-                    imageView.image = UIImage(named: "tottori")
-                }
-            }
-
-
-
-    }
+    
 
 }
 
@@ -236,6 +205,38 @@ final class NetworkManager {
 
         self.request(request: request) { result in
             completion(result) }
+
+    }
+    func setImageFromUrl(url : String,imageView : UIImageView){
+
+        guard let url = URL(string: "http://tottori.fixmaski.ru" + url) else{
+            return
+        }
+        
+        let proc = DownsamplingImageProcessor(size: CGSize(width: 200, height: 133))
+
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(
+            with: url,
+
+            options: [
+                .processor(proc),
+
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(0.7)),
+                .cacheOriginalImage
+
+            ]) { result in
+                switch result{
+                    
+                case .success(_):
+                    print("")
+                case .failure(_):
+                    imageView.image = UIImage(named: "tottori")
+                }
+            }
+
+
 
     }
     
