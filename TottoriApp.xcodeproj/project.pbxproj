@@ -58,6 +58,8 @@
 		E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */; };
 		E4C088F428A67E4900CD58C7 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */; };
 		E4C088F928A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F828A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift */; };
+		E4C088FE28A6852F00CD58C7 /* DataServiceExceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088FD28A6852F00CD58C7 /* DataServiceExceptions.swift */; };
+		E4C0890028A6853C00CD58C7 /* FontSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088FF28A6853C00CD58C7 /* FontSizes.swift */; };
 		E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1028A264C8004A1BEE /* UIViewController.swift */; };
 		E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */; };
 		E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1528A280B4004A1BEE /* AboutUsView.swift */; };
@@ -121,6 +123,8 @@
 		E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListDisplayFactory.swift; sourceTree = "<group>"; };
 		E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
 		E4C088F828A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForTitleCollectionReusableView.swift; sourceTree = "<group>"; };
+		E4C088FD28A6852F00CD58C7 /* DataServiceExceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceExceptions.swift; sourceTree = "<group>"; };
+		E4C088FF28A6853C00CD58C7 /* FontSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSizes.swift; sourceTree = "<group>"; };
 		E4CEED1028A264C8004A1BEE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDelegate.swift; sourceTree = "<group>"; };
 		E4CEED1528A280B4004A1BEE /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
@@ -273,6 +277,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E4C088FC28A6850700CD58C7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				E4C088FD28A6852F00CD58C7 /* DataServiceExceptions.swift */,
+				E4C088FF28A6853C00CD58C7 /* FontSizes.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		E4CEED1228A2651F004A1BEE /* AboutUs */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +315,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4C088FC28A6850700CD58C7 /* Enums */,
 				E4C088FB28A6835C00CD58C7 /* Protocols */,
 				E4C088FA28A681F600CD58C7 /* ReusableAppViews */,
 				E4C088F728A680D400CD58C7 /* CollectionViewReusableViews */,
@@ -465,10 +479,12 @@
 				E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */,
 				E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */,
 				E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */,
+				E4C088FE28A6852F00CD58C7 /* DataServiceExceptions.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
 				E433C8A6288D98B20036479C /* CustomTextFieldWithInsets.swift in Sources */,
 				E433C8AC288FDB510036479C /* BacketViewBackDataDelegate.swift in Sources */,
 				E4A93C09289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift in Sources */,
+				E4C0890028A6853C00CD58C7 /* FontSizes.swift in Sources */,
 				E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
