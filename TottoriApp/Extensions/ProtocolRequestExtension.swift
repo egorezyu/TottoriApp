@@ -1,35 +1,11 @@
 //
-//  Request.swift
+//  ProtocolRequestExtension.swift
 //  TottoriApp
 //
-//  Created by Егор Родионов on 19.07.22.
+//  Created by Егор Родионов on 12.08.22.
 //
 
 import Foundation
-
-
-
-
-protocol Request {
-
-    
-
-    associatedtype Response = [String: Any]
-
-    
-
-    var path: URL { get }
-
-    
-
-    func decode(with data: Data, decoder: JSONDecoder) throws -> Response
-
-    
-
-}
-
-
-
 
 extension Request {
 
@@ -42,10 +18,6 @@ extension Request {
     }
 
 }
-
-
-
-
 extension Request where Response == [String: Any] {
 
     
