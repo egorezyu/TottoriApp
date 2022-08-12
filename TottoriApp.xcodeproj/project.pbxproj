@@ -68,10 +68,7 @@
 		E4E37721287CBB8A003ED269 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37720287CBB8A003ED269 /* TabBarViewController.swift */; };
 		E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37722287CC003003ED269 /* AboutUsViewController.swift */; };
 		E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37724287CC023003ED269 /* BasketViewController.swift */; };
-		E4E37727287D5430003ED269 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37726287D5430003ED269 /* TypeView.swift */; };
 		E4E3772A287D6B66003ED269 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E37729287D6B66003ED269 /* MockDataService.swift */; };
-		E4E3772C287D6CBB003ED269 /* TypeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E3772B287D6CBB003ED269 /* TypeCollectionView.swift */; };
-		E4E3772E287D8113003ED269 /* TypeViewCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E3772D287D8113003ED269 /* TypeViewCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,10 +132,7 @@
 		E4E37720287CBB8A003ED269 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E4E37722287CC003003ED269 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		E4E37724287CC023003ED269 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
-		E4E37726287D5430003ED269 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		E4E37729287D6B66003ED269 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
-		E4E3772B287D6CBB003ED269 /* TypeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionView.swift; sourceTree = "<group>"; };
-		E4E3772D287D8113003ED269 /* TypeViewCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeViewCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +277,6 @@
 				E4E37717287CB754003ED269 /* Controllers */,
 				E4E37715287CB59E003ED269 /* Delegates */,
 				E4E3770A287CB533003ED269 /* Assets.xcassets */,
-				E4E37718287CB776003ED269 /* ViewsDeprecated */,
 				E4E3770C287CB533003ED269 /* LaunchScreen.storyboard */,
 				E4E3770F287CB533003ED269 /* Info.plist */,
 			);
@@ -306,16 +299,6 @@
 				E43C7FF32889C113001F6D8C /* BadgeView.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		E4E37718287CB776003ED269 /* ViewsDeprecated */ = {
-			isa = PBXGroup;
-			children = (
-				E4E3772B287D6CBB003ED269 /* TypeCollectionView.swift */,
-				E4E37726287D5430003ED269 /* TypeView.swift */,
-				E4E3772D287D8113003ED269 /* TypeViewCellCollectionViewCell.swift */,
-			);
-			path = ViewsDeprecated;
 			sourceTree = "<group>";
 		};
 		E4E3771B287CB7B9003ED269 /* Extensions */ = {
@@ -429,7 +412,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48D7AA22889DAC100FDDD0F /* Formatter.swift in Sources */,
-				E4E3772C287D6CBB003ED269 /* TypeCollectionView.swift in Sources */,
 				E4ABE0B628A3DBE800B7640B /* TextFieldControlColorProtol.swift in Sources */,
 				E4ABE0B828A3F73F00B7640B /* PhoneFieldProtocol.swift in Sources */,
 				E43C7FE82885C61C001F6D8C /* UIImage.swift in Sources */,
@@ -441,7 +423,6 @@
 				E41C675F287EDB52001FD5B2 /* DishModel.swift in Sources */,
 				E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
-				E4E3772E287D8113003ED269 /* TypeViewCellCollectionViewCell.swift in Sources */,
 				E433C8A6288D98B20036479C /* CustomTextFieldWithInsets.swift in Sources */,
 				E433C8AC288FDB510036479C /* BacketViewBackDataDelegate.swift in Sources */,
 				E4A93C09289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift in Sources */,
@@ -483,7 +464,6 @@
 				E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */,
 				E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */,
 				E43C7FEA2886BF85001F6D8C /* Request.swift in Sources */,
-				E4E37727287D5430003ED269 /* TypeView.swift in Sources */,
 				E4E3771D287CB7CF003ED269 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
