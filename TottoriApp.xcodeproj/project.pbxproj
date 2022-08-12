@@ -51,6 +51,8 @@
 		E4ABE0B628A3DBE800B7640B /* TextFieldControlColorProtol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */; };
 		E4ABE0B828A3F73F00B7640B /* PhoneFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */; };
 		E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B928A4138800B7640B /* ToolBar.swift */; };
+		E4AE918428A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE918328A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift */; };
+		E4AE918628A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE918528A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift */; };
 		E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */; };
 		E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */; };
 		E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */; };
@@ -114,6 +116,8 @@
 		E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldControlColorProtol.swift; sourceTree = "<group>"; };
 		E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFieldProtocol.swift; sourceTree = "<group>"; };
 		E4ABE0B928A4138800B7640B /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
+		E4AE918328A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateCollectionViewRowSize.swift; sourceTree = "<group>"; };
+		E4AE918528A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRequestExtension.swift; sourceTree = "<group>"; };
 		E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListDisplayFactory.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */,
 				E41C6739287DF5CD001FD5B2 /* DishCollectionViewCell.swift */,
 				E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */,
+				E4AE918528A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				E4C088FF28A6853C00CD58C7 /* FontSizes.swift */,
+				E4AE918328A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift */,
 			);
 			path = StructWithConsts;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */,
 				E48DBAC028A458DF00B65644 /* FlowLay.swift in Sources */,
 				E49262BC2891436000970B24 /* AboutUsData.swift in Sources */,
+				E4AE918628A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift in Sources */,
 				E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */,
 				E433C8A8288DA26E0036479C /* TogleView.swift in Sources */,
 				E43C7FDD2883112A001F6D8C /* String.swift in Sources */,
@@ -522,6 +529,7 @@
 				E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */,
 				E4A93C0B289BD2C80017F326 /* Allert.swift in Sources */,
 				E433C8AA288EF58B0036479C /* UserInfo.swift in Sources */,
+				E4AE918428A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift in Sources */,
 				E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */,
 				E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */,
 				E4E3771D287CB7CF003ED269 /* ColorExtension.swift in Sources */,

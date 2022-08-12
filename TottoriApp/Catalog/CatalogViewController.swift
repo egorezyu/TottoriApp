@@ -20,6 +20,8 @@ class CatalogViewController: UIViewController {
     private var currentVstackCellCount = 0
     private var selectedFirstCollCellIndex = 0
     
+    private var rowCount : Int = 0
+    
     
     
 
@@ -80,6 +82,17 @@ class CatalogViewController: UIViewController {
         
         
     }
+    private func setRowCount(){
+        if let countMenu = catalog?.menuList.count,countMenu % 3 == 0{
+            rowCount = countMenu / 3
+            
+        }
+        else{
+            rowCount = (catalog?.menuList.count ?? 0) / 3 + 1
+
+           
+        }
+    }
    
     
 
@@ -103,6 +116,7 @@ class CatalogViewController: UIViewController {
                     
                 case .success(let items):
                     self.catalog = Catalog(status: true, menuList: items.0, menuDishes: items.1)
+                    
                     if let catalog = self.catalog {
                         if catalog.menuDishes.count < 3{
                             for i in 0...2{
@@ -114,6 +128,7 @@ class CatalogViewController: UIViewController {
                             }
                         }
                     }
+                    self.setRowCount()
                     self.catalogView.collectionView.reloadData()
                     self.catalogView.secondCollectionView.reloadData()
                 case .failure(let error):
@@ -158,6 +173,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else if collectionView == catalogView.secondCollectionView{
             return catalog?.menuList[section + 1].sectionList?.count ?? 0
         }
+        else if collectionView == header.duplicateCollectionView{
+            return catalog?.menuList.count ?? 0
+        }
         return catalog?.menuDishes.count ?? 0
         
         
@@ -173,6 +191,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         }
         else if collectionView == catalogView.secondCollectionView{
             return (catalog?.menuList.count ?? 1) - 1
+        }
+        else if collectionView == header.duplicateCollectionView{
+            return 1
         }
         else{
             return 1
@@ -202,7 +223,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
             return cell
         }
-        else{
+        else if collectionView == header.favCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomFavouriteCell.id, for: indexPath) as! CustomFavouriteCell
             cell.configureCell(sectionList: catalog?.menuDishes[indexPath.row])
             
@@ -214,6 +235,11 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             
             
+            
+            return cell
+        }
+        else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath)
             
             return cell
         }
@@ -269,8 +295,16 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 if indexPath.section == 0{
                    
                     let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier, for: indexPath) as! HeaderForFavDishes
+                    
+                    headerCell.setRowCount(rowCount: rowCount)
+                    
+                    
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
+                    
+                    headerCell.duplicateCollectionView.dataSource = self
+                    headerCell.duplicateCollectionView.delegate = self
+                    
                     headerCell.favCollectionView.decelerationRate = .fast
 
 
@@ -322,7 +356,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         if collectionView == catalogView.secondCollectionView{
             if section == 0{
-                return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.5)
+                print(ReusavleViewDist.getSumWitoutCell() + CGFloat(ReusavleViewDist.collectionViewCellheigt * (catalog?.menuList.count ?? 0)))
+                return CGSize(width: UIScreen.main.bounds.width, height: ReusavleViewDist.getSumWitoutCell() + CGFloat(ReusavleViewDist.collectionViewCellheigt * (rowCount)) + CGFloat(ReusavleViewDist.rowSpacing * rowCount))
             }
             
             return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)

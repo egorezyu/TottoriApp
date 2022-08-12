@@ -12,6 +12,7 @@ import CoreAudio
 
 class HeaderForFavDishes: UICollectionReusableView {
     static let headerReuseIdentifier = "headerSecondReuseIdentifier"
+    private var rowCount : Int = 0
     
     
     
@@ -33,7 +34,7 @@ class HeaderForFavDishes: UICollectionReusableView {
     public lazy var favCollectionView : UICollectionView = {
         let layout = FlowLay()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: UIScreen.main.bounds.width - 60, height: frame.height * 0.8 - 10)
+        layout.itemSize = .init(width: UIScreen.main.bounds.width - 60, height: ReusavleViewDist.sliderHeigt)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 0, right: 30)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
@@ -41,6 +42,23 @@ class HeaderForFavDishes: UICollectionReusableView {
         view.showsHorizontalScrollIndicator = false
         view.register(CustomFavouriteCell.self, forCellWithReuseIdentifier: CustomFavouriteCell.id)
         view.backgroundColor = .clear
+        return view
+        
+    }()
+    public lazy var duplicateCollectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = .init(width: Int(UIScreen.main.bounds.width) / 3 - 30, height: ReusavleViewDist.collectionViewCellheigt)
+//        layout.sectionInset = UIEdgeInsets(top: 10, left: 30, bottom: 0, right: 30)
+        layout.minimumInteritemSpacing = CGFloat(ReusavleViewDist.rowSpacing)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.showsHorizontalScrollIndicator = false
+        view.register(DuplicateCollectionViewCell.self, forCellWithReuseIdentifier: DuplicateCollectionViewCell.id)
+        view.isScrollEnabled = false
+        view.backgroundColor = .red
+      
         return view
         
     }()
@@ -108,6 +126,17 @@ class HeaderForFavDishes: UICollectionReusableView {
         
         
     }
+    convenience init(frame : CGRect,rowCount : Int) {
+        self.init(frame: frame)
+        self.rowCount = rowCount
+        
+    }
+    func setRowCount(rowCount : Int){
+        self.rowCount = rowCount
+        duplicateCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(rowCount * ReusavleViewDist.collectionViewCellheigt) +
+                                                        CGFloat((rowCount) * ReusavleViewDist.rowSpacing)).isActive = true
+        self.setNeedsLayout()
+    }
     public func setChoseFirst(){
         hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
     }
@@ -116,26 +145,40 @@ class HeaderForFavDishes: UICollectionReusableView {
         addSubview(holdTextView)
         addSubview(favCollectionView)
         addSubview(hStack)
+        addSubview(duplicateCollectionView)
         
         holdTextView.addSubview(firstDishTitle)
         
+        
     }
     private func setConsraints(){
+       
         
         NSLayoutConstraint.activate([
             
-            holdTextView.topAnchor.constraint(equalTo: hStack.bottomAnchor),
+            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
             
 
             holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
             holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            holdTextView.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.bottomTitleHeight))
+        
+
+        ])
+        NSLayoutConstraint.activate([
+            
+            duplicateCollectionView.topAnchor.constraint(equalTo: hStack.bottomAnchor),
+            
+
+            duplicateCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            duplicateCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
         
 
         ])
         NSLayoutConstraint.activate([
             firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
-            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor),
+            firstDishTitle.centerYAnchor.constraint(equalTo: holdTextView.centerYAnchor),
             
         
 
@@ -148,19 +191,20 @@ class HeaderForFavDishes: UICollectionReusableView {
 
         ])
         
+        
         NSLayoutConstraint.activate([
-            favCollectionView.topAnchor.constraint(equalTo: topAnchor,constant: 5),
+            favCollectionView.topAnchor.constraint(equalTo: topAnchor),
 
             favCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             favCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            favCollectionView.heightAnchor.constraint(equalToConstant: frame.height * 0.8)
+            favCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.sliderHeigt))
             
 
         ])
 
         for view in hStack.subviews{
             view.widthAnchor.constraint(equalToConstant: 48).isActive = true
-            view.heightAnchor.constraint(equalToConstant: 48).isActive = true
+            view.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.hStackHeigt)).isActive = true
         }
         
         
@@ -168,6 +212,7 @@ class HeaderForFavDishes: UICollectionReusableView {
     
     
     private func setBackGround(){
+   
         if let image = UIImage(named: "forest"){
             backgroundColor = UIColor(patternImage: image)
         }
