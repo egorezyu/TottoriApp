@@ -15,7 +15,7 @@ class CatalogViewController: UIViewController {
     private var selectedIndex = 0
     private lazy var catalogView = CatalogView(subscriber: self)
     private lazy var viewModel = MenuListViewModel()
-    private var header : MySecondHeaderClass!
+    private var header : HeaderForFavDishes!
     private var currentDish = 0
     private var currentVstackCellCount = 0
     
@@ -113,8 +113,8 @@ class CatalogViewController: UIViewController {
         catalogView.collectionView.delegate = self
         catalogView.secondCollectionView.dataSource = self
         catalogView.secondCollectionView.delegate = self
-        catalogView.secondCollectionView.register(MyHeaderClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MyHeaderClass.headerReuseIdentifier)
-        catalogView.secondCollectionView.register(MySecondHeaderClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier)
+        catalogView.secondCollectionView.register(HeaderForTitle.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForTitle.headerReuseIdentifier)
+        catalogView.secondCollectionView.register(HeaderForFavDishes.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier)
         
 
         
@@ -314,7 +314,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 
                 if indexPath.section == 0{
                    
-                    let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MySecondHeaderClass.headerReuseIdentifier, for: indexPath) as! MySecondHeaderClass
+                    let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier, for: indexPath) as! HeaderForFavDishes
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
                     headerCell.favCollectionView.decelerationRate = .fast
@@ -332,7 +332,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     
                     return headerCell
                 }
-                let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyHeaderClass.headerReuseIdentifier, for: indexPath) as! MyHeaderClass
+                let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForTitle.headerReuseIdentifier, for: indexPath) as! HeaderForTitle
                 
                
                 headerCell.textLabel.text = catalog?.menuList[indexPath.section + 1].sectionName

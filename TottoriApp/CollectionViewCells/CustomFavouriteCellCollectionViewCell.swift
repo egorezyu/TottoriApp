@@ -14,16 +14,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         addView()
         setConstraints()
     }
-    
-//    private lazy var label : UILabel = {
-//        var label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 13)
-//        label.text = "Рамен, которым     \n   можно гордиться"
-//        label.numberOfLines = 2
-//        return label
-//
-//    }()
+
     private lazy var image : UIImageView = {
         var image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -61,9 +52,6 @@ class CustomFavouriteCell: UICollectionViewCell {
     lazy var purchaseButton : UIButton = {
         var button = UIButton()
         var image = UIImage(named: "purchase")?.withTintColor(.red,renderingMode: .alwaysOriginal)
-//        if let unImage = image{
-//            image = UIImage.resizeImage(image: unImage, targetSize: CGSize(width: 40, height: 40))
-//        }
         button.setBackgroundImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -78,7 +66,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         view.layer.borderWidth = 0.8
         view.translatesAutoresizingMaskIntoConstraints = false
        
-//        view.distribution = .equalSpacing
+
         
        
         
@@ -115,7 +103,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     
     
     private func addView(){
-//        contentView.addSubview(label)
+
         contentView.addSubview(image)
         contentView.addSubview(title)
         title.addSubview(underLine)
@@ -129,9 +117,8 @@ class CustomFavouriteCell: UICollectionViewCell {
         
     }
     private func setConstraints(){
-//        label.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
-//        label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-//
+
+
         image.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
         image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 40).isActive = true
         image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -40).isActive = true
@@ -162,13 +149,12 @@ class CustomFavouriteCell: UICollectionViewCell {
         
         descriptionLabel.topAnchor.constraint(equalTo: vStack.bottomAnchor,constant: 20).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
-//        descriptionLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor).isActive = true
-//
+
         descriptionText.topAnchor.constraint(equalTo: vStack.bottomAnchor,constant: 20).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
-//        descriptionText.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.3).isActive = true
+
         descriptionText.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.6).isActive = true
-//        descriptionText.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
         
     }
     func configureCell(sectionList : MenuDish?){

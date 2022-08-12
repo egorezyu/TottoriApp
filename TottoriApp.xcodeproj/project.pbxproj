@@ -11,7 +11,6 @@
 		E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6735287DB233001FD5B2 /* CatalogView.swift */; };
 		E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */; };
 		E41C673A287DF5CD001FD5B2 /* DishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6739287DF5CD001FD5B2 /* DishCollectionViewCell.swift */; };
-		E41C675F287EDB52001FD5B2 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C675E287EDB52001FD5B2 /* DishModel.swift */; };
 		E41C6762287F1C6D001FD5B2 /* FoglihtenNo06_076.otf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6761287F1C6D001FD5B2 /* FoglihtenNo06_076.otf */; };
 		E41C6764287F3720001FD5B2 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */; };
 		E41C6766287F3806001FD5B2 /* Gilroy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */; };
@@ -44,7 +43,7 @@
 		E48DBAC728A562B700B65644 /* FurnitureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */; };
 		E49262BC2891436000970B24 /* AboutUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49262BB2891436000970B24 /* AboutUsData.swift */; };
 		E4A93C022897EA920017F326 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C012897EA920017F326 /* UILabel.swift */; };
-		E4A93C04289A7A850017F326 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C03289A7A850017F326 /* CollectionReusableView.swift */; };
+		E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */; };
 		E4A93C07289AC9EE0017F326 /* DGCarouselFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C06289AC9EE0017F326 /* DGCarouselFlowLayout */; };
 		E4A93C09289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */; };
 		E4A93C0B289BD2C80017F326 /* Allert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C0A289BD2C80017F326 /* Allert.swift */; };
@@ -58,6 +57,7 @@
 		E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */; };
 		E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */; };
 		E4C088F428A67E4900CD58C7 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */; };
+		E4C088F928A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F828A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift */; };
 		E4CEED1128A264C8004A1BEE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1028A264C8004A1BEE /* UIViewController.swift */; };
 		E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */; };
 		E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CEED1528A280B4004A1BEE /* AboutUsView.swift */; };
@@ -77,7 +77,6 @@
 		E41C6735287DB233001FD5B2 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41C6739287DF5CD001FD5B2 /* DishCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCollectionViewCell.swift; sourceTree = "<group>"; };
-		E41C675E287EDB52001FD5B2 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
 		E41C6761287F1C6D001FD5B2 /* FoglihtenNo06_076.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FoglihtenNo06_076.otf; sourceTree = "<group>"; };
 		E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.ttf"; sourceTree = "<group>"; };
@@ -109,7 +108,7 @@
 		E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E49262BB2891436000970B24 /* AboutUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsData.swift; sourceTree = "<group>"; };
 		E4A93C012897EA920017F326 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		E4A93C03289A7A850017F326 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
+		E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForFavDishes.swift; sourceTree = "<group>"; };
 		E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavouriteCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4A93C0A289BD2C80017F326 /* Allert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allert.swift; sourceTree = "<group>"; };
 		E4A93C0F28A15AE30017F326 /* CustomAllertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAllertView.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRequestExtension.swift; sourceTree = "<group>"; };
 		E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListDisplayFactory.swift; sourceTree = "<group>"; };
 		E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
+		E4C088F828A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForTitleCollectionReusableView.swift; sourceTree = "<group>"; };
 		E4CEED1028A264C8004A1BEE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDelegate.swift; sourceTree = "<group>"; };
 		E4CEED1528A280B4004A1BEE /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
@@ -157,11 +157,6 @@
 				E4E37705287CB532003ED269 /* CatalogViewController.swift */,
 				E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */,
 				E41C6735287DB233001FD5B2 /* CatalogView.swift */,
-				E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */,
-				E41C6739287DF5CD001FD5B2 /* DishCollectionViewCell.swift */,
-				E4A93C03289A7A850017F326 /* CollectionReusableView.swift */,
-				E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */,
-				E48DBABF28A458DF00B65644 /* FlowLay.swift */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -169,7 +164,6 @@
 		E41C675D287EDB3C001FD5B2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E41C675E287EDB52001FD5B2 /* DishModel.swift */,
 				E43C7FD52882D49B001F6D8C /* Dishes.swift */,
 			);
 			path = Models;
@@ -207,9 +201,6 @@
 				E43C7FCF28816148001F6D8C /* DishViewController.swift */,
 				E43C7FD12881615B001F6D8C /* DishView.swift */,
 				E43C7FD328816175001F6D8C /* DishDelegate.swift */,
-				E43C7FDE288419BB001F6D8C /* FoodCountView.swift */,
-				E43C7FED28896AEB001F6D8C /* PriceView.swift */,
-				E43C7FEF28896C7E001F6D8C /* WeightView.swift */,
 			);
 			path = Dish;
 			sourceTree = "<group>";
@@ -236,13 +227,50 @@
 			path = AboutUsData;
 			sourceTree = "<group>";
 		};
+		E4C088F528A67FF700CD58C7 /* CollectionViewLayouts */ = {
+			isa = PBXGroup;
+			children = (
+				E48DBABF28A458DF00B65644 /* FlowLay.swift */,
+			);
+			path = CollectionViewLayouts;
+			sourceTree = "<group>";
+		};
+		E4C088F628A6806600CD58C7 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */,
+				E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */,
+				E41C6739287DF5CD001FD5B2 /* DishCollectionViewCell.swift */,
+				E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		E4C088F728A680D400CD58C7 /* CollectionViewReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */,
+				E4C088F828A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift */,
+			);
+			path = CollectionViewReusableViews;
+			sourceTree = "<group>";
+		};
+		E4C088FA28A681F600CD58C7 /* ReusableAppViews */ = {
+			isa = PBXGroup;
+			children = (
+				E43C7FDE288419BB001F6D8C /* FoodCountView.swift */,
+				E43C7FEF28896C7E001F6D8C /* WeightView.swift */,
+				E43C7FED28896AEB001F6D8C /* PriceView.swift */,
+			);
+			path = ReusableAppViews;
+			sourceTree = "<group>";
+		};
 		E4CEED1228A2651F004A1BEE /* AboutUs */ = {
 			isa = PBXGroup;
 			children = (
 				E4E37722287CC003003ED269 /* AboutUsViewController.swift */,
 				E4CEED1328A2808B004A1BEE /* AboutUsDelegate.swift */,
 				E4CEED1528A280B4004A1BEE /* AboutUsView.swift */,
-				E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */,
 			);
 			path = AboutUs;
 			sourceTree = "<group>";
@@ -266,6 +294,10 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4C088FA28A681F600CD58C7 /* ReusableAppViews */,
+				E4C088F728A680D400CD58C7 /* CollectionViewReusableViews */,
+				E4C088F628A6806600CD58C7 /* CollectionViewCells */,
+				E4C088F528A67FF700CD58C7 /* CollectionViewLayouts */,
 				E48DBAC128A5464F00B65644 /* AboutUsData */,
 				E433C89E288C81EA0036479C /* Delivery */,
 				E43C7FE028847E9B001F6D8C /* Basket */,
@@ -424,7 +456,6 @@
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
 				E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */,
 				E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */,
-				E41C675F287EDB52001FD5B2 /* DishModel.swift in Sources */,
 				E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
 				E433C8A6288D98B20036479C /* CustomTextFieldWithInsets.swift in Sources */,
@@ -447,6 +478,7 @@
 				E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
 				E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */,
+				E4C088F928A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift in Sources */,
 				E43C7FF028896C7E001F6D8C /* WeightView.swift in Sources */,
 				E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */,
 				E48DBAC028A458DF00B65644 /* FlowLay.swift in Sources */,
@@ -463,7 +495,7 @@
 				E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */,
 				E43C7FD22881615B001F6D8C /* DishView.swift in Sources */,
 				E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */,
-				E4A93C04289A7A850017F326 /* CollectionReusableView.swift in Sources */,
+				E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */,
 				E4A93C0B289BD2C80017F326 /* Allert.swift in Sources */,
 				E433C8AA288EF58B0036479C /* UserInfo.swift in Sources */,
 				E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */,
