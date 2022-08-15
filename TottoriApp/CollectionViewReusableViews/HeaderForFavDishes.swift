@@ -12,7 +12,7 @@ import CoreAudio
 
 class HeaderForFavDishes: UICollectionReusableView {
     static let headerReuseIdentifier = "headerSecondReuseIdentifier"
-    private var rowCount : Int = 0
+//    private var rowCount : Int = 0
     
     
     
@@ -46,16 +46,17 @@ class HeaderForFavDishes: UICollectionReusableView {
         
     }()
     public lazy var duplicateCollectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = LeadingCollectionViewLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (Int(UIScreen.main.bounds.width) - 20 - 30) / 3, height: ReusavleViewDist.collectionViewCellheigt)
+//        layout.itemSize = CGSize(width: (Int(UIScreen.main.bounds.width) - 20 - 30) / 3, height: ReusavleViewDist.collectionViewCellheigt)
 //        layout.itemSize =
 //        layout.estimatedItemSize = .init(width: 200, height: CGFloat(ReusavleViewDist.collectionViewCellheigt))
+        
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
         layout.minimumInteritemSpacing = CGFloat(ReusavleViewDist.rowSpacing)
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let view = ResizableCollectionView(frame: .zero, collectionViewLayout: layout)
 
         view.translatesAutoresizingMaskIntoConstraints = false
         view.showsHorizontalScrollIndicator = false
@@ -134,43 +135,44 @@ class HeaderForFavDishes: UICollectionReusableView {
     }
     convenience init(frame : CGRect,rowCount : Int) {
         self.init(frame: frame)
-        self.rowCount = rowCount
+//        self.rowCount = rowCount
         
     }
-    func setRowCount(rowCount : Int){
-        self.rowCount = rowCount
-        duplicateCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(rowCount * ReusavleViewDist.collectionViewCellheigt) +
-                                                        CGFloat((rowCount) * ReusavleViewDist.rowSpacing)).isActive = true
-        self.setNeedsLayout()
-    }
+//    func setRowCount(rowCount : Int){
+//        self.rowCount = rowCount
+//        duplicateCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(rowCount * ReusavleViewDist.collectionViewCellheigt) +
+//                                                        CGFloat((rowCount) * ReusavleViewDist.rowSpacing)).isActive = true
+//        self.setNeedsLayout()
+//    }
     public func setChoseFirst(){
         hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
     }
     
     private func addView(){
-        addSubview(holdTextView)
+//        addSubview(holdTextView)
         addSubview(favCollectionView)
         addSubview(hStack)
         addSubview(duplicateCollectionView)
         
-        holdTextView.addSubview(firstDishTitle)
+//        holdTextView.addSubview(firstDishTitle)
         
         
     }
     private func setConsraints(){
        
         
-        NSLayoutConstraint.activate([
-            
-            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
-            
-
-            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            holdTextView.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.bottomTitleHeight))
-        
-
-        ])
+//        NSLayoutConstraint.activate([
+//
+//            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
+//
+//
+//            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            holdTextView.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.bottomTitleHeight)),
+//            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
+//
+//
+//        ])
         NSLayoutConstraint.activate([
             
             duplicateCollectionView.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 20),
@@ -212,6 +214,7 @@ class HeaderForFavDishes: UICollectionReusableView {
             view.widthAnchor.constraint(equalToConstant: 48).isActive = true
             view.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.hStackHeigt)).isActive = true
         }
+        
         
         
     }

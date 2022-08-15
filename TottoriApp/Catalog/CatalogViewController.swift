@@ -239,6 +239,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else{
+            if indexPath.row == catalog?.menuList.count ?? 0{
+                collectionView.reloadData()
+            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath) as! DuplicateCollectionViewCell
             cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
             if selectedFirstCollCellIndex != indexPath.row{
@@ -321,11 +324,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                    
                     let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier, for: indexPath) as! HeaderForFavDishes
                     
-                    headerCell.setRowCount(rowCount: rowCount)
+//                    headerCell.setRowCount(rowCount: rowCount)
                     
                     
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
+                    headerCell.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
                     
                     headerCell.duplicateCollectionView.dataSource = self
                     headerCell.duplicateCollectionView.delegate = self
@@ -376,21 +380,41 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
    
     
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if collectionView == catalogView.secondCollectionView{
-            if section == 0{
-                print(ReusavleViewDist.getSumWitoutCell() + CGFloat(ReusavleViewDist.collectionViewCellheigt * (catalog?.menuList.count ?? 0)))
-                return CGSize(width: UIScreen.main.bounds.width, height: ReusavleViewDist.getSumWitoutCell() + CGFloat(ReusavleViewDist.collectionViewCellheigt * (rowCount)) + CGFloat(ReusavleViewDist.rowSpacing * rowCount) + 20)
-            }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+
+        // Get the view for the first header
+        let indexPath = IndexPath(row: 0, section: section)
+        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+
+        // Use this view to calculate the optimal size based on the collection view's width
+        return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
+                                                  withHorizontalFittingPriority: .required, // Width is fixed
+                                                  verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
+    }
+    
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize{
+        if collectionView == catalogView.collectionView{
+            return CGSize(width: ((UIScreen.main.bounds.width)) / 3, height: 48)
+        }
+        else if collectionView == catalogView.secondCollectionView{
+            return CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: UIScreen.main.bounds.height * 0.53)
             
-            return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
+        }
+        else if collectionView == header.favCollectionView{
+            return CGSize(width: UIScreen.main.bounds.width - 60, height: ReusavleViewDist.sliderHeigt)
         }
         else{
-            return CGSize(width: 0, height: 0)
+            return CGSize(width: (catalog?.menuList[indexPath.row].sectionName.count ?? 0) * 10 + 20, height: 50)
         }
         
+
+        
+
     }
     
     

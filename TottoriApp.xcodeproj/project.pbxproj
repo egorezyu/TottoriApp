@@ -53,6 +53,8 @@
 		E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABE0B928A4138800B7640B /* ToolBar.swift */; };
 		E4AE918428A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE918328A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift */; };
 		E4AE918628A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE918528A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift */; };
+		E4AE919228AAC48E00B8ACC9 /* ResizableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919128AAC48E00B8ACC9 /* ResizableCollectionView.swift */; };
+		E4AE919428AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919328AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift */; };
 		E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */; };
 		E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */; };
 		E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */; };
@@ -118,6 +120,8 @@
 		E4ABE0B928A4138800B7640B /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		E4AE918328A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateCollectionViewRowSize.swift; sourceTree = "<group>"; };
 		E4AE918528A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateCollectionViewCell.swift; sourceTree = "<group>"; };
+		E4AE919128AAC48E00B8ACC9 /* ResizableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableCollectionView.swift; sourceTree = "<group>"; };
+		E4AE919328AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRequestExtension.swift; sourceTree = "<group>"; };
 		E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListDisplayFactory.swift; sourceTree = "<group>"; };
@@ -225,10 +229,19 @@
 			path = AboutUsData;
 			sourceTree = "<group>";
 		};
+		E4AE919028AAC47100B8ACC9 /* CollectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				E4AE919128AAC48E00B8ACC9 /* ResizableCollectionView.swift */,
+			);
+			path = CollectionViews;
+			sourceTree = "<group>";
+		};
 		E4C088F528A67FF700CD58C7 /* CollectionViewLayouts */ = {
 			isa = PBXGroup;
 			children = (
 				E48DBABF28A458DF00B65644 /* FlowLay.swift */,
+				E4AE919328AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift */,
 			);
 			path = CollectionViewLayouts;
 			sourceTree = "<group>";
@@ -322,6 +335,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4AE919028AAC47100B8ACC9 /* CollectionViews */,
 				E4C0890128A6868600CD58C7 /* StructWithConsts */,
 				E4C088FC28A6850700CD58C7 /* Enums */,
 				E4C088FB28A6835C00CD58C7 /* Protocols */,
@@ -507,6 +521,7 @@
 				E43C7FEC2886D03F001F6D8C /* MenuListRequest.swift in Sources */,
 				E41C673A287DF5CD001FD5B2 /* DishCollectionViewCell.swift in Sources */,
 				E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */,
+				E4AE919428AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift in Sources */,
 				E4E37704287CB532003ED269 /* SceneDelegate.swift in Sources */,
 				E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */,
 				E4C088F928A6816C00CD58C7 /* HeaderForTitleCollectionReusableView.swift in Sources */,
@@ -530,6 +545,7 @@
 				E4A93C0B289BD2C80017F326 /* Allert.swift in Sources */,
 				E433C8AA288EF58B0036479C /* UserInfo.swift in Sources */,
 				E4AE918428A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift in Sources */,
+				E4AE919228AAC48E00B8ACC9 /* ResizableCollectionView.swift in Sources */,
 				E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */,
 				E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */,
 				E4E3771D287CB7CF003ED269 /* ColorExtension.swift in Sources */,
