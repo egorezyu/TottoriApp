@@ -10,11 +10,12 @@ struct MenuListDisplayFactory {
 
     
 
-    static func makeMenuList(information: MenuListRequest.Catalog) -> ([MenuList],[MenuDish]) {
+    static func makeMenuList(information: MenuListRequest.Catalog) -> ([MenuList],[MenuDish],[SectionList]) {
 
         
 
         let catalog = information
+        var arrayOfFullDishes : [SectionList] = []
 
         var arrayOfLovelyDishes = [MenuDish]()
 
@@ -39,7 +40,7 @@ struct MenuListDisplayFactory {
                     let foodImage3 = $0.foodImage3
                     let el = SectionList(foodID: foodID, foodName: foodName, foodPrice: foodPrice, foodImage0: foodImage0, foodContent: foodContent, foodWeight: foodWeight, foodImage1: foodImage1, foodImage2: foodImame2, foodImage3: foodImage3)
                     sectionList?.append(el)
-
+                    arrayOfFullDishes.append(el)
                     
                    
                     
@@ -75,7 +76,7 @@ struct MenuListDisplayFactory {
 
         
 
-        return (arrayOfMenu,arrayOfLovelyDishes)
+        return (arrayOfMenu,arrayOfLovelyDishes,arrayOfFullDishes)
 
     }
 

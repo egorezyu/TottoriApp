@@ -10,7 +10,7 @@ final class MenuListViewModel {
 
     
 
-    func getMenuList(_ completion: @escaping(Result<([MenuList],[MenuDish]), Error>) -> Void) {
+    func getMenuList(_ completion: @escaping(Result<([MenuList],[MenuDish],[SectionList]), Error>) -> Void) {
 
         
 

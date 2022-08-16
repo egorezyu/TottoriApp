@@ -16,6 +16,7 @@ class CatalogViewController: UIViewController {
     private lazy var catalogView = CatalogView(subscriber: self)
     private lazy var viewModel = MenuListViewModel()
     private var header : HeaderForFavDishes!
+    private var fullArrayOfDishes : [SectionList] = []
     
     private var currentVstackCellCount = 0
     private var selectedFirstCollCellIndex = 0
@@ -104,6 +105,8 @@ class CatalogViewController: UIViewController {
                 switch result{
                     
                 case .success(let items):
+                    self.fullArrayOfDishes = items.2
+                    
                     self.catalog = Catalog(status: true, menuList: items.0, menuDishes: items.1)
                     
                     if let catalog = self.catalog {
@@ -134,7 +137,7 @@ class CatalogViewController: UIViewController {
 
         
         var sectionList : SectionList?
-        sectionList = catalog?.menuList[0].sectionList?.first(where: { sectionList in
+        sectionList = fullArrayOfDishes.first(where: { sectionList in
             sectionList.foodID == String(button.tag)
         })
         
