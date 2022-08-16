@@ -149,30 +149,30 @@ class HeaderForFavDishes: UICollectionReusableView {
     }
     
     private func addView(){
-//        addSubview(holdTextView)
+        addSubview(holdTextView)
         addSubview(favCollectionView)
         addSubview(hStack)
         addSubview(duplicateCollectionView)
         
-//        holdTextView.addSubview(firstDishTitle)
+        holdTextView.addSubview(firstDishTitle)
         
         
     }
     private func setConsraints(){
        
         
-//        NSLayoutConstraint.activate([
-//
-//            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
-//
-//
-//            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            holdTextView.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.bottomTitleHeight)),
-//            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
-//
-//
-//        ])
+        NSLayoutConstraint.activate([
+
+            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
+
+
+            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            holdTextView.heightAnchor.constraint(equalToConstant: CGFloat(ReusavleViewDist.bottomTitleHeight)),
+            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
+
+
+        ])
         NSLayoutConstraint.activate([
             
             duplicateCollectionView.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 20),
@@ -180,6 +180,7 @@ class HeaderForFavDishes: UICollectionReusableView {
 
             duplicateCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             duplicateCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            duplicateCollectionView.heightAnchor.constraint(equalToConstant: UIView.layoutFittingCompressedSize.height)
             
         
 

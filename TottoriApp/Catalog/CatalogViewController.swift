@@ -239,9 +239,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else{
-            if indexPath.row == catalog?.menuList.count ?? 0{
-                collectionView.reloadData()
-            }
+//            if indexPath.row == catalog?.menuList.count ?? 0{
+//                collectionView.reloadData()
+//            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath) as! DuplicateCollectionViewCell
             cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
             if selectedFirstCollCellIndex != indexPath.row{
@@ -329,7 +329,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
-                    headerCell.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
+//                    headerCell.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
                     
                     headerCell.duplicateCollectionView.dataSource = self
                     headerCell.duplicateCollectionView.delegate = self
