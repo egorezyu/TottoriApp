@@ -39,7 +39,7 @@ struct MenuListDisplayFactory {
                     let foodImage3 = $0.foodImage3
                     let el = SectionList(foodID: foodID, foodName: foodName, foodPrice: foodPrice, foodImage0: foodImage0, foodContent: foodContent, foodWeight: foodWeight, foodImage1: foodImage1, foodImage2: foodImame2, foodImage3: foodImage3)
                     sectionList?.append(el)
-                    arrayOfMenu[0].sectionList?.append(el)
+
                     
                    
                     

@@ -160,7 +160,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return catalog?.menuList.count ?? 0
         }
         else if collectionView == catalogView.secondCollectionView{
-            return catalog?.menuList[section + 1].sectionList?.count ?? 0
+            return catalog?.menuList[section].sectionList?.count ?? 0
         }
         else if collectionView == header.duplicateCollectionView{
             return catalog?.menuList.count ?? 0
@@ -179,7 +179,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return 1
         }
         else if collectionView == catalogView.secondCollectionView{
-            return (catalog?.menuList.count ?? 1) - 1
+            return (catalog?.menuList.count ?? 1)
         }
         else if collectionView == header.duplicateCollectionView{
             return 1
@@ -205,9 +205,22 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else if collectionView == catalogView.secondCollectionView{
+            
+            if collectionView.isDragging{
+                
+                
+                
+                selectedFirstCollCellIndex = indexPath.section
+                
+                self.catalogView.collectionView.reloadData()
+                self.header.duplicateCollectionView.reloadData()
+            }
+           
+            
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
-            cell.setCellFields(sectionList: catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row])
-            cell.purchaseButton.tag = Int(catalog?.menuList[indexPath.section + 1].sectionList?[indexPath.row].foodID ?? "") ?? -1
+            cell.setCellFields(sectionList: catalog?.menuList[indexPath.section].sectionList?[indexPath.row])
+            cell.purchaseButton.tag = Int(catalog?.menuList[indexPath.section].sectionList?[indexPath.row].foodID ?? "") ?? -1
 
             cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
             return cell
@@ -281,7 +294,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
             }
             else{
-                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex - 1)
+                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex)
                 catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
             }
             
@@ -301,7 +314,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
             }
             else{
-                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex - 1)
+                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex)
                 catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
             }
             
@@ -363,7 +376,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForTitle.headerReuseIdentifier, for: indexPath) as! HeaderForTitle
                 
                
-                headerCell.textLabel.text = catalog?.menuList[indexPath.section + 1].sectionName
+                headerCell.textLabel.text = catalog?.menuList[indexPath.section].sectionName
                 return headerCell
                 
                 
@@ -473,7 +486,15 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 
             }
         }
-        
+        else if scrollView == catalogView.secondCollectionView{
+            
+            if targetContentOffset.pointee.y == 0.0{
+              
+                selectedFirstCollCellIndex = 0
+                catalogView.collectionView.reloadData()
+                header.duplicateCollectionView.reloadData()
+            }
+        }
         
 
             
