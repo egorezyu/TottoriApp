@@ -22,8 +22,6 @@ class CatalogViewController: UIViewController {
     
     private var rowCount : Int = 0
     
-    private var adjustableHeight : CGFloat = 0
-    
     
     
 
@@ -234,7 +232,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 header.constraintForCollectionViewHeight.constant = collectionView.intrinsicContentSize.height
                 if rowCount < 1{
                     
-                    adjustableHeight = header.frame.height - 1000 + collectionView.intrinsicContentSize.height
+                    header.frame.size.height = header.frame.height - 1000 + collectionView.intrinsicContentSize.height
                 }
                
                 
@@ -247,7 +245,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 
                 
                 
-                catalogView.secondCollectionView.collectionViewLayout.invalidateLayout()
+                catalogView.setNeedsLayout()
                 rowCount = rowCount + 1
                 
                
@@ -399,15 +397,10 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         let indexPath = IndexPath(row: 0, section: section)
         let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
         if section == 0{
-            if adjustableHeight == 0{
-                return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
-                                                          withHorizontalFittingPriority: .required, // Width is fixed
-                                                          verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
-            }
-            else{
-                return CGSize(width: 0, height: adjustableHeight)
-            }
-            
+            // Use this view to calculate the optimal size based on the collection view's width
+            return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
+                                                      withHorizontalFittingPriority: .required, // Width is fixed
+                                                      verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
         }
         else{
             return CGSize(width: 0, height: UIScreen.main.bounds.height / 7)
