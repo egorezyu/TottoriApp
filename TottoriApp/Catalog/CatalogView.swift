@@ -51,6 +51,7 @@ final class CatalogView: UIView {
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 3, left: 13, bottom: 3, right: 13)
         let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         collectionView.showsVerticalScrollIndicator = false
