@@ -208,6 +208,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else if collectionView == catalogView.secondCollectionView{
+//            if catalogView.secondCollectionView.contentOffset.y < 0{
+//
+//                selectedFirstCollCellIndex = 0
+//                catalogView.collectionView.reloadData()
+//                header.duplicateCollectionView.reloadData()
+//            }
             
             if collectionView.isDragging{
                 
@@ -245,10 +251,13 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         }
         else{
             if indexPath.row == (catalog?.menuList.count ?? 0) - 1{
-                header.constraintForCollectionViewHeight.constant = collectionView.intrinsicContentSize.height
+               
                 if rowCount < 1{
+//                    header.constraintForCollectionViewHeight.constant = collectionView.intrinsicContentSize.height
+//                    header.duplicateCollectionView.collectionViewLayout.invalidateLayout()
                     
                     header.frame.size.height = header.frame.height - 1000 + collectionView.intrinsicContentSize.height
+                    
                 }
                
                 
@@ -261,7 +270,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 
                 
                 
-                catalogView.setNeedsLayout()
+                
                 rowCount = rowCount + 1
                 
                
@@ -337,6 +346,19 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
        
         
     }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
+        if scrollView == catalogView.secondCollectionView{
+            print(catalogView.secondCollectionView.contentOffset.y)
+            
+            
+            if catalogView.secondCollectionView.contentOffset.y == 0{
+
+                selectedFirstCollCellIndex = 0
+                catalogView.collectionView.reloadData()
+                header.duplicateCollectionView.reloadData()
+            }
+        }
+    }
     
     
     func collectionView(_ collectionView: UICollectionView,
@@ -365,7 +387,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
 
                    
-                    headerCell.firstDishTitle.text = catalog?.menuList[1].sectionName
+                   
                     
                     self.header = headerCell
                     
@@ -489,15 +511,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 
             }
         }
-        else if scrollView == catalogView.secondCollectionView{
-            
-            if targetContentOffset.pointee.y == 0.0{
-              
-                selectedFirstCollCellIndex = 0
-                catalogView.collectionView.reloadData()
-                header.duplicateCollectionView.reloadData()
-            }
-        }
+        
         
 
             

@@ -17,21 +17,21 @@ class HeaderForFavDishes: UICollectionReusableView {
     
     
     
-    private lazy var holdTextView: UIView = {
-        var view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-
-        
-        return view
-        
-    }()
-    public lazy var firstDishTitle : UILabel = {
-        var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
-        
-        return label
-    }()
+//    private lazy var holdTextView: UIView = {
+//        var view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        return view
+//
+//    }()
+//    public lazy var firstDishTitle : UILabel = {
+//        var label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
+//
+//        return label
+//    }()
     public lazy var favCollectionView : UICollectionView = {
         let layout = FlowLay()
         layout.scrollDirection = .horizontal
@@ -127,7 +127,7 @@ class HeaderForFavDishes: UICollectionReusableView {
 
         
         setBackGround()
-        setBackGroundForLabel()
+//        setBackGroundForLabel()
         
         setChoseFirst()
         
@@ -141,12 +141,12 @@ class HeaderForFavDishes: UICollectionReusableView {
     }
     
     private func addView(){
-        addSubview(holdTextView)
+//        addSubview(holdTextView)
         addSubview(favCollectionView)
         addSubview(hStack)
         addSubview(duplicateCollectionView)
         
-        holdTextView.addSubview(firstDishTitle)
+//        holdTextView.addSubview(firstDishTitle)
         
         
     }
@@ -175,39 +175,40 @@ class HeaderForFavDishes: UICollectionReusableView {
 
             duplicateCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             duplicateCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            duplicateCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            duplicateCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
 
 
 
 
 
         ])
-        
-       
-        
-        NSLayoutConstraint.activate([
-
-            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
-
-
-            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            holdTextView.heightAnchor.constraint(equalToConstant: 70),
-            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
-
-
-        ])
-       
         constraintForCollectionViewHeight.isActive = true
         
+       
         
-        NSLayoutConstraint.activate([
-            firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
-            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor,constant: -5),
+//        NSLayoutConstraint.activate([
+//
+//            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
+//
+//
+//            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            holdTextView.heightAnchor.constraint(equalToConstant: 70),
+//            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
+//
+//
+//        ])
+//
 
-
-
-        ])
+//
+//
+//        NSLayoutConstraint.activate([
+//            firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
+//            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor,constant: -5),
+//
+//
+//
+//        ])
     
         
         
@@ -231,12 +232,12 @@ class HeaderForFavDishes: UICollectionReusableView {
        
         
     }
-    private func setBackGroundForLabel(){
-        if let image = UIImage(named: "back"){
-            holdTextView.backgroundColor = UIColor(patternImage: image)
-        }
-        
-    }
+//    private func setBackGroundForLabel(){
+//        if let image = UIImage(named: "back"){
+//            holdTextView.backgroundColor = UIColor(patternImage: image)
+//        }
+//
+//    }
     private func setBackGroundForDuplicateCollView(){
         if let image = UIImage(named: "back"){
             duplicateCollectionView.backgroundColor = UIColor(patternImage: image)
