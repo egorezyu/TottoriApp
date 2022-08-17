@@ -44,5 +44,41 @@ extension UIViewController{
        
         return attributes
     }
+    
 
+}
+extension ViewControllerWithViewWithStack{
+    
+    
+    func setPage<T>(targetContentOffset : UnsafeMutablePointer<CGPoint>,array : [T]){
+        if let viewWithStack = viewWithStack{
+            let currentIndex = (targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)).rounded(.toNearestOrAwayFromZero)
+            
+            
+            
+            if currentIndex == 0{
+                viewWithStack.confirmStack(stack: viewWithStack.hStack, j: 2)
+                viewWithStack.hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
+                viewWithStack.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                viewWithStack.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+            }
+            else if currentIndex == CGFloat((array.count) - 1){
+                viewWithStack.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
+                viewWithStack.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                viewWithStack.hStack.subviews[2].layer.borderColor = UIColor.red.cgColor
+                
+                viewWithStack.confirmStack(stack: viewWithStack.hStack, j: (array.count) - 1)
+                
+            }
+            else {
+                viewWithStack.confirmStack(stack: viewWithStack.hStack, j: Int(currentIndex) + 1)
+                viewWithStack.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
+                viewWithStack.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
+                viewWithStack.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+                
+                
+            }
+        }
+        
+    }
 }

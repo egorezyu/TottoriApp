@@ -7,8 +7,9 @@
 
 import UIKit
 
-class AboutUsViewController: UIViewController {
+class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     private lazy var aboutUsView = AboutUsView(delegate: self)
+    internal lazy var viewWithStack: ViewWithStack? = aboutUsView as ViewWithStack
     internal var selectedTextField: UITextField?
     private lazy var isToggled = false
     private var arrayOfDesignItems : [ElemBlock] = []
@@ -185,32 +186,10 @@ extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataS
 
         
         if scrollView == aboutUsView.horCollectionView{
-            let currentIndex = (targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)).rounded(.toNearestOrAwayFromZero)
+
+            setPage(targetContentOffset: targetContentOffset, array: arrayOfDesignItems)
             
             
-            
-            if currentIndex == 0{
-                aboutUsView.confirmStack(stack: aboutUsView.hStack, j: 2)
-                aboutUsView.hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
-                aboutUsView.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
-                aboutUsView.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
-            }
-            else if currentIndex == CGFloat((arrayOfDesignItems.count) - 1){
-                aboutUsView.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
-                aboutUsView.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
-                aboutUsView.hStack.subviews[2].layer.borderColor = UIColor.red.cgColor
-                
-                aboutUsView.confirmStack(stack: aboutUsView.hStack, j: (arrayOfDesignItems.count) - 1)
-                
-            }
-            else {
-                aboutUsView.confirmStack(stack: aboutUsView.hStack, j: Int(currentIndex) + 1)
-                aboutUsView.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
-                aboutUsView.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
-                aboutUsView.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
-                
-                
-            }
         }
         
         

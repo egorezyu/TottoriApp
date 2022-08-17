@@ -10,10 +10,13 @@ import UIKit
 
 
 
-class CatalogViewController: UIViewController {
+class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
+   
+    
     
     
     private lazy var catalogView = CatalogView(subscriber: self)
+    internal lazy var viewWithStack: ViewWithStack? = nil
     private lazy var viewModel = MenuListViewModel()
     private var header : HeaderForFavDishes!
     private var fullArrayOfDishes : [SectionList] = []
@@ -390,6 +393,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                    
                     
                     self.header = headerCell
+                    self.viewWithStack = header
                     
                     
                     
@@ -484,32 +488,11 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
         
         if scrollView == header.favCollectionView{
-            let currentIndex = (targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)).rounded(.toNearestOrAwayFromZero)
-            
-            
-            
-            if currentIndex == 0{
-                header.confirmStack(stack: header.hStack, j: 2)
-                header.hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
-                header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
-                header.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+
+            if let array = catalog?.menuDishes{
+                setPage(targetContentOffset: targetContentOffset, array: array)
             }
-            else if currentIndex == CGFloat((catalog?.menuDishes.count ?? -1) - 1){
-                header.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
-                header.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
-                header.hStack.subviews[2].layer.borderColor = UIColor.red.cgColor
-                
-                header.confirmStack(stack: header.hStack, j: (catalog?.menuDishes.count ?? -1) - 1)
-                
-            }
-            else {
-                header.confirmStack(stack: header.hStack, j: Int(currentIndex) + 1)
-                header.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
-                header.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
-                header.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
-                
-                
-            }
+            
         }
         
         

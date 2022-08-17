@@ -10,7 +10,7 @@ import DGCarouselFlowLayout
 import CoreAudio
 
 
-class HeaderForFavDishes: UICollectionReusableView {
+class HeaderForFavDishes: UICollectionReusableView,ViewWithStack{
     static let headerReuseIdentifier = "headerSecondReuseIdentifier"
 //    private var rowCount : Int = 0
     public lazy var constraintForCollectionViewHeight = duplicateCollectionView.heightAnchor.constraint(equalToConstant: 200)
@@ -102,19 +102,19 @@ class HeaderForFavDishes: UICollectionReusableView {
         
        
     }()
-    public func confirmStack(stack : UIStackView,j : Int){
-        var dictionary : [Int : Int] = [:]
-        dictionary[0] = j - 2
-        dictionary[1] = j - 1
-        dictionary[2] = j
-        for (key,value) in dictionary{
-            (stack.subviews[key] as! UILabel).text = String(value + 1)
-            
-            
-        }
-       
-        
-    }
+//    func confirmStack(stack : UIStackView,j : Int){
+//        var dictionary : [Int : Int] = [:]
+//        dictionary[0] = j - 2
+//        dictionary[1] = j - 1
+//        dictionary[2] = j
+//        for (key,value) in dictionary{
+//            (stack.subviews[key] as! UILabel).text = String(value + 1)
+//            
+//            
+//        }
+//       
+//        
+//    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         

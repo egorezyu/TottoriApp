@@ -59,6 +59,8 @@
 		E4AE919C28ACEA2200B8ACC9 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919B28ACEA2200B8ACC9 /* Design.swift */; };
 		E4AE919E28ACEE6600B8ACC9 /* DesignListDispayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919D28ACEE6600B8ACC9 /* DesignListDispayFactory.swift */; };
 		E4AE91A028ACF4B100B8ACC9 /* DesignListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919F28ACF4B100B8ACC9 /* DesignListViewModel.swift */; };
+		E4AE91A628AD2A1E00B8ACC9 /* ViewControllerWithViewWithStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE91A528AD2A1E00B8ACC9 /* ViewControllerWithViewWithStack.swift */; };
+		E4AE91A828AD2A6700B8ACC9 /* ViewWithStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE91A728AD2A6700B8ACC9 /* ViewWithStack.swift */; };
 		E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */; };
 		E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */; };
 		E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */; };
@@ -130,6 +132,8 @@
 		E4AE919B28ACEA2200B8ACC9 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		E4AE919D28ACEE6600B8ACC9 /* DesignListDispayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignListDispayFactory.swift; sourceTree = "<group>"; };
 		E4AE919F28ACF4B100B8ACC9 /* DesignListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignListViewModel.swift; sourceTree = "<group>"; };
+		E4AE91A528AD2A1E00B8ACC9 /* ViewControllerWithViewWithStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWithViewWithStack.swift; sourceTree = "<group>"; };
+		E4AE91A728AD2A6700B8ACC9 /* ViewWithStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithStack.swift; sourceTree = "<group>"; };
 		E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRequestExtension.swift; sourceTree = "<group>"; };
 		E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListDisplayFactory.swift; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 				E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */,
 				E4ABE0B528A3DBE800B7640B /* TextFieldControlColorProtol.swift */,
 				E4ABE0B728A3F73F00B7640B /* PhoneFieldProtocol.swift */,
+				E4AE91A528AD2A1E00B8ACC9 /* ViewControllerWithViewWithStack.swift */,
+				E4AE91A728AD2A6700B8ACC9 /* ViewWithStack.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -526,9 +532,11 @@
 				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,
 				E4AE919E28ACEE6600B8ACC9 /* DesignListDispayFactory.swift in Sources */,
 				E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */,
+				E4AE91A628AD2A1E00B8ACC9 /* ViewControllerWithViewWithStack.swift in Sources */,
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
 				E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */,
 				E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */,
+				E4AE91A828AD2A6700B8ACC9 /* ViewWithStack.swift in Sources */,
 				E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */,
 				E4C088FE28A6852F00CD58C7 /* DataServiceExceptions.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,

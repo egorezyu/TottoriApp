@@ -8,7 +8,7 @@
 import UIKit
 import DGCarouselFlowLayout
 
-class AboutUsView: UIView,PhoneFieldProtocol {
+class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     private weak var delegate : AboutUsDelegate?
     init(delegate : AboutUsDelegate? = nil) {
         super.init(frame: .zero)
@@ -97,19 +97,19 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         
        
     }()
-    public func confirmStack(stack : UIStackView,j : Int){
-        var dictionary : [Int : Int] = [:]
-        dictionary[0] = j - 2
-        dictionary[1] = j - 1
-        dictionary[2] = j
-        for (key,value) in dictionary{
-            (stack.subviews[key] as! UILabel).text = String(value + 1)
-            
-            
-        }
-       
-        
-    }
+//    public func confirmStack(stack : UIStackView,j : Int){
+//        var dictionary : [Int : Int] = [:]
+//        dictionary[0] = j - 2
+//        dictionary[1] = j - 1
+//        dictionary[2] = j
+//        for (key,value) in dictionary{
+//            (stack.subviews[key] as! UILabel).text = String(value + 1)
+//            
+//            
+//        }
+//       
+//        
+//    }
     private lazy var tableOrderLabel : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
