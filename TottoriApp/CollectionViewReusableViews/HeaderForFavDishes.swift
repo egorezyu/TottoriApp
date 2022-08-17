@@ -156,7 +156,7 @@ class HeaderForFavDishes: UICollectionReusableView,ViewWithStack{
 
             favCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             favCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            favCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.5)
+            favCollectionView.heightAnchor.constraint(equalToConstant: frame.height * 0.8)
             
 
         ])
@@ -164,51 +164,13 @@ class HeaderForFavDishes: UICollectionReusableView,ViewWithStack{
             hStack.topAnchor.constraint(equalTo: favCollectionView.bottomAnchor),
 
             hStack.leadingAnchor.constraint(equalTo: favCollectionView.leadingAnchor,constant: 20),
-            hStack.heightAnchor.constraint(equalToConstant: 48)
+            hStack.heightAnchor.constraint(equalToConstant: 48),
+
            
 
         ])
-        NSLayoutConstraint.activate([
-
-            duplicateCollectionView.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 20),
 
 
-            duplicateCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            duplicateCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            duplicateCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
-
-
-
-
-
-        ])
-        constraintForCollectionViewHeight.isActive = true
-        
-       
-        
-//        NSLayoutConstraint.activate([
-//
-//            holdTextView.topAnchor.constraint(equalTo: duplicateCollectionView.bottomAnchor),
-//
-//
-//            holdTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            holdTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            holdTextView.heightAnchor.constraint(equalToConstant: 70),
-//            holdTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
-//
-//
-//        ])
-//
-
-//
-//
-//        NSLayoutConstraint.activate([
-//            firstDishTitle.leadingAnchor.constraint(equalTo: holdTextView.leadingAnchor),
-//            firstDishTitle.bottomAnchor.constraint(equalTo: holdTextView.bottomAnchor,constant: -5),
-//
-//
-//
-//        ])
     
         
         

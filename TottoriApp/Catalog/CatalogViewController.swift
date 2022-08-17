@@ -253,33 +253,33 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else{
-            if indexPath.row == (catalog?.menuList.count ?? 0) - 1{
-               
-                if rowCount < 1{
-//                 eLayout()
-                    
-                    header.frame.size.height = header.frame.height - 200 + collectionView.intrinsicContentSize.height
-                    
-                }
-                view.setNeedsLayout()
-               
-                
-                
-                
-                
-                
-               
-                
-                
-                
-                
-                
-                rowCount = rowCount + 1
-                
-               
-                
-
-            }
+//            if indexPath.row == (catalog?.menuList.count ?? 0) - 1{
+//
+//                if rowCount < 1{
+////                 eLayout()
+//
+//                    header.frame.size.height = header.frame.height - 200 + collectionView.intrinsicContentSize.height
+//
+//                }
+//                view.setNeedsLayout()
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//                rowCount = rowCount + 1
+//
+//
+//
+//
+//            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath) as! DuplicateCollectionViewCell
             cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
             if selectedFirstCollCellIndex != indexPath.row{
@@ -351,7 +351,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
         if scrollView == catalogView.secondCollectionView{
-            print(catalogView.secondCollectionView.contentOffset.y)
+            
             
             
             if catalogView.secondCollectionView.contentOffset.y == 0{
@@ -437,15 +437,13 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
      
         let indexPath = IndexPath(row: 0, section: section)
-        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        _ = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
         if section == 0{
             // Use this view to calculate the optimal size based on the collection view's width
-            return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
-                                                      withHorizontalFittingPriority: .required, // Width is fixed
-                                                      verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
+            return CGSize(width: 0, height: UIScreen.main.bounds.height * 0.6)
         }
         else{
-            return CGSize(width: 0, height: UIScreen.main.bounds.height / 7)
+            return CGSize(width: 0, height: UIScreen.main.bounds.height / 12)
         }
 
      

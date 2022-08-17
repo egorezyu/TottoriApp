@@ -20,7 +20,7 @@ class HeaderForTitle: UICollectionReusableView {
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor,constant: UIScreen.main.bounds.height / 10),
+            label.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -10),
            
             label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 5),
             
