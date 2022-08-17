@@ -97,11 +97,11 @@ extension DishViewController : DishDelegate{
         if let sectionList = sectionList {
             switch currentPhotoChoose {
             case 0 :
-                NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: dishView.foodImage)
+                NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: dishView.foodImage,width: 200,aspectRatio: 1.5)
                 
             case 1 :
                 if let image = sectionList.foodImage2{
-                    NetworkManager.shared.setImageFromUrl(url: image, imageView: dishView.foodImage)
+                    NetworkManager.shared.setImageFromUrl(url: image, imageView: dishView.foodImage,width: 200,aspectRatio: 1.5)
                 }
                 else{
                     dishView.foodImage.image = UIImage(named: "tottori")
@@ -109,7 +109,7 @@ extension DishViewController : DishDelegate{
                 
             case 2 :
                 if let image = sectionList.foodImage3{
-                    NetworkManager.shared.setImageFromUrl(url: image, imageView: dishView.foodImage)
+                    NetworkManager.shared.setImageFromUrl(url: image, imageView: dishView.foodImage,width: 200,aspectRatio: 1.5)
                 }
                 else{
                     dishView.foodImage.image = UIImage(named: "tottori")

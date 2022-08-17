@@ -313,7 +313,7 @@ class DishView: UIView {
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
         setPriceWeightNumber(sectionList: sectionList)
         
-        NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage)
+        NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage,width: 200,aspectRatio: 1.5)
        
         
        

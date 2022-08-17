@@ -227,7 +227,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         var layout = FlowLay()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.height - 10)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.height * 0.5 - 10)
         
        
         
@@ -317,7 +317,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         horCollectionView.topAnchor.constraint(equalTo: aboutBeatyLabel.bottomAnchor,constant: 20).isActive = true
         horCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         horCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        horCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.7).isActive = true
+        horCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.5).isActive = true
       
 //
         chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 15.6).isActive = true

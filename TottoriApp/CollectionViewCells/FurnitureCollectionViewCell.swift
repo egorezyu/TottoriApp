@@ -18,8 +18,8 @@ class FurnitureCollectionViewCell: UICollectionViewCell {
     private lazy var bigImage : UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
+        image.contentMode = .scaleAspectFit
+//        image.clipsToBounds = true
         return image
         
         
@@ -51,6 +51,7 @@ class FurnitureCollectionViewCell: UICollectionViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
         textView.textAlignment = .left
+        textView.textContainer.maximumNumberOfLines = 5
         textView.textColor = .myLightGrey
         textView.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         textView.isEditable = false
@@ -62,34 +63,35 @@ class FurnitureCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(littleImage)
         contentView.addSubview(littleText)
         
+        
     }
     private func setConstraints(){
         
-        bigImage.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 40).isActive = true
-        bigImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        bigImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
+        bigImage.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 5).isActive = true
+        bigImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
+        bigImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
         bigImage.heightAnchor.constraint(equalToConstant: frame.height * 0.4).isActive = true
         bigText.topAnchor.constraint(equalTo: bigImage.bottomAnchor,constant: 10).isActive = true
         bigText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         bigText.widthAnchor.constraint(equalToConstant: frame.width * 0.8).isActive = true
-        bigText.heightAnchor.constraint(equalToConstant: frame.height * 0.1).isActive = true
+        bigText.heightAnchor.constraint(equalToConstant: frame.height * 0.3).isActive = true
         littleImage.topAnchor.constraint(equalTo: bigText.bottomAnchor,constant: 10).isActive = true
         littleImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
-        littleImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -50).isActive = true
+        littleImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -5).isActive = true
        
         littleImage.widthAnchor.constraint(equalToConstant: frame.width * 0.4).isActive = true
         
         littleText.leadingAnchor.constraint(equalTo: littleImage.trailingAnchor,constant: 20).isActive = true
-        littleText.centerYAnchor.constraint(equalTo: littleImage.centerYAnchor,constant: 30).isActive = true
+        littleText.centerYAnchor.constraint(equalTo: littleImage.centerYAnchor).isActive = true
         littleText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-        littleText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -50).isActive = true
+        littleText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -5).isActive = true
         
         
     }
     func configureCell(item : ElemBlock){
-        NetworkManager.shared.setImageFromUrl(url: item.bigPicture, imageView: self.bigImage)
+        NetworkManager.shared.setImageFromUrl(url: item.bigPicture, imageView: self.bigImage,width: 1000,aspectRatio: 1.4)
         self.bigText.text = item.textContent1
-        NetworkManager.shared.setImageFromUrl(url: item.smallPicture, imageView: self.littleImage)
+        NetworkManager.shared.setImageFromUrl(url: item.smallPicture, imageView: self.littleImage,width: 235,aspectRatio: 1.74)
         self.littleText.text = item.textContent2
     }
     override func layoutSubviews() {

@@ -136,13 +136,13 @@ final class NetworkManager {
             comletion(result)
         }
     }
-    func setImageFromUrl(url : String,imageView : UIImageView){
+    func setImageFromUrl(url : String,imageView : UIImageView,width : CGFloat,aspectRatio : CGFloat){
 
         guard let url = URL(string: "http://tottori.fixmaski.ru" + url) else{
             return
         }
         
-        let proc = DownsamplingImageProcessor(size: CGSize(width: 200, height: 133))
+        let proc = DownsamplingImageProcessor(size: CGSize(width: width, height: width / aspectRatio))
 
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(

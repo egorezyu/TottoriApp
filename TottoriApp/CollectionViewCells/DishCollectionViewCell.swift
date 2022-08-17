@@ -118,7 +118,7 @@ class DishCollectionViewCell: UICollectionViewCell {
             self.descriptionAboutFood.text = sectionList.foodContent.removingHTMLOccurances
             self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: 22))
             
-            NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.imageView)
+            NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.imageView,width: 200,aspectRatio: 1.5)
 
         }
 
