@@ -13,7 +13,7 @@ import CoreAudio
 class HeaderForFavDishes: UICollectionReusableView {
     static let headerReuseIdentifier = "headerSecondReuseIdentifier"
 //    private var rowCount : Int = 0
-    public lazy var constraintForCollectionViewHeight = duplicateCollectionView.heightAnchor.constraint(equalToConstant: 1000)
+    public lazy var constraintForCollectionViewHeight = duplicateCollectionView.heightAnchor.constraint(equalToConstant: 200)
     
     
     

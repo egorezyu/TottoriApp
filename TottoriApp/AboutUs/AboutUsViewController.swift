@@ -11,6 +11,7 @@ class AboutUsViewController: UIViewController {
     private lazy var aboutUsView = AboutUsView(delegate: self)
     internal var selectedTextField: UITextField?
     private lazy var isToggled = false
+    private var arrayOfDesignItems : [ElemBlock] = []
     
     override func loadView() {
         super.loadView()
@@ -23,8 +24,28 @@ class AboutUsViewController: UIViewController {
         setBackGround()
         controlButtonStateAlgo()
         setDelegateForCollectionView()
+        getDesignData()
 
         // Do any additional setup after loading the view.
+    }
+    private func getDesignData(){
+        let designListViewModel = DesignListViewModel()
+        designListViewModel.getDesignList { result in
+            DispatchQueue.main.async {
+                switch result{
+                    
+                case .success(let array):
+                    self.arrayOfDesignItems = array
+                    self.aboutUsView.horCollectionView.reloadData()
+                case .failure(let error):
+                    self.present(UIAlertController.createAllert(text: error.localizedDescription), animated: true)
+                    
+                }
+            }
+            
+           
+        }
+        
     }
     private func setDelegateForCollectionView(){
         aboutUsView.horCollectionView.delegate = self
@@ -147,12 +168,58 @@ extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate
 }
 extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return arrayOfDesignItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FurnitureCollectionViewCell.id, for: indexPath) as! FurnitureCollectionViewCell
+        cell.configureCell(item: arrayOfDesignItems[indexPath.row])
         return cell
+    }
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ){
+        
+
+        
+        if scrollView == aboutUsView.horCollectionView{
+            let currentIndex = (targetContentOffset.pointee.x / (UIScreen.main.bounds.width - 20)).rounded(.toNearestOrAwayFromZero)
+            
+            
+            
+            if currentIndex == 0{
+                aboutUsView.confirmStack(stack: aboutUsView.hStack, j: 2)
+                aboutUsView.hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
+                aboutUsView.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                aboutUsView.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+            }
+            else if currentIndex == CGFloat((arrayOfDesignItems.count) - 1){
+                aboutUsView.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
+                aboutUsView.hStack.subviews[1].layer.borderColor = UIColor.clear.cgColor
+                aboutUsView.hStack.subviews[2].layer.borderColor = UIColor.red.cgColor
+                
+                aboutUsView.confirmStack(stack: aboutUsView.hStack, j: (arrayOfDesignItems.count) - 1)
+                
+            }
+            else {
+                aboutUsView.confirmStack(stack: aboutUsView.hStack, j: Int(currentIndex) + 1)
+                aboutUsView.hStack.subviews[0].layer.borderColor = UIColor.clear.cgColor
+                aboutUsView.hStack.subviews[1].layer.borderColor = UIColor.red.cgColor
+                aboutUsView.hStack.subviews[2].layer.borderColor = UIColor.clear.cgColor
+                
+                
+            }
+        }
+        
+        
+
+            
+
+       
+
+      
     }
     
     

@@ -130,6 +130,12 @@ final class NetworkManager {
             completion(result) }
 
     }
+    func makeDesignRequest(comletion : @escaping((Result<DesignListRequest.Response,Error>) -> Void)){
+        let request = DesignListRequest()
+        self.request(request: request) { result in
+            comletion(result)
+        }
+    }
     func setImageFromUrl(url : String,imageView : UIImageView){
 
         guard let url = URL(string: "http://tottori.fixmaski.ru" + url) else{

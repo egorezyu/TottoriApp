@@ -253,12 +253,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             if indexPath.row == (catalog?.menuList.count ?? 0) - 1{
                
                 if rowCount < 1{
-//                    header.constraintForCollectionViewHeight.constant = collectionView.intrinsicContentSize.height
-//                    header.duplicateCollectionView.collectionViewLayout.invalidateLayout()
+//                 eLayout()
                     
-                    header.frame.size.height = header.frame.height - 1000 + collectionView.intrinsicContentSize.height
+                    header.frame.size.height = header.frame.height - 200 + collectionView.intrinsicContentSize.height
                     
                 }
+                view.setNeedsLayout()
                
                 
                 

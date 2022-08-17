@@ -15,9 +15,11 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         self.delegate = delegate
         addViews()
         setConstraints()
+        setChoseFirst()
         
         
     }
+    
     private lazy var aboutIntLabel : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +64,52 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         return view
         
     }()
+    public lazy var hStack : UIStackView = {
+        var stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 22
+        stack.distribution = .equalCentering
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        for i in 0...2{
+            var label = UILabel()
+            
+            label.textColor = .myLightGrey
+            
+            label.font = UIFont(name: "FoglihtenNo06", size: 27.95)
+            
+            
+  
+
+            label.textAlignment = .center
+            
+            label.layer.borderWidth = 1
+            label.layer.cornerRadius = 24
+            label.layer.borderColor = UIColor.clear.cgColor
+            label.translatesAutoresizingMaskIntoConstraints = false
+            
+           
+            
+            
+            stack.addArrangedSubview(label)
+        }
+        confirmStack(stack: stack, j: 2)
+        return stack
+        
+       
+    }()
+    public func confirmStack(stack : UIStackView,j : Int){
+        var dictionary : [Int : Int] = [:]
+        dictionary[0] = j - 2
+        dictionary[1] = j - 1
+        dictionary[2] = j
+        for (key,value) in dictionary{
+            (stack.subviews[key] as! UILabel).text = String(value + 1)
+            
+            
+        }
+       
+        
+    }
     private lazy var tableOrderLabel : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -186,6 +234,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.decelerationRate = .fast
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
 
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(FurnitureCollectionViewCell.self, forCellWithReuseIdentifier: FurnitureCollectionViewCell.id)
@@ -215,6 +264,9 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         return button
         
     }()
+    public func setChoseFirst(){
+        hStack.subviews[0].layer.borderColor = UIColor.red.cgColor
+    }
     private func addViews(){
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -228,8 +280,22 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         contentView.addSubview(aboutUsView)
         contentView.addSubview(vipView)
         contentView.addSubview(makeAnOrderButton)
+        contentView.addSubview(hStack)
     }
     private func setConstraints(){
+        NSLayoutConstraint.activate([
+            hStack.topAnchor.constraint(equalTo: horCollectionView.bottomAnchor,constant: 10),
+
+            hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
+            hStack.heightAnchor.constraint(equalToConstant: 48)
+           
+
+        ])
+        
+        for view in hStack.subviews{
+            view.widthAnchor.constraint(equalToConstant: 48).isActive = true
+            view.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        }
         scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -257,7 +323,7 @@ class AboutUsView: UIView,PhoneFieldProtocol {
         chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 15.6).isActive = true
         chinaSymbol.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
 //
-        tableOrderLabel.topAnchor.constraint(equalTo: horCollectionView.bottomAnchor,constant: 20).isActive = true
+        tableOrderLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 20).isActive = true
         tableOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
 
         waitForYouLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true

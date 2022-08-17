@@ -55,6 +55,10 @@
 		E4AE918628A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE918528A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift */; };
 		E4AE919228AAC48E00B8ACC9 /* ResizableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919128AAC48E00B8ACC9 /* ResizableCollectionView.swift */; };
 		E4AE919428AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919328AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift */; };
+		E4AE919A28ACE78200B8ACC9 /* DesignListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919928ACE78200B8ACC9 /* DesignListRequest.swift */; };
+		E4AE919C28ACEA2200B8ACC9 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919B28ACEA2200B8ACC9 /* Design.swift */; };
+		E4AE919E28ACEE6600B8ACC9 /* DesignListDispayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919D28ACEE6600B8ACC9 /* DesignListDispayFactory.swift */; };
+		E4AE91A028ACF4B100B8ACC9 /* DesignListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE919F28ACF4B100B8ACC9 /* DesignListViewModel.swift */; };
 		E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */; };
 		E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */; };
 		E4C088F228A67DD800CD58C7 /* MenuListDisplayFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */; };
@@ -122,6 +126,10 @@
 		E4AE918528A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4AE919128AAC48E00B8ACC9 /* ResizableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableCollectionView.swift; sourceTree = "<group>"; };
 		E4AE919328AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingCollectionViewLayout.swift; sourceTree = "<group>"; };
+		E4AE919928ACE78200B8ACC9 /* DesignListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignListRequest.swift; sourceTree = "<group>"; };
+		E4AE919B28ACEA2200B8ACC9 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		E4AE919D28ACEE6600B8ACC9 /* DesignListDispayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignListDispayFactory.swift; sourceTree = "<group>"; };
+		E4AE919F28ACF4B100B8ACC9 /* DesignListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignListViewModel.swift; sourceTree = "<group>"; };
 		E4C088ED28A67C0600CD58C7 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolRequestExtension.swift; sourceTree = "<group>"; };
 		E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListDisplayFactory.swift; sourceTree = "<group>"; };
@@ -174,6 +182,7 @@
 			children = (
 				E433C8A9288EF58B0036479C /* UserInfo.swift */,
 				E43C7FD52882D49B001F6D8C /* Dishes.swift */,
+				E4AE919B28ACEA2200B8ACC9 /* Design.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,6 +244,26 @@
 				E4AE919128AAC48E00B8ACC9 /* ResizableCollectionView.swift */,
 			);
 			path = CollectionViews;
+			sourceTree = "<group>";
+		};
+		E4AE919728ACE65200B8ACC9 /* MenuListService */ = {
+			isa = PBXGroup;
+			children = (
+				E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */,
+				E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */,
+				E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */,
+			);
+			path = MenuListService;
+			sourceTree = "<group>";
+		};
+		E4AE919828ACE72F00B8ACC9 /* DesignListService */ = {
+			isa = PBXGroup;
+			children = (
+				E4AE919928ACE78200B8ACC9 /* DesignListRequest.swift */,
+				E4AE919D28ACEE6600B8ACC9 /* DesignListDispayFactory.swift */,
+				E4AE919F28ACF4B100B8ACC9 /* DesignListViewModel.swift */,
+			);
+			path = DesignListService;
 			sourceTree = "<group>";
 		};
 		E4C088F528A67FF700CD58C7 /* CollectionViewLayouts */ = {
@@ -342,9 +371,11 @@
 				E4C088FA28A681F600CD58C7 /* ReusableAppViews */,
 				E4C088F728A680D400CD58C7 /* CollectionViewReusableViews */,
 				E4C088F628A6806600CD58C7 /* CollectionViewCells */,
+				E4AE919728ACE65200B8ACC9 /* MenuListService */,
 				E4C088F528A67FF700CD58C7 /* CollectionViewLayouts */,
 				E48DBAC128A5464F00B65644 /* AboutUsData */,
 				E433C89E288C81EA0036479C /* Delivery */,
+				E4AE919828ACE72F00B8ACC9 /* DesignListService */,
 				E43C7FE028847E9B001F6D8C /* Basket */,
 				E43C7FCE288160F4001F6D8C /* Dish */,
 				E4CEED1228A2651F004A1BEE /* AboutUs */,
@@ -400,9 +431,6 @@
 			isa = PBXGroup;
 			children = (
 				E43C7FD72882D5DC001F6D8C /* DataService.swift */,
-				E43C7FEB2886D03F001F6D8C /* MenuListRequest.swift */,
-				E4C088F128A67DD800CD58C7 /* MenuListDisplayFactory.swift */,
-				E4C088F328A67E4900CD58C7 /* MenuListViewModel.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -496,6 +524,7 @@
 				E43C7FE82885C61C001F6D8C /* UIImage.swift in Sources */,
 				E48DBAC728A562B700B65644 /* FurnitureCollectionViewCell.swift in Sources */,
 				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,
+				E4AE919E28ACEE6600B8ACC9 /* DesignListDispayFactory.swift in Sources */,
 				E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */,
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
 				E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */,
@@ -503,6 +532,7 @@
 				E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */,
 				E4C088FE28A6852F00CD58C7 /* DataServiceExceptions.swift in Sources */,
 				E4E37706287CB532003ED269 /* CatalogViewController.swift in Sources */,
+				E4AE919A28ACE78200B8ACC9 /* DesignListRequest.swift in Sources */,
 				E433C8A6288D98B20036479C /* CustomTextFieldWithInsets.swift in Sources */,
 				E433C8AC288FDB510036479C /* BacketViewBackDataDelegate.swift in Sources */,
 				E4A93C09289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift in Sources */,
@@ -542,7 +572,9 @@
 				E43C7FD22881615B001F6D8C /* DishView.swift in Sources */,
 				E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */,
 				E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */,
+				E4AE91A028ACF4B100B8ACC9 /* DesignListViewModel.swift in Sources */,
 				E4A93C0B289BD2C80017F326 /* Allert.swift in Sources */,
+				E4AE919C28ACEA2200B8ACC9 /* Design.swift in Sources */,
 				E433C8AA288EF58B0036479C /* UserInfo.swift in Sources */,
 				E4AE918428A6C95500B8ACC9 /* DuplicateCollectionViewRowSize.swift in Sources */,
 				E4AE919228AAC48E00B8ACC9 /* ResizableCollectionView.swift in Sources */,
