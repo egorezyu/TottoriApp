@@ -47,6 +47,7 @@ class AboutUsData: UIView {
     private lazy var secondVStack : UIStackView = {
         var stack = generateVStack()
         stack.translatesAutoresizingMaskIntoConstraints = false
+        
         stack.addArrangedSubview(generateLabel(title: "Москва,Новая площадь,14"))
         stack.addArrangedSubview(generateLabel(title: "с 11:00 до 22:00"))
         stack.addArrangedSubview(generateLabel(title: "+7 499 678 08 66"))
@@ -54,7 +55,7 @@ class AboutUsData: UIView {
         
     }()
     private lazy var sushiImage : UIImageView = {
-        var imageView = UIImageView(image: UIImage(named: "sushi")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1)))
+        var imageView = UIImageView(image: UIImage(named: "sushiImage")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1)))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -65,7 +66,7 @@ class AboutUsData: UIView {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 5
+        stack.spacing = 22
         return stack
     }
     private func generateLabel(title : String) -> UILabel{
@@ -77,22 +78,24 @@ class AboutUsData: UIView {
         return label
         
     }
-    private lazy var sushiLabel : UIImageView = {
-        var image = UIImageView(image: UIImage(named: "china"))
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
-        return image
-        
-
-    }()
+//    private lazy var sushiLabel : UIImageView = {
+//        var image = UIImageView(image: UIImage(named: "china"))
+//        image.translatesAutoresizingMaskIntoConstraints = false
+//        image.contentMode = .scaleAspectFit
+//        return image
+//
+//
+//    }()
     private lazy var deliverZone : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
        
-        button.titleLabel?.font = UIFont(name: "Gilroy", size: FontSizes.font14)
+        button.titleLabel?.font = UIFont(name: "Gilroy-Bold", size: FontSizes.font14)
+        
         
         button.setTitle("Зона доставки", for: .normal)
         button.setTitleColor(UIColor.myLightGrey, for: .normal)
+        
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.red.cgColor
         return button
@@ -123,7 +126,7 @@ class AboutUsData: UIView {
         addSubview(map)
         addSubview(adressImage)
         addSubview(timeImage)
-        sushiImage.addSubview(sushiLabel)
+//        sushiImage.addSubview(sushiLabel)
         
     }
     private func setConstraints(){
@@ -148,11 +151,11 @@ class AboutUsData: UIView {
         sushiImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3).isActive = true
         sushiImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.125).isActive = true
         
-        sushiLabel.centerXAnchor.constraint(equalTo: sushiImage.centerXAnchor).isActive = true
-        sushiLabel.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true
-        
-        sushiLabel.widthAnchor.constraint(equalTo: sushiImage.widthAnchor).isActive = true
-        sushiLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+//        sushiLabel.centerXAnchor.constraint(equalTo: sushiImage.centerXAnchor).isActive = true
+//        sushiLabel.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true
+//        
+//        sushiLabel.widthAnchor.constraint(equalTo: sushiImage.widthAnchor).isActive = true
+//        sushiLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         title.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true
         title.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 80).isActive = true

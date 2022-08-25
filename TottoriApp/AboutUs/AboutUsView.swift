@@ -134,7 +134,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     private lazy var vStackFields : UIStackView = {
         let vStack = UIStackView()
         vStack.axis = .vertical
-        vStack.spacing = 50
+        vStack.spacing = 48
         vStack.distribution = .fillEqually
         vStack.translatesAutoresizingMaskIntoConstraints = false
         vStack.addArrangedSubview(vStackName)

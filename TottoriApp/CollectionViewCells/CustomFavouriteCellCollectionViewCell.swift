@@ -120,9 +120,9 @@ class CustomFavouriteCell: UICollectionViewCell {
 
 
         image.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
-        image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 40).isActive = true
-        image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -40).isActive = true
-        image.heightAnchor.constraint(equalToConstant: contentView.frame.height / 3).isActive = true
+        image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
+        image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
+        image.heightAnchor.constraint(equalToConstant: contentView.frame.height / 2.5).isActive = true
         
         title.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         title.topAnchor.constraint(equalTo: image.bottomAnchor,constant: 10).isActive = true

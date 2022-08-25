@@ -39,7 +39,7 @@ extension UIView{
     func generateStackWithLabelAndField(name : String) -> UIStackView{
         let vStack = UIStackView()
         vStack.axis = .vertical
-        vStack.spacing = 27
+        vStack.spacing = 10
         vStack.distribution = .fillEqually
         vStack.addArrangedSubview(generateLabel(name: name))
         vStack.addArrangedSubview(generateTextField(hint: name))
@@ -48,7 +48,7 @@ extension UIView{
     }
     
     static func getHeightOfAboutUsDataView() -> CGFloat {
-        return UIScreen.main.bounds.width / 0.325
+        return UIScreen.main.bounds.width / 0.315
     }
     
 }

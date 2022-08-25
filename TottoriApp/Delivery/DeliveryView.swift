@@ -189,6 +189,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     private lazy var commentTextArea : UITextView = {
         let textArea = UITextView()
         textArea.translatesAutoresizingMaskIntoConstraints = false
+        textArea.font = UIFont(name: "Gilroy", size: 20)
         textArea.layer.borderWidth = 1
         textArea.layer.borderColor = UIColor.gray.cgColor
         textArea.backgroundColor = .clear
