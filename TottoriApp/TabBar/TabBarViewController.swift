@@ -14,19 +14,20 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         tabBar.tintColor = .red
+//        tabBar.barTintColor = .clear
         
-        var image1 = UIImage(named: "union")?.withTintColor(.black,renderingMode: .alwaysOriginal)
-        if let unImage1 = image1{
-            image1 = UIImage.resizeImage(image: unImage1, targetSize: CGSize(width: 27, height: 27))
-        }
-        var image2 = UIImage(named: "mark")
-        if let unImage2 = image2{
-            image2 = UIImage.resizeImage(image: unImage2, targetSize: CGSize(width: 28, height: 28))
-        }
-        var image3 = UIImage(named: "Bag")
-        if let unImage3 = image3{
-            image3 = UIImage.resizeImage(image: unImage3, targetSize: CGSize(width: 34, height: 34))
-        }
+        let image1 = UIImage(named: "union")
+//        if let unImage1 = image1{
+//            image1 = UIImage.resizeImage(image: unImage1, targetSize: CGSize(width: 27, height: 27))
+//        }
+        let image2 = UIImage(named: "mark")
+//        if let unImage2 = image2{
+//            image2 = UIImage.resizeImage(image: unImage2, targetSize: CGSize(width: 28, height: 28))
+//        }
+        let image3 = UIImage(named: "purchase")
+//        if let unImage3 = image3{
+//            image3 = UIImage.resizeImage(image: unImage3, targetSize: CGSize(width: 34, height: 34))
+//        }
         
         let catalogVC = UINavigationController(rootViewController: CatalogViewController())
         let catalogVCTabBar = UITabBarItem(title: "",image: image1, tag: 1)

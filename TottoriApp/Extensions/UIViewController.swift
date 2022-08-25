@@ -14,6 +14,7 @@ extension UIViewController{
         if let image = UIImage(named: "back"){
             view.backgroundColor = UIColor(patternImage: image)
         }
+    
     }
     func showOkAlert(){
         

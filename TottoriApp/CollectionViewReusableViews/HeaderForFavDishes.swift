@@ -144,7 +144,7 @@ class HeaderForFavDishes: UICollectionReusableView,ViewWithStack{
 //        addSubview(holdTextView)
         addSubview(favCollectionView)
         addSubview(hStack)
-        addSubview(duplicateCollectionView)
+//        addSubview(duplicateCollectionView)
         
 //        holdTextView.addSubview(firstDishTitle)
         

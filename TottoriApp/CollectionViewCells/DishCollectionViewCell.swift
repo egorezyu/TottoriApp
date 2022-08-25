@@ -53,7 +53,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     lazy var purchaseButton : UIButton = {
         var button = UIButton()
-        button.setImage(UIImage(named: "purchase"), for: .normal)
+        button.setImage(UIImage(named: "purchase")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
         
         
         button.translatesAutoresizingMaskIntoConstraints = false
