@@ -22,6 +22,7 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         setBackGround()
         controlButtonStateAlgo()
         setDelegateForCollectionView()

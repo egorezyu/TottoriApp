@@ -87,7 +87,7 @@ final class CatalogView: UIView {
        
         secondCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
-        secondCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -20).isActive = true
+        secondCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
        
         
         

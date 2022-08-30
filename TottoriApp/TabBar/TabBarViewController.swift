@@ -17,26 +17,31 @@ class TabBarViewController: UITabBarController {
         
         
         tabBar.tintColor = .red
-//        tabBar.barTintColor = .clear
+        tabBar.backgroundImage = UIImage(named: "back")
+//        tabBar.backgroundColor = .clear
+//        let appearance = UITabBarAppearance()
+//
+//        tabBar.scrollEdgeAppearance = appearance
+        
+        
+
         
         let image1 = UIImage(named: "union")
-//        if let unImage1 = image1{
-//            image1 = UIImage.resizeImage(image: unImage1, targetSize: CGSize(width: 27, height: 27))
-//        }
+
         let image2 = UIImage(named: "mark")
-//        if let unImage2 = image2{
-//            image2 = UIImage.resizeImage(image: unImage2, targetSize: CGSize(width: 28, height: 28))
-//        }
+
         let image3 = UIImage(named: "purchase")
-//        if let unImage3 = image3{
-//            image3 = UIImage.resizeImage(image: unImage3, targetSize: CGSize(width: 34, height: 34))
-//        }
+
         
         let catalogVC = UINavigationController(rootViewController: CatalogViewController())
+        
         let catalogVCTabBar = UITabBarItem(title: "",image: image1, tag: 1)
         catalogVC.tabBarItem = catalogVCTabBar
         
-        let aboutUsVC =  AboutUsViewController()
+        let aboutUsVC =  UINavigationController(rootViewController : AboutUsViewController())
+        
+        
+        
         let aboutUsTabBar = UITabBarItem(title: "",image: image2, tag: 2)
         aboutUsVC.tabBarItem = aboutUsTabBar
         
