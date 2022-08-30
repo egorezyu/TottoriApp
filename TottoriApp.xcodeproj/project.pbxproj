@@ -40,6 +40,7 @@
 		E48DBAC528A5478C00B65644 /* AboutUsDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBAC428A5478C00B65644 /* AboutUsDataViewController.swift */; };
 		E48DBAC728A562B700B65644 /* FurnitureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */; };
 		E49262BC2891436000970B24 /* AboutUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49262BB2891436000970B24 /* AboutUsData.swift */; };
+		E4928BDD28BDED6A004AAE3E /* HideTobBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BDC28BDED6A004AAE3E /* HideTobBarViewController.swift */; };
 		E4A93C022897EA920017F326 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C012897EA920017F326 /* UILabel.swift */; };
 		E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */; };
 		E4A93C07289AC9EE0017F326 /* DGCarouselFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C06289AC9EE0017F326 /* DGCarouselFlowLayout */; };
@@ -115,6 +116,7 @@
 		E48DBAC428A5478C00B65644 /* AboutUsDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsDataViewController.swift; sourceTree = "<group>"; };
 		E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E49262BB2891436000970B24 /* AboutUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsData.swift; sourceTree = "<group>"; };
+		E4928BDC28BDED6A004AAE3E /* HideTobBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideTobBarViewController.swift; sourceTree = "<group>"; };
 		E4A93C012897EA920017F326 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForFavDishes.swift; sourceTree = "<group>"; };
 		E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavouriteCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +242,14 @@
 				E48DBAC428A5478C00B65644 /* AboutUsDataViewController.swift */,
 			);
 			path = AboutUsData;
+			sourceTree = "<group>";
+		};
+		E4928BDB28BDED3E004AAE3E /* ViewControllerChilds */ = {
+			isa = PBXGroup;
+			children = (
+				E4928BDC28BDED6A004AAE3E /* HideTobBarViewController.swift */,
+			);
+			path = ViewControllerChilds;
 			sourceTree = "<group>";
 		};
 		E4AE919028AAC47100B8ACC9 /* CollectionViews */ = {
@@ -370,6 +380,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4928BDB28BDED3E004AAE3E /* ViewControllerChilds */,
 				E4AE919028AAC47100B8ACC9 /* CollectionViews */,
 				E4C0890128A6868600CD58C7 /* StructWithConsts */,
 				E4C088FC28A6850700CD58C7 /* Enums */,
@@ -550,6 +561,7 @@
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
 				E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */,
 				E48DBAC328A5469C00B65644 /* AboutUsDataDelegate.swift in Sources */,
+				E4928BDD28BDED6A004AAE3E /* HideTobBarViewController.swift in Sources */,
 				E4A93C022897EA920017F326 /* UILabel.swift in Sources */,
 				E48DBAC528A5478C00B65644 /* AboutUsDataViewController.swift in Sources */,
 				E4C088F428A67E4900CD58C7 /* MenuListViewModel.swift in Sources */,

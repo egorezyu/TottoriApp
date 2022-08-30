@@ -29,6 +29,7 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
 
         // Do any additional setup after loading the view.
     }
+    
     private func getDesignData(){
         let designListViewModel = DesignListViewModel()
         designListViewModel.getDesignList { result in

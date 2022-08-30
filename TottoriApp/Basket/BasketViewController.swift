@@ -96,14 +96,7 @@ class BasketViewController: UIViewController{
             sectionList.foodID == String(sender.tag)
         }
         if let index = index {
-            arrayOfPurchases.remove(at: index)
-            backetView.basketCollectionView.reloadData()
-            currentBusketCount = currentBusketCount - 1
-            myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
-            if (currentBusketCount == 0){
-                myTabBarController.tabBar.items?[2].badgeValue = nil
-                backetView.toDeliveryScreenButton.isEnabled = false
-            }
+            deleteCellProc(index: index)
             
             
             
@@ -131,15 +124,33 @@ class BasketViewController: UIViewController{
         
         
     }
+    private func deleteCellProc(index : Int){
+        arrayOfPurchases.remove(at: index)
+        backetView.basketCollectionView.reloadData()
+        currentBusketCount = currentBusketCount - 1
+        myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
+        if (currentBusketCount == 0){
+            myTabBarController.tabBar.items?[2].badgeValue = nil
+            backetView.toDeliveryScreenButton.isEnabled = false
+        }
+    }
     @objc func decrease(sender : UIButton){
         let elementIndex = arrayOfPurchases.firstIndex { sect in
             sect.foodID == String(sender.tag)
         }
         if let elementIndex = elementIndex{
+            arrayOfPurchases[elementIndex].minusFunc()
+            
+            if arrayOfPurchases[elementIndex].count == 0{
+                deleteCellProc(index: elementIndex)
+                
+            }
+            backetView.basketCollectionView.reloadData()
+           
+            
             
            
-            arrayOfPurchases[elementIndex].minusFunc()
-            backetView.basketCollectionView.reloadData()
+            
             
         }
 

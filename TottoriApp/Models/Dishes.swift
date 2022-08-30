@@ -57,7 +57,7 @@ struct SectionList : Codable {
         
     }
     mutating func minusFunc(){
-        if self.count != 1{
+        if self.count != 0{
             self.count = self.count - 1
         }
         
