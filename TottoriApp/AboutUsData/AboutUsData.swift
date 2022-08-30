@@ -133,12 +133,12 @@ class AboutUsData: UIView {
         
         adressImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
         adressImage.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
-        adressImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.1).isActive = true
+        adressImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.4).isActive = true
         adressImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.2).isActive = true
         
         timeImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
         timeImage.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
-        timeImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.1).isActive = true
+        timeImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.4).isActive = true
         timeImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.2).isActive = true
         
         
