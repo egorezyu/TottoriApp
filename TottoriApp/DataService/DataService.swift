@@ -98,15 +98,19 @@ final class NetworkManager {
             return
 
         }
+            
 
         do {
 
                 let resultData = try request.decode(with: data, decoder: self.decoder)
+            
+            
 
                 completion(.success(resultData))
 
             }
         catch {
+            
             
             
             completion(.failure(GetDataException.badData))
@@ -134,6 +138,13 @@ final class NetworkManager {
         let request = DesignListRequest()
         self.request(request: request) { result in
             comletion(result)
+        }
+    }
+    func delivPostRequest(data : Data,completion : @escaping((Result<DeliveryPostRequest.Response,Error>) -> Void )){
+        let request = DeliveryPostRequest()
+        
+        self.request(request: request,data: data) { result in
+            completion(result)
         }
     }
     func setImageFromUrl(url : String,imageView : UIImageView,width : CGFloat,aspectRatio : CGFloat){

@@ -183,6 +183,7 @@ extension BasketViewController : BasketDelegate{
     func toDeliveryScreen() {
         let controller = DeliveryViewController()
         controller.backetViewBackDataDelegate = self
+        controller.deliveryArray = arrayOfPurchases
         navigationController?.pushViewController(controller, animated: true)
     }
     

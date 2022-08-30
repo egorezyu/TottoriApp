@@ -28,7 +28,7 @@ class CustomAllertView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
-        label.text = "СПАСИБО \n ЗА ЗАКАЗ!"
+//        label.text = "СПАСИБО \n ЗА ЗАКАЗ!"
         label.numberOfLines = 2
         label.textColor = .myLightGrey
         return label
@@ -71,6 +71,9 @@ class CustomAllertView: UIView {
             backgroundColor = UIColor(patternImage: image)
         }
         
+    }
+    public func setLabelText(text : String){
+        label.text = text
     }
     
     /*

@@ -16,10 +16,11 @@ extension UIViewController{
         }
     
     }
-    func showOkAlert(){
+    func showCustomAlert(text : String){
         
 
         let view = CustomAllertView()
+        view.setLabelText(text: text)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 0.9).isActive = true
         view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.18181818182).isActive = true

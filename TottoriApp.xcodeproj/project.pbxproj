@@ -41,6 +41,9 @@
 		E48DBAC728A562B700B65644 /* FurnitureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */; };
 		E49262BC2891436000970B24 /* AboutUsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49262BB2891436000970B24 /* AboutUsData.swift */; };
 		E4928BDD28BDED6A004AAE3E /* HideTobBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BDC28BDED6A004AAE3E /* HideTobBarViewController.swift */; };
+		E4928BE028BE123A004AAE3E /* DeliveryPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BDF28BE123A004AAE3E /* DeliveryPostRequest.swift */; };
+		E4928BE228BE138F004AAE3E /* DeliveryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BE128BE138F004AAE3E /* DeliveryListViewModel.swift */; };
+		E4928BE428BE2877004AAE3E /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BE328BE2877004AAE3E /* Delivery.swift */; };
 		E4A93C022897EA920017F326 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C012897EA920017F326 /* UILabel.swift */; };
 		E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */; };
 		E4A93C07289AC9EE0017F326 /* DGCarouselFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C06289AC9EE0017F326 /* DGCarouselFlowLayout */; };
@@ -117,6 +120,9 @@
 		E48DBAC628A562B700B65644 /* FurnitureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E49262BB2891436000970B24 /* AboutUsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsData.swift; sourceTree = "<group>"; };
 		E4928BDC28BDED6A004AAE3E /* HideTobBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideTobBarViewController.swift; sourceTree = "<group>"; };
+		E4928BDF28BE123A004AAE3E /* DeliveryPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPostRequest.swift; sourceTree = "<group>"; };
+		E4928BE128BE138F004AAE3E /* DeliveryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryListViewModel.swift; sourceTree = "<group>"; };
+		E4928BE328BE2877004AAE3E /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		E4A93C012897EA920017F326 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForFavDishes.swift; sourceTree = "<group>"; };
 		E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavouriteCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 				E433C8A9288EF58B0036479C /* UserInfo.swift */,
 				E43C7FD52882D49B001F6D8C /* Dishes.swift */,
 				E4AE919B28ACEA2200B8ACC9 /* Design.swift */,
+				E4928BE328BE2877004AAE3E /* Delivery.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,6 +257,15 @@
 				E4928BDC28BDED6A004AAE3E /* HideTobBarViewController.swift */,
 			);
 			path = ViewControllerChilds;
+			sourceTree = "<group>";
+		};
+		E4928BDE28BE11F6004AAE3E /* DeliveryPostRequest */ = {
+			isa = PBXGroup;
+			children = (
+				E4928BDF28BE123A004AAE3E /* DeliveryPostRequest.swift */,
+				E4928BE128BE138F004AAE3E /* DeliveryListViewModel.swift */,
+			);
+			path = DeliveryPostRequest;
 			sourceTree = "<group>";
 		};
 		E4AE919028AAC47100B8ACC9 /* CollectionViews */ = {
@@ -380,6 +396,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4928BDE28BE11F6004AAE3E /* DeliveryPostRequest */,
 				E4928BDB28BDED3E004AAE3E /* ViewControllerChilds */,
 				E4AE919028AAC47100B8ACC9 /* CollectionViews */,
 				E4C0890128A6868600CD58C7 /* StructWithConsts */,
@@ -556,6 +573,8 @@
 				E433C8AC288FDB510036479C /* BacketViewBackDataDelegate.swift in Sources */,
 				E4A93C09289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift in Sources */,
 				E4C0890028A6853C00CD58C7 /* FontSizes.swift in Sources */,
+				E4928BE028BE123A004AAE3E /* DeliveryPostRequest.swift in Sources */,
+				E4928BE428BE2877004AAE3E /* Delivery.swift in Sources */,
 				E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
@@ -580,6 +599,7 @@
 				E49262BC2891436000970B24 /* AboutUsData.swift in Sources */,
 				E4AE918628A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift in Sources */,
 				E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */,
+				E4928BE228BE138F004AAE3E /* DeliveryListViewModel.swift in Sources */,
 				E433C8A8288DA26E0036479C /* TogleView.swift in Sources */,
 				E43C7FDD2883112A001F6D8C /* String.swift in Sources */,
 				E43C7FD028816148001F6D8C /* DishViewController.swift in Sources */,

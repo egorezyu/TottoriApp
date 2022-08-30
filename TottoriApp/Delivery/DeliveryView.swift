@@ -186,7 +186,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     private lazy var commentLabel : UILabel = {
         return generateLabel(name: "КОММЕНТАРИИ")
     }()
-    private lazy var commentTextArea : UITextView = {
+    lazy var commentTextArea : UITextView = {
         let textArea = UITextView()
         textArea.translatesAutoresizingMaskIntoConstraints = false
         textArea.font = UIFont(name: "Gilroy", size: 20)
@@ -216,6 +216,17 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         dataView.view.translatesAutoresizingMaskIntoConstraints = false
         return dataView.view as! AboutUsData
     }()
+    public lazy var activityIndicator : UIActivityIndicatorView = {
+        var activityInd = UIActivityIndicatorView()
+        activityInd.translatesAutoresizingMaskIntoConstraints = false
+//        activityInd.startAnimating()
+        
+        activityInd.style = .large
+        activityInd.color = .red
+        activityInd.hidesWhenStopped = true
+        return activityInd
+    }()
+    
     
     
     
@@ -229,6 +240,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         contentView.addSubview(commentTextArea)
         contentView.addSubview(makeAnOrderButton)
         contentView.addSubview(infoAboutUs)
+        contentView.addSubview(activityIndicator)
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
     }
@@ -277,6 +289,11 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         makeAnOrderButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         makeAnOrderButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         makeAnOrderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        activityIndicator.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 15).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        
+        
 
        
         

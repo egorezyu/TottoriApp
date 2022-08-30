@@ -121,7 +121,7 @@ extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate
     
     
     func postRequest(sender: UIButton) {
-        self.showOkAlert()
+        self.showCustomAlert(text:"СПАСИБО \n ЗА ЗАКАЗ!")
         let nameField = (aboutUsView.vStackName.subviews[1] as? CustomTextFieldWithInsets)
         let phoneField = (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
         let timeField = (aboutUsView.vStackTime.subviews[1] as? CustomTextFieldWithInsets)

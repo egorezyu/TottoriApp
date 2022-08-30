@@ -35,7 +35,7 @@ class TogleView: UIView {
         return view
         
     }()
-    private lazy var text : UILabel = {
+    lazy var text : UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         label.translatesAutoresizingMaskIntoConstraints = false

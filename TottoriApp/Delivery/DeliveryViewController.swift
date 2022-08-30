@@ -10,12 +10,15 @@ import MapKit
 import SwiftEntryKit
 
 class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
+    var deliveryArray : [SectionList] = []
     
     
     
     
     
     private lazy var devView : DeliveryView = DeliveryView(delegate: self,navigationBar: self.navigationController?.navigationBar)
+    private var deliveryViewModel : DeliveryListViewModel = DeliveryListViewModel()
+    private var parameters : [String : Any]!
     internal var selectedTextField : UITextField?
     private var selectedPayView : TogleView?
     public var userInfo : UserInfo?
@@ -169,7 +172,34 @@ extension DeliveryViewController : DeliveryDelegate{
     
     
     
+    
     func postRequest() {
+        
+        view.isUserInteractionEnabled = false
+        devView.activityIndicator.startAnimating()
+        let name = (devView.vStackName.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let phone = (devView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let email = (devView.vStackEmail.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let street = (devView.vStackStreet.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let home = (devView.vStackHouse.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let flatAndFlor = (devView.vStackFlatAndFloor.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let orderComment = devView.commentTextArea.text ?? ""
+        var foodList : [FoodList] = []
+        for item in deliveryArray{
+            foodList.append(FoodList(foodAmount: item.count, foodID: item.foodID, foodName: item.foodName))
+        }
+        let order = Order(orderComment: orderComment, phone: phone, flat: flatAndFlor, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: flatAndFlor, email: email, house: home, name: name)
+        
+        guard let data = try? JSONEncoder().encode(order),let stringData = String(data: data, encoding: .utf8) else {
+            return
+        }
+        
+        parameters = [
+            "ORDER": stringData
+
+        ]
+        
+        
         guard let model = userInfo,
               let encodedData = try? JSONEncoder().encode(model) else {
             return
@@ -182,7 +212,11 @@ extension DeliveryViewController : DeliveryDelegate{
                 showChangeAlert(dataToChange: encodedData)
             }
             else{
-                showOkAlert()
+//                showOkAlert()
+                controlUserButtonServerTouchAlgo()
+                
+                
+                
             }
             
                
@@ -195,7 +229,9 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         else{
             UserDefaults.standard.set(encodedData, forKey: userDefaultUserInfoId)
-            showOkAlert()
+//            showOkAlert()
+            controlUserButtonServerTouchAlgo()
+            
             
         }
         backetViewBackDataDelegate?.clearAllBasket()
@@ -208,14 +244,38 @@ extension DeliveryViewController : DeliveryDelegate{
         let alert = UIAlertController(title: nil, message: "Ваши данные о доставке были изменены", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Сохранить текущие данных", style: .default, handler: { action in
             UserDefaults.standard.set(dataToChange, forKey: self.userDefaultUserInfoId)
-            self.showOkAlert()
+//            self.showOkAlert()
+            self.controlUserButtonServerTouchAlgo()
            
         }))
         alert.addAction(UIAlertAction(title: "Не сохранять", style: .default, handler: { action in
-            self.showOkAlert()
+//            self.showOkAlert()
+            self.controlUserButtonServerTouchAlgo()
            
         }))
         present(alert,animated: true)
+        
+    }
+    private func controlUserButtonServerTouchAlgo(){
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters , options: []) else{
+            return
+        }
+        deliveryViewModel.getDelivList(data: httpBody) { result in
+            DispatchQueue.main.async {
+                self.devView.activityIndicator.stopAnimating()
+                switch result{
+
+                
+                case .success(_):
+                    self.showCustomAlert(text:"СПАСИБО \n ЗА ЗАКАЗ!")
+                    
+                case .failure(_):
+                    self.showCustomAlert(text:"Что - то пошло \n не так")
+                    
+                }
+            }
+           
+        }
         
     }
 
@@ -223,6 +283,7 @@ extension DeliveryViewController : DeliveryDelegate{
 
     
 }
+
 extension DeliveryViewController : MKMapViewDelegate{
     
 }
