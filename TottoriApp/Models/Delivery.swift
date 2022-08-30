@@ -8,6 +8,7 @@
 import Foundation
 struct Order : Codable {
     let orderComment, phone, flat, paymentMethod: String
+    
     let entrance, intercom, street: String
     let foodList: [FoodList]
     let city, floor, email, house: String

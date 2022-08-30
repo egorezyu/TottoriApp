@@ -260,6 +260,7 @@ extension DeliveryViewController : DeliveryDelegate{
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters , options: []) else{
             return
         }
+//        print(String(data: httpBody, encoding: .utf8))
         deliveryViewModel.getDelivList(data: httpBody) { result in
             DispatchQueue.main.async {
                 self.devView.activityIndicator.stopAnimating()

@@ -79,8 +79,14 @@ final class NetworkManager {
         urlRequest.httpMethod = data == nil ? "GET" : "POST"
 
         urlRequest.httpBody = data
+        if data != nil {
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        }
+       
 
         let task = self.session.dataTask(with: urlRequest) { data, response, error in
+            print(response)
 
 
         if error != nil {
@@ -98,6 +104,7 @@ final class NetworkManager {
             return
 
         }
+            print(try! JSONSerialization.jsonObject(with: data))
             
 
         do {
