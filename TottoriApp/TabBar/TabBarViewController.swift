@@ -26,14 +26,19 @@ class TabBarViewController: UITabBarController {
         
 
         
-        let image1 = UIImage(named: "union")
+        let image1 = UIImage(named: "union")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1),renderingMode:.automatic)
 
-        let image2 = UIImage(named: "mark")
+        let image2 = UIImage(named: "mark")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1),renderingMode:.automatic)
 
-        let image3 = UIImage(named: "purchase")
+        let image3 = UIImage(named: "purchase")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1),renderingMode:.automatic)
+        
+        let back = UIImage(named: "back")
+        
 
         
         let catalogVC = UINavigationController(rootViewController: CatalogViewController())
+        catalogVC.navigationBar.setBackgroundImage(back, for: .default)
+
         
         let catalogVCTabBar = UITabBarItem(title: "",image: image1, tag: 1)
         catalogVC.tabBarItem = catalogVCTabBar
@@ -46,6 +51,8 @@ class TabBarViewController: UITabBarController {
         aboutUsVC.tabBarItem = aboutUsTabBar
         
         let basketVC = UINavigationController(rootViewController: BasketViewController())
+        
+        basketVC.navigationBar.setBackgroundImage(back, for: .default)
         let basketVCTabBar = UITabBarItem(title: "", image: image3, tag: 3)
         basketVC.tabBarItem = basketVCTabBar
 
