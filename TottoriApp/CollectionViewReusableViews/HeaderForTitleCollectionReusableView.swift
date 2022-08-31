@@ -27,6 +27,7 @@ class HeaderForTitle: UICollectionReusableView {
         ])
         textLabel = label
         textLabel.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
+        textLabel.textColor = .myLightGrey
         
         
         

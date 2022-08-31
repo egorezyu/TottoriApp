@@ -189,8 +189,10 @@ extension DeliveryViewController : DeliveryDelegate{
             foodList.append(FoodList(foodAmount: item.count, foodID: item.foodID, foodName: item.foodName))
         }
         let order = Order(orderComment: orderComment, phone: phone, flat: flatAndFlor, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: flatAndFlor, email: email, house: home, name: name)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
         
-        guard let data = try? JSONEncoder().encode(order),let stringData = String(data: data, encoding: .utf8) else {
+        guard let data = try? encoder.encode(order),let stringData = String(data: data, encoding: .utf8) else {
             return
         }
         
@@ -198,6 +200,8 @@ extension DeliveryViewController : DeliveryDelegate{
             "ORDER": stringData
 
         ]
+//        print(parameters)
+//        print(parameters["ORDER"])
         
         
         guard let model = userInfo,
@@ -260,6 +264,7 @@ extension DeliveryViewController : DeliveryDelegate{
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters , options: []) else{
             return
         }
+        
 //        print(String(data: httpBody, encoding: .utf8))
         deliveryViewModel.getDelivList(data: httpBody) { result in
             DispatchQueue.main.async {

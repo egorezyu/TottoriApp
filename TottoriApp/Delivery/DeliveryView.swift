@@ -48,6 +48,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         let label = UILabel()
         label.text = "Доставим за час"
         label.font = UIFont(name: "Gilroy-Medium", size: FontSizes.font14)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .red
         return label
@@ -58,6 +59,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         label.text = "ОФОРМИТЬ ЗАКАЗ"
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .myLightGrey
         return label
     }()
     private lazy var vStackFields : UIStackView = {

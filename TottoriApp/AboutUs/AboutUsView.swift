@@ -25,6 +25,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "наш интерьер"
         label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
+        label.textColor = .myLightGrey
         return label
         
     }()
@@ -45,6 +46,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
 
         label.attributedText = NSMutableAttributedString(string: "             красота \nв деталях", attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
+        label.textColor = .myLightGrey
         
         return label
         
@@ -61,6 +63,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         view.textAlignment = .center
 
         view.attributedText = NSMutableAttributedString(string: "レストランインテリア", attributes: [NSAttributedString.Key.kern: 2.8])
+        view.textColor = .myLightGrey
         return view
         
     }()
@@ -121,6 +124,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
 
         paragraphStyle.lineHeightMultiple = 1.15
         label.attributedText = NSMutableAttributedString(string: "бронирование \n                    стола", attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        label.textColor = .myLightGrey
         return label
         
     }()
@@ -129,6 +133,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         view.attributedText = NSMutableAttributedString(string: "ждем вас ежедневно", attributes: [NSAttributedString.Key.kern: 1.96])
+        view.textColor = .myLightGrey
         return view
     }()
     private lazy var vStackFields : UIStackView = {

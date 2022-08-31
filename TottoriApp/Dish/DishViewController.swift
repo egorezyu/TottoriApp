@@ -149,6 +149,9 @@ extension DishViewController : DishDelegate{
     
     func decreaseAmount() {
         sectionList?.minusFunc()
+        if sectionList?.count == 0{
+            sectionList?.count = 1
+        }
         setAllFieldsForControlCountView()
        
         

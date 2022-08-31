@@ -25,6 +25,11 @@ extension UIView{
         rectangleView.backgroundColor = .gray
         //add
         textField.addSubview(rectangleView)
+        textField.textColor = .myLightGrey
+        textField.attributedPlaceholder = NSAttributedString(
+            string: hint,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.myLightGrey]
+        )
         
         //constraints for bottom line
         rectangleView.translatesAutoresizingMaskIntoConstraints = false
