@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4085C2F28C09DFC003B4B75 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C2E28C09DFC003B4B75 /* MapView.swift */; };
+		E4085C3128C0A716003B4B75 /* InternetAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C3028C0A716003B4B75 /* InternetAvailability.swift */; };
 		E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */; };
 		E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6735287DB233001FD5B2 /* CatalogView.swift */; };
 		E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */; };
@@ -87,6 +89,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4085C2E28C09DFC003B4B75 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E4085C3028C0A716003B4B75 /* InternetAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetAvailability.swift; sourceTree = "<group>"; };
 		E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewDelegate.swift; sourceTree = "<group>"; };
 		E41C6735287DB233001FD5B2 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		E41C6737287DBA6B001FD5B2 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 				E433C8A7288DA26E0036479C /* TogleView.swift */,
 				E433C8A5288D98B20036479C /* CustomTextFieldWithInsets.swift */,
 				E43C7FDE288419BB001F6D8C /* FoodCountView.swift */,
+				E4085C2E28C09DFC003B4B75 /* MapView.swift */,
 			);
 			path = ReusableAppViews;
 			sourceTree = "<group>";
@@ -465,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				E43C7FD72882D5DC001F6D8C /* DataService.swift */,
+				E4085C3028C0A716003B4B75 /* InternetAvailability.swift */,
 			);
 			path = DataService;
 			sourceTree = "<group>";
@@ -559,6 +565,7 @@
 				E48DBAC728A562B700B65644 /* FurnitureCollectionViewCell.swift in Sources */,
 				E41C6738287DBA6B001FD5B2 /* MenuCollectionViewCell.swift in Sources */,
 				E4AE919E28ACEE6600B8ACC9 /* DesignListDispayFactory.swift in Sources */,
+				E4085C2F28C09DFC003B4B75 /* MapView.swift in Sources */,
 				E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */,
 				E4AE91A628AD2A1E00B8ACC9 /* ViewControllerWithViewWithStack.swift in Sources */,
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
@@ -588,6 +595,7 @@
 				E4ABE0B428A3C31D00B7640B /* UIView.swift in Sources */,
 				E4C088F028A67C5900CD58C7 /* ProtocolRequestExtension.swift in Sources */,
 				E43C7FEC2886D03F001F6D8C /* MenuListRequest.swift in Sources */,
+				E4085C3128C0A716003B4B75 /* InternetAvailability.swift in Sources */,
 				E41C673A287DF5CD001FD5B2 /* DishCollectionViewCell.swift in Sources */,
 				E43C7FE62884801B001F6D8C /* OrderCollectionViewCell.swift in Sources */,
 				E4AE919428AAC6F200B8ACC9 /* LeadingCollectionViewLayout.swift in Sources */,

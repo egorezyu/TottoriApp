@@ -16,6 +16,13 @@ extension UIViewController{
         }
     
     }
+    func showMapView(){
+        let view = MapView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 0.9).isActive = true
+        view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.18181818182).isActive = true
+        SwiftEntryKit.display(entry: view, using: setUpAttributesForMap())
+    }
     func showCustomAlert(text : String){
         
 
@@ -28,11 +35,7 @@ extension UIViewController{
         
     }
     private func setUpAttributes() -> EKAttributes{
-        var attributes = EKAttributes.centerFloat
-        attributes.displayDuration = .infinity
-        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0 / 255.0, alpha: 0.3), dark: UIColor(white: 50.0 / 255.0, alpha: 0.3)))
-        attributes.shadow = .active(with: .init(color : .black, opacity: 0.3, radius: 8))
-        attributes.statusBar = .dark
+        var attributes = defaultAttributes()
         attributes.screenInteraction = .absorbTouches
         let action : () -> () = {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -46,6 +49,21 @@ extension UIViewController{
        
         return attributes
     }
+    private func setUpAttributesForMap() -> EKAttributes{
+        var attributes = defaultAttributes()
+        attributes.screenInteraction = .dismiss
+        attributes.entryInteraction = .absorbTouches
+        return attributes
+    }
+    private func defaultAttributes() -> EKAttributes{
+        var attributes = EKAttributes.centerFloat
+        attributes.displayDuration = .infinity
+        attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0 / 255.0, alpha: 0.3), dark: UIColor(white: 50.0 / 255.0, alpha: 0.3)))
+        attributes.shadow = .active(with: .init(color : .black, opacity: 0.3, radius: 8))
+        attributes.statusBar = .dark
+        return attributes
+    }
+    
     
 
 }

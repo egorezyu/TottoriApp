@@ -11,6 +11,7 @@ enum GetDataException : String ,Error{
     case badResponse = "Что - то пошло не так"
     case badData = "Не удалось получить данные"
     case serverError = "Время запроса вышло,попробуйте позже"
+    case internet = "Отсуствует подключение"
 
 }
 extension GetDataException: LocalizedError {
@@ -24,6 +25,9 @@ extension GetDataException: LocalizedError {
             return NSLocalizedString("Не удалось получить данные", comment: "My error")
         case .serverError:
             return NSLocalizedString("Время запроса вышло,попробуйте позже", comment: "My error")
+        case .internet:
+            return NSLocalizedString("Отсутсвует подключение", comment: "My error")
         }
+    
     }
 }

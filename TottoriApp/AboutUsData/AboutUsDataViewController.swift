@@ -50,6 +50,10 @@ class AboutUsDataViewController: UIViewController, MKMapViewDelegate {
 
 }
 extension AboutUsDataViewController : AboutUsDataDelegate{
+    func mapButtonWasTapped() {
+        showMapView()
+    }
+    
     func linkWasTapped(gest: UITapGestureRecognizer) {
         
         let number = "+74996780886"

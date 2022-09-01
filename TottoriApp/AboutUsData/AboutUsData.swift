@@ -101,6 +101,7 @@ class AboutUsData: UIView {
         
         button.setTitle("Зона доставки", for: .normal)
         button.setTitleColor(UIColor.myLightGrey, for: .normal)
+        button.addTarget(self, action: #selector(mapButtonWasTapped(button:)), for: .touchUpInside)
         
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.red.cgColor
@@ -181,6 +182,9 @@ class AboutUsData: UIView {
        
         delegate?.linkWasTapped(gest: gest)
         
+    }
+    @objc func mapButtonWasTapped(button : UIButton){
+        delegate?.mapButtonWasTapped()
     }
     
     /*

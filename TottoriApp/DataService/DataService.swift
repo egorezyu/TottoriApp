@@ -37,6 +37,7 @@ final class NetworkManager {
         return session
 
     }()
+    private let internetAvailability = InternetAvailability()
 
     
 
@@ -66,6 +67,10 @@ final class NetworkManager {
     
 
     private func request<T: Request>(request: T, data: Data? = nil, completion: @escaping (Result<T.Response, Error>) -> Void){
+        guard internetAvailability.isInternetAvailable else {
+            completion(.failure(GetDataException.internet))
+            return
+        }
         if self.session.configuration.timeoutIntervalForRequest > 30 || self.session.configuration.timeoutIntervalForResource > 60 {
             completion(.failure(GetDataException.serverError))
             return
@@ -199,6 +204,7 @@ final class NetworkManager {
     
 
 }
+
 
     
 
