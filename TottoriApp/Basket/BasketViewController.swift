@@ -56,7 +56,7 @@ class BasketViewController: UIViewController{
             
             
         }
-        backetView.setSum(text: String(currentSum) + "₽")
+        backetView.setSum(text: String(currentSum) + " ₽")
         backetView.toDeliveryScreenButton.isEnabled = true
         backetView.basketCollectionView.reloadData()
       
@@ -102,7 +102,7 @@ class BasketViewController: UIViewController{
         }
         if let index = index {
             currentSum = currentSum - arrayOfPurchases[index].count * (Int(arrayOfPurchases[index].foodPrice) ?? -1)
-            backetView.setSum(text: String(currentSum) + "₽")
+            backetView.setSum(text: String(currentSum) + " ₽")
             deleteCellProc(index: index)
             
             
@@ -129,7 +129,7 @@ class BasketViewController: UIViewController{
            
             if arrayOfPurchases[elementIndex].count < 10{
                 currentSum = currentSum + (Int(arrayOfPurchases[elementIndex].foodPrice) ?? -1)
-                backetView.setSum(text:String(currentSum) + "₽")
+                backetView.setSum(text:String(currentSum) + " ₽")
             }
             arrayOfPurchases[elementIndex].plusCount()
             
@@ -157,7 +157,7 @@ class BasketViewController: UIViewController{
         if let elementIndex = elementIndex{
             arrayOfPurchases[elementIndex].minusFunc()
             currentSum = currentSum - (Int(arrayOfPurchases[elementIndex].foodPrice) ?? -1)
-            backetView.setSum(text: String(currentSum) + "₽")
+            backetView.setSum(text: String(currentSum) + " ₽")
             
             if arrayOfPurchases[elementIndex].count == 0{
                 deleteCellProc(index: elementIndex)
