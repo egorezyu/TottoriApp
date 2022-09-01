@@ -8,6 +8,7 @@
 import UIKit
 
 class BasketViewController: UIViewController{
+    private var currentSum = 0
     private var currentBusketCount = 0
     private var maxCount = 10
     private lazy var myTabBarController = (tabBarController as! TabBarViewController)
@@ -32,6 +33,7 @@ class BasketViewController: UIViewController{
                 else{
                     finalSectionList.addAmountToCount(count: maxCount)
                 }
+                currentSum = currentSum + (finalSectionList.count * (Int(finalSectionList.foodPrice) ?? -1))
 
 
             }
@@ -48,10 +50,13 @@ class BasketViewController: UIViewController{
             
             currentBusketCount = currentBusketCount + 1
             myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
+            currentSum = currentSum + (sectionList.count * (Int(sectionList.foodPrice) ?? -1))
+            
             
             
             
         }
+        backetView.setSum(text: String(currentSum) + "₽")
         backetView.toDeliveryScreenButton.isEnabled = true
         backetView.basketCollectionView.reloadData()
       
@@ -96,7 +101,10 @@ class BasketViewController: UIViewController{
             sectionList.foodID == String(sender.tag)
         }
         if let index = index {
+            currentSum = currentSum - arrayOfPurchases[index].count * (Int(arrayOfPurchases[index].foodPrice) ?? -1)
+            backetView.setSum(text: String(currentSum) + "₽")
             deleteCellProc(index: index)
+            
             
             
             
@@ -116,8 +124,16 @@ class BasketViewController: UIViewController{
         }
         if let elementIndex = elementIndex{
             
+            
            
+           
+            if arrayOfPurchases[elementIndex].count < 10{
+                currentSum = currentSum + (Int(arrayOfPurchases[elementIndex].foodPrice) ?? -1)
+                backetView.setSum(text:String(currentSum) + "₽")
+            }
             arrayOfPurchases[elementIndex].plusCount()
+            
+         
             backetView.basketCollectionView.reloadData()
             
         }
@@ -140,6 +156,8 @@ class BasketViewController: UIViewController{
         }
         if let elementIndex = elementIndex{
             arrayOfPurchases[elementIndex].minusFunc()
+            currentSum = currentSum - (Int(arrayOfPurchases[elementIndex].foodPrice) ?? -1)
+            backetView.setSum(text: String(currentSum) + "₽")
             
             if arrayOfPurchases[elementIndex].count == 0{
                 deleteCellProc(index: elementIndex)

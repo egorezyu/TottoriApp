@@ -58,6 +58,25 @@ class BasketView: UIView {
         
         
     }()
+    private lazy var sum : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(red: 0.969, green: 0.169, blue: 0.071, alpha: 1)
+        label.genetrateLabel(text: "0" + "₽" , color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(22)),secondFont: UIFont(name: "FoglihtenNo06", size: 14))
+
+//        label.font = UIFont(name: "FoglihtenNo06", size: 22)
+        return label
+        
+    }()
+    private lazy var itogo : UILabel = {
+        var view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "ИТОГ:"
+        view.textColor = UIColor(red: 0.275, green: 0.286, blue: 0.31, alpha: 1)
+
+        view.font = UIFont(name: "Gilroy-Medium", size: 20)
+        return view
+    }()
     public lazy var toDeliveryScreenButton : UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +92,9 @@ class BasketView: UIView {
         return button
         
     }()
+    public func setSum(text : String){
+        self.sum.genetrateLabel(text: text , color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(22)),secondFont: UIFont(name: "FoglihtenNo06", size: 14))
+    }
     
     
 
@@ -86,6 +108,8 @@ class BasketView: UIView {
         addSubview(aboutDeliveryTimeLabel)
         addSubview(basketCollectionView)
         addSubview(toDeliveryScreenButton)
+        addSubview(sum)
+        addSubview(itogo)
         
         
     }
@@ -98,10 +122,15 @@ class BasketView: UIView {
         basketCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         basketCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
         basketCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.55).isActive = true
-        toDeliveryScreenButton.topAnchor.constraint(equalTo: basketCollectionView.bottomAnchor,constant: 10).isActive = true
+        sum.topAnchor.constraint(equalTo: basketCollectionView.bottomAnchor,constant: 5).isActive = true
+        sum.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -15).isActive = true
+        itogo.topAnchor.constraint(equalTo: basketCollectionView.bottomAnchor,constant: 5).isActive = true
+        itogo.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15).isActive = true
+        toDeliveryScreenButton.topAnchor.constraint(equalTo: sum.bottomAnchor,constant: 10).isActive = true
         toDeliveryScreenButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         toDeliveryScreenButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
         toDeliveryScreenButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.05).isActive = true
+        
         
     }
     @objc func goToDeliveryScreen(sender : UIButton){
