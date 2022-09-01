@@ -218,6 +218,8 @@ extension BasketViewController : BasketViewBackDataDelegate{
         backetView.toDeliveryScreenButton.isEnabled = false
         currentBusketCount = 0
         myTabBarController.tabBar.items?[2].badgeValue = nil
+        currentSum = 0
+        backetView.setSum(text: "0 ₽")
         
     }
     
