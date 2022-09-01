@@ -188,7 +188,7 @@ final class NetworkManager {
                 case .success(_):
                     print("")
                 case .failure(_):
-                    imageView.image = UIImage(named: "tottori")
+                    imageView.image = UIImage(named: "logo")
                 }
             }
 

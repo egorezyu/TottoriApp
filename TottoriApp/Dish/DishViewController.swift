@@ -106,7 +106,7 @@ extension DishViewController : DishDelegate{
                     NetworkManager.shared.setImageFromUrl(url: image, imageView: dishView.foodImage,width: 200,aspectRatio: 1.5)
                 }
                 else{
-                    dishView.foodImage.image = UIImage(named: "tottori")
+                    dishView.foodImage.image = UIImage(named: "logo")
                 }
                 
             case 2 :
@@ -114,7 +114,7 @@ extension DishViewController : DishDelegate{
                     NetworkManager.shared.setImageFromUrl(url: image, imageView: dishView.foodImage,width: 200,aspectRatio: 1.5)
                 }
                 else{
-                    dishView.foodImage.image = UIImage(named: "tottori")
+                    dishView.foodImage.image = UIImage(named: "logo")
                 }
                 
             default:

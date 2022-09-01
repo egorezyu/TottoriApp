@@ -93,7 +93,7 @@ class MapView: UIView, MKMapViewDelegate {
         annotation.coordinate = location
         annotation.title = title
         annotation.subtitle = subTitle
-        let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+        let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1200, longitudinalMeters: 1400)
         map.setRegion(coordinateRegion, animated: true)
         map.addAnnotation(annotation)
      }
