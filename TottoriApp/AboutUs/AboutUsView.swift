@@ -179,6 +179,8 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     }()
     public lazy var timePicker : UIDatePicker = {
         var datePicker = UIDatePicker()
+        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self, action: #selector(changeDatePicker(sender :)), for: .valueChanged)
