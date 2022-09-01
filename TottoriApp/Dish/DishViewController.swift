@@ -34,7 +34,9 @@ class DishViewController: UIViewController {
         }
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
    
     
 

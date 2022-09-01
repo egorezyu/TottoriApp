@@ -38,6 +38,7 @@ class TabBarViewController: UITabBarController {
         
         let catalogVC = UINavigationController(rootViewController: CatalogViewController())
         catalogVC.navigationBar.setBackgroundImage(back, for: .default)
+        
 
         
         let catalogVCTabBar = UITabBarItem(title: "",image: image1, tag: 1)

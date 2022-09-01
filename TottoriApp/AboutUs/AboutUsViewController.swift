@@ -23,6 +23,8 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         setBackGround()
         controlButtonStateAlgo()
         setDelegateForCollectionView()
@@ -53,6 +55,10 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     private func setDelegateForCollectionView(){
         aboutUsView.horCollectionView.delegate = self
         aboutUsView.horCollectionView.dataSource = self
+    }
+    @objc func dismissKeyboard() {
+       //Causes the view (or one of its embedded text fields) to resign the first responder status.
+       view.endEditing(true)
     }
     
     func controlButtonStateAlgo(){
@@ -90,6 +96,11 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
         }
     
     }
+   
+}
+
+//Calls this function when the tap is recognized.
+
     
 
     /*
@@ -102,7 +113,7 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     }
     */
 
-}
+
 extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate{
     func dismissToolBar(sender: UIToolbar) {
         let timeField = (aboutUsView.vStackTime.subviews[1] as? CustomTextFieldWithInsets)

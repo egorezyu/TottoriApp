@@ -22,7 +22,7 @@ class HeaderForTitle: UICollectionReusableView {
         NSLayoutConstraint.activate([
             label.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -10),
            
-            label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 5),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 14),
             
         ])
         textLabel = label

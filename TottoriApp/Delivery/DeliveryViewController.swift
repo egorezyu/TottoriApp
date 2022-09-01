@@ -30,6 +30,8 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         setBackGround()
         checkUserDefaultsData()
         setUserDefaultsData()
@@ -162,7 +164,10 @@ extension DeliveryViewController : DeliveryDelegate{
         }
     
     }
-    
+    @objc func dismissKeyboard() {
+       //Causes the view (or one of its embedded text fields) to resign the first responder status.
+       view.endEditing(true)
+    }
     
     
     
@@ -190,18 +195,18 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         let order = Order(orderComment: orderComment, phone: phone, flat: flatAndFlor, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: flatAndFlor, email: email, house: home, name: name)
         let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
+//        encoder.outputFormatting = .prettyPrinted
         
         guard let data = try? encoder.encode(order),let stringData = String(data: data, encoding: .utf8) else {
             return
         }
-        
+        print(stringData)
         parameters = [
             "ORDER": stringData
 
         ]
-//        print(parameters)
-//        print(parameters["ORDER"])
+        print(parameters)
+        print(parameters["ORDER"])
         
         
         guard let model = userInfo,
@@ -210,7 +215,7 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         if let data = UserDefaults.standard.data(forKey: userDefaultUserInfoId),
            let decodedData = try? JSONDecoder().decode(UserInfo.self, from: data)
-           
+
         {
             if decodedData != model{
                 showChangeAlert(dataToChange: encodedData)
@@ -218,25 +223,25 @@ extension DeliveryViewController : DeliveryDelegate{
             else{
 //                showOkAlert()
                 controlUserButtonServerTouchAlgo()
-                
-                
-                
+
+
+
             }
-            
-               
-                
-          
-                
-            
-            
-            
+
+
+
+
+
+
+
+
         }
         else{
             UserDefaults.standard.set(encodedData, forKey: userDefaultUserInfoId)
 //            showOkAlert()
             controlUserButtonServerTouchAlgo()
-            
-            
+
+
         }
         backetViewBackDataDelegate?.clearAllBasket()
         

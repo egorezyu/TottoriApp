@@ -43,6 +43,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
        
         
         
@@ -65,6 +66,9 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         
 
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
     private func setBackButtonForNavBar(){
         let image = UIImage(named: "redBack")?.withTintColor(.red,renderingMode: .alwaysOriginal)
