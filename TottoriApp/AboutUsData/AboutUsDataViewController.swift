@@ -50,6 +50,19 @@ class AboutUsDataViewController: UIViewController, MKMapViewDelegate {
 
 }
 extension AboutUsDataViewController : AboutUsDataDelegate{
+    func linkWasTapped(gest: UITapGestureRecognizer) {
+        
+        let number = "+74996780886"
+        
+        guard let number = URL(string: "tel://" + number) else { return }
+              if UIApplication.shared.canOpenURL(number) {
+                  UIApplication.shared.open(number)
+              } else {
+                  present(UIAlertController.createAllert(text: "Невозможно открыть телефон"),animated: true)
+              }
+
+    }
+    
    
     
     

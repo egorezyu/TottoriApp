@@ -15,10 +15,11 @@ static func toolbarPiker(mySelect : Selector) -> UIToolbar {
 
     toolBar.barStyle = UIBarStyle.default
     toolBar.isTranslucent = true
-    toolBar.tintColor = UIColor.black
+    
+    
     toolBar.sizeToFit()
 
-    let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: nil, action: mySelect)
+    let doneButton = UIBarButtonItem(title: "Готово", style: UIBarButtonItem.Style.plain, target: nil, action: mySelect)
     let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 
     toolBar.setItems([ spaceButton, doneButton], animated: false)

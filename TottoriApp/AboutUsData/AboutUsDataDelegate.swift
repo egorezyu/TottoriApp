@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 protocol AboutUsDataDelegate : AnyObject{
+    func linkWasTapped(gest : UITapGestureRecognizer)
     
     
 }

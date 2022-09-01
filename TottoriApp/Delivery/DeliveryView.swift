@@ -12,6 +12,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     
     
     private weak var delegate : DeliveryDelegate?
+    private var aboutUsDataController = AboutUsDataViewController()
     
     
     private var navigationBar : UINavigationBar?
@@ -214,9 +215,9 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     }()
 
     private lazy var infoAboutUs : AboutUsData = {
-        let dataView = AboutUsDataViewController()
-        dataView.view.translatesAutoresizingMaskIntoConstraints = false
-        return dataView.view as! AboutUsData
+        var view = aboutUsDataController.view
+        view?.translatesAutoresizingMaskIntoConstraints = false
+        return view as! AboutUsData
     }()
     public lazy var activityIndicator : UIActivityIndicatorView = {
         var activityInd = UIActivityIndicatorView()

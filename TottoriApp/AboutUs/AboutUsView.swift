@@ -10,6 +10,7 @@ import DGCarouselFlowLayout
 
 class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     private weak var delegate : AboutUsDelegate?
+    private var aboutUsDataController = AboutUsDataViewController()
     init(delegate : AboutUsDelegate? = nil) {
         super.init(frame: .zero)
         self.delegate = delegate
@@ -250,9 +251,9 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         
     }()
     private lazy var aboutUsView : AboutUsData = {
-        var vc = AboutUsDataViewController()
-        vc.view.translatesAutoresizingMaskIntoConstraints = false
-        return vc.view as! AboutUsData
+        var view = aboutUsDataController.view
+        view?.translatesAutoresizingMaskIntoConstraints = false
+        return view as! AboutUsData
         
     }()
     public lazy var makeAnOrderButton : UIButton = {

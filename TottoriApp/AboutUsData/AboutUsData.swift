@@ -13,8 +13,9 @@ class AboutUsData: UIView {
     
     
     init(delegate : AboutUsDataDelegate? = nil) {
-        self.delegate = delegate
         super.init(frame: .zero)
+        self.delegate = delegate
+        
         addView()
         setConstraints()
     }
@@ -48,9 +49,14 @@ class AboutUsData: UIView {
         var stack = generateVStack()
         stack.translatesAutoresizingMaskIntoConstraints = false
         
-        stack.addArrangedSubview(generateLabel(title: "Москва,Новая площадь,14"))
+        stack.addArrangedSubview(generateLabel(title: "г. Москва,Новая площадь,14"))
         stack.addArrangedSubview(generateLabel(title: "с 11:00 до 22:00"))
-        stack.addArrangedSubview(generateLabel(title: "+7 499 678 08 66"))
+        let bluePhone = generateLabel(title: "+7 499 678 08 66")
+        bluePhone.isUserInteractionEnabled = true
+        var tapJesture = UITapGestureRecognizer(target: self, action: #selector(linkWatTapped(gest:)))
+        bluePhone.addGestureRecognizer(tapJesture)
+        bluePhone.textColor = .blue
+        stack.addArrangedSubview(bluePhone)
         return stack
         
     }()
@@ -169,6 +175,11 @@ class AboutUsData: UIView {
         deliverZone.heightAnchor.constraint(equalToConstant: 50).isActive = true
         deliverZone.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2 - 30).isActive = true
         
+        
+    }
+    @objc func linkWatTapped(gest : UITapGestureRecognizer){
+       
+        delegate?.linkWasTapped(gest: gest)
         
     }
     
