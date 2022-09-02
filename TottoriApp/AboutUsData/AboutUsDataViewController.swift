@@ -8,6 +8,26 @@
 import UIKit
 import MapKit
 class AboutUsDataViewController: UIViewController, MKMapViewDelegate {
+    private var isShown : Bool = false
+    private var isActive : Bool = false
+    static let deliveryAreaCoordinates = [
+        
+
+        CLLocationCoordinate2DMake(55.761104, 37.634060),
+        CLLocationCoordinate2DMake(55.758152, 37.638662),
+        CLLocationCoordinate2DMake(55.754240, 37.636988),
+        CLLocationCoordinate2DMake(55.751739, 37.633028),
+        CLLocationCoordinate2DMake(55.751714, 37.624245),
+        CLLocationCoordinate2DMake(55.755520, 37.618663),
+      
+        
+
+    ]
+    static let restrictedRegion = CLLocationCoordinate2DMake(55.757131, 37.628379)
+
+    static let restrictedRegionSpan = (latitudeDelta: 0.16, longitudeDelta: 0.16)
+
+//    static let restrictedRegionZoomOnSpan = (latitudeDelta: 0.002, longitudeDelta: 0.002)
     private lazy var aboutUsDataView = AboutUsData(delegate: self)
     override func loadView() {
         super.loadView()
@@ -30,10 +50,74 @@ class AboutUsDataViewController: UIViewController, MKMapViewDelegate {
        annotation.coordinate = location
        annotation.title = title
        annotation.subtitle = subTitle
-       let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 800, longitudinalMeters: 800)
+       let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1200)
        aboutUsDataView.map.setRegion(coordinateRegion, animated: true)
        aboutUsDataView.map.addAnnotation(annotation)
     }
+    private func setDeliveryArea() {
+
+            
+
+        let polygon = MKPolygon(coordinates: MapView.deliveryAreaCoordinates, count: MapView.deliveryAreaCoordinates.count)
+
+        aboutUsDataView.map.addOverlay(polygon)
+
+        }
+    private func removeDeliveryArea()
+    {
+        aboutUsDataView.map.removeOverlays(aboutUsDataView.map.overlays)
+    }
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+
+           
+
+        let polygonView = MKPolygonRenderer(overlay: overlay)
+
+        polygonView.fillColor = UIColor(red: 124, green: 252, blue: 0, alpha: 0.3)
+
+        return polygonView
+
+    }
+    func mapView(_ ProfileMapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+            
+
+            guard annotation is MKPointAnnotation else { return nil }
+
+            let identifier = "Annotation"
+
+            let image = UIImage(named: "logoCut")
+
+            let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+
+            annotationView.canShowCallout = true
+
+            annotationView.glyphImage = image
+
+            return annotationView
+
+    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+
+           
+
+           let pinToZoomOn = view.annotation
+      
+           let span = MKCoordinateSpan(latitudeDelta: MapView.restrictedRegionZoomOnSpan.latitudeDelta, longitudeDelta: MapView.restrictedRegionZoomOnSpan.longitudeDelta)
+           let region = MKCoordinateRegion(center: pinToZoomOn!.coordinate,span: span)
+
+            
+
+           mapView.setRegion(region, animated: true)
+           
+        
+        
+        
+
+          
+
+       }
     
     
     
@@ -50,8 +134,40 @@ class AboutUsDataViewController: UIViewController, MKMapViewDelegate {
 
 }
 extension AboutUsDataViewController : AboutUsDataDelegate{
+    func unZoom() {
+        let region = MKCoordinateRegion(center: AboutUsDataViewController.restrictedRegion, latitudinalMeters: 1000, longitudinalMeters: 1200)
+
+         
+
+        aboutUsDataView.map.setRegion(region, animated: true)
+    }
+    
     func mapButtonWasTapped() {
-        showMapView()
+        if isShown{
+            aboutUsDataView.deliverZone.setTitle("Зона доставки", for: .normal)
+            
+           
+            
+            
+            
+            removeDeliveryArea()
+            
+            isShown = false
+        }
+        else{
+            
+            aboutUsDataView.deliverZone.setTitle("Скрыть зону доставки", for: .normal)
+           
+            
+            
+            
+            setDeliveryArea()
+            isShown = true
+            
+        }
+        
+
+        
     }
     
     func linkWasTapped(gest: UITapGestureRecognizer) {

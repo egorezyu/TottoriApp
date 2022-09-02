@@ -92,7 +92,7 @@ class AboutUsData: UIView {
 //
 //
 //    }()
-    private lazy var deliverZone : UIButton = {
+    lazy var deliverZone : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
        
@@ -102,6 +102,23 @@ class AboutUsData: UIView {
         button.setTitle("Зона доставки", for: .normal)
         button.setTitleColor(UIColor.myLightGrey, for: .normal)
         button.addTarget(self, action: #selector(mapButtonWasTapped(button:)), for: .touchUpInside)
+        
+        button.layer.borderWidth = 0.8
+        button.layer.borderColor = UIColor.red.cgColor
+        return button
+    }()
+    lazy var unZoom : UIButton = {
+        var button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+       
+//        button.titleLabel?.font = UIFont(name: "Gilroy-Bold", size: FontSizes.font14)
+        
+        
+//        button.setTitle("Зона доставки", for: .normal)
+//        button.setTitleColor(UIColor.myLightGrey, for: .normal)
+        button.addTarget(self, action: #selector(unZoom(button:)), for: .touchUpInside)
+        button.layer.cornerRadius = 20
+        button.setBackgroundImage(UIImage(named: "mark"), for: .normal)
         
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.red.cgColor
@@ -133,6 +150,7 @@ class AboutUsData: UIView {
         addSubview(map)
         addSubview(adressImage)
         addSubview(timeImage)
+        map.addSubview(unZoom)
 //        sushiImage.addSubview(sushiLabel)
         
     }
@@ -153,7 +171,7 @@ class AboutUsData: UIView {
         map.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         map.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
         map.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.4).isActive = true
-        sushiImage.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 80).isActive = true
+        sushiImage.topAnchor.constraint(equalTo: deliverZone.bottomAnchor,constant: 80).isActive = true
         sushiImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         sushiImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3).isActive = true
         sushiImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.125).isActive = true
@@ -165,13 +183,17 @@ class AboutUsData: UIView {
 //        sushiLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         title.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true
-        title.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 80).isActive = true
+        title.topAnchor.constraint(equalTo: deliverZone.bottomAnchor,constant: 80).isActive = true
         firstVStack.topAnchor.constraint(equalTo: sushiImage.bottomAnchor,constant: 20).isActive = true
         firstVStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         secondVStack.leadingAnchor.constraint(equalTo: firstVStack.trailingAnchor,constant: 10).isActive = true
         secondVStack.centerYAnchor.constraint(equalTo: firstVStack.centerYAnchor).isActive = true
+        unZoom.trailingAnchor.constraint(equalTo: map.trailingAnchor,constant: -20).isActive = true
+        unZoom.topAnchor.constraint(equalTo: map.topAnchor,constant: 20).isActive = true
+        unZoom.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        unZoom.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
-        deliverZone.topAnchor.constraint(equalTo: secondVStack.bottomAnchor,constant: 20).isActive = true
+        deliverZone.topAnchor.constraint(equalTo: map.bottomAnchor,constant: 20).isActive = true
         deliverZone.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         deliverZone.heightAnchor.constraint(equalToConstant: 50).isActive = true
         deliverZone.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2 - 30).isActive = true
@@ -185,6 +207,9 @@ class AboutUsData: UIView {
     }
     @objc func mapButtonWasTapped(button : UIButton){
         delegate?.mapButtonWasTapped()
+    }
+    @objc func unZoom(button : UIButton){
+        delegate?.unZoom()
     }
     
     /*

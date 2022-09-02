@@ -10,6 +10,7 @@ import MapKit
 protocol AboutUsDataDelegate : AnyObject{
     func linkWasTapped(gest : UITapGestureRecognizer)
     func mapButtonWasTapped()
+    func unZoom()
     
     
 }
