@@ -118,7 +118,7 @@ class AboutUsData: UIView {
 //        button.setTitleColor(UIColor.myLightGrey, for: .normal)
         button.addTarget(self, action: #selector(unZoom(button:)), for: .touchUpInside)
         button.layer.cornerRadius = 20
-        button.setBackgroundImage(UIImage(named: "mark"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "zoom")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
         
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.red.cgColor
