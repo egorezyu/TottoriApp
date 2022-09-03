@@ -47,7 +47,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     }()
     lazy var aboutDeliveryTimeLabel : UILabel = {
         let label = UILabel()
-        label.text = "Доставим за час"
+        label.text = NSLocalizedString("deliv_hour", comment: "")
         label.font = UIFont(name: "Gilroy-Medium", size: FontSizes.font14)
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +57,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     }()
     private lazy var makeAnOrderLabel : UILabel = {
         var label = UILabel()
-        label.text = "ОФОРМИТЬ ЗАКАЗ"
+        label.text = NSLocalizedString("make_deliv", comment: "")
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .myLightGrey
@@ -121,7 +121,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         return payView
     }()
     public lazy var vStackName : UIStackView = {
-        var stack = generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("name", comment: ""))
         var nameField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         nameField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
         nameField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
@@ -133,7 +133,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     }()
     public lazy var vStackPhone : UIStackView = {
     
-        var stack = generateStackWithLabelAndField(name: "ТЕЛЕФОН")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("phone", comment: ""))
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)

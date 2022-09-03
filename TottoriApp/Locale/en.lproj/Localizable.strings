@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  TottoriApp
+
+  Created by Егор Родионов on 2.09.22.
+  
+*/
+"fulfill_all_fields" = "FulFill all fields";
+"book" = "Book";
+"valide_phone" = "Please enter a valid phone";
+"name" = "Your name";
+"phone" = "Phone";
+"time" = "Time";
+"interior" = "our interior";
+"beaty" = "             beaty \nin details";
+"table_book" = "table \n          reservation";
+"wait_for_you" = "wait for you";
+"delivery_zone" = "Delivery zone";
+"close_zone" = "hide delivery area";
+"back" = "back";
+"our_contacts" = "Our \ncontacts";
+"adress" = "Adress";
+"every_day" = "Every day";
+"working_time" = "from 11:00 to 20:00";
+"basket" = "basket";
+"deliv_hour" = "Deliver in an hour";
+"delete" = "Delete";
+"summary" = "Total";
+"make_deliv" = "Сheckout";
+"add_to_basket" = "Add items to basket";
+"all" = "All";
+"description" = "Description";
+

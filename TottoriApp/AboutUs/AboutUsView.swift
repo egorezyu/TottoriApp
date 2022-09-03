@@ -24,7 +24,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     private lazy var aboutIntLabel : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "наш интерьер"
+        label.text = NSLocalizedString("interior", comment: "")
         label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         label.textColor = .myLightGrey
         return label
@@ -45,7 +45,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
        
 
 
-        label.attributedText = NSMutableAttributedString(string: "             красота \nв деталях", attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        label.attributedText = NSMutableAttributedString(string: NSLocalizedString("beaty", comment: ""), attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.textColor = .myLightGrey
         
@@ -124,7 +124,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         var paragraphStyle = NSMutableParagraphStyle()
 
         paragraphStyle.lineHeightMultiple = 1.15
-        label.attributedText = NSMutableAttributedString(string: "бронирование \n                    стола", attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        label.attributedText = NSMutableAttributedString(string: NSLocalizedString("table_book", comment: ""), attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         label.textColor = .myLightGrey
         return label
         
@@ -133,7 +133,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont(name: "Gilroy", size: FontSizes.font14)
-        view.attributedText = NSMutableAttributedString(string: "ждем вас ежедневно", attributes: [NSAttributedString.Key.kern: 1.96])
+        view.attributedText = NSMutableAttributedString(string: NSLocalizedString("wait_for_you", comment: ""), attributes: [NSAttributedString.Key.kern: 1.96])
         view.textColor = .myLightGrey
         return view
     }()
@@ -153,7 +153,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         
     }()
     public lazy var vStackName : UIStackView = {
-        var stack = generateStackWithLabelAndField(name: "ВАШЕ ИМЯ")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("name", comment: ""))
         var nameField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         nameField?.addTarget(self, action: #selector(textEditing(sender:)), for: .editingChanged)
         nameField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
@@ -166,7 +166,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     
     public lazy var vStackPhone : UIStackView = {
     
-        var stack = generateStackWithLabelAndField(name: "ТЕЛЕФОН")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("phone", comment: ""))
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
 //        phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
@@ -192,7 +192,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     }()
     public lazy var vStackTime : UIStackView = {
         
-        var stack = generateStackWithLabelAndField(name: "Время")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("time", comment: ""))
         var timeField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         
 
@@ -263,8 +263,10 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.borderWidth = 1.22
-        button.setTitle("Забронировать", for: .normal)
+        
+        button.setTitle(NSLocalizedString("book", comment: ""), for: .normal)
         button.setTitleColor(.gray, for: .disabled)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(.black, for: .normal)
         button.isEnabled = false
@@ -335,7 +337,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         tableOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
 
         waitForYouLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
-        waitForYouLabel.centerYAnchor.constraint(equalTo: tableOrderLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 27.8571428571).isActive = true
+        waitForYouLabel.centerYAnchor.constraint(equalTo: tableOrderLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 14.8571428571).isActive = true
 //
         vStackFields.topAnchor.constraint(equalTo: tableOrderLabel.bottomAnchor,constant: 20).isActive = true
         vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true

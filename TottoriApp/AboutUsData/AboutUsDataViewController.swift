@@ -144,7 +144,7 @@ extension AboutUsDataViewController : AboutUsDataDelegate{
     
     func mapButtonWasTapped() {
         if isShown{
-            aboutUsDataView.deliverZone.setTitle("Зона доставки", for: .normal)
+            aboutUsDataView.deliverZone.setTitle(NSLocalizedString("delivery_zone", comment: ""), for: .normal)
             
            
             
@@ -156,7 +156,7 @@ extension AboutUsDataViewController : AboutUsDataDelegate{
         }
         else{
             
-            aboutUsDataView.deliverZone.setTitle("Скрыть зону доставки", for: .normal)
+            aboutUsDataView.deliverZone.setTitle(NSLocalizedString("close_zone", comment: ""), for: .normal)
            
             
             

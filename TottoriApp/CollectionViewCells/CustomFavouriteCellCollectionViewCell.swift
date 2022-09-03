@@ -76,7 +76,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     }()
     private lazy var descriptionLabel : UILabel = {
         var label = UILabel()
-        label.text = "Описание"
+        label.text = NSLocalizedString("description", comment: "")
         label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myLightGrey

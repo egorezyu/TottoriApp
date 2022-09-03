@@ -20,7 +20,7 @@ struct MenuListDisplayFactory {
         var arrayOfLovelyDishes = [MenuDish]()
 
         var arrayOfMenu = [MenuList]()
-        arrayOfMenu.append(MenuList(sectionID: "", sectionName: "Все",sectionList: []))
+        arrayOfMenu.append(MenuList(sectionID: "", sectionName: NSLocalizedString("all", comment: ""),sectionList: []))
         if let menu = catalog.menuList {
             menu.forEach {
 

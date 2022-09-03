@@ -83,11 +83,11 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
                 }
                 else{
                     aboutUsView.makeAnOrderButton.isEnabled = false
-                    aboutUsView.makeAnOrderButton.setTitle("Введите корректный телефон", for: .disabled)
+                    aboutUsView.makeAnOrderButton.setTitle(NSLocalizedString("valide_phone", comment: ""), for: .disabled)
                 }
             }
             else{
-                aboutUsView.makeAnOrderButton.setTitle("Заполните все поля", for: .disabled)
+                aboutUsView.makeAnOrderButton.setTitle(NSLocalizedString("fulfill_all_fields", comment: ""), for: .disabled)
                 aboutUsView.makeAnOrderButton.isEnabled = false
             }
             

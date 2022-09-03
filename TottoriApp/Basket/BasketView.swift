@@ -17,7 +17,7 @@ class BasketView: UIView {
     }
     private lazy var basketLabel : UILabel = {
         let label = UILabel()
-        label.text = "Корзина"
+        label.text = NSLocalizedString("バスケット", comment: "")
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.textColor = .myLightGrey
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +26,7 @@ class BasketView: UIView {
     }()
     private lazy var aboutDeliveryTimeLabel : UILabel = {
         let label = UILabel()
-        label.text = "Доставим за час"
+        label.text = NSLocalizedString("deliv_hour", comment: "")
         label.font = UIFont(name: "Gilroy-Medium", size: FontSizes.font14)
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +71,7 @@ class BasketView: UIView {
     private lazy var itogo : UILabel = {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "ИТОГ:"
+        view.text = NSLocalizedString("summary", comment: "") + ":"
         view.textColor = UIColor(red: 0.275, green: 0.286, blue: 0.31, alpha: 1)
 
         view.font = UIFont(name: "Gilroy-Medium", size: 20)
@@ -82,8 +82,9 @@ class BasketView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.borderWidth = 1.22
-        button.setTitle("ОФОРМИТЬ ЗАКАЗ", for: .normal)
-        button.setTitle("ДОБАВЬТЕ ТОВАРЫ В КОРЗИНУ", for: .disabled)
+        button.setTitle(NSLocalizedString("make_deliv", comment: ""), for: .normal)
+        button.setTitle(NSLocalizedString("add_to_basket", comment: ""), for: .disabled)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.setTitleColor(.gray, for: .disabled)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(.black, for: .normal)

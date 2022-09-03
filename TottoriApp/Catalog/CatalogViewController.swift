@@ -77,7 +77,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
             self.navigationController?.navigationBar.backIndicatorImage = resizedImage
             self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = resizedImage
             let backButton = UIBarButtonItem()
-            backButton.title = "Назад"
+            backButton.title = NSLocalizedString("back", comment: "")
             
             backButton.tintColor = .myLightGrey
             self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton

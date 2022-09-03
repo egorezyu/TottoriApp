@@ -85,7 +85,7 @@ class BasketViewController: UIViewController{
             
 
             let backButton = UIBarButtonItem()
-            backButton.title = "Назад"
+            backButton.title = NSLocalizedString("back", comment: "")
             backButton.tintColor = .myLightGrey
             self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         }

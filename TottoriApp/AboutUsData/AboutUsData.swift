@@ -30,7 +30,7 @@ class AboutUsData: UIView {
     private lazy var title : UILabel = {
         var title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Наши \nконтакты"
+        title.text = NSLocalizedString("our_contacts", comment: "")
         title.lineBreakMode = .byWordWrapping
         title.numberOfLines = 2
         title.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
@@ -40,9 +40,9 @@ class AboutUsData: UIView {
     private lazy var firstVStack : UIStackView = {
         var stack = generateVStack()
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.addArrangedSubview(generateLabel(title: "Адрес:"))
-        stack.addArrangedSubview(generateLabel(title: "Каждый день:"))
-        stack.addArrangedSubview(generateLabel(title: "Телефон:"))
+        stack.addArrangedSubview(generateLabel(title: NSLocalizedString("adress", comment: "") + ":"))
+        stack.addArrangedSubview(generateLabel(title: NSLocalizedString("every_day", comment: "") + ":"))
+        stack.addArrangedSubview(generateLabel(title: NSLocalizedString("phone", comment: "") + ":"))
         return stack
     }()
     private lazy var secondVStack : UIStackView = {
@@ -50,7 +50,7 @@ class AboutUsData: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         stack.addArrangedSubview(generateLabel(title: "г. Москва,Новая площадь,14"))
-        stack.addArrangedSubview(generateLabel(title: "с 11:00 до 22:00"))
+        stack.addArrangedSubview(generateLabel(title: NSLocalizedString("working_time", comment: "")))
         let bluePhone = generateLabel(title: "+7 499 678 08 66")
         bluePhone.isUserInteractionEnabled = true
         var tapJesture = UITapGestureRecognizer(target: self, action: #selector(linkWatTapped(gest:)))
@@ -99,7 +99,8 @@ class AboutUsData: UIView {
         button.titleLabel?.font = UIFont(name: "Gilroy-Bold", size: FontSizes.font14)
         
         
-        button.setTitle("Зона доставки", for: .normal)
+        button.setTitle(NSLocalizedString("delivery_zone", comment: ""), for: .normal)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.setTitleColor(UIColor.myLightGrey, for: .normal)
         button.addTarget(self, action: #selector(mapButtonWasTapped(button:)), for: .touchUpInside)
         
