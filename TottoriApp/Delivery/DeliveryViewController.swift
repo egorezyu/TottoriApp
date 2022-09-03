@@ -145,17 +145,17 @@ extension DeliveryViewController : DeliveryDelegate{
                     }
                     else{
                         devView.makeAnOrderButton.isEnabled = false
-                        devView.makeAnOrderButton.setTitle("Выберите способ оплаты", for: .disabled)
+                        devView.makeAnOrderButton.setTitle(NSLocalizedString("pay_type", comment: ""), for: .disabled)
                     }
                     
                 }
                 else{
                     devView.makeAnOrderButton.isEnabled = false
-                    devView.makeAnOrderButton.setTitle("Введите корректный телефон", for: .disabled)
+                    devView.makeAnOrderButton.setTitle(NSLocalizedString("valid_phone", comment: ""), for: .disabled)
                 }
             }
             else{
-                devView.makeAnOrderButton.setTitle("Заполните имя и телефон", for: .disabled)
+                devView.makeAnOrderButton.setTitle((NSLocalizedString("name_phone", comment: "")), for: .disabled)
                 devView.makeAnOrderButton.isEnabled = false
             }
             

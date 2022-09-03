@@ -30,3 +30,12 @@
 "add_to_basket" = "カートに商品を追加する";
 "all" = "全て";
 "description" = "説明";
+"email" = "Eメール";
+"street" = "街";
+"house" = "家";
+"flat_floor" = "アパートと床";
+"comment" = "コメント";
+"pay_by_card" = "カードで宅配業者に";
+"cash" = "現金";
+"name_phone" = "名前と電話番号を入力してください";
+"pay_type" = "お支払い方法を選択";

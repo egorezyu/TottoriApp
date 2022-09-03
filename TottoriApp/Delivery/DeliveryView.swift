@@ -109,7 +109,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         payView.translatesAutoresizingMaskIntoConstraints = false
         payView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         
-        payView.setText(currentText: "КАРТОЙ КУРЬЕРУ")
+        payView.setText(currentText: NSLocalizedString("pay_by_card", comment: ""))
         return payView
         
     }()
@@ -117,7 +117,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         let payView = TogleView()
         payView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         payView.translatesAutoresizingMaskIntoConstraints = false
-        payView.setText(currentText: "НАЛИЧНЫЕ")
+        payView.setText(currentText: NSLocalizedString("cash", comment: ""))
         return payView
     }()
     public lazy var vStackName : UIStackView = {
@@ -144,7 +144,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         return stack
     }()
     public lazy var vStackEmail : UIStackView = {
-        var stack = generateStackWithLabelAndField(name: "ПОЧТА")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("email", comment: ""))
         var emailField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         emailField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         emailField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
@@ -155,7 +155,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         
     }()
     public lazy var vStackStreet : UIStackView = {
-        var stack = generateStackWithLabelAndField(name: "УЛИЦА")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("street", comment: ""))
         var street = (stack.subviews[1] as? CustomTextFieldWithInsets)
         street?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         street?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
@@ -165,7 +165,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         
     }()
     public lazy var vStackHouse : UIStackView = {
-        var stack = generateStackWithLabelAndField(name: "ДОМ")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("house", comment: ""))
         var house = (stack.subviews[1] as? CustomTextFieldWithInsets)
         house?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         house?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
@@ -177,7 +177,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     }()
     public lazy var vStackFlatAndFloor : UIStackView = {
         
-        var stack = generateStackWithLabelAndField(name: "КВАРТИРА И ЭТАЖ")
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("flat_floor", comment: ""))
         var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
         flatAndFloor?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         flatAndFloor?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
@@ -187,7 +187,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         
     }()
     private lazy var commentLabel : UILabel = {
-        return generateLabel(name: "КОММЕНТАРИИ")
+        return generateLabel(name: NSLocalizedString("comment", comment: ""))
     }()
     lazy var commentTextArea : UITextView = {
         let textArea = UITextView()
@@ -204,9 +204,10 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.borderWidth = 1.22
-        button.setTitle("ОФОРМИТЬ ЗАКАЗ", for: .normal)
+        button.setTitle(NSLocalizedString("make_deliv", comment: ""), for: .normal)
         button.setTitleColor(.gray, for: .disabled)
         button.titleLabel?.textAlignment = .center
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.setTitleColor(.black, for: .normal)
         button.isEnabled = false
         button.addTarget(self, action: #selector(postRequest(sender:)), for: .touchUpInside)

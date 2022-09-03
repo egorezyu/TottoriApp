@@ -30,4 +30,14 @@
 "add_to_basket" = "Add items to basket";
 "all" = "All";
 "description" = "Description";
+"email" = "email";
+"street" = "street";
+"house" = "house";
+"flat_floor" = "flat and floor";
+"comment" = "comments";
+"pay_by_card" = "by card to the courier";
+"cash" = "by cash";
+"name_phone" = "Please enter name and phone";
+"pay_type" = "Chose type of payment";
+
 

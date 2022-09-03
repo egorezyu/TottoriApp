@@ -11,7 +11,7 @@ protocol TextFieldControlColorProtocol : AnyObject{
     var selectedTextField : UITextField? {get set}
     func controlAlgoColor(currentField : UITextField)
 }
-extension TextFieldControlColorProtocol where Self : UIViewController{
+extension TextFieldControlColorProtocol{
     func controlAlgoColor(currentField : UITextField){
         if let selectedTextField = selectedTextField {
             currentField.subviews[0].backgroundColor = .red

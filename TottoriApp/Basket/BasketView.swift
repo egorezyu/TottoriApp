@@ -17,7 +17,7 @@ class BasketView: UIView {
     }
     private lazy var basketLabel : UILabel = {
         let label = UILabel()
-        label.text = NSLocalizedString("バスケット", comment: "")
+        label.text = NSLocalizedString("basket", comment: "")
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.textColor = .myLightGrey
         label.translatesAutoresizingMaskIntoConstraints = false
