@@ -205,8 +205,8 @@ extension DeliveryViewController : DeliveryDelegate{
             "ORDER": stringData
 
         ]
-        print(parameters)
-        print(parameters["ORDER"])
+//        print(parameters)
+//        print(parameters["ORDER"])
         
         
         guard let model = userInfo,

@@ -44,6 +44,8 @@ struct MenuListRequest: Request {
         
         let foodContent: String
         let foodWeight: String?
+        let foodWeight2: String?
+        let foodPrice2: String?
         let foodImage1: String?
         let foodImage2, foodImage3: String?
     }

@@ -129,6 +129,16 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         return label
         
     }()
+    public lazy var activityIndicator : UIActivityIndicatorView = {
+        var activityInd = UIActivityIndicatorView()
+        activityInd.translatesAutoresizingMaskIntoConstraints = false
+//        activityInd.startAnimating()
+        
+        activityInd.style = .large
+        activityInd.color = .red
+        activityInd.hidesWhenStopped = true
+        return activityInd
+    }()
     private lazy var waitForYouLabel : UILabel = {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -291,6 +301,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         contentView.addSubview(vipView)
         contentView.addSubview(makeAnOrderButton)
         contentView.addSubview(hStack)
+        contentView.addSubview(activityIndicator)
     }
     private func setConstraints(){
         NSLayoutConstraint.activate([
@@ -328,6 +339,9 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         horCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         horCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         horCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.5).isActive = true
+        
+        activityIndicator.centerXAnchor.constraint(equalTo: horCollectionView.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: horCollectionView.centerYAnchor).isActive = true
       
 //
         chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 15.6).isActive = true

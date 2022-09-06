@@ -17,6 +17,7 @@ class CustomFavouriteCell: UICollectionViewCell {
 
     private lazy var image : UIImageView = {
         var image = UIImageView()
+//        image.isUserInteractionEnabled = true
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +26,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     private lazy var title : UILabel = {
         let title = UILabel()
         title.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 24.375)
+//        title.isUserInteractionEnabled = true
         title.textColor = .myLightGrey
         title.textAlignment = .left
         title.numberOfLines = 0

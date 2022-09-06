@@ -20,6 +20,16 @@ final class CatalogView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    public lazy var activityIndicator : UIActivityIndicatorView = {
+        var activityInd = UIActivityIndicatorView()
+        activityInd.translatesAutoresizingMaskIntoConstraints = false
+//        activityInd.startAnimating()
+        
+        activityInd.style = .large
+        activityInd.color = .gray
+        activityInd.hidesWhenStopped = true
+        return activityInd
+    }()
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -70,8 +80,11 @@ final class CatalogView: UIView {
     private func addSubview(){
         addSubview(collectionView)
         addSubview(secondCollectionView)
+        addSubview(activityIndicator)
     }
     private func setLayout(){
+        activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
             

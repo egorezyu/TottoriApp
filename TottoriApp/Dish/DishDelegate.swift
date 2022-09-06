@@ -15,6 +15,7 @@ protocol DishDelegate : AnyObject{
     func backButtonAction()
     func forwardButtonAction()
     func imageButtonTapped(sender : UIButton)
+    func showPopUpMenu()
     
     
 }

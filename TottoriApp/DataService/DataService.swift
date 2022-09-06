@@ -88,9 +88,9 @@ final class NetworkManager {
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         }
-        if let body = urlRequest.httpBody{
-            print(String(data: body, encoding: .utf8))
-        }
+//        if let body = urlRequest.httpBody{
+//            print(String(data: body, encoding: .utf8))
+//        }
         
        
 

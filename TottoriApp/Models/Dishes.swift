@@ -31,14 +31,23 @@ struct MenuList : Codable {
 
 // MARK: - SectionList
 struct SectionList : Codable {
+    let foodWeight2: String?
+    let foodPrice2: String?
     let foodID, foodName, foodPrice, foodImage0: String
     let foodContent: String
     let foodWeight: String?
     let foodImage1: String
     let foodImage2, foodImage3: String?
     var count = 1
+    var isOnFirstWeight = true
     var currentPrice : String {
-        return String(count * (Int(foodPrice) ?? 0))
+        if isOnFirstWeight{
+            return String(count * (Int(foodPrice) ?? 0))
+        }
+        else{
+            return  String(count * (Int(foodPrice2 ?? "-1") ?? 0))
+        }
+       
     }
     var currentWeight : String? {
         if let foodWeight = foodWeight {
@@ -49,6 +58,14 @@ struct SectionList : Codable {
         }
         
         
+    }
+    var isSecondWeight : Bool {
+        if foodWeight2 != nil {
+            return true
+        }
+        else{
+            return false
+        }
     }
     mutating func plusCount(){
         if self.count < 10{
@@ -72,14 +89,31 @@ struct SectionList : Codable {
         (Formatter.separator.string(from: NSNumber(value: Int(currentPrice) ?? 0)) ?? "") + " ₽"
     }
     var formattedWeight : String{
-        if let currentWeight = currentWeight {
-            return (Formatter.separator.string(from: NSNumber(value: Int(currentWeight) ?? 0)) ?? "") + " г"
+        if isOnFirstWeight{
+            if let foodWeight = foodWeight {
+                return foodWeight + " г."
+            }
+            else{
+                return "-"
+            }
         }
         else{
-            return "—"
+            if let foodWeight2 = foodWeight2 {
+                return foodWeight2 + " г."
+            }
+            else{
+                return "-"
+            }
         }
+        
+        
+        
+       
 
         
         
     }
+}
+extension SectionList : Equatable {
+    
 }

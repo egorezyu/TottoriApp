@@ -32,8 +32,8 @@ class FoodCountView: UIView {
         
     }()
 
-    public lazy var increaseAmountButton : UIButton = {
-        let button = UIButton()
+    public lazy var increaseAmountButton : PlusButton = {
+        let button = PlusButton()
         
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -41,8 +41,8 @@ class FoodCountView: UIView {
         return button
         
     }()
-    public lazy var decreaseAmountButton : UIButton = {
-        let button = UIButton()
+    public lazy var decreaseAmountButton : MinusButton = {
+        let button = MinusButton()
         
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -99,14 +99,15 @@ class FoodCountView: UIView {
         
         plusImage.centerYAnchor.constraint(equalTo: increaseAmountButton.centerYAnchor).isActive = true
         plusImage.centerXAnchor.constraint(equalTo: increaseAmountButton.centerXAnchor).isActive = true
-        plusImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        plusImage.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        plusImage.widthAnchor.constraint(equalToConstant: 15).isActive = true
         
         
         
         minusImage.centerXAnchor.constraint(equalTo: decreaseAmountButton.centerXAnchor).isActive = true
         minusImage.centerYAnchor.constraint(equalTo: decreaseAmountButton.centerYAnchor).isActive = true
-        minusImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        minusImage.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        minusImage.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        minusImage.widthAnchor.constraint(equalToConstant: 15).isActive = true
         
         
 

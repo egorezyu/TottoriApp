@@ -20,11 +20,11 @@ class BasketViewController: UIViewController{
     }
     func addToArray(sectionList : SectionList){
         let index = arrayOfPurchases.firstIndex { sectionListIt in
-            sectionList.foodID == sectionListIt.foodID
+            sectionList == sectionListIt
         }
         
         if let index = index{
-            var finalSectionList = SectionList(foodID: arrayOfPurchases[index].foodID, foodName: arrayOfPurchases[index].foodName, foodPrice: arrayOfPurchases[index].foodPrice, foodImage0: arrayOfPurchases[index].foodImage0, foodContent: arrayOfPurchases[index].foodContent, foodWeight: arrayOfPurchases[index].foodWeight, foodImage1: arrayOfPurchases[index].foodImage1, foodImage2: arrayOfPurchases[index].foodImage2, foodImage3: arrayOfPurchases[index].foodImage3)
+            var finalSectionList = SectionList(foodWeight2: arrayOfPurchases[index].foodWeight2, foodPrice2: arrayOfPurchases[index].foodPrice2, foodID: arrayOfPurchases[index].foodID, foodName: arrayOfPurchases[index].foodName, foodPrice: arrayOfPurchases[index].foodPrice, foodImage0: arrayOfPurchases[index].foodImage0, foodContent: arrayOfPurchases[index].foodContent, foodWeight: arrayOfPurchases[index].foodWeight, foodImage1: arrayOfPurchases[index].foodImage1, foodImage2: arrayOfPurchases[index].foodImage2, foodImage3: arrayOfPurchases[index].foodImage3)
             finalSectionList.count = 0
             if arrayOfPurchases[index].count <= maxCount{
                 if arrayOfPurchases[index].count + sectionList.count <= maxCount{

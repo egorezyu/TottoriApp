@@ -35,6 +35,7 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     
     private func getDesignData(){
         let designListViewModel = DesignListViewModel()
+        aboutUsView.activityIndicator.startAnimating()
         designListViewModel.getDesignList { result in
             DispatchQueue.main.async {
                 switch result{
@@ -46,7 +47,9 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
                     self.present(UIAlertController.createAllert(text: error.localizedDescription), animated: true)
                     
                 }
+                self.aboutUsView.activityIndicator.stopAnimating()
             }
+            
             
            
         }

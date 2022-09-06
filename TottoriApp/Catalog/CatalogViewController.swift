@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftUI
+
 
 
 
@@ -107,6 +109,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         
     }
     private func getData(){
+        catalogView.activityIndicator.startAnimating()
         viewModel.getMenuList { result in
             DispatchQueue.main.async {
                 switch result{
@@ -133,28 +136,106 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
                 case .failure(let error):
                     self.present(UIAlertController.createAllert(text: error.localizedDescription), animated: true)
                 }
+                self.catalogView.activityIndicator.stopAnimating()
                 
                 
             }
         }
         
     }
+    
 
-    @objc func doSequeToDishScreen(button : UIButton){
+    @objc func doSequeToDishScreen(gesture : NSObject){
 
         
+
         var sectionList : SectionList?
-        sectionList = fullArrayOfDishes.first(where: { sectionList in
-            sectionList.foodID == String(button.tag)
-        })
+        let casted = gesture as! TwoDimenIndex
+        var sec = catalog?.menuList[casted.section].sectionList?[casted.index]
+        sec?.count = 1
+        sectionList = sec
+        let dVC = DishViewController()
+        dVC.sectionList = sectionList
+        if let sectionList = sectionList {
+            if sectionList.isSecondWeight{
+                let dishView =  dVC.view as! DishView
+                dishView.addChevronToView()
+            
+                
+            }
+            
+        }
+            
+        
+        
+        
         
        
         
-        let dVC = DishViewController()
-        dVC.sectionList = sectionList
+       
+        
 
         navigationController?.pushViewController(dVC, animated: true)
 
+    }
+//    @objc func doSequeForNextScreenForButton(button : PlusButton){
+//        var sectionList : SectionList?
+//
+//        sectionList = catalog?.menuList[button.section].sectionList?[button.index]
+//
+//
+//
+//
+//
+//        let dVC = DishViewController()
+//        dVC.sectionList = sectionList
+//
+//        navigationController?.pushViewController(dVC, animated: true)
+//
+//
+//    }
+    @objc func increaseAmount(button : PlusButton){
+
+        catalog?.menuList[button.section].sectionList?[button.index].plusCount()
+        let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
+        cell.foodCountView.countLabel.text = String(catalog?.menuList[button.section].sectionList?[button.index].count ?? -1)
+
+        
+        
+        
+        
+        
+    }
+    @objc func decreaseAmount(button : MinusButton){
+        
+        catalog?.menuList[button.section].sectionList?[button.index].minusFunc()
+        if catalog?.menuList[button.section].sectionList?[button.index].count == 0{
+            catalog?.menuList[button.section].sectionList?[button.index].count = 1
+        }
+        let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
+        cell.foodCountView.countLabel.text = String(catalog?.menuList[button.section].sectionList?[button.index].count ?? -1)
+
+        
+    }
+    @objc func addToBasket(button : PlusButton){
+        let sectionList = catalog?.menuList[button.section].sectionList?[button.index]
+        if let thirdScreen = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]{
+            let screen = thirdScreen as! BasketViewController
+           
+            
+           
+            
+         
+            
+            
+            screen.addToArray(sectionList: sectionList!)
+            catalog?.menuList[button.section].sectionList?[button.index].count = 1
+            let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
+            cell.foodCountView.countLabel.text = String(1)
+            
+        }
+        
+        
     }
     
 
@@ -215,12 +296,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else if collectionView == catalogView.secondCollectionView{
-//            if catalogView.secondCollectionView.contentOffset.y < 0{
-//
-//                selectedFirstCollCellIndex = 0
-//                catalogView.collectionView.reloadData()
-//                header.duplicateCollectionView.reloadData()
-//            }
+
             
             if collectionView.isDragging{
                 
@@ -236,9 +312,66 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
             cell.setCellFields(sectionList: catalog?.menuList[indexPath.section].sectionList?[indexPath.row])
-            cell.purchaseButton.tag = Int(catalog?.menuList[indexPath.section].sectionList?[indexPath.row].foodID ?? "") ?? -1
+            if let sectionLis = catalog?.menuList[indexPath.section].sectionList?[indexPath.row]{
+                if sectionLis.isSecondWeight{
+                    
+                    cell.addSecondWeightAndSetConstraints(sectionList: sectionLis)
+                    
+                    cell.removeDetailsView()
+                }
+                else{
+                    cell.addDetailsView()
+                    cell.detailsView.detailsButton.index = indexPath.row
+                    cell.detailsView.detailsButton.section = indexPath.section
+                    cell.detailsView.detailsButton.addTarget(self, action: #selector(doSequeToDishScreen(gesture:)), for: .touchUpInside)
+                    cell.removeSecondWeight()
+                }
+            }
+            let id : Int = Int(catalog?.menuList[indexPath.section].sectionList?[indexPath.row].foodID ?? "") ?? -1
+            if let boolValue = catalog?.menuList[indexPath.section].sectionList?[indexPath.row].isOnFirstWeight{
+                if boolValue{
+                    cell.constraint.constant = 20
+                }
+                else{
+                    cell.constraint.constant = 60
+                }
+            }
 
-            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
+            let sequeGestureImage = UITapGestureRecognizer(target: self, action: #selector(doSequeToDishScreen(gesture:)))
+            let sequeGestureText = UITapGestureRecognizer(target: self, action: #selector(doSequeToDishScreen(gesture:)))
+            cell.foodType.index = indexPath.row
+            cell.imageView.index = indexPath.row
+            cell.foodType.section = indexPath.section
+            cell.imageView.section = indexPath.section
+            cell.foodType.isUserInteractionEnabled = true
+            cell.foodType.addGestureRecognizer(sequeGestureText)
+            cell.imageView.addGestureRecognizer(sequeGestureImage)
+            
+            cell.firstWeight.index = indexPath.row
+            cell.firstWeight.section = indexPath.section
+            
+            cell.secondWeight.index = indexPath.row
+            cell.secondWeight.section = indexPath.section
+            cell.purchaseButton.addTarget(self, action: #selector(addToBasket(button:)), for: .touchUpInside)
+            cell.purchaseButton.index = indexPath.row
+            cell.purchaseButton.section = indexPath.section
+            
+            let firstTapGesture = UITapGestureRecognizer(target: self, action: #selector(firstWeightWasTapped(gesture:)))
+            cell.firstWeight.addGestureRecognizer(firstTapGesture)
+          
+            
+            let secondTapGesture = UITapGestureRecognizer(target: self, action: #selector(secondWeightWasTapped(gesture:)))
+            cell.secondWeight.addGestureRecognizer(secondTapGesture)
+
+//            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
+            cell.foodCountView.increaseAmountButton.index = indexPath.row
+            cell.foodCountView.increaseAmountButton.section = indexPath.section
+
+            cell.foodCountView.decreaseAmountButton.index = indexPath.row
+            cell.foodCountView.decreaseAmountButton.section = indexPath.section
+            cell.foodCountView.decreaseAmountButton.addTarget(self, action: #selector(decreaseAmount(button:)), for: .touchUpInside)
+            
+            cell.foodCountView.increaseAmountButton.addTarget(self, action: #selector(increaseAmount(button:)), for: .touchUpInside)
             return cell
         }
         else if collectionView == header.favCollectionView{
@@ -248,7 +381,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
            
             cell.purchaseButton.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
 
-            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
+//            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
+            
+          
             
             
             
@@ -257,33 +392,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return cell
         }
         else{
-//            if indexPath.row == (catalog?.menuList.count ?? 0) - 1{
-//
-//                if rowCount < 1{
-////                 eLayout()
-//
-//                    header.frame.size.height = header.frame.height - 200 + collectionView.intrinsicContentSize.height
-//
-//                }
-//                view.setNeedsLayout()
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//                rowCount = rowCount + 1
-//
-//
-//
-//
-//            }
+
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath) as! DuplicateCollectionViewCell
             cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
             if selectedFirstCollCellIndex != indexPath.row{
@@ -300,6 +409,38 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
         
     }
+    @objc func firstWeightWasTapped(gesture : NSObject){
+        let casted = gesture as! TwoDimenIndex
+        let currentCell = catalogView.secondCollectionView.cellForItem(at: IndexPath(item: casted.index, section: casted.section)) as! DishCollectionViewCell
+        catalog?.menuList[casted.section].sectionList?[casted.index].isOnFirstWeight = true
+        
+        UIView.animate(withDuration: 0.2) {
+            currentCell.constraint.constant = 20
+            currentCell.layoutIfNeeded()
+            
+        }
+        
+       
+        
+        
+    }
+    @objc func secondWeightWasTapped(gesture : NSObject){
+        let casted = gesture as! TwoDimenIndex
+        
+        
+       
+        catalog?.menuList[casted.section].sectionList?[casted.index].isOnFirstWeight = false
+      
+        let currentCell = catalogView.secondCollectionView.cellForItem(at: IndexPath(item: casted.index, section: casted.section)) as! DishCollectionViewCell
+        UIView.animate(withDuration: 0.2) {
+            currentCell.constraint.constant = 60
+            currentCell.layoutIfNeeded()
+            
+        }
+        
+        
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == catalogView.collectionView{
