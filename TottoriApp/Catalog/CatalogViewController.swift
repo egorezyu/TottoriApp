@@ -146,11 +146,21 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
     
 
     @objc func doSequeToDishScreen(gesture : NSObject){
-
         
+       
+        let casted : TwoDimenIndex
+        if gesture is UITapGestureRecognizer{
+            let gestureCasted = gesture as! UITapGestureRecognizer
+            casted = gestureCasted.view as! TwoDimenIndex
+            
+        }
+        else{
+            let buttonCasted = gesture as! ButtonWithIndexes
+            casted = buttonCasted as! TwoDimenIndex
+        }
 
         var sectionList : SectionList?
-        let casted = gesture as! TwoDimenIndex
+        
         var sec = catalog?.menuList[casted.section].sectionList?[casted.index]
         sec?.count = 1
         sectionList = sec
@@ -194,7 +204,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
 //
 //
 //    }
-    @objc func increaseAmount(button : PlusButton){
+    @objc func increaseAmount(button : ButtonWithIndexes){
 
         catalog?.menuList[button.section].sectionList?[button.index].plusCount()
         let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
@@ -206,7 +216,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         
         
     }
-    @objc func decreaseAmount(button : MinusButton){
+    @objc func decreaseAmount(button : ButtonWithIndexes){
         
         catalog?.menuList[button.section].sectionList?[button.index].minusFunc()
         if catalog?.menuList[button.section].sectionList?[button.index].count == 0{
@@ -217,7 +227,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
 
         
     }
-    @objc func addToBasket(button : PlusButton){
+    @objc func addToBasket(button : ButtonWithIndexes){
         let sectionList = catalog?.menuList[button.section].sectionList?[button.index]
         if let thirdScreen = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]{
             let screen = thirdScreen as! BasketViewController
@@ -327,7 +337,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     cell.removeSecondWeight()
                 }
             }
-            let id : Int = Int(catalog?.menuList[indexPath.section].sectionList?[indexPath.row].foodID ?? "") ?? -1
+            let _ : Int = Int(catalog?.menuList[indexPath.section].sectionList?[indexPath.row].foodID ?? "") ?? -1
             if let boolValue = catalog?.menuList[indexPath.section].sectionList?[indexPath.row].isOnFirstWeight{
                 if boolValue{
                     cell.constraint.constant = 20
@@ -339,6 +349,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
             let sequeGestureImage = UITapGestureRecognizer(target: self, action: #selector(doSequeToDishScreen(gesture:)))
             let sequeGestureText = UITapGestureRecognizer(target: self, action: #selector(doSequeToDishScreen(gesture:)))
+            
             cell.foodType.index = indexPath.row
             cell.imageView.index = indexPath.row
             cell.foodType.section = indexPath.section
@@ -409,8 +420,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
         
     }
-    @objc func firstWeightWasTapped(gesture : NSObject){
-        let casted = gesture as! TwoDimenIndex
+    @objc func firstWeightWasTapped(gesture : UITapGestureRecognizer){
+        let casted = gesture.view as! TwoDimenIndex
         let currentCell = catalogView.secondCollectionView.cellForItem(at: IndexPath(item: casted.index, section: casted.section)) as! DishCollectionViewCell
         catalog?.menuList[casted.section].sectionList?[casted.index].isOnFirstWeight = true
         
@@ -424,8 +435,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
         
     }
-    @objc func secondWeightWasTapped(gesture : NSObject){
-        let casted = gesture as! TwoDimenIndex
+    @objc func secondWeightWasTapped(gesture : UITapGestureRecognizer){
+        let casted = gesture.view as! TwoDimenIndex
         
         
        

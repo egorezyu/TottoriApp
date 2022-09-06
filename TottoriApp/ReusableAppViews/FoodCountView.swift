@@ -32,8 +32,8 @@ class FoodCountView: UIView {
         
     }()
 
-    public lazy var increaseAmountButton : PlusButton = {
-        let button = PlusButton()
+    public lazy var increaseAmountButton : ButtonWithIndexes = {
+        let button = ButtonWithIndexes()
         
         
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -41,8 +41,8 @@ class FoodCountView: UIView {
         return button
         
     }()
-    public lazy var decreaseAmountButton : MinusButton = {
-        let button = MinusButton()
+    public lazy var decreaseAmountButton : ButtonWithIndexes = {
+        let button = ButtonWithIndexes()
         
         button.translatesAutoresizingMaskIntoConstraints = false
         

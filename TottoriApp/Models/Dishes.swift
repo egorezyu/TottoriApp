@@ -113,7 +113,19 @@ struct SectionList : Codable {
         
         
     }
+    var sum : Int{
+        if isOnFirstWeight{
+            return count * (Int(foodPrice) ?? -1)
+        }
+        else{
+            return count * (Int(foodPrice2 ?? "") ?? -1)
+        }
+    }
+    
 }
 extension SectionList : Equatable {
+    static func ==(lhs: SectionList, rhs: SectionList) -> Bool {
+        return lhs.foodID == rhs.foodID && lhs.isOnFirstWeight == rhs.isOnFirstWeight
+    }
     
 }

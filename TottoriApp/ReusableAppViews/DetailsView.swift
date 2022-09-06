@@ -19,8 +19,8 @@ class DetailsView: UIView,TwoDimenIndex {
        
         
     }()
-    lazy var detailsButton : PlusButton = {
-        let button = PlusButton()
+    lazy var detailsButton : ButtonWithIndexes = {
+        let button = ButtonWithIndexes()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(systemName: "chevron.right")?.withTintColor(.black,renderingMode: .alwaysOriginal), for: .normal)
 //        button.backgroundColor = .red

@@ -95,8 +95,8 @@ class DishCollectionViewCell: UICollectionViewCell {
         view.backgroundColor = .red
         return view
     }()
-    lazy var purchaseButton : PlusButton = {
-        var button = PlusButton()
+    lazy var purchaseButton : ButtonWithIndexes = {
+        var button = ButtonWithIndexes()
         
         button.setBackgroundImage(UIImage(named: "purchase")?.withTintColor(.white,renderingMode: .alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false

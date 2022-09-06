@@ -80,8 +80,8 @@ class OrderCollectionViewCell: UICollectionViewCell {
         return controlView
         
     }()
-    public lazy var deleteFoodButton : UIButton = {
-        let button = UIButton()
+    public lazy var deleteFoodButton : ButtonWithIndexes = {
+        let button = ButtonWithIndexes()
         button.setTitle(NSLocalizedString("delete", comment: ""), for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.font = UIFont(name: "Gilroy", size: FontSizes.font14)

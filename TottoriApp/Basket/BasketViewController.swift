@@ -8,7 +8,7 @@
 import UIKit
 
 class BasketViewController: UIViewController{
-    private var currentSum = 0
+//    private var currentSum = 0
     private var currentBusketCount = 0
     private var maxCount = 10
     private lazy var myTabBarController = (tabBarController as! TabBarViewController)
@@ -20,11 +20,14 @@ class BasketViewController: UIViewController{
     }
     func addToArray(sectionList : SectionList){
         let index = arrayOfPurchases.firstIndex { sectionListIt in
-            sectionList == sectionListIt
+            print(sectionList == sectionListIt)
+            return sectionList == sectionListIt
+            
         }
         
         if let index = index{
-            var finalSectionList = SectionList(foodWeight2: arrayOfPurchases[index].foodWeight2, foodPrice2: arrayOfPurchases[index].foodPrice2, foodID: arrayOfPurchases[index].foodID, foodName: arrayOfPurchases[index].foodName, foodPrice: arrayOfPurchases[index].foodPrice, foodImage0: arrayOfPurchases[index].foodImage0, foodContent: arrayOfPurchases[index].foodContent, foodWeight: arrayOfPurchases[index].foodWeight, foodImage1: arrayOfPurchases[index].foodImage1, foodImage2: arrayOfPurchases[index].foodImage2, foodImage3: arrayOfPurchases[index].foodImage3)
+            
+            var finalSectionList = SectionList(foodWeight2: arrayOfPurchases[index].foodWeight2, foodPrice2: arrayOfPurchases[index].foodPrice2, foodID: arrayOfPurchases[index].foodID, foodName: arrayOfPurchases[index].foodName, foodPrice: arrayOfPurchases[index].foodPrice, foodImage0: arrayOfPurchases[index].foodImage0, foodContent: arrayOfPurchases[index].foodContent, foodWeight: arrayOfPurchases[index].foodWeight, foodImage1: arrayOfPurchases[index].foodImage1, foodImage2: arrayOfPurchases[index].foodImage2, foodImage3: arrayOfPurchases[index].foodImage3,isOnFirstWeight: arrayOfPurchases[index].isOnFirstWeight)
             finalSectionList.count = 0
             if arrayOfPurchases[index].count <= maxCount{
                 if arrayOfPurchases[index].count + sectionList.count <= maxCount{
@@ -33,7 +36,7 @@ class BasketViewController: UIViewController{
                 else{
                     finalSectionList.addAmountToCount(count: maxCount)
                 }
-                currentSum = currentSum + (finalSectionList.count * (Int(finalSectionList.foodPrice) ?? -1))
+//                currentSum = currentSum + (finalSectionList.count * (Int(finalSectionList.foodPrice) ?? -1))
 
 
             }
@@ -50,13 +53,14 @@ class BasketViewController: UIViewController{
             
             currentBusketCount = currentBusketCount + 1
             myTabBarController.tabBar.items?[2].badgeValue = String(currentBusketCount)
-            currentSum = currentSum + (sectionList.count * (Int(sectionList.foodPrice) ?? -1))
+//            currentSum = currentSum + (sectionList.count * (Int(sectionList.foodPrice) ?? -1))
             
             
             
             
         }
-        backetView.setSum(text: String(currentSum) + " ₽")
+//        backetView.setSum(text: String(currentSum) + " ₽")
+        setSum()
         backetView.toDeliveryScreenButton.isEnabled = true
         backetView.basketCollectionView.reloadData()
       
@@ -96,13 +100,13 @@ class BasketViewController: UIViewController{
         backetView.basketCollectionView.dataSource = self
         backetView.basketCollectionView.delegate = self
     }
-    @objc func deleteCell(sender : UIButton){
+    @objc func deleteCell(sender : ButtonWithIndexes){
         let index = arrayOfPurchases.firstIndex { sectionList in
-            sectionList.foodID == String(sender.tag)
+            sectionList.foodID == String(sender.tag) && sectionList.isOnFirstWeight == Bool(truncating: sender.section as NSNumber)
         }
         if let index = index {
-            currentSum = currentSum - arrayOfPurchases[index].count * (Int(arrayOfPurchases[index].foodPrice) ?? -1)
-            backetView.setSum(text: String(currentSum) + " ₽")
+//            currentSum = currentSum - arrayOfPurchases[index].count * (Int(arrayOfPurchases[index].foodPrice) ?? -1)
+//            backetView.setSum(text: String(currentSum) + " ₽")
             deleteCellProc(index: index)
             
             
@@ -118,23 +122,24 @@ class BasketViewController: UIViewController{
         
         
     }
-    @objc func increase(sender : UIButton){
+    @objc func increase(sender : ButtonWithIndexes){
         let elementIndex = arrayOfPurchases.firstIndex { sect in
-            sect.foodID == String(sender.tag)
+            sect.foodID == String(sender.tag) && sect.isOnFirstWeight == Bool(truncating: sender.section as NSNumber)
         }
         if let elementIndex = elementIndex{
             
             
            
            
-            if arrayOfPurchases[elementIndex].count < 10{
-                currentSum = currentSum + (Int(arrayOfPurchases[elementIndex].foodPrice) ?? -1)
-                backetView.setSum(text:String(currentSum) + " ₽")
-            }
+//            if arrayOfPurchases[elementIndex].count < 10{
+////                currentSum = currentSum + (Int(arrayOfPurchases[elementIndex].foodPrice) ?? -1)
+////                backetView.setSum(text:String(currentSum) + " ₽")
+//            }
             arrayOfPurchases[elementIndex].plusCount()
             
          
             backetView.basketCollectionView.reloadData()
+            setSum()
             
         }
         
@@ -149,20 +154,30 @@ class BasketViewController: UIViewController{
             myTabBarController.tabBar.items?[2].badgeValue = nil
             backetView.toDeliveryScreenButton.isEnabled = false
         }
+        setSum()
     }
-    @objc func decrease(sender : UIButton){
+    private func setSum(){
+        var sum : Int = 0
+        for item in arrayOfPurchases{
+            sum = sum + item.sum
+            
+        }
+        backetView.setSum(text: String(sum) + " ₽")
+    }
+    @objc func decrease(sender : ButtonWithIndexes){
         let elementIndex = arrayOfPurchases.firstIndex { sect in
-            sect.foodID == String(sender.tag)
+            sect.foodID == String(sender.tag) && sect.isOnFirstWeight == Bool(truncating: sender.section as NSNumber)
         }
         if let elementIndex = elementIndex{
             arrayOfPurchases[elementIndex].minusFunc()
-            currentSum = currentSum - (Int(arrayOfPurchases[elementIndex].foodPrice) ?? -1)
-            backetView.setSum(text: String(currentSum) + " ₽")
+            
+
             
             if arrayOfPurchases[elementIndex].count == 0{
                 deleteCellProc(index: elementIndex)
                 
             }
+            setSum()
             backetView.basketCollectionView.reloadData()
            
             
@@ -171,8 +186,10 @@ class BasketViewController: UIViewController{
             
             
         }
+        
 
     }
+    
 
     
     
@@ -187,8 +204,14 @@ extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OrderCollectionViewCell.identifier, for: indexPath) as! OrderCollectionViewCell
         cell.deleteFoodButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
+        cell.deleteFoodButton.section = arrayOfPurchases[indexPath.row].isOnFirstWeight ? 1 : 0
+       
+        
+        
         cell.controlAmountView.decreaseAmountButton.addTarget(self, action: #selector(decrease(sender:)), for: .touchUpInside)
+        cell.controlAmountView.decreaseAmountButton.section = arrayOfPurchases[indexPath.row].isOnFirstWeight ? 1 : 0
         cell.controlAmountView.increaseAmountButton.addTarget(self, action: #selector(increase(sender:)), for: .touchUpInside)
+        cell.controlAmountView.increaseAmountButton.section = arrayOfPurchases[indexPath.row].isOnFirstWeight ? 1 : 0
 
         cell.setValues(sectionList: arrayOfPurchases[indexPath.row])
      
@@ -218,7 +241,7 @@ extension BasketViewController : BasketViewBackDataDelegate{
         backetView.toDeliveryScreenButton.isEnabled = false
         currentBusketCount = 0
         myTabBarController.tabBar.items?[2].badgeValue = nil
-        currentSum = 0
+//        currentSum = 0
         backetView.setSum(text: "0 ₽")
         
     }

@@ -11,8 +11,7 @@
 		E4085C3128C0A716003B4B75 /* InternetAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C3028C0A716003B4B75 /* InternetAvailability.swift */; };
 		E4085C3528C260DA003B4B75 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4085C3728C260DA003B4B75 /* Localizable.strings */; };
 		E4085C3C28C4B814003B4B75 /* WeightAndPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C3B28C4B814003B4B75 /* WeightAndPriceView.swift */; };
-		E4085C3E28C503B1003B4B75 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C3D28C503B1003B4B75 /* PlusButton.swift */; };
-		E4085C4028C503CC003B4B75 /* MinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C3F28C503CC003B4B75 /* MinusButton.swift */; };
+		E4085C3E28C503B1003B4B75 /* ButtonWithIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C3D28C503B1003B4B75 /* ButtonWithIndexes.swift */; };
 		E4085C4228C50C92003B4B75 /* ImageWithIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C4128C50C92003B4B75 /* ImageWithIndexes.swift */; };
 		E4085C4428C50C9F003B4B75 /* TextWithIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4085C4328C50C9F003B4B75 /* TextWithIndexes.swift */; };
 		E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */; };
@@ -107,8 +106,7 @@
 		E4085C3928C261D1003B4B75 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4085C3A28C261D9003B4B75 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4085C3B28C4B814003B4B75 /* WeightAndPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightAndPriceView.swift; sourceTree = "<group>"; };
-		E4085C3D28C503B1003B4B75 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
-		E4085C3F28C503CC003B4B75 /* MinusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinusButton.swift; sourceTree = "<group>"; };
+		E4085C3D28C503B1003B4B75 /* ButtonWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithIndexes.swift; sourceTree = "<group>"; };
 		E4085C4128C50C92003B4B75 /* ImageWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithIndexes.swift; sourceTree = "<group>"; };
 		E4085C4328C50C9F003B4B75 /* TextWithIndexes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithIndexes.swift; sourceTree = "<group>"; };
 		E41C6733287DB216001FD5B2 /* CatalogViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewDelegate.swift; sourceTree = "<group>"; };
@@ -383,8 +381,7 @@
 				E43C7FDE288419BB001F6D8C /* FoodCountView.swift */,
 				E4085C2E28C09DFC003B4B75 /* MapView.swift */,
 				E4085C3B28C4B814003B4B75 /* WeightAndPriceView.swift */,
-				E4085C3D28C503B1003B4B75 /* PlusButton.swift */,
-				E4085C3F28C503CC003B4B75 /* MinusButton.swift */,
+				E4085C3D28C503B1003B4B75 /* ButtonWithIndexes.swift */,
 				E4085C4128C50C92003B4B75 /* ImageWithIndexes.swift */,
 				E4085C4328C50C9F003B4B75 /* TextWithIndexes.swift */,
 				E45857A328C771700017D99F /* DetailsView.swift */,
@@ -643,7 +640,6 @@
 				E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
-				E4085C4028C503CC003B4B75 /* MinusButton.swift in Sources */,
 				E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */,
 				E48DBAC328A5469C00B65644 /* AboutUsDataDelegate.swift in Sources */,
 				E4928BDD28BDED6A004AAE3E /* HideTobBarViewController.swift in Sources */,
@@ -693,7 +689,7 @@
 				E4A93C1028A15AE30017F326 /* CustomAllertView.swift in Sources */,
 				E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */,
 				E4E3771D287CB7CF003ED269 /* ColorExtension.swift in Sources */,
-				E4085C3E28C503B1003B4B75 /* PlusButton.swift in Sources */,
+				E4085C3E28C503B1003B4B75 /* ButtonWithIndexes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
