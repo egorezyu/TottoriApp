@@ -24,28 +24,13 @@ class DishCollectionViewCell: UICollectionViewCell {
 
         label.textColor = .myLightGrey
         label.isUserInteractionEnabled = true
-//         label.backgroundColor = .red
+
         
         label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 22.9)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-//    private lazy var descriptionAboutFood : UITextView = {
-//        var textView = UITextView()
-//        textView.textAlignment = .left
-//        textView.textColor = .myLightGrey
-//
-//        textView.translatesAutoresizingMaskIntoConstraints = false
-//        textView.backgroundColor = .clear
-//        textView.isEditable = false
-//        textView.isScrollEnabled = false
-//        textView.textContainer.maximumNumberOfLines = 5
-//        textView.font = UIFont(name: "Gilroy-Regular", size: FontSizes.font14)
-//
-//
-//        return textView
-//
-//    }()
+
     private lazy var price : UILabel = {
         var label = UILabel()
       
@@ -73,21 +58,14 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     lazy var secondWeight : WeightAndPriceView = {
         let view = WeightAndPriceView()
+
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return view
     }()
     
-//    lazy var purchaseButton : UIButton = {
-//        var button = UIButton()
-//        button.setImage(UIImage(named: "purchase")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
-//        
-//        
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//        
-//    }()
+
     private lazy var holdButtonView : UIView = {
         var view = UIView()
         view.addSubview(purchaseButton)
@@ -101,7 +79,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         button.setBackgroundImage(UIImage(named: "purchase")?.withTintColor(.white,renderingMode: .alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         
-//        button.addTarget(self, action: #selector(addToBasket(sender:)), for: .touchUpInside)
+
         
         return button
         
@@ -109,6 +87,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     lazy var foodCountView : FoodCountView = {
         let foodCountView = FoodCountView()
         foodCountView.countLabel.font = UIFont(name: "FoglihtenNo06", size: 20)
+        foodCountView.layer.borderColor = UIColor.darkGray.cgColor
         foodCountView.translatesAutoresizingMaskIntoConstraints = false
         return foodCountView
         
@@ -129,11 +108,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     private func addSubViewS() {
         contentView.addSubview(imageView)
         contentView.addSubview(foodType)
-//        contentView.addSubview(descriptionAboutFood)
-//        contentView.addSubview(price)
-//        
-//
-//        contentView.addSubview(purchaseButton)
+
         contentView.addSubview(holdButtonView)
         contentView.addSubview(whiteSlide)
         contentView.addSubview(firstWeight)
@@ -166,7 +141,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(secondWeight)
         if let sectionList = sectionList {
             secondWeight.weight.text = sectionList.foodWeight2! + "г."
-            secondWeight.price.genetrateLabel(text: (sectionList.foodPrice2 ?? "0") + " ₽", color: .red, font: UIFont(name: "FoglihtenNo06", size: FontSizes.fonFont23))
+            secondWeight.price.genetrateLabel(text: (sectionList.foodPrice2 ?? "0") + " ₽", color: .black, font: UIFont(name: "FoglihtenNo06", size: FontSizes.fonFont23))
         }
         
         secondWeight.topAnchor.constraint(equalTo: firstWeight.bottomAnchor).isActive = true
@@ -186,7 +161,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         foodType.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 10).isActive = true
         foodType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-//        foodType.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
         constraint.isActive = true
         whiteSlide.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 3).isActive = true
         whiteSlide.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -3).isActive = true
@@ -196,10 +171,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         firstWeight.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 3).isActive = true
         firstWeight.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -3).isActive = true
         firstWeight.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//        secondWeight.topAnchor.constraint(equalTo: firstWeight.bottomAnchor).isActive = true
-//        secondWeight.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 3).isActive = true
-//        secondWeight.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -3).isActive = true
-//        secondWeight.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
         
         holdButtonView.topAnchor.constraint(equalTo: firstWeight.bottomAnchor,constant: 60).isActive = true
         holdButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
@@ -220,30 +192,11 @@ class DishCollectionViewCell: UICollectionViewCell {
         
 
 
-//        descriptionAboutFood.topAnchor.constraint(equalTo: foodType.bottomAnchor,constant: 5).isActive = true
-//
-//        descriptionAboutFood.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 5).isActive = true
-//        descriptionAboutFood.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
 
-        
-//        price.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
-//        price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
-//        
-//
-//        
-//        purchaseButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -18).isActive = true
-//        purchaseButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -26).isActive = true
-//        purchaseButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
-//        purchaseButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
     }
     func setCellFields(sectionList : SectionList?){
         if let sectionList = sectionList {
             self.foodType.text = sectionList.foodName
-//            self.descriptionAboutFood.text = sectionList.foodContent.removingHTMLOccurances
-            
-//            self.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: 22))
-            
-            
             self.firstWeight.weight.text = sectionList.formattedWeight
             self.firstWeight.price.genetrateLabel(text: sectionList.formattedPrice, color: .red, font: UIFont(name: "FoglihtenNo06", size: FontSizes.fonFont23))
             foodCountView.countLabel.text = String(sectionList.count)

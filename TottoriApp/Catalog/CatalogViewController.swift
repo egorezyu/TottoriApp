@@ -438,6 +438,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
         UIView.animate(withDuration: 0.2) {
             currentCell.constraint.constant = 20
+            currentCell.secondWeight.price.textColor = .black
+            currentCell.firstWeight.price.textColor = .red
             currentCell.layoutIfNeeded()
             
         }
@@ -456,6 +458,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         let currentCell = catalogView.secondCollectionView.cellForItem(at: IndexPath(item: casted.index, section: casted.section)) as! DishCollectionViewCell
         UIView.animate(withDuration: 0.2) {
             currentCell.constraint.constant = 60
+            currentCell.secondWeight.price.textColor = .red
+            currentCell.firstWeight.price.textColor = .black
             currentCell.layoutIfNeeded()
             
         }
