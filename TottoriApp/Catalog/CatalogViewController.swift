@@ -156,7 +156,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         }
         else{
             let buttonCasted = gesture as! ButtonWithIndexes
-            casted = buttonCasted as! TwoDimenIndex
+            casted = buttonCasted as TwoDimenIndex
         }
 
         var sectionList : SectionList?
@@ -188,22 +188,32 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         navigationController?.pushViewController(dVC, animated: true)
 
     }
-//    @objc func doSequeForNextScreenForButton(button : PlusButton){
-//        var sectionList : SectionList?
-//
-//        sectionList = catalog?.menuList[button.section].sectionList?[button.index]
-//
-//
-//
-//
-//
-//        let dVC = DishViewController()
-//        dVC.sectionList = sectionList
-//
-//        navigationController?.pushViewController(dVC, animated: true)
-//
-//
-//    }
+    @objc func doSequeForNextScreenForButton(button : UIButton){
+        var sectionList : SectionList?
+        var arrayOfArrays : [[SectionList]] = []
+        for item in catalog!.menuList{
+            arrayOfArrays.append(item.sectionList ?? [])
+            
+        }
+        sectionList = arrayOfArrays.joined().first(where: { element in
+            element.foodID == String(button.tag)
+        })
+        let dVC = DishViewController()
+        dVC.sectionList = sectionList
+        if let sectionList = sectionList {
+            if sectionList.isSecondWeight{
+                let dishView =  dVC.view as! DishView
+                dishView.addChevronToView()
+            
+                
+            }
+            
+        }
+
+        navigationController?.pushViewController(dVC, animated: true)
+
+
+    }
     @objc func increaseAmount(button : ButtonWithIndexes){
 
         catalog?.menuList[button.section].sectionList?[button.index].plusCount()
@@ -393,7 +403,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
            
             cell.purchaseButton.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
 
-//            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
+            cell.purchaseButton.addTarget(self, action: #selector(doSequeForNextScreenForButton(button:)), for: .touchUpInside)
             
           
             
@@ -474,23 +484,23 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
 
         }
-        else if collectionView == header.duplicateCollectionView{
-            selectedFirstCollCellIndex = indexPath.row
-            
-            catalogView.collectionView.reloadData()
-            header.duplicateCollectionView.reloadData()
-            
-            var indexP : IndexPath
-            if selectedFirstCollCellIndex == 0{
-                indexP = IndexPath(row: 0, section: 0)
-                catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
-            }
-            else{
-                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex)
-                catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
-            }
-            
-        }
+//        else if collectionView == header.duplicateCollectionView{
+//            selectedFirstCollCellIndex = indexPath.row
+//
+//            catalogView.collectionView.reloadData()
+//            header.duplicateCollectionView.reloadData()
+//
+//            var indexP : IndexPath
+//            if selectedFirstCollCellIndex == 0{
+//                indexP = IndexPath(row: 0, section: 0)
+//                catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
+//            }
+//            else{
+//                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex)
+//                catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
+//            }
+//
+//        }
         
         
         
@@ -515,7 +525,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
                 selectedFirstCollCellIndex = 0
                 catalogView.collectionView.reloadData()
-                header.duplicateCollectionView.reloadData()
+//                header.duplicateCollectionView.reloadData()
             }
         }
     }
