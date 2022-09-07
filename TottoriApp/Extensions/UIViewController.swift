@@ -87,6 +87,26 @@ extension UIViewController{
         attributes.displayDuration = 0.5
         return attributes
     }
+    func setBackButtonForNavBar(){
+        let image = UIImage(named: "redBack")?.withTintColor(.red,renderingMode: .alwaysOriginal)
+        if let image = image{
+            let resizedImage = UIImage.resizeImage(image: image, targetSize: CGSize(width: 44, height: 20))?.withTintColor(.red,renderingMode: .alwaysOriginal)
+            self.navigationController?.navigationBar.backIndicatorImage = resizedImage
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = resizedImage
+            let backButton = UIBarButtonItem()
+            backButton.title = NSLocalizedString("back", comment: "")
+            
+            backButton.tintColor = .myLightGrey
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
     
