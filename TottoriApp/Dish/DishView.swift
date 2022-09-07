@@ -145,7 +145,7 @@ class DishView: UIView {
     }()
     lazy var chevronDown : UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "chevron.down.circle.fill")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
+        button.setImage(UIImage(systemName: "chevron.down")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
         
 //        button.backgroundColor = .gray
         button.translatesAutoresizingMaskIntoConstraints = false
