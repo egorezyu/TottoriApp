@@ -626,7 +626,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return CGSize(width: ((UIScreen.main.bounds.width)) / 3, height: 48)
         }
         else if collectionView == catalogView.secondCollectionView{
-            return CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: UIScreen.main.bounds.height * 0.53)
+            return CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: 350)
             
         }
         else if collectionView == header.favCollectionView{

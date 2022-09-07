@@ -201,7 +201,7 @@ class DishCollectionViewCell: UICollectionViewCell {
 //        secondWeight.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -3).isActive = true
 //        secondWeight.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        holdButtonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        holdButtonView.topAnchor.constraint(equalTo: firstWeight.bottomAnchor,constant: 60).isActive = true
         holdButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
         holdButtonView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         holdButtonView.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -212,9 +212,9 @@ class DishCollectionViewCell: UICollectionViewCell {
         purchaseButton.centerYAnchor.constraint(equalTo: holdButtonView.centerYAnchor).isActive = true
         purchaseButton.centerXAnchor.constraint(equalTo: holdButtonView.centerXAnchor).isActive = true
         
-        foodCountView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
+        foodCountView.topAnchor.constraint(equalTo: firstWeight.bottomAnchor,constant: 60).isActive = true
         foodCountView.leadingAnchor.constraint(equalTo: holdButtonView.trailingAnchor,constant: 4).isActive = true
-        foodCountView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -15).isActive = true
+        foodCountView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         foodCountView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         
