@@ -49,16 +49,7 @@ struct SectionList : Codable {
         }
        
     }
-    var currentWeight : String? {
-        if let foodWeight = foodWeight {
-            return String(count * (Int(foodWeight) ?? 0))
-        }
-        else{
-            return nil
-        }
-        
-        
-    }
+
     var isSecondWeight : Bool {
         if foodWeight2 != nil {
             return true
