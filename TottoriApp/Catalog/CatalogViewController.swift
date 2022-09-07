@@ -385,7 +385,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             let secondTapGesture = UITapGestureRecognizer(target: self, action: #selector(secondWeightWasTapped(gesture:)))
             cell.secondWeight.addGestureRecognizer(secondTapGesture)
 
-//            cell.purchaseButton.addTarget(self, action: #selector(doSequeToDishScreen(button:)), for: .touchUpInside)
+
             cell.foodCountView.increaseAmountButton.index = indexPath.row
             cell.foodCountView.increaseAmountButton.section = indexPath.section
 
@@ -396,7 +396,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             cell.foodCountView.increaseAmountButton.addTarget(self, action: #selector(increaseAmount(button:)), for: .touchUpInside)
             return cell
         }
-        else if collectionView == header.favCollectionView{
+        else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomFavouriteCell.id, for: indexPath) as! CustomFavouriteCell
             cell.configureCell(sectionList: catalog?.menuDishes[indexPath.row])
             
@@ -413,20 +413,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             return cell
         }
-        else{
 
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DuplicateCollectionViewCell.id, for: indexPath) as! DuplicateCollectionViewCell
-            cell.setLabel(menuType: catalog?.menuList[indexPath.row].sectionName ?? "")
-            if selectedFirstCollCellIndex != indexPath.row{
-                cell.cleanEverything()
-            }
-            else{
-                cell.contentView.layer.borderColor = UIColor.red.cgColor
-            }
-            
-            
-            return cell
-        }
      
         
         
@@ -488,23 +475,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
 
         }
-//        else if collectionView == header.duplicateCollectionView{
-//            selectedFirstCollCellIndex = indexPath.row
-//
-//            catalogView.collectionView.reloadData()
-//            header.duplicateCollectionView.reloadData()
-//
-//            var indexP : IndexPath
-//            if selectedFirstCollCellIndex == 0{
-//                indexP = IndexPath(row: 0, section: 0)
-//                catalogView.secondCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
-//            }
-//            else{
-//                indexP = IndexPath(row: 0, section: selectedFirstCollCellIndex)
-//                catalogView.secondCollectionView.scrollToItem(at: indexP, at: .centeredVertically, animated: true)
-//            }
-//
-//        }
+
         
         
         
@@ -529,7 +500,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
 
                 selectedFirstCollCellIndex = 0
                 catalogView.collectionView.reloadData()
-//                header.duplicateCollectionView.reloadData()
+
             }
         }
     }
@@ -547,12 +518,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                    
                     let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier, for: indexPath) as! HeaderForFavDishes
                     
-//                    headerCell.setRowCount(rowCount: rowCount)
+
                     
                     
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
-//                    headerCell.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 7)
+
                     
                     headerCell.duplicateCollectionView.dataSource = self
                     headerCell.duplicateCollectionView.delegate = self

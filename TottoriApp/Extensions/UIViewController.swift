@@ -11,14 +11,16 @@ import SwiftEntryKit
 extension UIViewController{
     func showBasketAllert(){
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         view.layer.cornerRadius = 15
+        view.layer.borderColor = UIColor.gray.cgColor
+        view.layer.borderWidth = 2
         view.translatesAutoresizingMaskIntoConstraints = false
         view.heightAnchor.constraint(equalToConstant: 30).isActive = true
         view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
         let label = UILabel()
         label.text = "Добавлено"
-        label.textColor = .white
+        label.textColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
