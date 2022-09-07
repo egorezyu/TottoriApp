@@ -346,7 +346,7 @@ class DishView: UIView {
     func setPriceWeightNumber(sectionList : SectionList){
         self.controlAmountView.countLabel.text = String(sectionList.count)
         self.priceView.genetrateLabel(text: sectionList.formattedPrice , color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(FontSizes.font39)))
-        self.weightView.genetrateLabel(text: sectionList.formattedWeight , color: .black, font: UIFont(name: "FoglihtenNo06", size: CGFloat(FontSizes.font39)))
+        self.weightView.genetrateLabel(text: sectionList.formattedWeight , color: .black, font: UIFont(name: "FoglihtenNo06", size: CGFloat(FontSizes.font39)),secondFont: UIFont(name: "FoglihtenNo06", size: 15))
     }
     
     func setFirstChose(){

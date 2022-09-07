@@ -91,7 +91,7 @@ struct SectionList : Codable {
     var formattedWeight : String{
         if isOnFirstWeight{
             if let foodWeight = foodWeight {
-                return foodWeight + " г."
+                return foodWeight + " г"
             }
             else{
                 return "-"
@@ -99,7 +99,7 @@ struct SectionList : Codable {
         }
         else{
             if let foodWeight2 = foodWeight2 {
-                return foodWeight2 + " г."
+                return foodWeight2 + " г"
             }
             else{
                 return "-"
