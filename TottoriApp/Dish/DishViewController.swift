@@ -54,13 +54,9 @@ class DishViewController: UIViewController {
 extension DishViewController : DishDelegate{
     func showPopUpMenu() {
         let rateViewController = WeightTableViewController()
-//        print(sectionList)
-//        print(sectionList?.foodWeight)
         rateViewController.backDataDelegate = self
         rateViewController.weights.append(sectionList!.foodWeight!)
         rateViewController.weights.append(sectionList!.foodWeight2!)
-//        rateViewController.tableView.reloadData()
-//        rateViewController.preferredContentSize = CGSize(width: 200, height: 300)
         rateViewController.modalTransitionStyle = .crossDissolve
         rateViewController.modalPresentationStyle = .popover
         let popOverVc = rateViewController.popoverPresentationController
@@ -146,7 +142,7 @@ extension DishViewController : DishDelegate{
         if let sectionList = sectionList{
             let basketViewController = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]
             (basketViewController as? BasketViewController)?.addToArray(sectionList: sectionList)
-            print(sectionList.isOnFirstWeight)
+
             navigationController?.popViewController(animated: true)
 
             

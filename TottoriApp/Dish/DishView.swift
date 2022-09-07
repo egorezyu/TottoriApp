@@ -17,7 +17,7 @@ import UIKit
 
 class DishView: UIView {
     weak var delegate : DishDelegate?
-//    var sectionList : SectionList?
+
     init(subscriber : DishDelegate? = nil){
         super.init(frame: .zero)
         self.delegate = subscriber
@@ -147,7 +147,7 @@ class DishView: UIView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.down")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
         
-//        button.backgroundColor = .gray
+
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(popUpButtonWasTapped(sender:)), for: .touchUpInside)
         return button
@@ -210,7 +210,7 @@ class DishView: UIView {
         contentView.addSubview(controlAmountView)
         contentView.addSubview(weightView)
         contentView.addSubview(priceView)
-//        contentView.addSubview(chevronDown)
+
         
         return contentView
     }()
