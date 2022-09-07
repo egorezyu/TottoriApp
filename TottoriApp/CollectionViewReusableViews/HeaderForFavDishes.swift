@@ -12,26 +12,12 @@ import CoreAudio
 
 class HeaderForFavDishes: UICollectionReusableView,ViewWithStack{
     static let headerReuseIdentifier = "headerSecondReuseIdentifier"
-//    private var rowCount : Int = 0
-    public lazy var constraintForCollectionViewHeight = duplicateCollectionView.heightAnchor.constraint(equalToConstant: 200)
+
+//    public lazy var constraintForCollectionViewHeight = duplicateCollectionView.heightAnchor.constraint(equalToConstant: 200)
     
     
     
-//    private lazy var holdTextView: UIView = {
-//        var view = UIView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        return view
-//
-//    }()
-//    public lazy var firstDishTitle : UILabel = {
-//        var label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 17.7272727273)
-//
-//        return label
-//    }()
+
     public lazy var favCollectionView : UICollectionView = {
         let layout = FlowLay()
         layout.scrollDirection = .horizontal
@@ -46,29 +32,29 @@ class HeaderForFavDishes: UICollectionReusableView,ViewWithStack{
         return view
         
     }()
-    public lazy var duplicateCollectionView : UICollectionView = {
-        let layout = LeadingCollectionViewLayout()
-        layout.scrollDirection = .vertical
-//        layout.itemSize = CGSize(width: (Int(UIScreen.main.bounds.width) - 20 - 30) / 3, height: ReusavleViewDist.collectionViewCellheigt)
-//        layout.itemSize =
-//        layout.estimatedItemSize = .init(width: 200, height: CGFloat(ReusavleViewDist.collectionViewCellheigt))
-        
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-
-//        layout.minimumInteritemSpacing = CGFloat(ReusavleViewDist.rowSpacing)
-        let view = ResizableCollectionView(frame: .zero, collectionViewLayout: layout)
-
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.showsHorizontalScrollIndicator = false
-        view.register(DuplicateCollectionViewCell.self, forCellWithReuseIdentifier: DuplicateCollectionViewCell.id)
-        view.isScrollEnabled = false
-        view.backgroundColor = .clear
-        
-      
-        return view
-        
-    }()
+//    public lazy var duplicateCollectionView : UICollectionView = {
+//        let layout = LeadingCollectionViewLayout()
+//        layout.scrollDirection = .vertical
+////        layout.itemSize = CGSize(width: (Int(UIScreen.main.bounds.width) - 20 - 30) / 3, height: ReusavleViewDist.collectionViewCellheigt)
+////        layout.itemSize =
+////        layout.estimatedItemSize = .init(width: 200, height: CGFloat(ReusavleViewDist.collectionViewCellheigt))
+//
+//        layout.minimumLineSpacing = 10
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+//
+////        layout.minimumInteritemSpacing = CGFloat(ReusavleViewDist.rowSpacing)
+//        let view = ResizableCollectionView(frame: .zero, collectionViewLayout: layout)
+//
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.showsHorizontalScrollIndicator = false
+//        view.register(DuplicateCollectionViewCell.self, forCellWithReuseIdentifier: DuplicateCollectionViewCell.id)
+//        view.isScrollEnabled = false
+//        view.backgroundColor = .clear
+//
+//
+//        return view
+//
+//    }()
     public lazy var hStack : UIStackView = {
         var stack = UIStackView()
         stack.axis = .horizontal
@@ -200,12 +186,12 @@ class HeaderForFavDishes: UICollectionReusableView,ViewWithStack{
 //        }
 //
 //    }
-    private func setBackGroundForDuplicateCollView(){
-        if let image = UIImage(named: "back"){
-            duplicateCollectionView.backgroundColor = UIColor(patternImage: image)
-        }
-
-    }
+//    private func setBackGroundForDuplicateCollView(){
+//        if let image = UIImage(named: "back"){
+//            duplicateCollectionView.backgroundColor = UIColor(patternImage: image)
+//        }
+//
+//    }
    
     
     required init?(coder: NSCoder) {

@@ -242,10 +242,10 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else if collectionView == catalogView.secondCollectionView{
             return catalog?.menuList[section].sectionList?.count ?? 0
         }
-        else if collectionView == header.duplicateCollectionView{
-            return catalog?.menuList.count ?? 0
+        else {
+            return catalog?.menuDishes.count ?? 0
         }
-        return catalog?.menuDishes.count ?? 0
+        
         
         
         
@@ -260,9 +260,6 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         }
         else if collectionView == catalogView.secondCollectionView{
             return (catalog?.menuList.count ?? 1)
-        }
-        else if collectionView == header.duplicateCollectionView{
-            return 1
         }
         else{
             return 1
@@ -426,7 +423,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             selectedFirstCollCellIndex = indexPath.row
             
             catalogView.collectionView.reloadData()
-            header.duplicateCollectionView.reloadData()
+//            header.duplicateCollectionView.reloadData()
             var indexP : IndexPath
             if selectedFirstCollCellIndex == 0{
                 indexP = IndexPath(row: 0, section: 0)
@@ -491,8 +488,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     headerCell.favCollectionView.delegate = self
 
                     
-                    headerCell.duplicateCollectionView.dataSource = self
-                    headerCell.duplicateCollectionView.delegate = self
+//                    headerCell.duplicateCollectionView.dataSource = self
+//                    headerCell.duplicateCollectionView.delegate = self
                     
                     headerCell.favCollectionView.decelerationRate = .fast
 

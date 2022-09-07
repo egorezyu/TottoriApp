@@ -238,7 +238,6 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         else{
             UserDefaults.standard.set(encodedData, forKey: userDefaultUserInfoId)
-//            showOkAlert()
             controlUserButtonServerTouchAlgo()
 
 
@@ -253,12 +252,10 @@ extension DeliveryViewController : DeliveryDelegate{
         let alert = UIAlertController(title: nil, message: "Ваши данные о доставке были изменены", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Сохранить текущие данных", style: .default, handler: { action in
             UserDefaults.standard.set(dataToChange, forKey: self.userDefaultUserInfoId)
-//            self.showOkAlert()
             self.controlUserButtonServerTouchAlgo()
            
         }))
         alert.addAction(UIAlertAction(title: "Не сохранять", style: .default, handler: { action in
-//            self.showOkAlert()
             self.controlUserButtonServerTouchAlgo()
            
         }))
@@ -270,7 +267,6 @@ extension DeliveryViewController : DeliveryDelegate{
             return
         }
         
-//        print(String(data: httpBody, encoding: .utf8))
         deliveryViewModel.getDelivList(data: httpBody) { result in
             DispatchQueue.main.async {
                 self.devView.activityIndicator.stopAnimating()
