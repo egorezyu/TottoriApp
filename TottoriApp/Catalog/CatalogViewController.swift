@@ -244,6 +244,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
             cell.foodCountView.countLabel.text = String(1)
             
         }
+        showBasketAllert()
         
         
     }

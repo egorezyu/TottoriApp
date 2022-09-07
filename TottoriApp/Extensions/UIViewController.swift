@@ -9,6 +9,23 @@ import Foundation
 import UIKit
 import SwiftEntryKit
 extension UIViewController{
+    func showBasketAllert(){
+        let view = UIView()
+        view.backgroundColor = .red
+        view.layer.cornerRadius = 15
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
+        let label = UILabel()
+        label.text = "Добавлено"
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        SwiftEntryKit.display(entry: view, using: defaultAttributesForBasket())
+        
+    }
     
     func setBackGround(){
         if let image = UIImage(named: "back"){
@@ -63,6 +80,12 @@ extension UIViewController{
         attributes.statusBar = .dark
         return attributes
     }
+    private func defaultAttributesForBasket() -> EKAttributes{
+        var attributes = EKAttributes.topNote
+        attributes.displayDuration = 0.5
+        return attributes
+    }
+    
     
     
 
