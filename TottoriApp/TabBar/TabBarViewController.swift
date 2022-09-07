@@ -8,6 +8,8 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    private let tabBarItemsColor = UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1)
+    private let back = UIImage(named: "back")
 
 
     override func viewDidLoad() {
@@ -17,22 +19,15 @@ class TabBarViewController: UITabBarController {
         
         
         tabBar.tintColor = .red
-        tabBar.backgroundImage = UIImage(named: "back")
-//        tabBar.backgroundColor = .clear
-//        let appearance = UITabBarAppearance()
-//
-//        tabBar.scrollEdgeAppearance = appearance
+        tabBar.backgroundImage = back
         
-        
+        let image1 = UIImage(named: "union")?.withTintColor(tabBarItemsColor,renderingMode:.automatic)
 
-        
-        let image1 = UIImage(named: "union")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1),renderingMode:.automatic)
+        let image2 = UIImage(named: "mark")?.withTintColor(tabBarItemsColor,renderingMode:.automatic)
 
-        let image2 = UIImage(named: "mark")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1),renderingMode:.automatic)
-
-        let image3 = UIImage(named: "purchase")?.withTintColor(UIColor(red: 0.553, green: 0.545, blue: 0.549, alpha: 1),renderingMode:.automatic)
+        let image3 = UIImage(named: "purchase")?.withTintColor(tabBarItemsColor,renderingMode:.automatic)
         
-        let back = UIImage(named: "back")
+        
         
 
         
