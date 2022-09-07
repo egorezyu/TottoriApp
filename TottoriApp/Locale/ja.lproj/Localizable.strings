@@ -44,3 +44,10 @@
 "thx_for_dev" = "Tご注文ありが \n とうございます";
 "done_button_time" = "準備";
 "smth_went_wrong" = "エラーが発生し \n ました";
+"data_was_changed" = "配送情報が変更されました";
+"save_data" = "現在のデータを保存";
+"dont_save" = "Н保存しない";
+"invalid_url" = "URL が無効です。サポートにお問い合わせください";
+"couldnt_get_data" = "データを取得できませんでした";
+"time_out" = "リクエストがタイムアウトしました。後でもう一度お試しください";
+"no_internet" = "接続なし";

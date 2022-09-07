@@ -249,13 +249,13 @@ extension DeliveryViewController : DeliveryDelegate{
        
     }
     private func showChangeAlert(dataToChange : Data){
-        let alert = UIAlertController(title: nil, message: "Ваши данные о доставке были изменены", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Сохранить текущие данных", style: .default, handler: { action in
+        let alert = UIAlertController(title: nil, message: NSLocalizedString("data_was_changed", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("save_data", comment: ""), style: .default, handler: { action in
             UserDefaults.standard.set(dataToChange, forKey: self.userDefaultUserInfoId)
             self.controlUserButtonServerTouchAlgo()
            
         }))
-        alert.addAction(UIAlertAction(title: "Не сохранять", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("dont_save", comment: ""), style: .default, handler: { action in
             self.controlUserButtonServerTouchAlgo()
            
         }))

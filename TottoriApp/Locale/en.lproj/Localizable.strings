@@ -44,5 +44,12 @@
 "thx_for_dev" = "СПАСИБО \n ЗА ЗАКАЗ! ";
 "done_button_time" = "Done";
 "smth_went_wrong" = "Something \n went wrong";
+"data_was_changed" = "Delivery data was changed";
+"save_data" = "Save current data";
+"dont_save" = "Dont save";
+"invalid_url" = "Invalid_url";
+"couldnt_get_data" = "Couldnt get data";
+"time_out" = "Request time out";
+"no_internet" = "No internet";
 
 

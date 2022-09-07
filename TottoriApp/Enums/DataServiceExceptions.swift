@@ -7,26 +7,26 @@
 
 import Foundation
 enum GetDataException : String ,Error{
-    case invalidUrl = "Неверный url,обратитесь в поддержку"
-    case badResponse = "Что - то пошло не так"
-    case badData = "Не удалось получить данные"
-    case serverError = "Время запроса вышло,попробуйте позже"
-    case internet = "Отсуствует подключение"
+    case invalidUrl = "bad URL"
+    case badResponse = "Something went wrong"
+    case badData = "Couldnt get data"
+    case serverError = "Request time out"
+    case internet = "No internet"
 
 }
 extension GetDataException: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .invalidUrl:
-            return NSLocalizedString("Неверный url,обратитесь в поддержку", comment: "My error")
+            return NSLocalizedString("invalid_url", comment: "My error")
         case .badResponse:
-            return NSLocalizedString("Что - то пошло не так", comment: "My error")
+            return NSLocalizedString("smth_went_wrong", comment: "My error")
         case .badData:
-            return NSLocalizedString("Не удалось получить данные", comment: "My error")
+            return NSLocalizedString("couldnt_get_data", comment: "My error")
         case .serverError:
-            return NSLocalizedString("Время запроса вышло,попробуйте позже", comment: "My error")
+            return NSLocalizedString("time_out", comment: "My error")
         case .internet:
-            return NSLocalizedString("Отсутсвует подключение", comment: "My error")
+            return NSLocalizedString("no_internet", comment: "My error")
         }
     
     }

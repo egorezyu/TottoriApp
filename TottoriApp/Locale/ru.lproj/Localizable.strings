@@ -44,6 +44,13 @@
 "thx_for_dev" = "Thank you \n for an order! ";
 "done_button_time" = "Готово";
 "smth_went_wrong" = "Что - то пошло \n не так";
+"data_was_changed" = "Данные о доставке были изменены";\
+"save_data" = "Сохранить текущие данные";
+"dont_save" = "Не сохранять";
+"invalid_url" = "Неверный url,обратитесь в поддержку";
+"couldnt_get_data" = "Не удалось получить данные";
+"time_out" = "Время запроса вышло,попробуйте позже";
+"no_internet" = "Отсуствует подключене";
 
 
 
