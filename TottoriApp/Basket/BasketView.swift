@@ -63,8 +63,6 @@ class BasketView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 0.969, green: 0.169, blue: 0.071, alpha: 1)
         label.genetrateLabel(text: "0" + " ₽" , color: .red, font: UIFont(name: "FoglihtenNo06", size: CGFloat(22)),secondFont: UIFont(name: "FoglihtenNo06", size: 14))
-
-//        label.font = UIFont(name: "FoglihtenNo06", size: 22)
         return label
         
     }()
