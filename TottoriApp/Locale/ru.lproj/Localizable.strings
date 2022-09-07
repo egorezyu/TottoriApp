@@ -39,7 +39,11 @@
 "cash" = "наличные";
 "name_phone" = "Введите имя и телефон";
 "pay_type" = "Выберите способ оплаты";
-
+"added" = "Добавлено";
+"more" = "Подробнее";
+"thx_for_dev" = "Thank you \n for an order! ";
+"done_button_time" = "Готово";
+"smth_went_wrong" = "Что - то пошло \n не так";
 
 
 

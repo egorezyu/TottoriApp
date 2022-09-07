@@ -19,7 +19,7 @@ extension UIViewController{
         view.heightAnchor.constraint(equalToConstant: 30).isActive = true
         view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
         let label = UILabel()
-        label.text = "Добавлено"
+        label.text = NSLocalizedString("added", comment: "")
         label.textColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)

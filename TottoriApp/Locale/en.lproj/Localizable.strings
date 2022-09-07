@@ -39,5 +39,10 @@
 "cash" = "by cash";
 "name_phone" = "Please enter name and phone";
 "pay_type" = "Chose type of payment";
+"added" = "Added";
+"more" = "More";
+"thx_for_dev" = "СПАСИБО \n ЗА ЗАКАЗ! ";
+"done_button_time" = "Done";
+"smth_went_wrong" = "Something \n went wrong";
 
 

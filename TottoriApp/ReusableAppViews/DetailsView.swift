@@ -14,7 +14,7 @@ class DetailsView: UIView,TwoDimenIndex {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font =  UIFont(name: "Gilroy-Regular", size: 14)
-        label.text = "Подробнее"
+        label.text = NSLocalizedString("more", comment: "")
         return label
        
         

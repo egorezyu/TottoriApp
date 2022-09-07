@@ -39,3 +39,8 @@
 "cash" = "現金";
 "name_phone" = "名前と電話番号を入力してください";
 "pay_type" = "お支払い方法を選択";
+"added" = "追加した";
+"more" = "もっと";
+"thx_for_dev" = "Tご注文ありが \n とうございます";
+"done_button_time" = "準備";
+"smth_went_wrong" = "エラーが発生し \n ました";

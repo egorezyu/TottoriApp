@@ -274,10 +274,10 @@ extension DeliveryViewController : DeliveryDelegate{
 
                 
                 case .success(_):
-                    self.showCustomAlert(text:"СПАСИБО \n ЗА ЗАКАЗ!")
+                    self.showCustomAlert(text:NSLocalizedString("thx_for_dev", comment: ""))
                     
                 case .failure(_):
-                    self.showCustomAlert(text:"Что - то пошло \n не так")
+                    self.showCustomAlert(text:NSLocalizedString("smth_went_wrong", comment: ""))
                     
                 }
             }
