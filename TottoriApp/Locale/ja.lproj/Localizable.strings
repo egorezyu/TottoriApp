@@ -33,7 +33,8 @@
 "email" = "Eメール";
 "street" = "街";
 "house" = "家";
-"flat_floor" = "アパートと床";
+"flat" = "平らな";
+"floor" = "床";
 "comment" = "コメント";
 "pay_by_card" = "カードで宅配業者に";
 "cash" = "現金";

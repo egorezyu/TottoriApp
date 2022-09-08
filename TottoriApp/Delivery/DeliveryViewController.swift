@@ -54,8 +54,10 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
         street?.text = userInfo?.street ?? ""
         let house = (devView.vStackHouse.subviews[1] as? CustomTextFieldWithInsets)
         house?.text = userInfo?.home ?? ""
-        let flatAndFloor = (devView.vStackFlatAndFloor.subviews[1] as? CustomTextFieldWithInsets)
-        flatAndFloor?.text = userInfo?.floorAndFlat ?? ""
+        let flat = (devView.vStackFlat.subviews[1] as? CustomTextFieldWithInsets)
+        flat?.text = userInfo?.flat ?? ""
+        let flor = (devView.vStackFlor.subviews[1] as? CustomTextFieldWithInsets)
+        flor?.text = userInfo?.floor ?? ""
     }
     private func checkUserDefaultsData(){
         if let data = UserDefaults.standard.data(forKey: userDefaultUserInfoId),
@@ -129,7 +131,8 @@ extension DeliveryViewController : DeliveryDelegate{
         let email = (devView.vStackEmail.subviews[1] as? CustomTextFieldWithInsets)
         let street = (devView.vStackStreet.subviews[1] as? CustomTextFieldWithInsets)
         let home = (devView.vStackHouse.subviews[1] as? CustomTextFieldWithInsets)
-        let flatAndFlor = (devView.vStackFlatAndFloor.subviews[1] as? CustomTextFieldWithInsets)
+        let flat = (devView.vStackFlat.subviews[1] as? CustomTextFieldWithInsets)
+        let floor = (devView.vStackFlor.subviews[1] as? CustomTextFieldWithInsets)
         
         
         if let name = nameField?.text,let phone = phoneField?.text{
@@ -140,7 +143,7 @@ extension DeliveryViewController : DeliveryDelegate{
     
                     if selectedPayView != nil {
                         devView.makeAnOrderButton.isEnabled = true
-                        userInfo = UserInfo(name: name, phone: phone, mail: email?.text ?? "", street: street?.text ?? "", home: home?.text ?? "", floorAndFlat: flatAndFlor?.text ?? "")
+                        userInfo = UserInfo(name: name, phone: phone, mail: email?.text ?? "", street: street?.text ?? "", home: home?.text ?? "", floor: floor?.text ?? "",flat: flat?.text ?? "")
                         
                     }
                     else{
@@ -187,20 +190,21 @@ extension DeliveryViewController : DeliveryDelegate{
         let email = (devView.vStackEmail.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
         let street = (devView.vStackStreet.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
         let home = (devView.vStackHouse.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
-        let flatAndFlor = (devView.vStackFlatAndFloor.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let flat = (devView.vStackFlat.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
+        let floor = (devView.vStackFlor.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
         let orderComment = devView.commentTextArea.text ?? ""
         var foodList : [FoodList] = []
         for item in deliveryArray{
             foodList.append(FoodList(foodAmount: item.count, foodID: item.foodID, foodName: item.foodName))
         }
-        let order = Order(orderComment: orderComment, phone: phone, flat: flatAndFlor, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: flatAndFlor, email: email, house: home, name: name)
+        let order = Order(orderComment: orderComment, phone: phone, flat: flat, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: floor, email: email, house: home, name: name)
         let encoder = JSONEncoder()
-//        encoder.outputFormatting = .prettyPrinted
+
         
         guard let data = try? encoder.encode(order),let stringData = String(data: data, encoding: .utf8) else {
             return
         }
-        print(stringData)
+//        print(stringData)
         parameters = [
             "ORDER": stringData
 

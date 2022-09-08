@@ -53,16 +53,19 @@ class DishViewController: UIViewController {
 }
 extension DishViewController : DishDelegate{
     func showPopUpMenu() {
-        let rateViewController = WeightTableViewController()
-        rateViewController.backDataDelegate = self
-        rateViewController.weights.append(sectionList!.foodWeight!)
-        rateViewController.weights.append(sectionList!.foodWeight2!)
-        rateViewController.modalTransitionStyle = .crossDissolve
-        rateViewController.modalPresentationStyle = .popover
-        let popOverVc = rateViewController.popoverPresentationController
-        popOverVc?.delegate = self
-        popOverVc?.sourceView = dishView.chevronDown
-        self.present(rateViewController, animated: true, completion: nil)
+        if let sectionList = sectionList{
+            let rateViewController = WeightTableViewController()
+            rateViewController.backDataDelegate = self
+            rateViewController.weights.append(sectionList.foodWeight ?? "-")
+            rateViewController.weights.append(sectionList.foodWeight2 ?? "-")
+            rateViewController.modalTransitionStyle = .crossDissolve
+            rateViewController.modalPresentationStyle = .popover
+            let popOverVc = rateViewController.popoverPresentationController
+            popOverVc?.delegate = self
+            popOverVc?.sourceView = dishView.chevronDown
+            self.present(rateViewController, animated: true, completion: nil)
+        }
+        
     }
     
     func imageButtonTapped(sender: UIButton) {

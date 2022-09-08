@@ -12,5 +12,6 @@ struct UserInfo : Codable,Equatable{
     var mail : String
     var street : String
     var home : String
-    var floorAndFlat : String
+    var floor : String
+    var flat : String
 }

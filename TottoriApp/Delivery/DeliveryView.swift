@@ -74,7 +74,8 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         vStack.addArrangedSubview(vStackEmail)
         vStack.addArrangedSubview(vStackStreet)
         vStack.addArrangedSubview(vStackHouse)
-        vStack.addArrangedSubview(vStackFlatAndFloor)
+        vStack.addArrangedSubview(vStackFlat)
+        vStack.addArrangedSubview(vStackFlor)
 
         
         return vStack
@@ -175,9 +176,20 @@ class DeliveryView: UIView , PhoneFieldProtocol{
 
         
     }()
-    public lazy var vStackFlatAndFloor : UIStackView = {
+    public lazy var vStackFlat : UIStackView = {
         
-        var stack = generateStackWithLabelAndField(name: NSLocalizedString("flat_floor", comment: ""))
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("flat", comment: ""))
+        var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
+        flatAndFloor?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
+        flatAndFloor?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
+       
+        return stack
+
+        
+    }()
+    public lazy var vStackFlor : UIStackView = {
+        
+        var stack = generateStackWithLabelAndField(name: NSLocalizedString("floor", comment: ""))
         var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
         flatAndFloor?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         flatAndFloor?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)

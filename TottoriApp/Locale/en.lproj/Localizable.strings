@@ -33,7 +33,8 @@
 "email" = "email";
 "street" = "street";
 "house" = "house";
-"flat_floor" = "flat and floor";
+"flat" = "flat";
+"floor" = "floor";
 "comment" = "comments";
 "pay_by_card" = "by card to the courier";
 "cash" = "by cash";
@@ -41,7 +42,7 @@
 "pay_type" = "Chose type of payment";
 "added" = "Added";
 "more" = "More";
-"thx_for_dev" = "СПАСИБО \n ЗА ЗАКАЗ! ";
+"thx_for_dev" = "Thank you \n for an order! ";
 "done_button_time" = "Done";
 "smth_went_wrong" = "Something \n went wrong";
 "data_was_changed" = "Delivery data was changed";
