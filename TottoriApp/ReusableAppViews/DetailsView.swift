@@ -7,14 +7,16 @@
 
 import UIKit
 
-class DetailsView: UIView,TwoDimenIndex {
-    public var section : Int!
-    public var index : Int!
-    private lazy var detailsLabel : UILabel = {
-        let label = UILabel()
+class DetailsView: UIView {
+//    public var section : Int!
+//    public var index : Int!
+    lazy var detailsLabel : TextWithIndexes = {
+        let label = TextWithIndexes()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font =  UIFont(name: "Gilroy-Regular", size: 14)
         label.text = NSLocalizedString("more", comment: "")
+        label.isUserInteractionEnabled = true
+//        label.backgroundColor = .red
         return label
        
         
@@ -42,6 +44,7 @@ class DetailsView: UIView,TwoDimenIndex {
     private func setConstraints(){
         detailsLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15).isActive = true
         detailsLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        detailsLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         detailsButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -12).isActive = true
         detailsButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true

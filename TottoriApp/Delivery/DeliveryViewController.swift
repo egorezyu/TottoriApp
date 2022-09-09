@@ -200,13 +200,14 @@ extension DeliveryViewController : DeliveryDelegate{
         let order = Order(orderComment: orderComment, phone: phone, flat: flat, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: floor, email: email, house: home, name: name)
         let encoder = JSONEncoder()
 
-        
-        guard let data = try? encoder.encode(order),let stringData = String(data: data, encoding: .utf8) else {
+        let json: [String: Any] = ["1":"Ankit", "2":"Krunal"]
+        guard let data = (try? encoder.encode(order)) ,let stringData = String(data: data, encoding: .utf8) else {
             return
         }
+        
 //        print(stringData)
         parameters = [
-            "ORDER": stringData
+            "ORDER": json
 
         ]
 //        print(parameters)

@@ -333,7 +333,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         
         
         aboutBeatyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16).isActive = true
-        aboutBeatyLabel.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
+        aboutBeatyLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         
         horCollectionView.topAnchor.constraint(equalTo: aboutBeatyLabel.bottomAnchor,constant: 20).isActive = true
         horCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true

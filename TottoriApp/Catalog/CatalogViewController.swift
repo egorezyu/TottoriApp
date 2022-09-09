@@ -199,9 +199,9 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
                 
                 
                 screen.addToArray(sectionList: sectionList)
-                catalog?.menuList[button.section].sectionList?[button.index].count = 1
-                let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
-                cell.foodCountView.countLabel.text = String(1)
+//                catalog?.menuList[button.section].sectionList?[button.index].count = 1
+//                let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
+//                cell.foodCountView.countLabel.text = String(1)
                 
             }
             showBasketAllert()
@@ -291,10 +291,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                 
                 
                 selectedFirstCollCellIndex = indexPath.section
+//                catalogView.collectionView.scrollToItem(at: IndexPath(row: indexPath.section, section: 0), at: .centeredHorizontally, animated: true)
                 
                 self.catalogView.collectionView.reloadData()
 
             }
+            
            
             
             
@@ -331,6 +333,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             
             //set 2-d indexes for future navigation
+            cell.detailsView.detailsLabel.index = indexPath.row
+            cell.detailsView.detailsLabel.section = indexPath.section
             cell.foodType.index = indexPath.row
             cell.imageView.index = indexPath.row
             cell.foodType.section = indexPath.section
@@ -346,10 +350,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             cell.foodCountView.decreaseAmountButton.index = indexPath.row
             cell.foodCountView.decreaseAmountButton.section = indexPath.section
             //all cell gestures
+            let sequeGestureTextChevron = UITapGestureRecognizer(target: self, action: #selector(doSequeToDishScreen(gesture:)))
             let sequeGestureImage = UITapGestureRecognizer(target: self, action: #selector(doSequeToDishScreen(gesture:)))
             let sequeGestureText = UITapGestureRecognizer(target: self, action: #selector(doSequeToDishScreen(gesture:)))
             cell.foodType.addGestureRecognizer(sequeGestureText)
             cell.imageView.addGestureRecognizer(sequeGestureImage)
+            cell.detailsView.detailsLabel.addGestureRecognizer(sequeGestureTextChevron)
             let firstTapGesture = UITapGestureRecognizer(target: self, action: #selector(firstWeightWasTapped(gesture:)))
             cell.firstWeight.addGestureRecognizer(firstTapGesture)
             let secondTapGesture = UITapGestureRecognizer(target: self, action: #selector(secondWeightWasTapped(gesture:)))
@@ -462,6 +468,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             if catalogView.secondCollectionView.contentOffset.y == 0{
 
                 selectedFirstCollCellIndex = 0
+                catalogView.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
                 catalogView.collectionView.reloadData()
 
             }
@@ -587,15 +594,25 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ){
+       
         
 
         
         if scrollView == header.favCollectionView{
+            
 
             if let array = catalog?.menuDishes{
                 setPage(targetContentOffset: targetContentOffset, array: array)
             }
             
+        }
+        else if scrollView == catalogView.secondCollectionView{
+            let arrayOfLay = catalogView.secondCollectionView.collectionViewLayout.layoutAttributesForElements(in: CGRect(x: 0, y: targetContentOffset.pointee.y, width: scrollView.frame.width, height: scrollView.frame.height))
+            let path = arrayOfLay?[(arrayOfLay?.count ?? -1) - 1].indexPath
+            
+
+
+            catalogView.collectionView.scrollToItem(at: IndexPath(row: path?.section ?? -1, section: 0), at: .centeredHorizontally, animated: true)
         }
         
         

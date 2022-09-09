@@ -64,6 +64,13 @@ class BasketViewController: UIViewController{
         backetView.basketCollectionView.reloadData()
       
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     
 
     override func viewDidLoad() {
