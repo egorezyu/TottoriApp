@@ -15,6 +15,7 @@ static func toolbarPiker(mySelect : Selector) -> UIToolbar {
 
     toolBar.barStyle = UIBarStyle.default
     toolBar.isTranslucent = true
+    toolBar.tintColor = .red
     
     
     toolBar.sizeToFit()

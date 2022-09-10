@@ -193,6 +193,11 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         
         datePicker.datePickerMode = .time
         datePicker.preferredDatePickerStyle = .wheels
+        let image =  UIImage(named: "forest")
+        if let image = image{
+            datePicker.backgroundColor = UIColor(patternImage: image)
+        }
+        
         datePicker.addTarget(self, action: #selector(changeDatePicker(sender :)), for: .valueChanged)
         return datePicker
     }()

@@ -15,9 +15,9 @@ class WeightTableViewCell: UITableViewCell {
       
 
 
-        view.textColor = UIColor(red: 0.276, green: 0.288, blue: 0.308, alpha: 1)
+        view.textColor = .black
 
-        view.font = UIFont(name: "Gilroy-Regular", size: 14)
+        view.font = UIFont(name: "Gilroy-Regular", size: 18)
         view.translatesAutoresizingMaskIntoConstraints = false
 
         var paragraphStyle = NSMutableParagraphStyle()

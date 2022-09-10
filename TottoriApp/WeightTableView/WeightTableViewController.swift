@@ -15,6 +15,8 @@ class WeightTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(WeightTableViewCell.self, forCellReuseIdentifier: WeightTableViewCell.id)
         tableView.isScrollEnabled = false
+        tableView.backgroundView = UIImageView(image: UIImage(named: "forest"))
+//        tableView.backgroundColor = .red
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -45,6 +47,7 @@ class WeightTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: WeightTableViewCell.id, for: indexPath) as! WeightTableViewCell
 //        cell.textLabel?.text = "egor"
 //        cell.backgroundColor = .red
+        cell.backgroundColor = .clear
         cell.configureCell(text: weights[indexPath.row])
         
 
