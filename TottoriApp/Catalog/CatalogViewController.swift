@@ -148,16 +148,26 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         createAndInitDishViewController(sectionList: sectionList)
         
     }
-    @objc func doSequeForNextScreenForButton(button : UIButton){
+    @objc func doSequeForNextScreenForFavDishes(gesture : NSObject){
         var sectionList : SectionList?
         var arrayOfArrays : [[SectionList]] = []
         for item in catalog!.menuList{
             arrayOfArrays.append(item.sectionList ?? [])
             
         }
-        sectionList = arrayOfArrays.joined().first(where: { element in
-            element.foodID == String(button.tag)
-        })
+        if let gesture = gesture as? UITapGestureRecognizer{
+            sectionList = arrayOfArrays.joined().first(where: { element in
+                element.foodID == String(gesture.view?.tag ?? -1)
+            })
+        }
+        if let gesture = gesture as? UIButton{
+            sectionList = arrayOfArrays.joined().first(where: { element in
+                element.foodID == String(gesture.tag)
+            })
+            
+        }
+        
+        
         createAndInitDishViewController(sectionList: sectionList)
         
         
@@ -368,8 +378,11 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             
             cell.purchaseButton.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
+            cell.image.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
             
-            cell.purchaseButton.addTarget(self, action: #selector(doSequeForNextScreenForButton(button:)), for: .touchUpInside)
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(doSequeForNextScreenForFavDishes(gesture:)))
+            cell.image.addGestureRecognizer(gesture)
+            cell.purchaseButton.addTarget(self, action: #selector(doSequeForNextScreenForFavDishes(gesture:)), for: .touchUpInside)
             
             
             
@@ -492,7 +505,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     headerCell.favCollectionView.delegate = self
                     
                     
-        
+                    
                     
                     headerCell.favCollectionView.decelerationRate = .fast
                     

@@ -15,11 +15,12 @@ class CustomFavouriteCell: UICollectionViewCell {
         setConstraints()
     }
     
-    private lazy var image : UIImageView = {
+    lazy var image : UIImageView = {
         var image = UIImageView()
         //        image.isUserInteractionEnabled = true
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
+        image.isUserInteractionEnabled = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
