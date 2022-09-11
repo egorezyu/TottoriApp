@@ -143,32 +143,37 @@ class DishView: UIView {
         return foodCountView
         
     }()
-    lazy var chevronDown : UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "chevron.down")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
+    lazy var chevronDown : UIImageView = {
+        let image = UIImageView(image: UIImage(named: "chevronL"))
+//        button.setImage(UIImage(systemName: "chevron.down")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
         
 
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(popUpButtonWasTapped(sender:)), for: .touchUpInside)
-        return button
+        image.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(popUpButtonWasTapped(sender:)), for: .touchUpInside)
+        return image
         
     }()
     public func addChevronToView(){
         addSubview(chevronDown)
-        chevronDown.trailingAnchor.constraint(equalTo: weightView.trailingAnchor,constant: -4).isActive = true
+        chevronDown.trailingAnchor.constraint(equalTo: weightView.trailingAnchor,constant: -15).isActive = true
         chevronDown.centerYAnchor.constraint(equalTo: weightView.centerYAnchor).isActive = true
-        chevronDown.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        chevronDown.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        chevronDown.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        chevronDown.heightAnchor.constraint(equalToConstant: 9).isActive = true
         
     }
    
     lazy var weightView : UILabel = {
         var view = UILabel()
+//        view.backgroundColor = .gray
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(popUpButtonWasTapped(sender:)))
         view.layer.borderWidth = 0.8
         view.layer.borderColor = UIColor.red.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textColor = UIColor.myLightGrey
+        view.isUserInteractionEnabled = true
         view.textAlignment = .center
+        view.addGestureRecognizer(gesture)
         return view
         
     }()
@@ -377,7 +382,8 @@ class DishView: UIView {
         delegate?.imageButtonTapped(sender: sender)
         
     }
-    @objc func popUpButtonWasTapped(sender : UIButton){
+    @objc func popUpButtonWasTapped(sender : UIGestureRecognizer){
+//        print("hi")
         delegate?.showPopUpMenu()
     }
     

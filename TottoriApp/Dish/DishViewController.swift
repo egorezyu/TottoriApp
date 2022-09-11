@@ -57,12 +57,15 @@ extension DishViewController : DishDelegate{
             let rateViewController = WeightTableViewController()
             rateViewController.backDataDelegate = self
             rateViewController.weights.append(sectionList.foodWeight ?? "-")
-            rateViewController.weights.append(sectionList.foodWeight2 ?? "-")
+            if let secondWeight = sectionList.foodWeight2{
+                rateViewController.weights.append(secondWeight)
+            }
+            
             rateViewController.modalTransitionStyle = .crossDissolve
             rateViewController.modalPresentationStyle = .popover
             let popOverVc = rateViewController.popoverPresentationController
             popOverVc?.delegate = self
-            popOverVc?.sourceView = dishView.chevronDown
+            popOverVc?.sourceView = dishView.weightView
             self.present(rateViewController, animated: true, completion: nil)
         }
         
