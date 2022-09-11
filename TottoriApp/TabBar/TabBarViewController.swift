@@ -15,9 +15,6 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
         tabBar.tintColor = .red
         tabBar.backgroundImage = back
         
@@ -28,20 +25,13 @@ class TabBarViewController: UITabBarController {
         let image3 = UIImage(named: "purchase")?.withTintColor(tabBarItemsColor,renderingMode:.automatic)
         
         
-        
-        
-        
         let catalogVC = UINavigationController(rootViewController: CatalogViewController())
         catalogVC.navigationBar.setBackgroundImage(back, for: .default)
-        
-        
         
         let catalogVCTabBar = UITabBarItem(title: "",image: image1, tag: 1)
         catalogVC.tabBarItem = catalogVCTabBar
         
         let aboutUsVC =  UINavigationController(rootViewController : AboutUsViewController())
-        
-        
         
         let aboutUsTabBar = UITabBarItem(title: "",image: image2, tag: 2)
         aboutUsVC.tabBarItem = aboutUsTabBar

@@ -19,19 +19,12 @@ extension UIView{
     }
     private func generateTextField(hint : String) -> UITextField{
         let textField = CustomTextFieldWithInsets()
-    
+        
         textField.placeholder = hint
         let rectangleView = UIView()
         rectangleView.backgroundColor = .gray
-        //add
         textField.addSubview(rectangleView)
         textField.textColor = .myLightGrey
-//        textField.attributedPlaceholder = NSAttributedString(
-//            string: hint,
-//            attributes: [NSAttributedString.Key.foregroundColor: UIColor.myLightGrey]
-//        )
-        
-        //constraints for bottom line
         rectangleView.translatesAutoresizingMaskIntoConstraints = false
         rectangleView.widthAnchor.constraint(equalTo: textField.widthAnchor).isActive = true
         rectangleView.heightAnchor.constraint(equalToConstant: 1).isActive = true

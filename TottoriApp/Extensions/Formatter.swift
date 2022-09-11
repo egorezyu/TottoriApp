@@ -7,32 +7,32 @@
 
 import Foundation
 extension Formatter {
-
     
-
+    
+    
     static let separator: NumberFormatter = {
-
         
-
+        
+        
         let formatter = NumberFormatter()
-
+        
         formatter.numberStyle = .decimal
-
+        
         formatter.groupingSeparator = " "
-
+        
         return formatter
-
+        
     }()
-
+    
 }
 
 
 
 
 extension Numeric {
-
     
-
+    
+    
     var formatWithSeparator: String { Formatter.separator.string(for: self)! }
-
+    
 }

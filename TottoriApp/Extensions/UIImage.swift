@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 extension UIImage {
-
     
-
+    
+    
     static public func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
         let size = image.size
         
@@ -38,5 +38,5 @@ extension UIImage {
     }
     
     
-
+    
 }

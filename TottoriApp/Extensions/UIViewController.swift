@@ -33,7 +33,7 @@ extension UIViewController{
         if let image = UIImage(named: "back"){
             view.backgroundColor = UIColor(patternImage: image)
         }
-    
+        
     }
     func showMapView(){
         let view = MapView()
@@ -44,7 +44,7 @@ extension UIViewController{
     }
     func showCustomAlert(text : String){
         
-
+        
         let view = CustomAllertView()
         view.setLabelText(text: text)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -64,8 +64,8 @@ extension UIViewController{
             
         }
         attributes.entryInteraction.customTapActions.append(action)
-
-       
+        
+        
         return attributes
     }
     private func setUpAttributesForMap() -> EKAttributes{
@@ -99,18 +99,12 @@ extension UIViewController{
             backButton.tintColor = .myLightGrey
             self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         }
-        
-        
-        
-        
-        
-        
-        
+    
     }
     
     
     
-
+    
 }
 extension ViewControllerWithViewWithStack{
     
