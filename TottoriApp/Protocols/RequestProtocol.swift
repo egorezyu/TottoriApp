@@ -7,19 +7,19 @@
 
 import Foundation
 protocol Request {
-
     
-
+    
+    
     associatedtype Response = [String: Any]
-
     
-
+    
+    
     var path: URL { get }
-
     
-
+    
+    
     func decode(with data: Data, decoder: JSONDecoder) throws -> Response
-
     
-
+    
+    
 }

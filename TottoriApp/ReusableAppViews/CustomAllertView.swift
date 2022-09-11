@@ -28,7 +28,7 @@ class CustomAllertView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
-//        label.text = "СПАСИБО \n ЗА ЗАКАЗ!"
+        //        label.text = "СПАСИБО \n ЗА ЗАКАЗ!"
         label.numberOfLines = 2
         label.textColor = .myLightGrey
         return label
@@ -77,11 +77,11 @@ class CustomAllertView: UIView {
     }
     
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

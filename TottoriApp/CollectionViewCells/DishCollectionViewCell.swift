@@ -11,7 +11,7 @@ import Kingfisher
 class DishCollectionViewCell: UICollectionViewCell {
     lazy var constraint = whiteSlide.topAnchor.constraint(equalTo: foodType.bottomAnchor,constant: 20)
     static let identifier = "DishCollectionViewCell"
-     lazy var imageView : ImageWithIndexes = {
+    lazy var imageView : ImageWithIndexes = {
         var image = ImageWithIndexes(frame: .zero)
         image.contentMode = .scaleToFill
         image.isUserInteractionEnabled = true
@@ -19,24 +19,24 @@ class DishCollectionViewCell: UICollectionViewCell {
         return image
         
     }()
-     lazy var foodType : EndFadeLabel = {
+    lazy var foodType : EndFadeLabel = {
         var label = EndFadeLabel()
         label.numberOfLines = 1
         label.lineBreakMode = .byClipping
-
+        
         label.textColor = .myLightGrey
         label.isUserInteractionEnabled = true
         
-
+        
         
         label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 22.9)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private lazy var price : UILabel = {
         var label = UILabel()
-      
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -48,8 +48,6 @@ class DishCollectionViewCell: UICollectionViewCell {
         view.layer.borderColor = UIColor.gray.cgColor
         view.layer.borderWidth = 0.8
         view.translatesAutoresizingMaskIntoConstraints = false
-//        print(frame.size.height / 2)
-//        view.frame = CGRect(x: 0, y: frame.size.height / 2, width: frame.size.width - 10, height: 20)
         return view
     }()
     lazy var firstWeight : WeightAndPriceView = {
@@ -61,14 +59,14 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     lazy var secondWeight : WeightAndPriceView = {
         let view = WeightAndPriceView()
-
+        
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return view
     }()
     
-
+    
     private lazy var holdButtonView : UIView = {
         var view = UIView()
         view.addSubview(purchaseButton)
@@ -82,7 +80,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         button.setBackgroundImage(UIImage(named: "purchase")?.withTintColor(.white,renderingMode: .alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         
-
+        
         
         return button
         
@@ -111,11 +109,11 @@ class DishCollectionViewCell: UICollectionViewCell {
     private func addSubViewS() {
         contentView.addSubview(imageView)
         contentView.addSubview(foodType)
-
+        
         contentView.addSubview(holdButtonView)
         contentView.addSubview(whiteSlide)
         contentView.addSubview(firstWeight)
-//        contentView.addSubview(secondWeight)
+        //        contentView.addSubview(secondWeight)
         contentView.addSubview(foodCountView)
         
     }
@@ -164,7 +162,7 @@ class DishCollectionViewCell: UICollectionViewCell {
         foodType.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 10).isActive = true
         foodType.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         foodType.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-
+        
         constraint.isActive = true
         whiteSlide.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 3).isActive = true
         whiteSlide.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -3).isActive = true
@@ -174,14 +172,14 @@ class DishCollectionViewCell: UICollectionViewCell {
         firstWeight.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 3).isActive = true
         firstWeight.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -3).isActive = true
         firstWeight.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
+        
         
         holdButtonView.topAnchor.constraint(equalTo: firstWeight.bottomAnchor,constant: 60).isActive = true
         holdButtonView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 15).isActive = true
         holdButtonView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         holdButtonView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
-
+        
+        
         purchaseButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
         purchaseButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         purchaseButton.centerYAnchor.constraint(equalTo: holdButtonView.centerYAnchor).isActive = true
@@ -193,9 +191,9 @@ class DishCollectionViewCell: UICollectionViewCell {
         foodCountView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         
-
-
-
+        
+        
+        
     }
     func setCellFields(sectionList : SectionList?){
         if let sectionList = sectionList {
@@ -205,11 +203,11 @@ class DishCollectionViewCell: UICollectionViewCell {
             foodCountView.countLabel.text = String(sectionList.count)
             
             NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.imageView,width: 200,aspectRatio: 1.5)
-
+            
         }
-
         
-       
+        
+        
         
         
     }

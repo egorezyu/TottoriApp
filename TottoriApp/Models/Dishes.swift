@@ -47,9 +47,9 @@ struct SectionList : Codable {
         else{
             return  String(count * (Int(foodPrice2 ?? "-1") ?? 0))
         }
-       
+        
     }
-
+    
     var isSecondWeight : Bool {
         if foodWeight2 != nil {
             return true
@@ -99,8 +99,8 @@ struct SectionList : Codable {
         
         
         
-       
-
+        
+        
         
         
     }

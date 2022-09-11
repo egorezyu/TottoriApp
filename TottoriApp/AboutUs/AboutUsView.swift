@@ -35,16 +35,16 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         label.translatesAutoresizingMaskIntoConstraints = false
         
         var paragraphStyle = NSMutableParagraphStyle()
-
+        
         paragraphStyle.lineHeightMultiple = 1.15
         label.numberOfLines = 0
-
+        
         label.lineBreakMode = .byWordWrapping
-
-
-       
-
-
+        
+        
+        
+        
+        
         label.attributedText = NSMutableAttributedString(string: NSLocalizedString("beaty", comment: ""), attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.textColor = .myLightGrey
@@ -56,13 +56,13 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         var view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont.systemFont(ofSize:  FontSizes.font14)
-
-
-   
-
-
+        
+        
+        
+        
+        
         view.textAlignment = .center
-
+        
         view.attributedText = NSMutableAttributedString(string: "レストランインテリア", attributes: [NSAttributedString.Key.kern: 2.8])
         view.textColor = .myLightGrey
         return view
@@ -82,8 +82,8 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
             label.font = UIFont(name: "FoglihtenNo06", size: 27.95)
             
             
-  
-
+            
+            
             label.textAlignment = .center
             
             label.layer.borderWidth = 1
@@ -91,7 +91,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
             label.layer.borderColor = UIColor.clear.cgColor
             label.translatesAutoresizingMaskIntoConstraints = false
             
-           
+            
             
             
             stack.addArrangedSubview(label)
@@ -99,30 +99,17 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         confirmStack(stack: stack, j: 2)
         return stack
         
-       
+        
     }()
-//    public func confirmStack(stack : UIStackView,j : Int){
-//        var dictionary : [Int : Int] = [:]
-//        dictionary[0] = j - 2
-//        dictionary[1] = j - 1
-//        dictionary[2] = j
-//        for (key,value) in dictionary{
-//            (stack.subviews[key] as! UILabel).text = String(value + 1)
-//            
-//            
-//        }
-//       
-//        
-//    }
     private lazy var tableOrderLabel : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         label.numberOfLines = 0
-
+        
         label.lineBreakMode = .byWordWrapping
         var paragraphStyle = NSMutableParagraphStyle()
-
+        
         paragraphStyle.lineHeightMultiple = 1.15
         label.attributedText = NSMutableAttributedString(string: NSLocalizedString("table_book", comment: ""), attributes: [NSAttributedString.Key.kern: 3.6, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         label.textColor = .myLightGrey
@@ -132,7 +119,6 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     public lazy var activityIndicator : UIActivityIndicatorView = {
         var activityInd = UIActivityIndicatorView()
         activityInd.translatesAutoresizingMaskIntoConstraints = false
-//        activityInd.startAnimating()
         
         activityInd.style = .large
         activityInd.color = .red
@@ -157,7 +143,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         vStack.addArrangedSubview(vStackPhone)
         vStack.addArrangedSubview(vStackTime)
         
-
+        
         
         return vStack
         
@@ -175,11 +161,11 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     }()
     
     public lazy var vStackPhone : UIStackView = {
-    
+        
         var stack = generateStackWithLabelAndField(name: NSLocalizedString("phone", comment: ""))
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
-//        phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
+        //        phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
         phoneField?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         phoneField?.addTarget(self, action: #selector(phoneTapped(sender:)), for: .touchDown)
         phoneField?.tag = 2
@@ -210,7 +196,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         var stack = generateStackWithLabelAndField(name: NSLocalizedString("time", comment: ""))
         var timeField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         
-
+        
         timeField?.tag = 3
         timeField?.inputView = timePicker
         timeField?.inputAccessoryView = toolBar
@@ -236,7 +222,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         scroll.setContentHuggingPriority(.defaultLow, for: .vertical)
         scroll.delaysContentTouches = false
         scroll.bounces = true
-      
+        
         
         return scroll
         
@@ -252,13 +238,13 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.height * 0.5 - 10)
         
-       
+        
         
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.decelerationRate = .fast
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
-
+        
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(FurnitureCollectionViewCell.self, forCellWithReuseIdentifier: FurnitureCollectionViewCell.id)
         
@@ -311,11 +297,11 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     private func setConstraints(){
         NSLayoutConstraint.activate([
             hStack.topAnchor.constraint(equalTo: horCollectionView.bottomAnchor,constant: 10),
-
+            
             hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
             hStack.heightAnchor.constraint(equalToConstant: 48)
-           
-
+            
+            
         ])
         
         for view in hStack.subviews{
@@ -347,17 +333,17 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         
         activityIndicator.centerXAnchor.constraint(equalTo: horCollectionView.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: horCollectionView.centerYAnchor).isActive = true
-      
-//
+        
+        //
         chinaSymbol.centerYAnchor.constraint(equalTo: aboutBeatyLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 15.6).isActive = true
         chinaSymbol.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -5).isActive = true
-//
+        //
         tableOrderLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 20).isActive = true
         tableOrderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
-
+        
         waitForYouLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
         waitForYouLabel.centerYAnchor.constraint(equalTo: tableOrderLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 14.8571428571).isActive = true
-//
+        //
         vStackFields.topAnchor.constraint(equalTo: tableOrderLabel.bottomAnchor,constant: 20).isActive = true
         vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
         vStackFields.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
@@ -370,9 +356,9 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         makeAnOrderButton.topAnchor.constraint(equalTo: vipView.bottomAnchor,constant: 20).isActive = true
         makeAnOrderButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
         makeAnOrderButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
-
-//
+        
+        
+        //
         aboutUsView.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 20).isActive = true
         aboutUsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         aboutUsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
@@ -380,10 +366,10 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         aboutUsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
         
-//
+        //
         
-
-
+        
+        
         
     }
     @objc func switchSelectedTextField(sender : UITextField){
@@ -418,11 +404,11 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
     }
     
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

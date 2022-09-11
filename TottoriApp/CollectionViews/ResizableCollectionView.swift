@@ -15,7 +15,7 @@ class ResizableCollectionView: UICollectionView {
         super.reloadData()
         self.invalidateIntrinsicContentSize()
     }
-
+    
     override var intrinsicContentSize: CGSize {
         return self.collectionViewLayout.collectionViewContentSize
     }

@@ -13,7 +13,7 @@ import SwiftUI
 
 
 class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
-   
+    
     
     
     
@@ -30,9 +30,9 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
     
     
     
-
-
-
+    
+    
+    
     private var catalog : Catalog?
     override func loadView() {
         super.loadView()
@@ -40,13 +40,13 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
     }
     
     
-
-
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        
         
         
         
@@ -54,29 +54,29 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         setUpCollectionView()
         setBackButtonForNavBar()
         getData()
-       
-        
-
-        
-       
-        
-
         
         
         
         
         
-
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
     
-  
     
-
-        
+    
+    
+    
     
     private func setUpCollectionView(){
         catalogView.collectionView.dataSource = self
@@ -86,7 +86,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         catalogView.secondCollectionView.register(HeaderForTitle.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForTitle.headerReuseIdentifier)
         catalogView.secondCollectionView.register(HeaderForFavDishes.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier)
         
-
+        
         
     }
     private func getData(){
@@ -111,7 +111,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
                             }
                         }
                     }
-                   
+                    
                     self.catalogView.collectionView.reloadData()
                     self.catalogView.secondCollectionView.reloadData()
                 case .failure(let error):
@@ -125,10 +125,10 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         
     }
     
-
+    
     @objc func doSequeToDishScreen(gesture : NSObject){
         
-       
+        
         let casted : TwoDimenIndex
         if gesture is UITapGestureRecognizer{
             let gestureCasted = gesture as! UITapGestureRecognizer
@@ -139,14 +139,14 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
             let buttonCasted = gesture as! ButtonWithIndexes
             casted = buttonCasted as TwoDimenIndex
         }
-
+        
         var sectionList : SectionList?
         
         var sec = catalog?.menuList[casted.section].sectionList?[casted.index]
         sec?.count = 1
         sectionList = sec
         createAndInitDishViewController(sectionList: sectionList)
-
+        
     }
     @objc func doSequeForNextScreenForButton(button : UIButton){
         var sectionList : SectionList?
@@ -160,15 +160,15 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         })
         createAndInitDishViewController(sectionList: sectionList)
         
-
-
+        
+        
     }
     @objc func increaseAmount(button : ButtonWithIndexes){
-
+        
         catalog?.menuList[button.section].sectionList?[button.index].plusCount()
         let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
         cell.foodCountView.countLabel.text = String(catalog?.menuList[button.section].sectionList?[button.index].count ?? -1)
-
+        
         
         
         
@@ -183,7 +183,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         }
         let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
         cell.foodCountView.countLabel.text = String(catalog?.menuList[button.section].sectionList?[button.index].count ?? -1)
-
+        
         
     }
     @objc func addToBasket(button : ButtonWithIndexes){
@@ -191,22 +191,19 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         if let sectionList = sectionList{
             if let thirdScreen = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]{
                 let screen = thirdScreen as! BasketViewController
-               
                 
-               
                 
-             
+                
+                
+                
                 
                 
                 screen.addToArray(sectionList: sectionList)
-//                catalog?.menuList[button.section].sectionList?[button.index].count = 1
-//                let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as! DishCollectionViewCell
-//                cell.foodCountView.countLabel.text = String(1)
                 
             }
             showBasketAllert()
         }
-   
+        
         
         
     }
@@ -217,19 +214,19 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
             if sectionList.isSecondWeight{
                 let dishView =  dVC.view as! DishView
                 dishView.addChevronToView()
-            
+                
                 
             }
             
         }
-
+        
         navigationController?.pushViewController(dVC, animated: true)
         
     }
     
-
-
-
+    
+    
+    
 }
 extension CatalogViewController : CatalogViewDelegate{
     
@@ -253,7 +250,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     }
     
     
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == catalogView.collectionView{
             return 1
@@ -267,7 +264,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         
         
     }
-   
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == catalogView.collectionView{
@@ -284,20 +281,20 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         //core of the app
         else if collectionView == catalogView.secondCollectionView{
             
-
+            
             //configure upper scrollview accoarding user scrolling
             if collectionView.isDragging{
                 
                 
                 
                 selectedFirstCollCellIndex = indexPath.section
-//                catalogView.collectionView.scrollToItem(at: IndexPath(row: indexPath.section, section: 0), at: .centeredHorizontally, animated: true)
+                //                catalogView.collectionView.scrollToItem(at: IndexPath(row: indexPath.section, section: 0), at: .centeredHorizontally, animated: true)
                 
                 self.catalogView.collectionView.reloadData()
-
+                
             }
             
-           
+            
             
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
@@ -327,8 +324,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     cell.constraint.constant = 60
                 }
             }
-
-
+            
+            
             
             
             
@@ -369,12 +366,12 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomFavouriteCell.id, for: indexPath) as! CustomFavouriteCell
             cell.configureCell(sectionList: catalog?.menuDishes[indexPath.row])
             
-           
+            
             cell.purchaseButton.tag = Int(catalog?.menuDishes[indexPath.row].foodID ?? "") ?? -1
-
+            
             cell.purchaseButton.addTarget(self, action: #selector(doSequeForNextScreenForButton(button:)), for: .touchUpInside)
             
-          
+            
             
             
             
@@ -382,8 +379,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             return cell
         }
-
-     
+        
+        
         
         
     }
@@ -400,7 +397,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
         }
         
-       
+        
         
         
     }
@@ -408,9 +405,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         let casted = gesture.view as! TwoDimenIndex
         
         
-       
+        
         catalog?.menuList[casted.section].sectionList?[casted.index].isOnFirstWeight = false
-      
+        
         let currentCell = catalogView.secondCollectionView.cellForItem(at: IndexPath(item: casted.index, section: casted.section)) as! DishCollectionViewCell
         UIView.animate(withDuration: 0.2) {
             currentCell.constraint.constant = 60
@@ -429,7 +426,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             selectedFirstCollCellIndex = indexPath.row
             
             catalogView.collectionView.reloadData()
-//            header.duplicateCollectionView.reloadData()
+            //            header.duplicateCollectionView.reloadData()
             var indexP : IndexPath
             if selectedFirstCollCellIndex == 0{
                 indexP = IndexPath(row: 0, section: 0)
@@ -442,22 +439,22 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             
             
-
+            
         }
-
         
         
         
         
-       
-      
         
         
         
         
-       
-
-       
+        
+        
+        
+        
+        
+        
         
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
@@ -466,11 +463,11 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             
             
             if catalogView.secondCollectionView.contentOffset.y == 0{
-
+                
                 selectedFirstCollCellIndex = 0
                 catalogView.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
                 catalogView.collectionView.reloadData()
-
+                
             }
         }
     }
@@ -481,28 +478,27 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if collectionView == catalogView.secondCollectionView{
             switch kind {
-
+                
             case UICollectionView.elementKindSectionHeader:
                 
                 if indexPath.section == 0{
-                   
+                    
                     let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier, for: indexPath) as! HeaderForFavDishes
                     
-
+                    
                     
                     
                     headerCell.favCollectionView.dataSource = self
                     headerCell.favCollectionView.delegate = self
-
                     
-//                    headerCell.duplicateCollectionView.dataSource = self
-//                    headerCell.duplicateCollectionView.delegate = self
+                    
+        
                     
                     headerCell.favCollectionView.decelerationRate = .fast
-
-
-                   
-                   
+                    
+                    
+                    
+                    
                     
                     self.header = headerCell
                     self.viewWithStack = header
@@ -510,27 +506,27 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
                     
                     
                     
-                   
+                    
                     
                     return headerCell
                 }
                 let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderForTitle.headerReuseIdentifier, for: indexPath) as! HeaderForTitle
                 
-               
+                
                 headerCell.textLabel.text = catalog?.menuList[indexPath.section].sectionName
                 return headerCell
                 
                 
                 
-
                 
                 
                 
-               
-                            
-               
-
-            
+                
+                
+                
+                
+                
+                
             default:
                 assert(false, "Unexpected element kind")
             }
@@ -539,15 +535,15 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return UICollectionReusableView()
         }
         
-
+        
         
     }
-   
+    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-
-     
+        
+        
         let indexPath = IndexPath(row: 0, section: section)
         _ = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
         if section == 0{
@@ -557,11 +553,11 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else{
             return CGSize(width: 0, height: UIScreen.main.bounds.height / 12)
         }
-
-     
+        
+        
     }
     
-
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -581,26 +577,26 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return CGSize(width: (catalog?.menuList[indexPath.row].sectionName.count ?? 0) * 10 + 20, height: 50)
         }
         
-
         
-
+        
+        
     }
     
     
-
-
+    
+    
     func scrollViewWillEndDragging(
         _ scrollView: UIScrollView,
         withVelocity velocity: CGPoint,
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ){
-       
         
-
+        
+        
         
         if scrollView == header.favCollectionView{
             
-
+            
             if let array = catalog?.menuDishes{
                 setPage(targetContentOffset: targetContentOffset, array: array)
             }
@@ -610,23 +606,23 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             let arrayOfLay = catalogView.secondCollectionView.collectionViewLayout.layoutAttributesForElements(in: CGRect(x: 0, y: targetContentOffset.pointee.y, width: scrollView.frame.width, height: scrollView.frame.height))
             let path = arrayOfLay?[(arrayOfLay?.count ?? -1) - 1].indexPath
             
-
-
+            
+            
             catalogView.collectionView.scrollToItem(at: IndexPath(row: path?.section ?? -1, section: 0), at: .centeredHorizontally, animated: true)
         }
         
         
-
-            
-
-       
-
-      
-    }
-
-
         
-
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
     
     
     

@@ -16,7 +16,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     
     
     private var navigationBar : UINavigationBar?
-
+    
     init(delegate : DeliveryDelegate? = nil,navigationBar : UINavigationBar?) {
         super.init(frame: .zero)
         self.navigationBar = navigationBar
@@ -35,7 +35,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         scroll.setContentHuggingPriority(.defaultLow, for: .vertical)
         scroll.delaysContentTouches = false
         scroll.bounces = true
-      
+        
         
         return scroll
         
@@ -76,7 +76,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         vStack.addArrangedSubview(vStackHouse)
         vStack.addArrangedSubview(vStackFlat)
         vStack.addArrangedSubview(vStackFlor)
-
+        
         
         return vStack
         
@@ -102,7 +102,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
                 payment.rectangleButtonView.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
             }
         }
-    
+        
     }
     
     private lazy var PayByCardView : TogleView = {
@@ -133,7 +133,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         
     }()
     public lazy var vStackPhone : UIStackView = {
-    
+        
         var stack = generateStackWithLabelAndField(name: NSLocalizedString("phone", comment: ""))
         var phoneField = (stack.subviews[1] as? CustomTextFieldWithInsets)
         phoneField?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
@@ -152,7 +152,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         
         return stack
         
-
+        
         
     }()
     public lazy var vStackStreet : UIStackView = {
@@ -160,9 +160,9 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         var street = (stack.subviews[1] as? CustomTextFieldWithInsets)
         street?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         street?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
-       
+        
         return stack
-
+        
         
     }()
     public lazy var vStackHouse : UIStackView = {
@@ -171,9 +171,9 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         house?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         house?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
         
-      
+        
         return stack
-
+        
         
     }()
     public lazy var vStackFlat : UIStackView = {
@@ -182,9 +182,9 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
         flatAndFloor?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         flatAndFloor?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
-       
+        
         return stack
-
+        
         
     }()
     public lazy var vStackFlor : UIStackView = {
@@ -193,9 +193,9 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         var flatAndFloor = (stack.subviews[1] as? CustomTextFieldWithInsets)
         flatAndFloor?.addTarget(self, action: #selector(textEditing(sender:)), for: .allEditingEvents)
         flatAndFloor?.addTarget(self, action: #selector(switchSelectedTextField(sender:)), for: .touchDown)
-       
+        
         return stack
-
+        
         
     }()
     private lazy var commentLabel : UILabel = {
@@ -226,7 +226,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         return button
         
     }()
-
+    
     private lazy var infoAboutUs : AboutUsData = {
         var view = aboutUsDataController.view
         view?.translatesAutoresizingMaskIntoConstraints = false
@@ -235,7 +235,6 @@ class DeliveryView: UIView , PhoneFieldProtocol{
     public lazy var activityIndicator : UIActivityIndicatorView = {
         var activityInd = UIActivityIndicatorView()
         activityInd.translatesAutoresizingMaskIntoConstraints = false
-//        activityInd.startAnimating()
         
         activityInd.style = .large
         activityInd.color = .red
@@ -260,7 +259,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         navigationBar?.addSubview(aboutDeliveryTimeLabel)
         
     }
-   
+    
     
     private func setConstraints(){
         if let navigationBar = navigationBar{
@@ -284,14 +283,14 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         vStackFields.topAnchor.constraint(equalTo: makeAnOrderLabel.bottomAnchor,constant: 20).isActive = true
         vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
         vStackFields.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
-
+        
         
         vStackTypeOfPay.topAnchor.constraint(equalTo: vStackFields.bottomAnchor,constant: 50).isActive = true
         vStackTypeOfPay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 30).isActive = true
         vStackTypeOfPay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -30).isActive = true
         
-  
-
+        
+        
         
         commentLabel.topAnchor.constraint(equalTo: vStackTypeOfPay.bottomAnchor,constant: 40).isActive = true
         commentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
@@ -300,7 +299,7 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         commentTextArea.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         commentTextArea.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         commentTextArea.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3).isActive = true
-
+        
         makeAnOrderButton.topAnchor.constraint(equalTo: commentTextArea.bottomAnchor,constant: 20).isActive = true
         makeAnOrderButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         makeAnOrderButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
@@ -310,19 +309,19 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
         
-
-       
+        
+        
         
         infoAboutUs.topAnchor.constraint(equalTo: makeAnOrderButton.bottomAnchor,constant: 100).isActive = true
-
+        
         infoAboutUs.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         infoAboutUs.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         infoAboutUs.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView()).isActive = true
-
+        
         infoAboutUs.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
         
-
-
+        
+        
         
         
         
@@ -347,15 +346,15 @@ class DeliveryView: UIView , PhoneFieldProtocol{
         
     }
     
-
+    
     @objc func phoneTapped(sender : UITextField){
         delegate?.phoneTextFieldTapped(sender: sender)
         
     }
-
     
-                                                      
-                                                      
+    
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -7,24 +7,24 @@
 
 import Foundation
 struct MenuListDisplayFactory {
-
     
-
+    
+    
     static func makeMenuList(information: MenuListRequest.Catalog) -> ([MenuList],[MenuDish],[SectionList]) {
-
         
-
+        
+        
         let catalog = information
         var arrayOfFullDishes : [SectionList] = []
-
+        
         var arrayOfLovelyDishes = [MenuDish]()
-
+        
         var arrayOfMenu = [MenuList]()
         arrayOfMenu.append(MenuList(sectionID: "", sectionName: NSLocalizedString("all", comment: ""),sectionList: []))
         if let menu = catalog.menuList {
             menu.forEach {
-
-
+                
+                
                 let sectionID : String = $0.sectionID ?? ""
                 let sectionName : String = $0.sectionName ?? ""
                 var sectionList : [SectionList]? = []
@@ -40,29 +40,29 @@ struct MenuListDisplayFactory {
                     let foodImage3 = $0.foodImage3
                     let foodPrice2 = $0.foodPrice2
                     let foodWeight2 = $0.foodWeight2
-//                    print(foodWeight2)
-//                    print(foodPrice2)
+                    //                    print(foodWeight2)
+                    //                    print(foodPrice2)
                     let el = SectionList(foodWeight2: foodWeight2, foodPrice2: foodPrice2, foodID: foodID, foodName: foodName, foodPrice: foodPrice, foodImage0: foodImage0, foodContent: foodContent, foodWeight: foodWeight, foodImage1: foodImage1, foodImage2: foodImame2, foodImage3: foodImage3)
                     sectionList?.append(el)
                     arrayOfFullDishes.append(el)
                     
-                   
+                    
                     
                     
                 }
-
                 
-
-               
-
                 
-
+                
+                
+                
+                
+                
                 let element = MenuList(
-
+                    
                     sectionID: sectionID, sectionName: sectionName, sectionList: sectionList)
-
+                
                 arrayOfMenu.append(element)
-
+                
             }
         }
         if let lovelyDises = catalog.menuDishes{
@@ -77,11 +77,11 @@ struct MenuListDisplayFactory {
                 
             }
         }
-
         
-
+        
+        
         return (arrayOfMenu,arrayOfLovelyDishes,arrayOfFullDishes)
-
+        
     }
-
+    
 }

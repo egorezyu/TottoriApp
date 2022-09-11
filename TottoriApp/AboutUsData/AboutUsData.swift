@@ -84,18 +84,10 @@ class AboutUsData: UIView {
         return label
         
     }
-//    private lazy var sushiLabel : UIImageView = {
-//        var image = UIImageView(image: UIImage(named: "china"))
-//        image.translatesAutoresizingMaskIntoConstraints = false
-//        image.contentMode = .scaleAspectFit
-//        return image
-//
-//
-//    }()
     lazy var deliverZone : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-       
+        
         button.titleLabel?.font = UIFont(name: "Gilroy-Bold", size: FontSizes.font14)
         
         
@@ -111,12 +103,7 @@ class AboutUsData: UIView {
     lazy var unZoom : UIButton = {
         var button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-       
-//        button.titleLabel?.font = UIFont(name: "Gilroy-Bold", size: FontSizes.font14)
         
-        
-//        button.setTitle("Зона доставки", for: .normal)
-//        button.setTitleColor(UIColor.myLightGrey, for: .normal)
         button.addTarget(self, action: #selector(unZoom(button:)), for: .touchUpInside)
         button.layer.cornerRadius = 20
         button.setBackgroundImage(UIImage(named: "zoom")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
@@ -152,7 +139,7 @@ class AboutUsData: UIView {
         addSubview(adressImage)
         addSubview(timeImage)
         map.addSubview(unZoom)
-//        sushiImage.addSubview(sushiLabel)
+        //        sushiImage.addSubview(sushiLabel)
         
     }
     private func setConstraints(){
@@ -177,12 +164,6 @@ class AboutUsData: UIView {
         sushiImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3).isActive = true
         sushiImage.heightAnchor.constraint(equalToConstant: UIView.getHeightOfAboutUsDataView() * 0.125).isActive = true
         
-//        sushiLabel.centerXAnchor.constraint(equalTo: sushiImage.centerXAnchor).isActive = true
-//        sushiLabel.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true
-//        
-//        sushiLabel.widthAnchor.constraint(equalTo: sushiImage.widthAnchor).isActive = true
-//        sushiLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
         title.centerYAnchor.constraint(equalTo: sushiImage.centerYAnchor).isActive = true
         title.topAnchor.constraint(equalTo: deliverZone.bottomAnchor,constant: 80).isActive = true
         firstVStack.topAnchor.constraint(equalTo: sushiImage.bottomAnchor,constant: 20).isActive = true
@@ -202,7 +183,7 @@ class AboutUsData: UIView {
         
     }
     @objc func linkWatTapped(gest : UITapGestureRecognizer){
-       
+        
         delegate?.linkWasTapped(gest: gest)
         
     }
@@ -214,11 +195,11 @@ class AboutUsData: UIView {
     }
     
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

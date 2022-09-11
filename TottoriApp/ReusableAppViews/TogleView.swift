@@ -49,13 +49,13 @@ class TogleView: UIView {
         addSubview(text)
         rectangleButtonView.addSubview(cicleView)
         
-       
+        
         
     }
     private func setConstraints(){
         rectangleButtonView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         rectangleButtonView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-      
+        
         rectangleButtonView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         rectangleButtonView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 9.75).isActive = true
         
@@ -78,13 +78,13 @@ class TogleView: UIView {
     public func clearCircle(){
         cicleView.isHidden = true
     }
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

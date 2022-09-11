@@ -24,7 +24,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textColor = UIColor.myLightGrey
         
-       
+        
         label.numberOfLines = 2
         return label
         
@@ -33,11 +33,11 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var price : UILabel = {
         let view = UILabel()
         
-
-       
+        
+        
         view.translatesAutoresizingMaskIntoConstraints = false
-
-       
+        
+        
         
         return view
     }()
@@ -52,7 +52,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
     private lazy var vStack : UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-
+        
         
         stack.distribution = .equalSpacing
         
@@ -124,7 +124,7 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(controlAmountView)
         contentView.addSubview(deleteFoodButton)
-
+        
         contentView.addSubview(vStack)
         
         
@@ -143,10 +143,10 @@ class OrderCollectionViewCell: UICollectionViewCell {
         
         vStack.trailingAnchor.constraint(equalTo: controlAmountView.leadingAnchor).isActive = true
         vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -20).isActive = true
-
-       
         
-       
+        
+        
+        
         
         controlAmountView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
         controlAmountView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true

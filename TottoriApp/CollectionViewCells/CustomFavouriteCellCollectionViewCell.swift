@@ -14,10 +14,10 @@ class CustomFavouriteCell: UICollectionViewCell {
         addView()
         setConstraints()
     }
-
+    
     private lazy var image : UIImageView = {
         var image = UIImageView()
-//        image.isUserInteractionEnabled = true
+        //        image.isUserInteractionEnabled = true
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +26,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     private lazy var title : UILabel = {
         let title = UILabel()
         title.font = UIFont(name: "Gilroy", size: UIScreen.main.bounds.width / 24.375)
-//        title.isUserInteractionEnabled = true
+        //        title.isUserInteractionEnabled = true
         title.textColor = .myLightGrey
         title.textAlignment = .left
         title.numberOfLines = 0
@@ -47,7 +47,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         view.textAlignment = .center
         
         view.textAlignment = .center
-      
+        
         
         return view
     }()
@@ -67,12 +67,12 @@ class CustomFavouriteCell: UICollectionViewCell {
         view.layer.borderColor = UIColor.red.cgColor
         view.layer.borderWidth = 0.8
         view.translatesAutoresizingMaskIntoConstraints = false
-       
-
         
-       
         
-       
+        
+        
+        
+        
         
         return view
     }()
@@ -82,7 +82,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myLightGrey
-
+        
         return label
         
     }()
@@ -97,7 +97,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         textView.textColor = UIColor.myLightGrey
         textView.textContainer.maximumNumberOfLines = 5
         
-       
+        
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return textView
     }()
@@ -105,7 +105,7 @@ class CustomFavouriteCell: UICollectionViewCell {
     
     
     private func addView(){
-
+        
         contentView.addSubview(image)
         contentView.addSubview(title)
         title.addSubview(underLine)
@@ -119,8 +119,8 @@ class CustomFavouriteCell: UICollectionViewCell {
         
     }
     private func setConstraints(){
-
-
+        
+        
         image.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 20).isActive = true
         image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
         image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
@@ -151,12 +151,12 @@ class CustomFavouriteCell: UICollectionViewCell {
         
         descriptionLabel.topAnchor.constraint(equalTo: vStack.bottomAnchor,constant: 20).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
-
+        
         descriptionText.topAnchor.constraint(equalTo: vStack.bottomAnchor,constant: 20).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
-
+        
         descriptionText.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.6).isActive = true
-
+        
         
     }
     func configureCell(sectionList : MenuDish?){
@@ -173,7 +173,7 @@ class CustomFavouriteCell: UICollectionViewCell {
         
         
     }
-
+    
     
     
     required init?(coder: NSCoder) {

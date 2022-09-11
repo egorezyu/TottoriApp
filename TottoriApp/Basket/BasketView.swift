@@ -50,7 +50,7 @@ class BasketView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.register(OrderCollectionViewCell.self, forCellWithReuseIdentifier: OrderCollectionViewCell.identifier)
-     
+        
         
         
         
@@ -71,7 +71,7 @@ class BasketView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = NSLocalizedString("summary", comment: "") + ":"
         view.textColor = UIColor(red: 0.275, green: 0.286, blue: 0.31, alpha: 1)
-
+        
         view.font = UIFont(name: "Gilroy-Medium", size: 20)
         return view
     }()
@@ -96,8 +96,8 @@ class BasketView: UIView {
     }
     
     
-
-   
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -137,5 +137,5 @@ class BasketView: UIView {
         delegate?.toDeliveryScreen()
         
     }
-
+    
 }

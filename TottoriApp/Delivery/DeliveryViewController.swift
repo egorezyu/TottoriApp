@@ -27,7 +27,7 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
     override func loadView() {
         self.view = devView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -40,7 +40,7 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
         
         
         
-
+        
         // Do any additional setup after loading the view.
     }
     private func setUserDefaultsData(){
@@ -81,18 +81,18 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
     private func showTabBarView(){
         tabBarController?.tabBar.isHidden = false
     }
-
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension DeliveryViewController : DeliveryDelegate{
     func phoneTextFieldTapped(sender: UITextField) {
@@ -140,7 +140,7 @@ extension DeliveryViewController : DeliveryDelegate{
                 let removeOccPhone = phone.replacingOccurrences(of:"[^0-9]", with: "",options: .regularExpression)
                 
                 if (removeOccPhone.phoneIsValid()){
-    
+                    
                     if selectedPayView != nil {
                         devView.makeAnOrderButton.isEnabled = true
                         userInfo = UserInfo(name: name, phone: phone, mail: email?.text ?? "", street: street?.text ?? "", home: home?.text ?? "", floor: floor?.text ?? "",flat: flat?.text ?? "")
@@ -165,11 +165,11 @@ extension DeliveryViewController : DeliveryDelegate{
             
             
         }
-    
+        
     }
     @objc func dismissKeyboard() {
-       //Causes the view (or one of its embedded text fields) to resign the first responder status.
-       view.endEditing(true)
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     
@@ -199,19 +199,19 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         let order = Order(orderComment: orderComment, phone: phone, flat: flat, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: floor, email: email, house: home, name: name)
         let encoder = JSONEncoder()
-
-        let json: [String: Any] = ["1":"Ankit", "2":"Krunal"]
-        guard let data = (try? encoder.encode(order)) ,let stringData = String(data: data, encoding: .utf8) else {
-            return
-        }
         
-//        print(stringData)
+        let json: [String: Any] = ["1":"Ankit", "2":"Krunal"]
+//        guard let data = (try? encoder.encode(order)) ,let stringData = String(data: data, encoding: .utf8) else {
+//            return
+//        }
+        
+        //        print(stringData)
         parameters = [
             "ORDER": json
-
+            
         ]
-//        print(parameters)
-//        print(parameters["ORDER"])
+        //        print(parameters)
+        //        print(parameters["ORDER"])
         
         
         guard let model = userInfo,
@@ -220,49 +220,49 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         if let data = UserDefaults.standard.data(forKey: userDefaultUserInfoId),
            let decodedData = try? JSONDecoder().decode(UserInfo.self, from: data)
-
+            
         {
             if decodedData != model{
                 showChangeAlert(dataToChange: encodedData)
             }
             else{
-//                showOkAlert()
+                //                showOkAlert()
                 controlUserButtonServerTouchAlgo()
-
-
-
+                
+                
+                
             }
-
-
-
-
-
-
-
-
+            
+            
+            
+            
+            
+            
+            
+            
         }
         else{
             UserDefaults.standard.set(encodedData, forKey: userDefaultUserInfoId)
             controlUserButtonServerTouchAlgo()
-
-
+            
+            
         }
         backetViewBackDataDelegate?.clearAllBasket()
         
         
         
-       
+        
     }
     private func showChangeAlert(dataToChange : Data){
         let alert = UIAlertController(title: nil, message: NSLocalizedString("data_was_changed", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("save_data", comment: ""), style: .default, handler: { action in
             UserDefaults.standard.set(dataToChange, forKey: self.userDefaultUserInfoId)
             self.controlUserButtonServerTouchAlgo()
-           
+            
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("dont_save", comment: ""), style: .default, handler: { action in
             self.controlUserButtonServerTouchAlgo()
-           
+            
         }))
         present(alert,animated: true)
         
@@ -276,8 +276,8 @@ extension DeliveryViewController : DeliveryDelegate{
             DispatchQueue.main.async {
                 self.devView.activityIndicator.stopAnimating()
                 switch result{
-
-                
+                    
+                    
                 case .success(_):
                     self.showCustomAlert(text:NSLocalizedString("thx_for_dev", comment: ""))
                     
@@ -286,13 +286,13 @@ extension DeliveryViewController : DeliveryDelegate{
                     
                 }
             }
-           
+            
         }
         
     }
-
-
-
+    
+    
+    
     
 }
 

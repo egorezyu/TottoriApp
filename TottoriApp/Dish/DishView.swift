@@ -17,7 +17,7 @@ import UIKit
 
 class DishView: UIView {
     weak var delegate : DishDelegate?
-
+    
     init(subscriber : DishDelegate? = nil){
         super.init(frame: .zero)
         self.delegate = subscriber
@@ -34,7 +34,7 @@ class DishView: UIView {
         label.textColor = UIColor.myLightGrey
         
         label.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
- 
+        
         return label
         
     }()
@@ -45,7 +45,7 @@ class DishView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-      
+        
         return image
     }()
     private lazy var hStack : UIStackView = {
@@ -62,7 +62,7 @@ class DishView: UIView {
             button.titleLabel?.font = UIFont(name: "FoglihtenNo06", size: 27.95)
             
             
-  
+            
             button.setTitle(String(0) + String(i + 1), for: .normal)
             
             button.layer.borderWidth = 1
@@ -99,7 +99,7 @@ class DishView: UIView {
         label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myLightGrey
-
+        
         return label
         
     }()
@@ -112,7 +112,7 @@ class DishView: UIView {
         textView.textAlignment = .right
         textView.backgroundColor = .clear
         textView.textColor = UIColor.myLightGrey
-       
+        
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         return textView
     }()
@@ -145,11 +145,9 @@ class DishView: UIView {
     }()
     lazy var chevronDown : UIImageView = {
         let image = UIImageView(image: UIImage(named: "chevronL"))
-//        button.setImage(UIImage(systemName: "chevron.down")?.withTintColor(.red,renderingMode: .alwaysOriginal), for: .normal)
         
-
+        
         image.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(popUpButtonWasTapped(sender:)), for: .touchUpInside)
         return image
         
     }()
@@ -161,10 +159,9 @@ class DishView: UIView {
         chevronDown.heightAnchor.constraint(equalToConstant: 9).isActive = true
         
     }
-   
+    
     lazy var weightView : UILabel = {
         var view = UILabel()
-//        view.backgroundColor = .gray
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(popUpButtonWasTapped(sender:)))
         view.layer.borderWidth = 0.8
@@ -184,7 +181,7 @@ class DishView: UIView {
         view.layer.borderWidth = 0.8
         view.layer.borderColor = UIColor.red.cgColor
         view.textAlignment = .center
-      
+        
         
         return view
     }()
@@ -196,7 +193,7 @@ class DishView: UIView {
         scroll.setContentHuggingPriority(.defaultLow, for: .vertical)
         scroll.delaysContentTouches = false
         scroll.bounces = true
-      
+        
         
         return scroll
         
@@ -215,7 +212,7 @@ class DishView: UIView {
         contentView.addSubview(controlAmountView)
         contentView.addSubview(weightView)
         contentView.addSubview(priceView)
-
+        
         
         return contentView
     }()
@@ -227,7 +224,7 @@ class DishView: UIView {
         scrollView.addSubview(mainView)
         addSubview(scrollView)
         
-       
+        
         
         
         
@@ -243,7 +240,7 @@ class DishView: UIView {
         mainView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         mainView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-
+        
         label.topAnchor.constraint(equalTo: mainView.topAnchor,constant: 10).isActive = true
         
         
@@ -252,74 +249,70 @@ class DishView: UIView {
         label.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
         label.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
         
-//
+        //
         foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 5).isActive = true
         foodImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
         foodImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
         foodImage.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)).isActive = true
         
-//
+        //
         hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
         hStack.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
-//
+        //
         forwardButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 20).isActive = true
         forwardButton.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
         forwardButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1).isActive = true
         forwardButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-  
-
+        
+        
         backButton.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 20).isActive = true
         backButton.trailingAnchor.constraint(equalTo: forwardButton.leadingAnchor,constant: -17).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-
+        
         descriptionLabel.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 40).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
-
+        
         descriptionText.topAnchor.constraint(equalTo: hStack.bottomAnchor,constant: 40).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
-
+        
         descriptionText.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.6).isActive = true
-
+        
         for view in arrayOfNumbers{
             view.widthAnchor.constraint(equalToConstant: 48).isActive = true
             view.heightAnchor.constraint(equalToConstant: 48).isActive = true
         }
-
+        
         priceView.topAnchor.constraint(equalTo: weightView.bottomAnchor,constant: 20).isActive = true
         priceView.leadingAnchor.constraint(equalTo : mainView.leadingAnchor,constant: 20).isActive = true
         priceView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7).isActive = true
         priceView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         
         priceView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor,constant: -20).isActive = true
-
+        
         holdButtonView.topAnchor.constraint(equalTo: weightView.bottomAnchor,constant: 20).isActive = true
-       holdButtonView.leadingAnchor.constraint(equalTo : priceView.trailingAnchor).isActive = true
+        holdButtonView.leadingAnchor.constraint(equalTo : priceView.trailingAnchor).isActive = true
         holdButtonView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
-       holdButtonView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
-
-
+        holdButtonView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+        
+        
         purchaseButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         purchaseButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         purchaseButton.centerYAnchor.constraint(equalTo: holdButtonView.centerYAnchor).isActive = true
         purchaseButton.centerXAnchor.constraint(equalTo: holdButtonView.centerXAnchor).isActive = true
-
-
-       controlAmountView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 50).isActive = true
+        
+        
+        controlAmountView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 50).isActive = true
         controlAmountView.trailingAnchor.constraint(equalTo : mainView.trailingAnchor,constant: -20).isActive = true
-       controlAmountView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
-       controlAmountView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
-//        chevronDown.trailingAnchor.constraint(equalTo: weightView.trailingAnchor,constant: -20).isActive = true
-//        chevronDown.centerYAnchor.constraint(equalTo: weightView.centerYAnchor).isActive = true
-//        chevronDown.widthAnchor.constraint(equalToConstant: 40).isActive = true
-//        chevronDown.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
+        controlAmountView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.4).isActive = true
+        controlAmountView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
+        
         weightView.topAnchor.constraint(equalTo: descriptionText.bottomAnchor,constant: 50).isActive = true
         weightView.trailingAnchor.constraint(equalTo : controlAmountView.leadingAnchor).isActive = true
-
+        
         weightView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.07).isActive = true
         weightView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
-
+        
         
         
         
@@ -337,15 +330,15 @@ class DishView: UIView {
     func setValues(sectionList : SectionList){
         self.label.text = sectionList.foodName
         
-
+        
         self.descriptionText.text = sectionList.foodContent.removingHTMLOccurances
         setPriceWeightNumber(sectionList: sectionList)
         
         
         NetworkManager.shared.setImageFromUrl(url: sectionList.foodImage1, imageView: self.foodImage,width: 200,aspectRatio: 1.5)
-       
         
-       
+        
+        
         
     }
     func setPriceWeightNumber(sectionList : SectionList){
@@ -363,7 +356,7 @@ class DishView: UIView {
         
     }
     @objc func backButtonWasTapped(sender : UIButton){
-
+        
         delegate?.backButtonAction()
         
     }
@@ -383,17 +376,17 @@ class DishView: UIView {
         
     }
     @objc func popUpButtonWasTapped(sender : UIGestureRecognizer){
-//        print("hi")
+        
         delegate?.showPopUpMenu()
     }
     
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

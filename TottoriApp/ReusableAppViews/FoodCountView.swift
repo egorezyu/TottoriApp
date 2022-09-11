@@ -31,13 +31,13 @@ class FoodCountView: UIView {
         return image
         
     }()
-
+    
     public lazy var increaseAmountButton : ButtonWithIndexes = {
         let button = ButtonWithIndexes()
         
         
         button.translatesAutoresizingMaskIntoConstraints = false
-       
+        
         return button
         
     }()
@@ -68,9 +68,9 @@ class FoodCountView: UIView {
         stack.addArrangedSubview(countLabel)
         stack.addArrangedSubview(increaseAmountButton)
         stack.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return stack
-
+        
     }()
     
     required init?(coder: NSCoder) {
@@ -82,15 +82,15 @@ class FoodCountView: UIView {
         addSubview(countLabel)
         decreaseAmountButton.addSubview(minusImage)
         increaseAmountButton.addSubview(plusImage)
-
+        
         
         
     }
     private func setConstraints(){
-
+        
         countLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         countLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-
+        
         decreaseAmountButton.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor,constant: -5).isActive = true
         decreaseAmountButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         decreaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -110,7 +110,7 @@ class FoodCountView: UIView {
         minusImage.widthAnchor.constraint(equalToConstant: 15).isActive = true
         
         
-
+        
         increaseAmountButton.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor,constant: 5).isActive = true
         increaseAmountButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         increaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -118,7 +118,7 @@ class FoodCountView: UIView {
         
         
         
-      
+        
         
         
         
@@ -129,7 +129,7 @@ class FoodCountView: UIView {
         layer.borderWidth = 0.8
     }
     
-
     
-
+    
+    
 }

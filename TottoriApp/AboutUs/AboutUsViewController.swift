@@ -19,7 +19,7 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
         self.view = aboutUsView
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -29,7 +29,7 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
         controlButtonStateAlgo()
         setDelegateForCollectionView()
         getDesignData()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -51,7 +51,7 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
             }
             
             
-           
+            
         }
         
     }
@@ -60,8 +60,8 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
         aboutUsView.horCollectionView.dataSource = self
     }
     @objc func dismissKeyboard() {
-       //Causes the view (or one of its embedded text fields) to resign the first responder status.
-       view.endEditing(true)
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func controlButtonStateAlgo(){
@@ -75,11 +75,11 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
                 let removeOccPhone = phone.replacingOccurrences(of:"[^0-9]", with: "",options: .regularExpression)
                 
                 if (removeOccPhone.phoneIsValid()){
-    
+                    
                     
                     aboutUsView.makeAnOrderButton.isEnabled = true
-                        
-                        
+                    
+                    
                     
                     
                     
@@ -97,24 +97,24 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
             
             
         }
-    
+        
     }
-   
+    
 }
 
 //Calls this function when the tap is recognized.
 
-    
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate{
@@ -146,11 +146,11 @@ extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate
         controlButtonStateAlgo()
         
     }
-  
+    
     
     
     func switchTogle(sender: UIButton) {
-
+        
         if isToggled{
             aboutUsView.vipView.clearCircle()
         }
@@ -166,7 +166,7 @@ extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate
         if sender.text == ""{
             sender.text = "+7"
         }
-
+        
     }
     func textEditing(sender: UITextField) {
         if sender === (aboutUsView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets){
@@ -199,22 +199,22 @@ extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataS
         targetContentOffset: UnsafeMutablePointer<CGPoint>
     ){
         
-
+        
         
         if scrollView == aboutUsView.horCollectionView{
-
+            
             setPage(targetContentOffset: targetContentOffset, array: arrayOfDesignItems)
             
             
         }
         
         
-
-            
-
-       
-
-      
+        
+        
+        
+        
+        
+        
     }
     
     

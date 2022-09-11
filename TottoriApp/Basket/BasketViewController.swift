@@ -8,7 +8,7 @@
 import UIKit
 
 class BasketViewController: UIViewController{
-
+    
     private var currentBusketCount = 0
     private var maxCount = 10
     private lazy var myTabBarController = (tabBarController as! TabBarViewController)
@@ -36,14 +36,14 @@ class BasketViewController: UIViewController{
                 else{
                     finalSectionList.addAmountToCount(count: maxCount)
                 }
-
-
-
+                
+                
+                
             }
-
-           
             
-           
+            
+            
+            
             arrayOfPurchases.append(finalSectionList)
             arrayOfPurchases.remove(at: index)
             
@@ -52,7 +52,7 @@ class BasketViewController: UIViewController{
             arrayOfPurchases.append(sectionList)
             
             currentBusketCount = currentBusketCount + 1
-
+            
             
             
             
@@ -62,7 +62,7 @@ class BasketViewController: UIViewController{
         setSum()
         backetView.toDeliveryScreenButton.isEnabled = true
         backetView.basketCollectionView.reloadData()
-      
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
@@ -72,21 +72,21 @@ class BasketViewController: UIViewController{
     }
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackGround()
         setDataSourceAndDelegate()
         setBackButtonForNavBar()
-       
-        
-   
         
         
-
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
-   
+    
     
     private func setDataSourceAndDelegate(){
         backetView.basketCollectionView.dataSource = self
@@ -107,8 +107,8 @@ class BasketViewController: UIViewController{
         
         
         
-    
-    
+        
+        
         
         
     }
@@ -120,7 +120,7 @@ class BasketViewController: UIViewController{
             
             arrayOfPurchases[elementIndex].plusCount()
             
-         
+            
             backetView.basketCollectionView.reloadData()
             setSum()
             myTabBarController.tabBar.items?[2].badgeValue = String(getSum()) + " ₽"
@@ -160,7 +160,7 @@ class BasketViewController: UIViewController{
         if let elementIndex = elementIndex{
             arrayOfPurchases[elementIndex].minusFunc()
             
-
+            
             myTabBarController.tabBar.items?[2].badgeValue = String(getSum()) + " ₽"
             if arrayOfPurchases[elementIndex].count == 0{
                 deleteCellProc(index: elementIndex)
@@ -169,22 +169,22 @@ class BasketViewController: UIViewController{
             
             setSum()
             backetView.basketCollectionView.reloadData()
-           
             
             
-           
+            
+            
             
             
         }
         
-
+        
     }
     
-
     
     
-
-
+    
+    
+    
 }
 extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -195,16 +195,16 @@ extension BasketViewController : UICollectionViewDelegate,UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OrderCollectionViewCell.identifier, for: indexPath) as! OrderCollectionViewCell
         cell.deleteFoodButton.addTarget(self, action: #selector(deleteCell(sender:)), for: .touchUpInside)
         cell.deleteFoodButton.section = arrayOfPurchases[indexPath.row].isOnFirstWeight ? 1 : 0
-       
+        
         
         
         cell.controlAmountView.decreaseAmountButton.addTarget(self, action: #selector(decrease(sender:)), for: .touchUpInside)
         cell.controlAmountView.decreaseAmountButton.section = arrayOfPurchases[indexPath.row].isOnFirstWeight ? 1 : 0
         cell.controlAmountView.increaseAmountButton.addTarget(self, action: #selector(increase(sender:)), for: .touchUpInside)
         cell.controlAmountView.increaseAmountButton.section = arrayOfPurchases[indexPath.row].isOnFirstWeight ? 1 : 0
-
+        
         cell.setValues(sectionList: arrayOfPurchases[indexPath.row])
-     
+        
         return cell
     }
     

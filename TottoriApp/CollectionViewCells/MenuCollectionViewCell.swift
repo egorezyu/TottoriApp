@@ -15,12 +15,12 @@ class MenuCollectionViewCell: UICollectionViewCell {
         typeLabel.font = UIFont(name: "Gilroy", size: FontSizes.font13)
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         return typeLabel
-
+        
     }()
     override init(frame : CGRect){
         super.init(frame: frame)
         configureBorder()
-      
+        
         contentView.addSubview(typeLabel)
         setConstraints()
         
@@ -44,6 +44,6 @@ class MenuCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-     
+    
     
 }

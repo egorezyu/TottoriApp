@@ -8,24 +8,24 @@
 import UIKit
 
 class DetailsView: UIView {
-//    public var section : Int!
-//    public var index : Int!
+    //    public var section : Int!
+    //    public var index : Int!
     lazy var detailsLabel : TextWithIndexes = {
         let label = TextWithIndexes()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font =  UIFont(name: "Gilroy-Regular", size: 14)
         label.text = NSLocalizedString("more", comment: "")
         label.isUserInteractionEnabled = true
-//        label.backgroundColor = .red
+        //        label.backgroundColor = .red
         return label
-       
+        
         
     }()
     lazy var detailsButton : ButtonWithIndexes = {
         let button = ButtonWithIndexes()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(systemName: "chevron.right")?.withTintColor(.black,renderingMode: .alwaysOriginal), for: .normal)
-//        button.backgroundColor = .red
+        //        button.backgroundColor = .red
         return button
         
     }()
@@ -57,13 +57,13 @@ class DetailsView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

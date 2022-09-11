@@ -17,14 +17,14 @@ class DishViewController: UIViewController {
         setValuesForView()
         view = dishView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackGround()
-       
         
         
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -37,19 +37,19 @@ class DishViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
-   
     
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension DishViewController : DishDelegate{
     func showPopUpMenu() {
@@ -87,7 +87,7 @@ extension DishViewController : DishDelegate{
     
     func backButtonAction() {
         currentPhotoChoose = currentPhotoChoose - 1
-
+        
         if (currentPhotoChoose == -1){
             dishView.arrayOfNumbers[0].layer.borderColor = UIColor.clear.cgColor
             dishView.arrayOfNumbers[dishView.arrayOfNumbers.count - 1].layer.borderColor = UIColor.red.cgColor
@@ -148,9 +148,9 @@ extension DishViewController : DishDelegate{
         if let sectionList = sectionList{
             let basketViewController = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]
             (basketViewController as? BasketViewController)?.addToArray(sectionList: sectionList)
-
+            
             navigationController?.popViewController(animated: true)
-
+            
             
             
             
@@ -175,7 +175,7 @@ extension DishViewController : DishDelegate{
             sectionList?.count = 1
         }
         setAllFieldsForControlCountView()
-       
+        
         
         
     }

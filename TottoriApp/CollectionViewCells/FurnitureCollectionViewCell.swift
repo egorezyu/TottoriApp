@@ -19,7 +19,7 @@ class FurnitureCollectionViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
-//        image.clipsToBounds = true
+        //        image.clipsToBounds = true
         return image
         
         
@@ -40,7 +40,7 @@ class FurnitureCollectionViewCell: UICollectionViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-
+        
         return image
         
         
@@ -78,17 +78,17 @@ class FurnitureCollectionViewCell: UICollectionViewCell {
         littleImage.topAnchor.constraint(equalTo: bigText.bottomAnchor).isActive = true
         littleImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         littleImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -15).isActive = true
-       
+        
         littleImage.widthAnchor.constraint(equalToConstant: frame.width * 0.4).isActive = true
         
         littleText.leadingAnchor.constraint(equalTo: littleImage.trailingAnchor,constant: 20).isActive = true
         littleText.centerYAnchor.constraint(equalTo: littleImage.centerYAnchor).isActive = true
         littleText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -10).isActive = true
-//        littleText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -5).isActive = true
+        //        littleText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -5).isActive = true
         
         
     }
-
+    
     func configureCell(item : ElemBlock){
         NetworkManager.shared.setImageFromUrl(url: item.bigPicture, imageView: self.bigImage,width: 1000,aspectRatio: 1.4)
         self.bigText.text = item.textContent1

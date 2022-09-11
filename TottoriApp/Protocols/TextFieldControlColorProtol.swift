@@ -19,7 +19,7 @@ extension TextFieldControlColorProtocol{
         }
         else{
             currentField.subviews[0].backgroundColor = .red
-           
+            
         }
         selectedTextField = currentField
         

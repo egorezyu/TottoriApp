@@ -15,12 +15,12 @@ class DuplicateCollectionViewCell: UICollectionViewCell {
         typeLabel.font = UIFont(name: "Gilroy", size: FontSizes.font13)
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         return typeLabel
-
+        
     }()
     override init(frame : CGRect){
         super.init(frame: frame)
         configureBorderAndColor()
-      
+        
         contentView.addSubview(typeLabel)
         setConstraints()
         
