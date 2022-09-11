@@ -11,22 +11,22 @@ class WeightTableViewCell: UITableViewCell {
     static let id = "WeightTableViewCell"
     private lazy var label : UILabel = {
         var view = UILabel()
-
-      
-
-
+        
+        
+        
+        
         view.textColor = .black
-
+        
         view.font = UIFont(name: "Gilroy-Regular", size: 18)
         view.translatesAutoresizingMaskIntoConstraints = false
-
+        
         var paragraphStyle = NSMutableParagraphStyle()
-
+        
         paragraphStyle.lineHeightMultiple = 1.07
         return view
-
-
-
+        
+        
+        
         
         
     }()
@@ -40,7 +40,7 @@ class WeightTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -60,11 +60,11 @@ class WeightTableViewCell: UITableViewCell {
     public func configureCell(text : String){
         label.text = text
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
