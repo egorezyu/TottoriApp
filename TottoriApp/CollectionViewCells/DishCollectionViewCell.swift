@@ -19,11 +19,14 @@ class DishCollectionViewCell: UICollectionViewCell {
         return image
         
     }()
-     lazy var foodType : TextWithIndexes = {
-        var label = TextWithIndexes()
+     lazy var foodType : EndFadeLabel = {
+        var label = EndFadeLabel()
+        label.numberOfLines = 1
+        label.lineBreakMode = .byClipping
 
         label.textColor = .myLightGrey
         label.isUserInteractionEnabled = true
+        
 
         
         label.font = UIFont(name: "FoglihtenNo06", size: UIScreen.main.bounds.width / 22.9)

@@ -22,6 +22,8 @@
 		E41C6764287F3720001FD5B2 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */; };
 		E41C6766287F3806001FD5B2 /* Gilroy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */; };
 		E423CD0128C79CD800A8D7D8 /* TwoDimenIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E423CD0028C79CD800A8D7D8 /* TwoDimenIndex.swift */; };
+		E423CD0528CDF54300A8D7D8 /* EndFadeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E423CD0428CDF54300A8D7D8 /* EndFadeLabel.swift */; };
+		E423CD0728CDF61E00A8D7D8 /* InvertedGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E423CD0628CDF61E00A8D7D8 /* InvertedGradientLayer.swift */; };
 		E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C89F288C82030036479C /* DeliveryViewController.swift */; };
 		E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A1288D7DB70036479C /* DeliveryView.swift */; };
 		E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */; };
@@ -117,6 +119,8 @@
 		E41C6763287F3720001FD5B2 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		E41C6765287F3806001FD5B2 /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.ttf"; sourceTree = "<group>"; };
 		E423CD0028C79CD800A8D7D8 /* TwoDimenIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoDimenIndex.swift; sourceTree = "<group>"; };
+		E423CD0428CDF54300A8D7D8 /* EndFadeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndFadeLabel.swift; sourceTree = "<group>"; };
+		E423CD0628CDF61E00A8D7D8 /* InvertedGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedGradientLayer.swift; sourceTree = "<group>"; };
 		E433C89F288C82030036479C /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		E433C8A1288D7DB70036479C /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDelegate.swift; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 				E4085C4128C50C92003B4B75 /* ImageWithIndexes.swift */,
 				E4085C4328C50C9F003B4B75 /* TextWithIndexes.swift */,
 				E45857A328C771700017D99F /* DetailsView.swift */,
+				E423CD0428CDF54300A8D7D8 /* EndFadeLabel.swift */,
+				E423CD0628CDF61E00A8D7D8 /* InvertedGradientLayer.swift */,
 			);
 			path = ReusableAppViews;
 			sourceTree = "<group>";
@@ -641,6 +647,7 @@
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,
 				E43C7FE428847F3F001F6D8C /* BasketView.swift in Sources */,
+				E423CD0528CDF54300A8D7D8 /* EndFadeLabel.swift in Sources */,
 				E48DBAC328A5469C00B65644 /* AboutUsDataDelegate.swift in Sources */,
 				E4928BDD28BDED6A004AAE3E /* HideTobBarViewController.swift in Sources */,
 				E4A93C022897EA920017F326 /* UILabel.swift in Sources */,
@@ -675,6 +682,7 @@
 				E4CEED1628A280B4004A1BEE /* AboutUsView.swift in Sources */,
 				E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */,
 				E43C7FD82882D5DC001F6D8C /* DataService.swift in Sources */,
+				E423CD0728CDF61E00A8D7D8 /* InvertedGradientLayer.swift in Sources */,
 				E4E37723287CC003003ED269 /* AboutUsViewController.swift in Sources */,
 				E43C7FD22881615B001F6D8C /* DishView.swift in Sources */,
 				E41C6734287DB216001FD5B2 /* CatalogViewDelegate.swift in Sources */,
