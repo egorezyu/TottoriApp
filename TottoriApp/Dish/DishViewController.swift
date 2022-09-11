@@ -13,14 +13,16 @@ class DishViewController: UIViewController {
     var sectionList : SectionList?
     
     override func loadView() {
+//        sleep(2)
         super.loadView()
-        setValuesForView()
         view = dishView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setValuesForView()
         setBackGround()
+        
         
         
         

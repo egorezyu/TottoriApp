@@ -24,6 +24,7 @@
 		E423CD0128C79CD800A8D7D8 /* TwoDimenIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E423CD0028C79CD800A8D7D8 /* TwoDimenIndex.swift */; };
 		E423CD0528CDF54300A8D7D8 /* EndFadeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E423CD0428CDF54300A8D7D8 /* EndFadeLabel.swift */; };
 		E423CD0728CDF61E00A8D7D8 /* InvertedGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E423CD0628CDF61E00A8D7D8 /* InvertedGradientLayer.swift */; };
+		E423CD0A28CE19DF00A8D7D8 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E423CD0928CE19DF00A8D7D8 /* TransitionManager.swift */; };
 		E433C8A0288C82030036479C /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C89F288C82030036479C /* DeliveryViewController.swift */; };
 		E433C8A2288D7DB70036479C /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A1288D7DB70036479C /* DeliveryView.swift */; };
 		E433C8A4288D7DC60036479C /* DeliveryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */; };
@@ -121,6 +122,7 @@
 		E423CD0028C79CD800A8D7D8 /* TwoDimenIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoDimenIndex.swift; sourceTree = "<group>"; };
 		E423CD0428CDF54300A8D7D8 /* EndFadeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndFadeLabel.swift; sourceTree = "<group>"; };
 		E423CD0628CDF61E00A8D7D8 /* InvertedGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedGradientLayer.swift; sourceTree = "<group>"; };
+		E423CD0928CE19DF00A8D7D8 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		E433C89F288C82030036479C /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		E433C8A1288D7DB70036479C /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		E433C8A3288D7DC60036479C /* DeliveryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +258,14 @@
 				E41C6761287F1C6D001FD5B2 /* FoglihtenNo06_076.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E423CD0828CE19C200A8D7D8 /* SharedAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				E423CD0928CE19DF00A8D7D8 /* TransitionManager.swift */,
+			);
+			path = SharedAnimation;
 			sourceTree = "<group>";
 		};
 		E433C89E288C81EA0036479C /* Delivery */ = {
@@ -454,6 +464,7 @@
 		E4E37700287CB532003ED269 /* TottoriApp */ = {
 			isa = PBXGroup;
 			children = (
+				E423CD0828CE19C200A8D7D8 /* SharedAnimation */,
 				E4085C4528C5FC0F003B4B75 /* WeightTableView */,
 				E4085C3228C260AE003B4B75 /* Locale */,
 				E4928BDE28BE11F6004AAE3E /* DeliveryPostRequest */,
@@ -629,6 +640,7 @@
 				E43C7FD428816175001F6D8C /* DishDelegate.swift in Sources */,
 				E4AE91A628AD2A1E00B8ACC9 /* ViewControllerWithViewWithStack.swift in Sources */,
 				E41C6736287DB233001FD5B2 /* CatalogView.swift in Sources */,
+				E423CD0A28CE19DF00A8D7D8 /* TransitionManager.swift in Sources */,
 				E43C7FE228847EAF001F6D8C /* BasketDelegate.swift in Sources */,
 				E4C088EE28A67C0600CD58C7 /* RequestProtocol.swift in Sources */,
 				E4AE91A828AD2A6700B8ACC9 /* ViewWithStack.swift in Sources */,

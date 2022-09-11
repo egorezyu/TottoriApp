@@ -13,6 +13,8 @@ import SwiftUI
 
 
 class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
+    public var currentCell : DishCollectionViewCell!
+    private var isFromMainCollectionView : Bool = false
     
     
     
@@ -46,6 +48,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.delegate = self
         
         
         
@@ -127,6 +130,8 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
     
     
     @objc func doSequeToDishScreen(gesture : NSObject){
+        isFromMainCollectionView = true
+        
         
         
         let casted : TwoDimenIndex
@@ -141,6 +146,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         }
         
         var sectionList : SectionList?
+        currentCell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: casted.index, section: casted.section)) as? DishCollectionViewCell
         
         var sec = catalog?.menuList[casted.section].sectionList?[casted.index]
         sec?.count = 1
@@ -149,6 +155,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         
     }
     @objc func doSequeForNextScreenForFavDishes(gesture : NSObject){
+        isFromMainCollectionView = false
         var sectionList : SectionList?
         var arrayOfArrays : [[SectionList]] = []
         for item in catalog!.menuList{
@@ -640,4 +647,18 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
     
     
     
+}
+extension CatalogViewController : UINavigationControllerDelegate{
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if isFromMainCollectionView{
+            if operation == .push{
+                return TransitionManager(duration: 0.5)
+            }
+            return nil
+        }
+        return nil
+       
+    
+        
+    }
 }

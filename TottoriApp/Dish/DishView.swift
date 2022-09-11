@@ -26,7 +26,7 @@ class DishView: UIView {
         setFirstChose()
     }
     public var arrayOfNumbers : [UIButton] = []
-    private lazy var label : UILabel = {
+    lazy var label : UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
@@ -43,8 +43,8 @@ class DishView: UIView {
         var image = UIImageView()
         image.image = UIImage(systemName: "gear")
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
+        image.contentMode = .scaleToFill
+//        image.clipsToBounds = true
         
         return image
     }()
@@ -93,7 +93,7 @@ class DishView: UIView {
         return button
         
     }()
-    private lazy var descriptionLabel : UILabel = {
+    lazy var descriptionLabel : UILabel = {
         var label = UILabel()
         label.text = NSLocalizedString("description", comment: "")
         label.font = UIFont(name: "Gilroy", size: FontSizes.font14)
@@ -103,7 +103,7 @@ class DishView: UIView {
         return label
         
     }()
-    private lazy var descriptionText : UITextView = {
+    lazy var descriptionText : UITextView = {
         var textView = UITextView()
         textView.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         textView.isEditable = false
@@ -185,7 +185,7 @@ class DishView: UIView {
         
         return view
     }()
-    private lazy var scrollView : UIScrollView = {
+    lazy var scrollView : UIScrollView = {
         var scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.showsVerticalScrollIndicator = false
@@ -198,7 +198,7 @@ class DishView: UIView {
         return scroll
         
     }()
-    private lazy var mainView : UIView = {
+    lazy var mainView : UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(label)
@@ -253,7 +253,7 @@ class DishView: UIView {
         foodImage.topAnchor.constraint(equalTo: label.bottomAnchor,constant: 5).isActive = true
         foodImage.leadingAnchor.constraint(equalTo: mainView.leadingAnchor,constant: 20).isActive = true
         foodImage.trailingAnchor.constraint(equalTo: mainView.trailingAnchor,constant: -20).isActive = true
-        foodImage.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)).isActive = true
+        foodImage.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 40) / 1.5).isActive = true
         
         //
         hStack.topAnchor.constraint(equalTo: foodImage.bottomAnchor,constant: 5).isActive = true
@@ -379,6 +379,9 @@ class DishView: UIView {
         
         delegate?.showPopUpMenu()
     }
+//    override func layoutSubviews() {
+//        print(foodImage.frame)
+//    }
     
     
     /*
