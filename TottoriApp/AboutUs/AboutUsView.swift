@@ -9,6 +9,7 @@ import UIKit
 import DGCarouselFlowLayout
 
 class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
+    public lazy var vStackConstraint = vStackFields.leadingAnchor.constraint(equalTo: leadingAnchor,constant: -(UIScreen.main.bounds.width - 40))
     private weak var delegate : AboutUsDelegate?
     private var aboutUsDataController = AboutUsDataViewController()
     init(delegate : AboutUsDelegate? = nil) {
@@ -133,7 +134,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         view.textColor = .myLightGrey
         return view
     }()
-    private lazy var vStackFields : UIStackView = {
+    lazy var vStackFields : UIStackView = {
         let vStack = UIStackView()
         vStack.axis = .vertical
         vStack.spacing = 48
@@ -214,7 +215,7 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         return togle
         
     }()
-    private lazy var scrollView : UIScrollView = {
+    lazy var scrollView : UIScrollView = {
         var scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.showsVerticalScrollIndicator = false
@@ -345,8 +346,9 @@ class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
         waitForYouLabel.centerYAnchor.constraint(equalTo: tableOrderLabel.centerYAnchor,constant: UIScreen.main.bounds.width / 14.8571428571).isActive = true
         //
         vStackFields.topAnchor.constraint(equalTo: tableOrderLabel.bottomAnchor,constant: 20).isActive = true
-        vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
-        vStackFields.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true
+//        vStackFields.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: -(UIScreen.main.bounds.width - 40)).isActive = true
+        vStackFields.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
+        vStackConstraint.isActive = true
         vipView.topAnchor.constraint(equalTo: vStackFields.bottomAnchor,constant: 20).isActive = true
         vipView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20).isActive = true
         vipView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -20).isActive = true

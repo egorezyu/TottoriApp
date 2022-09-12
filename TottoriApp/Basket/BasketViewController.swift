@@ -66,9 +66,17 @@ class BasketViewController: UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+//        UIView.animate(withDuration: 1){[weak self] in
+//
+//
+//            self?.backetView.layoutIfNeeded()
+//
+//
+//        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
+        
     }
     
     

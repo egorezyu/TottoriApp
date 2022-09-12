@@ -204,6 +204,15 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         
     }
     @objc func addToBasket(button : ButtonWithIndexes){
+        UIView.animate(withDuration: 0.2,
+            animations: {
+                button.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            },
+            completion: { _ in
+                UIView.animate(withDuration: 0.6) {
+                button.transform = CGAffineTransform.identity
+                }
+        })
         let sectionList = catalog?.menuList[button.section].sectionList?[button.index]
         if let sectionList = sectionList{
             if let thirdScreen = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0]{

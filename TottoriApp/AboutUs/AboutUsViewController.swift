@@ -25,12 +25,22 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
         self.navigationController?.isNavigationBarHidden = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        self.aboutUsView.scrollView.delegate = self
         setBackGround()
         controlButtonStateAlgo()
         setDelegateForCollectionView()
         getDesignData()
         
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 1){[weak self] in
+
+
+            self?.aboutUsView.layoutIfNeeded()
+
+
+        }
     }
     
     private func getDesignData(){
@@ -183,7 +193,7 @@ extension AboutUsViewController :  TextFieldControlColorProtocol,AboutUsDelegate
     
     
 }
-extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataSource{
+extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfDesignItems.count
     }
@@ -215,6 +225,25 @@ extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataS
         
         
         
+        
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == aboutUsView.scrollView{
+            if aboutUsView.vStackConstraint.constant < 0 && scrollView.contentOffset.y + 350 > aboutUsView.vStackFields.frame.origin.y{
+                UIView.animate(withDuration: 0.5){[weak self] in
+                    self?.aboutUsView.vStackConstraint.constant = 20
+                    
+                   
+                    self?.aboutUsView.layoutIfNeeded()
+                    
+                   
+                }
+                
+                
+            }
+            
+        }
+
     }
     
     

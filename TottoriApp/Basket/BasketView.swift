@@ -120,7 +120,7 @@ class BasketView: UIView {
         basketCollectionView.topAnchor.constraint(equalTo: basketLabel.bottomAnchor,constant: 10).isActive = true
         basketCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         basketCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
-        basketCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.55).isActive = true
+        basketCollectionView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.62).isActive = true
         sum.topAnchor.constraint(equalTo: basketCollectionView.bottomAnchor,constant: 5).isActive = true
         sum.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -15).isActive = true
         itogo.topAnchor.constraint(equalTo: basketCollectionView.bottomAnchor,constant: 5).isActive = true
