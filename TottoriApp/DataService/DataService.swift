@@ -82,15 +82,17 @@ final class NetworkManager {
         var urlRequest = URLRequest(url: request.path)
 
         urlRequest.httpMethod = data == nil ? "GET" : "POST"
+//        print(urlRequest.httpMethod)
 
         urlRequest.httpBody = data
+//        print(urlRequest.httpBody)
         if data != nil {
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         }
-        if let body = urlRequest.httpBody{
-            print(String(data: body, encoding: .utf8))
-        }
+//        if let body = urlRequest.httpBody{
+//            print(String(data: body, encoding: .utf8))
+//        }
         
        
 
@@ -156,10 +158,11 @@ final class NetworkManager {
             comletion(result)
         }
     }
-    func delivPostRequest(data : Data,completion : @escaping((Result<DeliveryPostRequest.Response,Error>) -> Void )){
+    func delivPostRequest(data : String,completion : @escaping((Result<DeliveryPostRequest.Response,Error>) -> Void )){
         let request = DeliveryPostRequest()
+        let requestBody = ["ORDER": data].percentEncoded()
         
-        self.request(request: request,data: data) { result in
+        self.request(request: request,data: requestBody) { result in
             completion(result)
         }
     }

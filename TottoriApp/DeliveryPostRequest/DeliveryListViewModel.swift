@@ -11,7 +11,7 @@ final class DeliveryListViewModel {
 
     
 
-    func getDelivList(data : Data,_ completion: @escaping(Result<DeliveryPostRequest.Response, Error>) -> Void) {
+    func getDelivList(data : String,_ completion: @escaping(Result<DeliveryPostRequest.Response, Error>) -> Void) {
 
         
 

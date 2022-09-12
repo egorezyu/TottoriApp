@@ -11,6 +11,7 @@ import SwiftEntryKit
 
 class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
     var deliveryArray : [SectionList] = []
+    var stringData : String!
     
     
     
@@ -200,18 +201,17 @@ extension DeliveryViewController : DeliveryDelegate{
         let order = Order(orderComment: orderComment, phone: phone, flat: flat, paymentMethod: selectedPayView?.text.text ?? "", entrance: "", intercom: "", street: street, foodList: foodList, city: "Москва", floor: floor, email: email, house: home, name: name)
         let encoder = JSONEncoder()
         
-        let json: [String: Any] = ["1":"Ankit", "2":"Krunal"]
-//        guard let data = (try? encoder.encode(order)) ,let stringData = String(data: data, encoding: .utf8) else {
-//            return
-//        }
+
+        guard let data = (try? encoder.encode(order)) else {
+            return
+        }
+        stringData = String(data: data, encoding: .utf8)
+        print(stringData)
+//        String(bytes: stringData, encoding: .utf8)
         
-        //        print(stringData)
-        parameters = [
-            "ORDER": json
+       
+
             
-        ]
-        //        print(parameters)
-        //        print(parameters["ORDER"])
         
         
         guard let model = userInfo,
@@ -247,7 +247,7 @@ extension DeliveryViewController : DeliveryDelegate{
             
             
         }
-        backetViewBackDataDelegate?.clearAllBasket()
+        
         
         
         
@@ -268,11 +268,9 @@ extension DeliveryViewController : DeliveryDelegate{
         
     }
     private func controlUserButtonServerTouchAlgo(){
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters , options: []) else{
-            return
-        }
+      
         
-        deliveryViewModel.getDelivList(data: httpBody) { result in
+        deliveryViewModel.getDelivList(data: stringData) { result in
             DispatchQueue.main.async {
                 self.devView.activityIndicator.stopAnimating()
                 switch result{
@@ -280,6 +278,7 @@ extension DeliveryViewController : DeliveryDelegate{
                     
                 case .success(_):
                     self.showCustomAlert(text:NSLocalizedString("thx_for_dev", comment: ""))
+                    self.backetViewBackDataDelegate?.clearAllBasket()
                     
                 case .failure(_):
                     self.showCustomAlert(text:NSLocalizedString("smth_went_wrong", comment: ""))

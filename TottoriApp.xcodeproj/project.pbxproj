@@ -59,6 +59,7 @@
 		E4928BE028BE123A004AAE3E /* DeliveryPostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BDF28BE123A004AAE3E /* DeliveryPostRequest.swift */; };
 		E4928BE228BE138F004AAE3E /* DeliveryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BE128BE138F004AAE3E /* DeliveryListViewModel.swift */; };
 		E4928BE428BE2877004AAE3E /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BE328BE2877004AAE3E /* Delivery.swift */; };
+		E4960B9928CF34F1005CFA2D /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4960B9828CF34F1005CFA2D /* Dictionary.swift */; };
 		E4A93C022897EA920017F326 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C012897EA920017F326 /* UILabel.swift */; };
 		E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */; };
 		E4A93C07289AC9EE0017F326 /* DGCarouselFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C06289AC9EE0017F326 /* DGCarouselFlowLayout */; };
@@ -156,6 +157,7 @@
 		E4928BDF28BE123A004AAE3E /* DeliveryPostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPostRequest.swift; sourceTree = "<group>"; };
 		E4928BE128BE138F004AAE3E /* DeliveryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryListViewModel.swift; sourceTree = "<group>"; };
 		E4928BE328BE2877004AAE3E /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		E4960B9828CF34F1005CFA2D /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		E4A93C012897EA920017F326 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForFavDishes.swift; sourceTree = "<group>"; };
 		E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavouriteCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				E4ABE0B328A3C31D00B7640B /* UIView.swift */,
 				E4ABE0B928A4138800B7640B /* ToolBar.swift */,
 				E4C088EF28A67C5900CD58C7 /* ProtocolRequestExtension.swift */,
+				E4960B9828CF34F1005CFA2D /* Dictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				E4ABE0BA28A4138800B7640B /* ToolBar.swift in Sources */,
 				E48DBAC028A458DF00B65644 /* FlowLay.swift in Sources */,
 				E49262BC2891436000970B24 /* AboutUsData.swift in Sources */,
+				E4960B9928CF34F1005CFA2D /* Dictionary.swift in Sources */,
 				E45857A028C5FC800017D99F /* WeightTableViewController.swift in Sources */,
 				E4AE918628A6CB0800B8ACC9 /* DuplicateCollectionViewCell.swift in Sources */,
 				E43C7FD62882D49B001F6D8C /* Dishes.swift in Sources */,
