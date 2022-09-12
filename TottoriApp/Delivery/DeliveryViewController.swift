@@ -283,7 +283,8 @@ extension DeliveryViewController : DeliveryDelegate{
                     self.showCustomAlert(text:NSLocalizedString("thx_for_dev", comment: ""))
                     self.backetViewBackDataDelegate?.clearAllBasket()
                     
-                case .failure(_):
+                case .failure(let error):
+                    print(error)
                     self.showCustomAlert(text:NSLocalizedString("smth_went_wrong", comment: ""))
                     
                 }

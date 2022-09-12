@@ -45,7 +45,7 @@ final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
         description.textColor = UIColor.myLightGrey
         description.frame = containerView.convert(toView.descriptionLabel.frame, from: toView.mainView)
         blurEffectViewForDescription.frame = description.bounds
-        description.addSubview(blurEffectViewForDescription)
+//        description.addSubview(blurEffectViewForDescription)
       
         let textView = UITextView()
         textView.font = UIFont(name: "Gilroy", size: FontSizes.font14)
@@ -59,7 +59,7 @@ final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         textView.frame = containerView.convert(toView.descriptionText.frame, from: toView.mainView)
         blurEffectViewForDescriptionText.frame = textView.bounds
-        textView.addSubview(blurEffectViewForDescriptionText)
+//        textView.addSubview(blurEffectViewForDescriptionText)
         
         
 
@@ -74,7 +74,7 @@ final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
         text.text = toView.label.text
         text.frame = containerView.convert(fromViewController.currentCell.foodType.frame, from: fromViewController.currentCell)
         blurEffectViewForLabel.frame = text.bounds
-        text.addSubview(blurEffectViewForLabel)
+//        text.addSubview(blurEffectViewForLabel)
         let image = UIImageView()
         image.clipsToBounds = true
         image.contentMode = fromViewController.currentCell.imageView.contentMode

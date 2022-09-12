@@ -160,6 +160,8 @@
 		E4928BE328BE2877004AAE3E /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		E4960B9828CF34F1005CFA2D /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		E4960B9A28CF8067005CFA2D /* BookTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTransitionManager.swift; sourceTree = "<group>"; };
+		E4960B9D28CFC584005CFA2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E4960B9E28CFC585005CFA2D /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4A93C012897EA920017F326 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForFavDishes.swift; sourceTree = "<group>"; };
 		E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavouriteCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -739,6 +741,8 @@
 			children = (
 				E4E3770D287CB533003ED269 /* Base */,
 				E4085C3828C26187003B4B75 /* ja */,
+				E4960B9D28CFC584005CFA2D /* en */,
+				E4960B9E28CFC585005CFA2D /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

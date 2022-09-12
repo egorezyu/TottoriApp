@@ -31,13 +31,13 @@
 "all" = "All";
 "description" = "Description";
 "email" = "email";
-"street" = "street";
-"house" = "house";
-"flat" = "flat";
-"floor" = "floor";
-"comment" = "comments";
-"pay_by_card" = "by card to the courier";
-"cash" = "by cash";
+"street" = "Street";
+"house" = "House";
+"flat" = "Flat";
+"floor" = "Floor";
+"comment" = "Comments";
+"pay_by_card" = "By card to the courier";
+"cash" = "By cash";
 "name_phone" = "Please enter name and phone";
 "pay_type" = "Chose type of payment";
 "added" = "Added";
@@ -52,5 +52,6 @@
 "couldnt_get_data" = "Couldnt get data";
 "time_out" = "Request time out";
 "no_internet" = "No internet";
+"save" = "Save current data";
 
 

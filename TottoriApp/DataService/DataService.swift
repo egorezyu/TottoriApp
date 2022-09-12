@@ -86,10 +86,10 @@ final class NetworkManager {
         
         urlRequest.httpBody = data
 
-        if data != nil {
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        }
+        
+//        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
         if let body = urlRequest.httpBody{
             print(String(data: body, encoding: .utf8)!)
         }
@@ -128,7 +128,7 @@ final class NetworkManager {
                 
             }
             catch {
-                
+                print(error)
                 
                 
                 completion(.failure(GetDataException.badData))
