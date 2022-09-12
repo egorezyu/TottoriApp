@@ -577,7 +577,7 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         _ = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
         if section == 0{
             // Use this view to calculate the optimal size based on the collection view's width
-            return CGSize(width: 0, height: UIScreen.main.bounds.height * 0.6)
+            return CGSize(width: 0, height: 0)
         }
         else{
             return CGSize(width: 0, height: UIScreen.main.bounds.height / 12)
@@ -661,7 +661,7 @@ extension CatalogViewController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if isFromMainCollectionView{
             if operation == .push{
-                return TransitionManager(duration: 0.5)
+                return TransitionManager(duration: 0.3)
             }
             return nil
         }

@@ -60,6 +60,7 @@
 		E4928BE228BE138F004AAE3E /* DeliveryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BE128BE138F004AAE3E /* DeliveryListViewModel.swift */; };
 		E4928BE428BE2877004AAE3E /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4928BE328BE2877004AAE3E /* Delivery.swift */; };
 		E4960B9928CF34F1005CFA2D /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4960B9828CF34F1005CFA2D /* Dictionary.swift */; };
+		E4960B9B28CF8067005CFA2D /* BookTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4960B9A28CF8067005CFA2D /* BookTransitionManager.swift */; };
 		E4A93C022897EA920017F326 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C012897EA920017F326 /* UILabel.swift */; };
 		E4A93C04289A7A850017F326 /* HeaderForFavDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */; };
 		E4A93C07289AC9EE0017F326 /* DGCarouselFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E4A93C06289AC9EE0017F326 /* DGCarouselFlowLayout */; };
@@ -158,6 +159,7 @@
 		E4928BE128BE138F004AAE3E /* DeliveryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryListViewModel.swift; sourceTree = "<group>"; };
 		E4928BE328BE2877004AAE3E /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		E4960B9828CF34F1005CFA2D /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		E4960B9A28CF8067005CFA2D /* BookTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTransitionManager.swift; sourceTree = "<group>"; };
 		E4A93C012897EA920017F326 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E4A93C03289A7A850017F326 /* HeaderForFavDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForFavDishes.swift; sourceTree = "<group>"; };
 		E4A93C08289AD10A0017F326 /* CustomFavouriteCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFavouriteCellCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				E423CD0928CE19DF00A8D7D8 /* TransitionManager.swift */,
+				E4960B9A28CF8067005CFA2D /* BookTransitionManager.swift */,
 			);
 			path = SharedAnimation;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				E4C0890028A6853C00CD58C7 /* FontSizes.swift in Sources */,
 				E4928BE028BE123A004AAE3E /* DeliveryPostRequest.swift in Sources */,
 				E4928BE428BE2877004AAE3E /* Delivery.swift in Sources */,
+				E4960B9B28CF8067005CFA2D /* BookTransitionManager.swift in Sources */,
 				E4CEED1428A2808B004A1BEE /* AboutUsDelegate.swift in Sources */,
 				E4E37702287CB532003ED269 /* AppDelegate.swift in Sources */,
 				E4E37725287CC023003ED269 /* BasketViewController.swift in Sources */,

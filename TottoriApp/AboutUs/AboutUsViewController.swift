@@ -35,11 +35,11 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     }
     override func viewWillAppear(_ animated: Bool) {
         UIView.animate(withDuration: 1){[weak self] in
-
-
+            
+            
             self?.aboutUsView.layoutIfNeeded()
-
-
+            
+            
         }
     }
     
@@ -230,20 +230,20 @@ extension AboutUsViewController : UICollectionViewDelegate,UICollectionViewDataS
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == aboutUsView.scrollView{
             if aboutUsView.vStackConstraint.constant < 0 && scrollView.contentOffset.y + 350 > aboutUsView.vStackFields.frame.origin.y{
-                UIView.animate(withDuration: 0.5){[weak self] in
+                UIView.animate(withDuration: 1.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, animations: {
+                    [weak self] in
                     self?.aboutUsView.vStackConstraint.constant = 20
                     
-                   
+                    
                     self?.aboutUsView.layoutIfNeeded()
                     
-                   
-                }
+                })
                 
                 
             }
             
         }
-
+        
     }
     
     

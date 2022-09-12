@@ -34,11 +34,18 @@ final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
         
        
         let containerView = transitionContext.containerView
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        let blurEffectViewForDescription = UIVisualEffectView(effect: blurEffect)
+        let blurEffectViewForDescriptionText = UIVisualEffectView(effect: blurEffect)
+        let blurEffectViewForLabel = UIVisualEffectView(effect: blurEffect)
+        
         let description = UILabel()
         description.text = NSLocalizedString("description", comment: "")
         description.font = UIFont(name: "Gilroy", size: FontSizes.font14)
         description.textColor = UIColor.myLightGrey
         description.frame = containerView.convert(toView.descriptionLabel.frame, from: toView.mainView)
+        blurEffectViewForDescription.frame = description.bounds
+        description.addSubview(blurEffectViewForDescription)
       
         let textView = UITextView()
         textView.font = UIFont(name: "Gilroy", size: FontSizes.font14)
@@ -51,6 +58,8 @@ final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
         
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         textView.frame = containerView.convert(toView.descriptionText.frame, from: toView.mainView)
+        blurEffectViewForDescriptionText.frame = textView.bounds
+        textView.addSubview(blurEffectViewForDescriptionText)
         
         
 
@@ -64,6 +73,8 @@ final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
         text.font = UIFont(name: "FoglihtenNo06", size: FontSizes.font30)
         text.text = toView.label.text
         text.frame = containerView.convert(fromViewController.currentCell.foodType.frame, from: fromViewController.currentCell)
+        blurEffectViewForLabel.frame = text.bounds
+        text.addSubview(blurEffectViewForLabel)
         let image = UIImageView()
         image.clipsToBounds = true
         image.contentMode = fromViewController.currentCell.imageView.contentMode
@@ -78,16 +89,21 @@ final class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
         containerView.addSubview(backView)
         
         
-        containerView.addSubview(text)
+       
         // 7
 
-
+//        containerView.addSubview(text)
         containerView.addSubview(image)
+       
+        
         containerView.addSubview(description)
         containerView.addSubview(textView)
         
         toView.isHidden = true
         let animator = UIViewPropertyAnimator(duration: duration, curve: .easeInOut) {
+            blurEffectViewForDescription.effect = nil
+            blurEffectViewForLabel.effect = nil
+            blurEffectViewForDescriptionText.effect = nil
 
 
             description.frame = containerView.convert(toView.descriptionLabel.frame, from: toView.mainView)

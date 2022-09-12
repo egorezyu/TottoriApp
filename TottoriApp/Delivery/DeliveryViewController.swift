@@ -185,7 +185,7 @@ extension DeliveryViewController : DeliveryDelegate{
     func postRequest() {
         
         view.isUserInteractionEnabled = false
-        devView.activityIndicator.startAnimating()
+        
         let name = (devView.vStackName.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
         let phone = (devView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
         let email = (devView.vStackEmail.subviews[1] as? CustomTextFieldWithInsets)?.text ?? ""
@@ -225,6 +225,7 @@ extension DeliveryViewController : DeliveryDelegate{
                 showChangeAlert(dataToChange: encodedData)
             }
             else{
+                devView.activityIndicator.startAnimating()
                 //                showOkAlert()
                 controlUserButtonServerTouchAlgo()
                 
@@ -241,6 +242,7 @@ extension DeliveryViewController : DeliveryDelegate{
             
         }
         else{
+            devView.activityIndicator.startAnimating()
             UserDefaults.standard.set(encodedData, forKey: userDefaultUserInfoId)
             controlUserButtonServerTouchAlgo()
             
@@ -256,10 +258,12 @@ extension DeliveryViewController : DeliveryDelegate{
         let alert = UIAlertController(title: nil, message: NSLocalizedString("data_was_changed", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("save_data", comment: ""), style: .default, handler: { action in
             UserDefaults.standard.set(dataToChange, forKey: self.userDefaultUserInfoId)
+            self.devView.activityIndicator.startAnimating()
             self.controlUserButtonServerTouchAlgo()
             
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("dont_save", comment: ""), style: .default, handler: { action in
+            self.devView.activityIndicator.startAnimating()
             self.controlUserButtonServerTouchAlgo()
             
         }))
