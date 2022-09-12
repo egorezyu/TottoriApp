@@ -86,6 +86,7 @@ class BasketViewController: UIViewController{
         setBackGround()
         setDataSourceAndDelegate()
         setBackButtonForNavBar()
+        navigationController?.delegate = self
         
         
         
@@ -243,5 +244,19 @@ extension BasketViewController : BasketViewBackDataDelegate{
         
     }
     
+    
+}
+extension BasketViewController : UINavigationControllerDelegate{
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+       
+        if operation == .push{
+            return BookTransitionManager(duration: 1)
+        }
+        return nil
+    }
+        
+       
+    
+        
     
 }

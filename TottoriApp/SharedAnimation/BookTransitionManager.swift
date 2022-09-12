@@ -7,6 +7,10 @@
 
 import Foundation
 import UIKit
+func degreeToRadians(degree : CGFloat) -> CGFloat{
+    return (degree * CGFloat.pi) / 180
+    
+}
 final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioning {
     
     private let duration: TimeInterval
@@ -27,12 +31,54 @@ final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioni
             
             return
         }
+        
 
         toView.layoutIfNeeded()
+        toView.frame.origin.x = UIScreen.main.bounds.width
+        var transform1 = CATransform3DIdentity
+        transform1.m34 = -1 / 500
+        transform1 = CATransform3DRotate(transform1, -.pi / 4, 0, 1, 0)
+        transform1 = CATransform3DTranslate(transform1, -200, 0, 0)
+        var transform2 = CATransform3DIdentity
+        transform2.m34 = -1 / 500
+//        transform2 = CATransform3DRotate(transform2, -.pi / 6, 0, 1, 0)
+        transform2 = CATransform3DTranslate(transform2, -200, 0, 0)
+        var transform3 = CATransform3DIdentity
+        transform3 = CATransform3DTranslate(transform3, -UIScreen.main.bounds.width, 0, 0)
+        var transform4 = CATransform3DIdentity
+        transform4 = CATransform3DRotate(transform4, .pi / 4, 0, 1, 0)
         let containerView = transitionContext.containerView
+        containerView.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
+        toView.layer.transform = transform4
+
+      
+        
         containerView.addSubview(fromViewController.view)
         containerView.addSubview(toView)
-     
+        
+
+        UIView.animateKeyframes(withDuration: duration, delay: 0, animations: {
+
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5) {
+                fromViewController.view.layer.transform = transform1
+                toView.layer.transform = transform2
+                
+      
+          }
+
+          UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
+              toView.layer.transform = transform3
+              fromViewController.view.layer.transform = transform3
+//
+          }
+
+        }) { _ in
+            fromViewController.view.transform = .identity
+//            toView.isHidden = false
+            toView.transform = .identity
+            transitionContext.completeTransition(true)
+        }
+       
         
         
        
