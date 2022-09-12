@@ -11,7 +11,7 @@ import SwiftEntryKit
 
 class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
     var deliveryArray : [SectionList] = []
-    var stringData : String!
+    var stringData : String = ""
     
     
     
@@ -205,9 +205,8 @@ extension DeliveryViewController : DeliveryDelegate{
         guard let data = (try? encoder.encode(order)) else {
             return
         }
-        stringData = String(data: data, encoding: .utf8)
+        stringData = String(bytes : data, encoding: .utf8)!
         print(stringData)
-//        String(bytes: stringData, encoding: .utf8)
         
        
 
