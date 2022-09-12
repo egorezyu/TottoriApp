@@ -250,7 +250,7 @@ extension BasketViewController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
        
         if operation == .push{
-            return BookTransitionManager(duration: 1)
+            return BookTransitionManager(duration: 0.7)
         }
         return nil
     }

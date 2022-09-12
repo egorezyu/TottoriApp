@@ -46,7 +46,7 @@ final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioni
         var transform3 = CATransform3DIdentity
         transform3 = CATransform3DTranslate(transform3, -UIScreen.main.bounds.width, 0, 0)
         var transform4 = CATransform3DIdentity
-        transform4 = CATransform3DRotate(transform4, .pi / 4, 0, 1, 0)
+        transform4 = CATransform3DRotate(transform4, .pi / 2, 0, 1, 0)
         let containerView = transitionContext.containerView
         containerView.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
         toView.layer.transform = transform4
