@@ -43,7 +43,7 @@ final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioni
         toView.layer.transform.m34 = -1 / 500
         toView.setAnchorPoint(CGPoint(x: 0, y: 0.5))
         fromViewController.view.setAnchorPoint(CGPoint(x: 1, y: 0.5))
-        toView.layer.transform = CATransform3DRotate(toView.layer.transform, .pi / 4, 0, 1, 0)
+//        toView.layer.transform = CATransform3DRotate(toView.layer.transform, .pi / 4, 0, 1, 0)
 //        fromViewController.view.layer.anchorPoint = CGPoint(x: 1, y: 1)
         var translation = CATransform3DIdentity
         translation = CATransform3DTranslate(translation, -UIScreen.main.bounds.width, 0, 0)
@@ -73,7 +73,7 @@ final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioni
 
                 fromViewController.view.layer.transform = CATransform3DRotate(fromViewController.view.layer.transform, -.pi / 6, 0, 1, 0)
                 fromViewController.view.layer.transform = CATransform3DTranslate(fromViewController.view.layer.transform, -200, 0, 0)
-                toView.layer.transform = CATransform3DRotate(toView.layer.transform, -.pi / 8, 0, 1, 0)
+//                toView.layer.transform = CATransform3DRotate(toView.layer.transform, -.pi / 4, 0, 1, 0)
                 toView.layer.transform = CATransform3DTranslate(toView.layer.transform, -200, 0, 0)
                 
           
@@ -90,8 +90,8 @@ final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioni
           UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
               fromViewController.view.layer.transform = CATransform3DRotate(fromViewController.view.layer.transform, -.pi / 6, 0, 1, 0)
 //              toView.layer.transform = CATransform3DRotate(toView.layer.transform, -.pi / 8, 0, 1, 0)
-//              toView.layer.transform = CATransform3DTranslate(toView.layer.transform, -UIScreen.main.bounds.width + 200, 0, 0)
-              toView.layer.transform = translation
+              toView.layer.transform = CATransform3DTranslate(toView.layer.transform, -UIScreen.main.bounds.width + 200, 0, 0)
+//              toView.layer.transform = translation
               
 
 //
