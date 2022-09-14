@@ -122,6 +122,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
                     self.catalogView.collectionView.reloadData()
                     self.catalogView.secondCollectionView.reloadData()
                 case .failure(let error):
+                    self.catalogView.mockDataCollectionView.removeFromSuperview()
                     self.present(UIAlertController.createAllert(text: error.localizedDescription), animated: true)
                 }
 //                self.catalogView.activityIndicator.stopAnimating()
