@@ -27,6 +27,7 @@ final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioni
         guard
             let fromViewController = transitionContext.viewController(forKey: .from) as? BasketViewController,
             let toView = (transitionContext.viewController(forKey: .to) as? DeliveryViewController)?.view as? DeliveryView
+//            let snapShot = = toView.snapShotV
         else {
             
             return
@@ -34,47 +35,72 @@ final class BookTransitionManager: NSObject, UIViewControllerAnimatedTransitioni
         
 
         toView.layoutIfNeeded()
+//        fromViewController.view.frame = CGRect(x: -UIScreen.main.bounds.width / 2, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         toView.frame.origin.x = UIScreen.main.bounds.width
-        var transform1 = CATransform3DIdentity
-        transform1.m34 = -1 / 500
-        transform1 = CATransform3DRotate(transform1, -.pi / 4, 0, 1, 0)
-        transform1 = CATransform3DTranslate(transform1, -UIScreen.main.bounds.width, 0, 0)
-        var transform2 = CATransform3DIdentity
-        transform2.m34 = -1 / 500
-//        transform2 = CATransform3DRotate(transform2, -.pi / 6, 0, 1, 0)
-        transform2 = CATransform3DTranslate(transform2, -UIScreen.main.bounds.width, 0, 0)
-        var transform3 = CATransform3DIdentity
-        transform3 = CATransform3DTranslate(transform3, -UIScreen.main.bounds.width, 0, 0)
-        var transform4 = CATransform3DIdentity
-        transform4 = CATransform3DRotate(transform4, .pi / 1.5, 0, 1, 0)
         let containerView = transitionContext.containerView
         containerView.backgroundColor = UIColor(patternImage: UIImage(named: "back")!)
-        toView.layer.transform = transform4
+        fromViewController.view.layer.transform.m34 = -1 / 500
+        toView.layer.transform.m34 = -1 / 500
+        toView.setAnchorPoint(CGPoint(x: 0, y: 0.5))
+        fromViewController.view.setAnchorPoint(CGPoint(x: 1, y: 0.5))
+        toView.layer.transform = CATransform3DRotate(toView.layer.transform, .pi / 4, 0, 1, 0)
+//        fromViewController.view.layer.anchorPoint = CGPoint(x: 1, y: 1)
+        var translation = CATransform3DIdentity
+        translation = CATransform3DTranslate(translation, -UIScreen.main.bounds.width, 0, 0)
+        
+      
+      
+
+        
+        
+        
+
+        
+        
+
 
       
         
         containerView.addSubview(fromViewController.view)
         containerView.addSubview(toView)
         
+   
+        
 
         UIView.animateKeyframes(withDuration: duration, delay: 0, animations: {
 
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5) {
-                fromViewController.view.layer.transform = transform1
-                toView.layer.transform = transform2
+
+                fromViewController.view.layer.transform = CATransform3DRotate(fromViewController.view.layer.transform, -.pi / 6, 0, 1, 0)
+                fromViewController.view.layer.transform = CATransform3DTranslate(fromViewController.view.layer.transform, -200, 0, 0)
+                toView.layer.transform = CATransform3DRotate(toView.layer.transform, -.pi / 8, 0, 1, 0)
+                toView.layer.transform = CATransform3DTranslate(toView.layer.transform, -200, 0, 0)
+                
+          
+                
+                
+                
+
+                
+                
                 
       
           }
 
           UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.5) {
-              toView.layer.transform = transform3
-              fromViewController.view.layer.transform = transform3
+              fromViewController.view.layer.transform = CATransform3DRotate(fromViewController.view.layer.transform, -.pi / 6, 0, 1, 0)
+//              toView.layer.transform = CATransform3DRotate(toView.layer.transform, -.pi / 8, 0, 1, 0)
+//              toView.layer.transform = CATransform3DTranslate(toView.layer.transform, -UIScreen.main.bounds.width + 200, 0, 0)
+              toView.layer.transform = translation
+              
+
 //
           }
 
         }) { _ in
             fromViewController.view.transform = .identity
-//            toView.isHidden = false
+            toView.isHidden = false
+         
             toView.transform = .identity
             transitionContext.completeTransition(true)
         }
