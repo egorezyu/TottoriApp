@@ -148,7 +148,7 @@ class BasketViewController: UIViewController{
         
     }
     private func deleteCellProc(index : Int){
-        UIView.animate(withDuration: 0.5, delay: 0) {
+        UIView.animate(withDuration: 0.2, delay: 0) {
             self.backetView.basketCollectionView.cellForItem(at: IndexPath(row: index, section: 0))?.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
         } completion: { _ in
             self.arrayOfPurchases.remove(at: index)
