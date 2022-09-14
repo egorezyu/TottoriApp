@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class BasketViewController: UIViewController{
     
     private var currentBusketCount = 0
@@ -65,15 +66,20 @@ class BasketViewController: UIViewController{
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-//        UIView.animate(withDuration: 1){[weak self] in
-//
-//
-//            self?.backetView.layoutIfNeeded()
-//
-//
-//        }
+        
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.isBeingPresented || self.isMovingToParent {
+            animateCollectionView()
+        }
+        
+        
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
         
@@ -83,10 +89,12 @@ class BasketViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setBackGround()
         setDataSourceAndDelegate()
         setBackButtonForNavBar()
         navigationController?.delegate = self
+        //        animateCollectionView()
         
         
         
@@ -140,14 +148,21 @@ class BasketViewController: UIViewController{
         
     }
     private func deleteCellProc(index : Int){
-        arrayOfPurchases.remove(at: index)
-        backetView.basketCollectionView.reloadData()
-        currentBusketCount = currentBusketCount - 1
-        if (currentBusketCount == 0){
-            myTabBarController.tabBar.items?[2].badgeValue = nil
-            backetView.toDeliveryScreenButton.isEnabled = false
+        UIView.animate(withDuration: 0.5, delay: 0) {
+            self.backetView.basketCollectionView.cellForItem(at: IndexPath(row: index, section: 0))?.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width, y: 0)
+        } completion: { _ in
+            self.arrayOfPurchases.remove(at: index)
+            self.backetView.basketCollectionView.cellForItem(at: IndexPath(row: index, section: 0))?.transform = .identity
+            self.backetView.basketCollectionView.reloadData()
+            self.currentBusketCount = self.currentBusketCount - 1
+            if (self.currentBusketCount == 0){
+                self.myTabBarController.tabBar.items?[2].badgeValue = nil
+                self.backetView.toDeliveryScreenButton.isEnabled = false
+            }
+            self.setSum()
         }
-        setSum()
+        
+        
     }
     private func setSum(){
         
@@ -175,9 +190,12 @@ class BasketViewController: UIViewController{
                 deleteCellProc(index: elementIndex)
                 
             }
+            else{
+                backetView.basketCollectionView.reloadData()
+            }
             
             setSum()
-            backetView.basketCollectionView.reloadData()
+            
             
             
             
@@ -187,6 +205,24 @@ class BasketViewController: UIViewController{
         }
         
         
+    }
+    private func animateCollectionView(){
+    
+        let cells = backetView.basketCollectionView.visibleCells
+        
+        let tableViewHeight = backetView.basketCollectionView.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 0.9, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
+        }
     }
     
     
@@ -248,15 +284,15 @@ extension BasketViewController : BasketViewBackDataDelegate{
 }
 extension BasketViewController : UINavigationControllerDelegate{
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-       
+        
         if operation == .push{
             return BookTransitionManager(duration: 0.8)
         }
         return nil
     }
-        
-       
     
-        
+    
+    
+    
     
 }

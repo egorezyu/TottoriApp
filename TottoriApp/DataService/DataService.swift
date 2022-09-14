@@ -97,7 +97,7 @@ final class NetworkManager {
         
         
         let task = self.session.dataTask(with: urlRequest) { data, response, error in
-            print(response)
+//            print(response)
             
             
             

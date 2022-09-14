@@ -26,29 +26,14 @@
                                     <constraint firstAttribute="width" constant="240" id="vHa-rk-WRH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRr-N8-ihx">
-                                <rect key="frame" x="187.5" y="545" width="39" height="21"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Hello">
-                                        <attributes>
-                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MvX-D2-BLa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4Br-yA-UoK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="1V7-vC-6Yw"/>
-                            <constraint firstItem="PRr-N8-ihx" firstAttribute="top" secondItem="zEc-va-quU" secondAttribute="bottom" constant="33" id="9Cm-jR-G8r"/>
                             <constraint firstItem="zEc-va-quU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wns-Ow-SOc"/>
                             <constraint firstItem="zEc-va-quU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Wnx-Ah-iHy"/>
                             <constraint firstAttribute="bottom" secondItem="4Br-yA-UoK" secondAttribute="bottom" id="Xbx-TO-31j"/>
-                            <constraint firstItem="PRr-N8-ihx" firstAttribute="centerX" secondItem="zEc-va-quU" secondAttribute="centerX" id="ecs-AF-eVh"/>
                             <constraint firstAttribute="trailing" secondItem="4Br-yA-UoK" secondAttribute="trailing" id="wMw-SF-qkG"/>
                         </constraints>
                     </view>
