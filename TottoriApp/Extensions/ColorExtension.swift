@@ -13,5 +13,12 @@ extension UIColor{
     static let borderColor = UIColor(named: "BorderColor")
     static let myLightGrey = UIColor(red: 0.275, green: 0.286, blue: 0.31, alpha: 1)
     static let myRed = UIColor(red: 0.969, green: 0.169, blue: 0.071, alpha: 1).cgColor
+    static var gradientDarkGrey: UIColor {
+        return UIColor(red: 239 / 255.0, green: 241 / 255.0, blue: 241 / 255.0, alpha: 1)
+    }
+    
+    static var gradientLightGrey: UIColor {
+        return UIColor(red: 201 / 255.0, green: 201 / 255.0, blue: 201 / 255.0, alpha: 1)
+    }
     
 }

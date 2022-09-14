@@ -24,6 +24,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
     private lazy var viewModel = MenuListViewModel()
     private var header : HeaderForFavDishes!
     private var fullArrayOfDishes : [SectionList] = []
+    private var mockDataArrayForShimmerEffect : [SectionList?] = [nil,nil,nil,nil]
     
     private var currentVstackCellCount = 0
     private var selectedFirstCollCellIndex = 0
@@ -88,21 +89,23 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         catalogView.secondCollectionView.delegate = self
         catalogView.secondCollectionView.register(HeaderForTitle.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForTitle.headerReuseIdentifier)
         catalogView.secondCollectionView.register(HeaderForFavDishes.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForFavDishes.headerReuseIdentifier)
+        catalogView.mockDataCollectionView.dataSource = self
+        catalogView.mockDataCollectionView.delegate = self
         
         
         
     }
     private func getData(){
-        catalogView.activityIndicator.startAnimating()
+////        catalogView.activityIndicator.startAnimating()
         viewModel.getMenuList { result in
             DispatchQueue.main.async {
                 switch result{
-                    
+
                 case .success(let items):
                     self.fullArrayOfDishes = items.2
-                    
+
                     self.catalog = Catalog(status: true, menuList: items.0, menuDishes: items.1)
-                    
+
                     if let catalog = self.catalog {
                         if catalog.menuDishes.count < 3{
                             for i in 0...2{
@@ -110,19 +113,20 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
                                 if let currentDish = currentDish{
                                     self.catalog?.menuDishes.append(MenuDish(foodID: currentDish.foodID, foodName: currentDish.foodName, foodPrice: currentDish.foodPrice, foodImage0: currentDish.foodImage0, foodContent: currentDish.foodContent))
                                 }
-                                
+
                             }
                         }
                     }
-                    
+                    self.catalogView.mockDataCollectionView.removeFromSuperview()
+
                     self.catalogView.collectionView.reloadData()
                     self.catalogView.secondCollectionView.reloadData()
                 case .failure(let error):
                     self.present(UIAlertController.createAllert(text: error.localizedDescription), animated: true)
                 }
-                self.catalogView.activityIndicator.stopAnimating()
-                
-                
+//                self.catalogView.activityIndicator.stopAnimating()
+
+
             }
         }
         
@@ -265,6 +269,9 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
         else if collectionView == catalogView.secondCollectionView{
             return catalog?.menuList[section].sectionList?.count ?? 0
         }
+        else if collectionView == catalogView.mockDataCollectionView{
+            return mockDataArrayForShimmerEffect.count
+        }
         else {
             return catalog?.menuDishes.count ?? 0
         }
@@ -386,6 +393,19 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             cell.foodCountView.decreaseAmountButton.addTarget(self, action: #selector(decreaseAmount(button:)), for: .touchUpInside)
             cell.foodCountView.increaseAmountButton.addTarget(self, action: #selector(increaseAmount(button:)), for: .touchUpInside)
             cell.purchaseButton.addTarget(self, action: #selector(addToBasket(button:)), for: .touchUpInside)
+            return cell
+        }
+        else if collectionView == catalogView.mockDataCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishCollectionViewCell.identifier, for: indexPath) as! DishCollectionViewCell
+            cell.firstWeight.layoutIfNeeded()
+            cell.holdButtonView.layoutIfNeeded()
+            cell.foodCountView.layoutIfNeeded()
+            cell.imageView.layoutIfNeeded()
+            cell.firstWeight.generateGradient()
+            cell.foodCountView.generateGradient()
+            cell.imageView.generateGradient()
+            cell.holdButtonView.generateGradient()
+            cell.setCellFields(sectionList: catalog?.menuList[indexPath.section].sectionList?[indexPath.row])
             return cell
         }
         else{
@@ -599,8 +619,8 @@ extension CatalogViewController : UICollectionViewDataSource,UICollectionViewDel
             return CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: 350)
             
         }
-        else if collectionView == header.favCollectionView{
-            return CGSize(width: UIScreen.main.bounds.width - 60, height: UIScreen.main.bounds.height * 0.5)
+        else if collectionView == catalogView.mockDataCollectionView{
+            return CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: 350)
         }
         else{
             return CGSize(width: (catalog?.menuList[indexPath.row].sectionName.count ?? 0) * 10 + 20, height: 50)

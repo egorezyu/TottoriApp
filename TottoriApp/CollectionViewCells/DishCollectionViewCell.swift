@@ -67,7 +67,7 @@ class DishCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    private lazy var holdButtonView : UIView = {
+    lazy var holdButtonView : UIView = {
         var view = UIView()
         view.addSubview(purchaseButton)
         view.translatesAutoresizingMaskIntoConstraints = false

@@ -20,16 +20,16 @@ final class CatalogView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    public lazy var activityIndicator : UIActivityIndicatorView = {
-        var activityInd = UIActivityIndicatorView()
-        activityInd.translatesAutoresizingMaskIntoConstraints = false
-
-        
-        activityInd.style = .large
-        activityInd.color = .gray
-        activityInd.hidesWhenStopped = true
-        return activityInd
-    }()
+//    public lazy var activityIndicator : UIActivityIndicatorView = {
+//        var activityInd = UIActivityIndicatorView()
+//        activityInd.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        activityInd.style = .large
+//        activityInd.color = .gray
+//        activityInd.hidesWhenStopped = true
+//        return activityInd
+//    }()
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -77,14 +77,38 @@ final class CatalogView: UIView {
         
         
     }()
+    lazy var mockDataCollectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 36) / 2, height: UIScreen.main.bounds.height * 0.53)
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 3, left: 13, bottom: 3, right: 13)
+        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        
+        collectionView.register(DishCollectionViewCell.self, forCellWithReuseIdentifier: DishCollectionViewCell.identifier)
+        
+        
+        
+        
+        return collectionView
+        
+        
+    }()
     private func addSubview(){
         addSubview(collectionView)
         addSubview(secondCollectionView)
-        addSubview(activityIndicator)
+        addSubview(mockDataCollectionView)
+//        addSubview(activityIndicator)
     }
     private func setLayout(){
-        activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         
@@ -101,6 +125,14 @@ final class CatalogView: UIView {
         secondCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         secondCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        mockDataCollectionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor,constant: 10).isActive = true
+        
+        mockDataCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        
+        mockDataCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
+        mockDataCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         
         
