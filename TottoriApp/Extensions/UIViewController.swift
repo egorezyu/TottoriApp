@@ -101,7 +101,25 @@ extension UIViewController{
         }
     
     }
-    
+    func customPath(cell : DishCollectionViewCell) -> UIBezierPath {
+        let path = UIBezierPath()
+        let convertedCoordinates = view.convert(cell.holdButtonView.frame, from: cell)
+      
+        
+        let toPointX = UIScreen.main.bounds.width - 50
+        let toPointY = UIScreen.main.bounds.height - 50
+        let firstCurvePoint = CGPoint(x: (toPointX + convertedCoordinates.origin.x) / 2 , y: (toPointY + convertedCoordinates.origin.y) / 2 + 200)
+        let secondCurvePoint = CGPoint(x: (toPointX + convertedCoordinates.origin.x) / 2 , y: (toPointY + convertedCoordinates.origin.y) / 2 + 200)
+        path.move(to: CGPoint(x: convertedCoordinates.origin.x, y: convertedCoordinates.origin.y))
+        
+        let endPoint = CGPoint(x: UIScreen.main.bounds.width - 50, y: UIScreen.main.bounds.height - 50)
+//        path.addLine(to: endPoint)
+        path.addCurve(to: endPoint, controlPoint1:  firstCurvePoint, controlPoint2: secondCurvePoint)
+        path.stroke()
+        
+
+        return path
+    }
     
     
     

@@ -53,6 +53,7 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         
         
         
+        
         setNavigationControllerDelegate()
         setBackGround()
         setUpCollectionView()
@@ -216,6 +217,11 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
     @objc func addToBasket(button : ButtonWithIndexes){
         // button tap animation
         animateButton(button: button)
+        guard let cell = catalogView.secondCollectionView.cellForItem(at: IndexPath(row: button.index, section: button.section)) as? DishCollectionViewCell else {
+            return
+        }
+        animateDropEffect(cell: cell,duration: 1)
+        
         guard let sectionList = catalog?.menuList[button.section].sectionList?[button.index],
               let thirdScreen = (tabBarController?.viewControllers?[2] as? UINavigationController)?.viewControllers[0] else{
             return
@@ -253,6 +259,49 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
                 button.transform = CGAffineTransform.identity
             }
         })
+    }
+    private func animateDropEffect(cell : DishCollectionViewCell,duration : Double){
+        
+        
+        
+        let imageView = UIImageView(image: cell.imageView.image)
+        imageView.layer.cornerRadius = 20
+        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.borderWidth = 4
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleToFill
+        let convertedCoordinates = view.convert(cell.holdButtonView.frame, from: cell)
+        imageView.frame = CGRect(x: convertedCoordinates.origin.x, y: convertedCoordinates.origin.y, width: 40, height: 40)
+        view.addSubview(imageView)
+        
+    
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock({
+            imageView.removeFromSuperview()
+        })
+        let animation = CAKeyframeAnimation(keyPath: "position")
+        
+        animation.path = customPath(cell: cell).cgPath
+        animation.duration = CFTimeInterval(duration)
+        animation.beginTime = 0
+//        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+
+        let secondAnimationFade = CABasicAnimation(keyPath: "opacity")
+        secondAnimationFade.fromValue = 1
+        secondAnimationFade.toValue = 0
+        secondAnimationFade.beginTime = duration * 0.5
+        secondAnimationFade.duration = CFTimeInterval(duration)
+        let fadeAndMove = CAAnimationGroup()
+        fadeAndMove.animations = [animation, secondAnimationFade]
+        fadeAndMove.duration = CFTimeInterval(duration)
+        fadeAndMove.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+
+        
+        imageView.layer.add(fadeAndMove, forKey: nil)
+        CATransaction.commit()
+        
+        
     }
     
     

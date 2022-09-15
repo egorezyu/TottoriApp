@@ -20,6 +20,7 @@ final class CatalogView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -96,6 +97,7 @@ final class CatalogView: UIView {
         addSubview(secondCollectionView)
         addSubview(mockDataCollectionView)
 
+
     }
     private func setLayout(){
 
@@ -124,6 +126,8 @@ final class CatalogView: UIView {
         mockDataCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         mockDataCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+      
         
         
         
