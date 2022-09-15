@@ -49,7 +49,6 @@ extension UIView{
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         gradientLayer.frame = self.bounds
-//        gradientLayer.cornerRadius = 3
         let animationGroup = makeAnimationGroup()
         animationGroup.beginTime = 0.0
         gradientLayer.add(animationGroup, forKey: "backgroundColor")
@@ -79,11 +78,7 @@ extension UIView{
         group.repeatCount = .greatestFiniteMagnitude
         group.duration = anim2.beginTime + anim2.duration
         group.isRemovedOnCompletion = false
-        
-//        if let previousGroup = previousGroup {
-//            // Offset groups by 0.33 seconds for effect
-//            group.beginTime = previousGroup.beginTime + 0.33
-//        }
+    
         
         return group
     }
