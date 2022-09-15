@@ -82,22 +82,12 @@ final class NetworkManager {
         var urlRequest = URLRequest(url: request.path)
         
         urlRequest.httpMethod = data == nil ? "GET" : "POST"
-
+        
         
         urlRequest.httpBody = data
-
-        
-//        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        if let body = urlRequest.httpBody{
-            print(String(data: body, encoding: .utf8)!)
-        }
-        
-        
         
         let task = self.session.dataTask(with: urlRequest) { data, response, error in
-//            print(response)
+            
             
             
             
@@ -106,17 +96,12 @@ final class NetworkManager {
             }
             
             
-            
-            
-            
-            
-            
             guard let data = data else {
                 completion(.failure(GetDataException.badData))
                 return
                 
             }
-          
+            
             
             do {
                 
