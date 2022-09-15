@@ -18,7 +18,7 @@ extension UIColor{
     }
     
     static var gradientLightGrey: UIColor {
-        return UIColor(red: 201 / 255.0, green: 201 / 255.0, blue: 201 / 255.0, alpha: 1)
+        return UIColor(red: 201 / 240, green: 201 / 240, blue: 201 / 240, alpha: 1)
     }
     
 }
