@@ -206,7 +206,6 @@ extension DeliveryViewController : DeliveryDelegate{
             return
         }
         stringData = String(bytes : data, encoding: .utf8)!
-        print(stringData)
         
        
 
@@ -283,8 +282,7 @@ extension DeliveryViewController : DeliveryDelegate{
                     self.showCustomAlert(text:NSLocalizedString("thx_for_dev", comment: ""))
                     self.backetViewBackDataDelegate?.clearAllBasket()
                     
-                case .failure(let error):
-                    print(error)
+                case .failure(_):
                     self.showCustomAlert(text:NSLocalizedString("smth_went_wrong", comment: ""))
                     
                 }

@@ -113,7 +113,6 @@ final class NetworkManager {
                 
             }
             catch {
-                print(error)
                 
                 
                 completion(.failure(GetDataException.badData))
@@ -174,7 +173,8 @@ final class NetworkManager {
                 switch result{
                     
                 case .success(_):
-                    print("")
+                    break
+                    
                 case .failure(_):
                     imageView.image = UIImage(named: "logo")
                 }

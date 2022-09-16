@@ -21,7 +21,6 @@ class BasketViewController: UIViewController{
     }
     func addToArray(sectionList : SectionList){
         let index = arrayOfPurchases.firstIndex { sectionListIt in
-            print(sectionList == sectionListIt)
             return sectionList == sectionListIt
             
         }

@@ -378,9 +378,6 @@ class DishView: UIView {
         
         delegate?.showPopUpMenu()
     }
-//    override func layoutSubviews() {
-//        print(foodImage.frame)
-//    }
     
     
     /*
