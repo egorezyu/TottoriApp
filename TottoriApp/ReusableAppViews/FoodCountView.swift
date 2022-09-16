@@ -77,24 +77,19 @@ class FoodCountView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func addView(){
-        addSubview(increaseAmountButton)
-        addSubview(decreaseAmountButton)
-        addSubview(countLabel)
         decreaseAmountButton.addSubview(minusImage)
         increaseAmountButton.addSubview(plusImage)
+        addSubview(hStack)
         
         
         
     }
     private func setConstraints(){
+        hStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        hStack.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        hStack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        hStack.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        countLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        countLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
-        decreaseAmountButton.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor,constant: -5).isActive = true
-        decreaseAmountButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        decreaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        decreaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         
         plusImage.centerYAnchor.constraint(equalTo: increaseAmountButton.centerYAnchor).isActive = true
@@ -111,10 +106,7 @@ class FoodCountView: UIView {
         
         
         
-        increaseAmountButton.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor,constant: 5).isActive = true
-        increaseAmountButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        increaseAmountButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        increaseAmountButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
         
         
         
