@@ -113,7 +113,7 @@ class BasketView: UIView {
         
     }
     private func setConstraints(){
-        basketLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 5).isActive = true
+        basketLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 15).isActive = true
         basketLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10).isActive = true
         aboutDeliveryTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10).isActive = true
         aboutDeliveryTimeLabel.centerYAnchor.constraint(equalTo: basketLabel.centerYAnchor).isActive = true

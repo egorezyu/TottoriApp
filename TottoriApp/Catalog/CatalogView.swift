@@ -102,7 +102,7 @@ final class CatalogView: UIView {
     private func setLayout(){
 
         
-        collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 15).isActive = true
         
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         
