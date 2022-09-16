@@ -22,10 +22,8 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        self.aboutUsView.scrollView.delegate = self
+        setTapGestureForDismissKeyBoard()
+        setScrollViewDelegate()
         setBackGround()
         controlButtonStateAlgo()
         setDelegateForCollectionView()
@@ -42,7 +40,14 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
             
         }
     }
-    
+    private func setTapGestureForDismissKeyBoard(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    private func setScrollViewDelegate(){
+        self.aboutUsView.scrollView.delegate = self
+        
+    }
     private func getDesignData(){
         let designListViewModel = DesignListViewModel()
         aboutUsView.activityIndicator.startAnimating()

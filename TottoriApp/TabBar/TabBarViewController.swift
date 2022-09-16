@@ -31,7 +31,7 @@ class TabBarViewController: UITabBarController {
         let catalogVCTabBar = UITabBarItem(title: "",image: image1, tag: 1)
         catalogVC.tabBarItem = catalogVCTabBar
         
-        let aboutUsVC =  UINavigationController(rootViewController : AboutUsViewController())
+        let aboutUsVC =  AboutUsViewController()
         
         let aboutUsTabBar = UITabBarItem(title: "",image: image2, tag: 2)
         aboutUsVC.tabBarItem = aboutUsTabBar

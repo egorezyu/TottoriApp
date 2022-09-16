@@ -285,7 +285,6 @@ class CatalogViewController: UIViewController , ViewControllerWithViewWithStack{
         animation.path = customPath(cell: cell).cgPath
         animation.duration = CFTimeInterval(duration)
         animation.beginTime = 0
-//        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
         let secondAnimationFade = CABasicAnimation(keyPath: "opacity")
         secondAnimationFade.fromValue = 1

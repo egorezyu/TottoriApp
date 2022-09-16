@@ -9,6 +9,7 @@ import UIKit
 import DGCarouselFlowLayout
 
 class AboutUsView: UIView,PhoneFieldProtocol,ViewWithStack {
+    // constraint for animation effect
     public lazy var vStackConstraint = vStackFields.leadingAnchor.constraint(equalTo: leadingAnchor,constant: -(UIScreen.main.bounds.width - 40))
     private weak var delegate : AboutUsDelegate?
     private var aboutUsDataController = AboutUsDataViewController()
