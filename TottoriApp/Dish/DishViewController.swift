@@ -13,7 +13,6 @@ class DishViewController: UIViewController {
     var sectionList : SectionList?
     
     override func loadView() {
-//        sleep(2)
         super.loadView()
         view = dishView
     }
@@ -29,6 +28,9 @@ class DishViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
     
     private func setValuesForView(){
         if let sectionList = sectionList {
@@ -36,9 +38,7 @@ class DishViewController: UIViewController {
         }
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-    }
+    
     
     
     

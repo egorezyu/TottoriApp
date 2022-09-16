@@ -44,7 +44,6 @@ class DishView: UIView {
         image.image = UIImage(systemName: "gear")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleToFill
-//        image.clipsToBounds = true
         
         return image
     }()
