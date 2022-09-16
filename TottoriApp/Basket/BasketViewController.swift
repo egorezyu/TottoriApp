@@ -19,6 +19,45 @@ class BasketViewController: UIViewController{
         super.loadView()
         view = backetView
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setBackGround()
+        setDataSourceAndDelegate()
+        setBackButtonForNavBar()
+        setNavigationDelegate()
+      
+        
+        
+        
+        
+        
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.isBeingPresented || self.isMovingToParent {
+            animateCollectionView()
+        }
+        
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+        
+    }
+    private func setNavigationDelegate(){
+        navigationController?.delegate = self
+    }
     func addToArray(sectionList : SectionList){
         let index = arrayOfPurchases.firstIndex { sectionListIt in
             return sectionList == sectionListIt
@@ -64,44 +103,10 @@ class BasketViewController: UIViewController{
         backetView.basketCollectionView.reloadData()
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.isBeingPresented || self.isMovingToParent {
-            animateCollectionView()
-        }
-        
-        
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-        
-    }
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setBackGround()
-        setDataSourceAndDelegate()
-        setBackButtonForNavBar()
-        navigationController?.delegate = self
-        //        animateCollectionView()
-        
-        
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
-    }
+   
     
     
     private func setDataSourceAndDelegate(){
