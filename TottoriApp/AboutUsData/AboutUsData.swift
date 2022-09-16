@@ -139,7 +139,7 @@ class AboutUsData: UIView {
         addSubview(adressImage)
         addSubview(timeImage)
         map.addSubview(unZoom)
-        //        sushiImage.addSubview(sushiLabel)
+    
         
     }
     private func setConstraints(){

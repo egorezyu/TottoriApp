@@ -222,7 +222,6 @@ extension DeliveryViewController : DeliveryDelegate{
             }
             else{
                 devView.activityIndicator.startAnimating()
-                //                showOkAlert()
                 controlUserButtonServerTouchAlgo()
                 
                 

@@ -45,8 +45,6 @@ class WeightTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: WeightTableViewCell.id, for: indexPath) as! WeightTableViewCell
-        //        cell.textLabel?.text = "egor"
-        //        cell.backgroundColor = .red
         cell.backgroundColor = .clear
         cell.configureCell(text: weights[indexPath.row])
         

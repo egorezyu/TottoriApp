@@ -8,8 +8,6 @@
 import UIKit
 
 class DetailsView: UIView {
-    //    public var section : Int!
-    //    public var index : Int!
     lazy var detailsLabel : TextWithIndexes = {
         let label = TextWithIndexes()
         label.translatesAutoresizingMaskIntoConstraints = false

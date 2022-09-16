@@ -17,7 +17,6 @@ class CustomFavouriteCell: UICollectionViewCell {
     
     lazy var image : UIImageView = {
         var image = UIImageView()
-        //        image.isUserInteractionEnabled = true
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.isUserInteractionEnabled = true
