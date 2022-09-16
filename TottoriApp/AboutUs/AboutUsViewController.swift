@@ -40,10 +40,6 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
             
         }
     }
-    private func setTapGestureForDismissKeyBoard(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
     private func setScrollViewDelegate(){
         self.aboutUsView.scrollView.delegate = self
         
@@ -73,10 +69,6 @@ class AboutUsViewController: UIViewController,ViewControllerWithViewWithStack {
     private func setDelegateForCollectionView(){
         aboutUsView.horCollectionView.delegate = self
         aboutUsView.horCollectionView.dataSource = self
-    }
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
     }
     
     func controlButtonStateAlgo(){

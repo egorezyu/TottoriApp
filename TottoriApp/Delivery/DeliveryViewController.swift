@@ -19,7 +19,6 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
     
     private lazy var devView : DeliveryView = DeliveryView(delegate: self,navigationBar: self.navigationController?.navigationBar)
     private var deliveryViewModel : DeliveryListViewModel = DeliveryListViewModel()
-    private var parameters : [String : Any]!
     internal var selectedTextField : UITextField?
     private var selectedPayView : TogleView?
     public var userInfo : UserInfo?
@@ -31,8 +30,8 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        setTapGestureForDismissKeyBoard()
+      
         setBackGround()
         checkUserDefaultsData()
         setUserDefaultsData()
@@ -44,6 +43,7 @@ class DeliveryViewController: UIViewController, TextFieldControlColorProtocol  {
         
         // Do any additional setup after loading the view.
     }
+
     private func setUserDefaultsData(){
         let phoneField = (devView.vStackPhone.subviews[1] as? CustomTextFieldWithInsets)
         phoneField?.text = userInfo?.phone ?? ""
@@ -168,10 +168,7 @@ extension DeliveryViewController : DeliveryDelegate{
         }
         
     }
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
+
     
     
     
